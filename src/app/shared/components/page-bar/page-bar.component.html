@@ -1,0 +1,34 @@
+<div class="me-2">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><button class="page-link" [class]="previousPageBtnClass" (click)="changePageBtn(1)"
+        [disabled]="navigation.first"><i class="bi bi-chevron-bar-left"></i></button>
+      </li>
+      <li class="page-item"><button class="page-link" [class]="previousPageBtnClass" (click)="changePageBtn(navigation.previousPage)"
+        [disabled]="navigation.first"><i class="bi bi-chevron-left"></i></button>
+      </li>
+
+
+
+
+      <li *ngFor="let i of pagesArray" class="page-item" [ngClass]="navigation.actualPage==i ? 'active': '' " aria-current="page"><button
+        (click)="changePageBtn(i)"class="page-link">{{(i )}}</button>
+      </li>
+
+
+
+
+
+      <li class="page-item"><button class="page-link" (click)="changePageBtn(navigation.nextPage)"
+        [disabled]="navigation.last"><i class="bi bi-chevron-right"></i></button>
+      </li>
+
+      <li class="page-item"><button class="page-link" (click)="changePageBtn(navigation.totalPages)"
+        [disabled]="navigation.last"><i class="bi bi-chevron-bar-right"></i></button>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+{{ navigation.totalPages}} - {{ navigation.actualPage}}
+

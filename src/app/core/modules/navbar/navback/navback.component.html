@@ -1,0 +1,113 @@
+<nav class="navbar navbar-expand-lg navbar-light bgnav">
+  <div class="container-fluid ms-3">
+    <a class="navbar-brand" href="/dashboard">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
+            Catalogos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/admin/clientes" class="dropdown-item">Clientes &raquo;</a>
+              <ul class="dropdown-menu submenu">
+                <li><a href="/admin/clientes/altas" class="dropdown-item">Altas</a></li>
+                <li><a href="/admin/clientes/buscar" class="dropdown-item">Buscar/Editar</a></li>
+                <li><a href="/admin/clientes" class="dropdown-item">Ver Todos</a></li>
+              </ul>
+            </li>
+            <li><a href="/admin/categorias" class="dropdown-item">Categorias &raquo;</a>
+              <ul class="dropdown-menu submenu">
+                <li><a href="/admin/categorias/altas" class="dropdown-item">Altas</a></li>
+                <li><a href="/admin/categorias/buscar" class="dropdown-item">Buscar/Editar</a></li>
+                <li><a href="/admin/categorias" class="dropdown-item">Ver Todos</a></li>
+              </ul>
+            </li>
+            <li><a href="/admin/marcas" class="dropdown-item">Marcas &raquo;</a>
+              <ul class="dropdown-menu submenu">
+                <li><a href="/admin/marcas/altas" class="dropdown-item">Altas</a></li>
+                <li><a href="" class="dropdown-item">Buscar/Editar</a></li>
+                <li><a href="/admin/marcas" class="dropdown-item">Ver Todos Marcas</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/admin/productos" class="dropdown-item">Productos &raquo;</a>
+              <ul class="dropdown-menu submenu">
+                <li><a href="/admin/productos/altas" class="dropdown-item">Altas</a></li>
+                <li><a href="/admin/productos/buscar" class="dropdown-item">Buscar/Editar</a></li>
+                <li><a href="/admin/productos" class="dropdown-item">Ver Todos</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </li>
+   
+
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="x" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Ordenes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/admin/ordenes">Ver Todos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/1">Canceladas</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/2">Nuevas</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/3">Procesadas</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/4">En Camino</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/5">Entregadas</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="x" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Reportes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/admin/reportes/por-mes">Ventas por Mes</a></li>
+
+          </ul>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav ms-auto me-5">
+
+        <li class="nav-item dropdown">
+          <a href="" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown">Sistema</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/perfil">Mi perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a href="/admin/sistema/empleados" class="dropdown-item">Empleados &raquo;</a>
+              <ul class="dropdown-menu submenu submenu-left">
+                <li><a href="/admin/sistema/empleados/altas" class="dropdown-item">Altas</a></li>
+                <li><a href="/admin/sistema/empleados/buscar" class="dropdown-item">Buscar</a></li>
+                <li><a href="/admin/sistema/empleados" class="dropdown-item">Ver Todos</a></li>
+              </ul>
+            </li>
+            <li><a href="/admin/sistema/usuarios" class="dropdown-item">Usuarios &raquo;</a>
+              <ul class="dropdown-menu submenu submenu-left">
+                <li><a href="/admin/sistema/usuarios/altas" class="dropdown-item">Altas</a></li>
+                <li><a href="/admin/sistema/usuarios/buscar" class="dropdown-item">Buscar</a></li>
+                <li><a href="/admin/sistema/usuarios" class="dropdown-item">Ver Todos</a></li>
+              </ul>
+            </li>
+            <!-- <li><a href="/admin/sistema/roles" class="dropdown-item">Roles &raquo;</a>
+              <ul class="dropdown-menu submenu submenu-left">
+                <li><a href="/admin/sistema/roles/altas" class="dropdown-item">Altas</a></li>
+                <li><a href="/admin/sistema/roles/buscar" class="dropdown-item">Buscar</a></li>
+                <li><a href="/admin/sistema/roles" class="dropdown-item">Ver Todos</a></li>
+              </ul>
+            </li> -->
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item" >Salir</button></li>
+
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

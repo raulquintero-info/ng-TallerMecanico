@@ -1,0 +1,17 @@
+{
+  "usuarios": [
+    {
+      "password": "$2a$10$a.K/UL.muiwmC64TdIrT/eX7CBX1kB.S6ru8Ab413jBdqGh32GXLu",
+      "username": "leo",
+      "authorities": [
+        {
+          "authority": "USER"
+        }
+      ],
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+.header {
+  /* background-color: #072d53; */
+  height: 80px;
+  color: white;
+  background-color: #2b2b2b; /*  9f2241  dd3232*/
+
+}
+.brand-logo{
+  height: 80px;
+  margin-left: -28px;
+}
+.header-admin {
+  /* background-color: #072d53; */
+  height: 25px;
+  color: white;
+  background-color: #12322b;
+
+}
+.cart-count {
+  position: relative;
+  right: 8px;
+  top: -9px;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 15px;
+  color: #fff;
+  background: #12322b;
+  border: 2px solid #f8f9fa;
+}
+
+.bg-header-gray {
+  background-color: #0051b1;
+  /* height: 20px; */
+  color: white;
+  font-weight:bold;
+  text-align: center;
+}
