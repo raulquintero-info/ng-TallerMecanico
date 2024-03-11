@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bgnav">
+<nav class="navbar navbar-expand-lg navbar-dark primary "  style="background-color:  #0078d4;" >
   <div class="container-fluid ms-3">
-    <a class="navbar-brand" href="/dashboard">Dashboard</a>
+    <!-- <a class="navbar-brand" href="/dashboard">Dashboard</a> -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,24 +8,24 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item dropdown">
           <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">
-            Catalogos
+            Recepcion
           </a>
           <ul class="dropdown-menu">
-            <li><a href="/admin/clientes" class="dropdown-item">Clientes &raquo;</a>
+            <li><a href="/admin/clientes" class="dropdown-item">Servicios &raquo;</a>
               <ul class="dropdown-menu submenu">
                 <li><a href="/admin/clientes/altas" class="dropdown-item">Altas</a></li>
                 <li><a href="/admin/clientes/buscar" class="dropdown-item">Buscar/Editar</a></li>
                 <li><a href="/admin/clientes" class="dropdown-item">Ver Todos</a></li>
               </ul>
             </li>
-            <li><a href="/admin/categorias" class="dropdown-item">Categorias &raquo;</a>
+            <li><a href="/admin/categorias" class="dropdown-item">clientes &raquo;</a>
               <ul class="dropdown-menu submenu">
                 <li><a href="/admin/categorias/altas" class="dropdown-item">Altas</a></li>
                 <li><a href="/admin/categorias/buscar" class="dropdown-item">Buscar/Editar</a></li>
                 <li><a href="/admin/categorias" class="dropdown-item">Ver Todos</a></li>
               </ul>
             </li>
-            <li><a href="/admin/marcas" class="dropdown-item">Marcas &raquo;</a>
+            <li><a href="/admin/marcas" class="dropdown-item">vehiculos &raquo;</a>
               <ul class="dropdown-menu submenu">
                 <li><a href="/admin/marcas/altas" class="dropdown-item">Altas</a></li>
                 <li><a href="" class="dropdown-item">Buscar/Editar</a></li>
@@ -43,21 +43,47 @@
           </ul>
 
         </li>
-   
+
 
         <li class="nav-item dropdown">
           <a class="nav-link active dropdown-toggle" href="x" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
-            Ordenes
+            Taller
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/admin/ordenes">Ver Todos</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/admin/ordenes-por-status/1">Canceladas</a></li>
-            <li><a class="dropdown-item" href="/admin/ordenes-por-status/2">Nuevas</a></li>
-            <li><a class="dropdown-item" href="/admin/ordenes-por-status/3">Procesadas</a></li>
-            <li><a class="dropdown-item" href="/admin/ordenes-por-status/4">En Camino</a></li>
-            <li><a class="dropdown-item" href="/admin/ordenes-por-status/5">Entregadas</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/1">Nuevas</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/2">En Proceso</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/3">Terminados</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/4">Pendientes</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/4">Refacciones</a></li>
+          </ul>
+        </li>
+
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="x" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Refacciones
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/admin/reportes/por-mes">Altas</a></li>
+            <li><a class="dropdown-item" href="/admin/reportes/por-mes">Bajas</a></li>
+            <li><a class="dropdown-item" href="/admin/reportes/por-mes">Cambios</a></li>
+
+          </ul>
+        </li> -->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="x" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Administracion
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/1">Clientes</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/2">Empleados</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/3">Inventarios</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/4">Reportes</a></li>
           </ul>
         </li>
 
@@ -67,8 +93,12 @@
             Reportes
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/reportes/por-mes">Ventas por Mes</a></li>
-
+            <li><a class="dropdown-item" href="/admin/ordenes">Ver Todos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/1">Ingresos</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/2">Egresos</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/3">Balance General</a></li>
+            <li><a class="dropdown-item" href="/admin/ordenes-por-status/4">Reporte x Mes</a></li>
           </ul>
         </li>
 
@@ -78,8 +108,7 @@
         <li class="nav-item dropdown">
           <a href="" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown">Sistema</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/perfil">Mi perfil</a></li>
-            <li><hr class="dropdown-divider"></li>
+
 
             <li><a href="/admin/sistema/empleados" class="dropdown-item">Empleados &raquo;</a>
               <ul class="dropdown-menu submenu submenu-left">
@@ -102,9 +131,21 @@
                 <li><a href="/admin/sistema/roles" class="dropdown-item">Ver Todos</a></li>
               </ul>
             </li> -->
-            <li><hr class="dropdown-divider"></li>
-            <li><button class="dropdown-item" >Salir</button></li>
+           
 
+          </ul>
+
+        </li>
+        <li *ngIf="userLoginOn" class="nav-item dropdown  ms-4 me-3">
+          <a class="btn btn-outline-light btn-sm mt-1 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{ userData.username }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" routerLink="/perfil"><i class="bi bi-person-fill"></i> Mi Perfil</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item"  (click)="logout()" ><i class="bi bi-door-closed"></i> Cerrar Sesión</button></li>
           </ul>
         </li>
       </ul>

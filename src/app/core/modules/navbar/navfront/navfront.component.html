@@ -11,7 +11,7 @@
       <ul class="navbar-nav ms-auto">
 
         <li class="nav-item" >
-          <a class="nav-link active" aria-current="page" [routerLink]="['/']"><i class="bi bi-house-door"></i> Inicio</a>
+          <a class="nav-link active" *ngIf="userLoginOn" aria-current="page" [routerLink]="['/dashboard']"><i class="bi bi-house-door"></i> Dashboard</a>
         </li>
 
 
@@ -26,19 +26,22 @@
         </li>
 
 
+        <li  *ngIf="!userLoginOn" class="nav-item  dropdown ms-4 mt-1 mb-1 me-3">
+          <a class="btn btn-outline-light btn-sm" (click)="login()" id="navbarLogin" role="button">
+            Login <i class="bi bi-box-arrow-in-right"></i>
+          </a>
+        </li>
 
-        <li  class="nav-item dropdown  ms-4 me-3">
+        <li *ngIf="userLoginOn" class="nav-item dropdown  ms-4 me-3">
           <a class="btn btn-outline-light btn-sm mt-1 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
-            user@server.com
+            {{ userData.username }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" routerLink="/perfil"><i class="bi bi-person-fill"></i> Mi Perfil</a></li>
-            <li><a class="dropdown-item" routerLink="/mis-favoritos"><i class="bi bi-heart"></i> Favoritos</a></li>
-            <li><a class="dropdown-item" routerLink="/mis-compras"><i class="bi bi-bag-check-fill"></i> Mis Compras</a></li>
-            <li><a class="dropdown-item" routerLink="/mi-carrito"><i class="bi bi-cart4"></i> Mi Carrito</a></li>
+
             <li><hr class="dropdown-divider"></li>
-            <li><button class="dropdown-item"  ><i class="bi bi-door-closed"></i> Cerrar Sesión</button></li>
+            <li><button class="dropdown-item"  (click)="logout()" ><i class="bi bi-door-closed"></i> Cerrar Sesión</button></li>
           </ul>
         </li>
       </ul>

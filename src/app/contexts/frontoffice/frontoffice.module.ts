@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DashboardComponent,
+    VehicleComponent
+  ],
   imports: [
     CommonModule
   ]

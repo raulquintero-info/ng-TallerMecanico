@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../../auth/services/login.service';
+import { Router } from '@angular/router';
+import { User } from '../../auth/interfaces/User.interface';
 // import { LoginService } from 'src/app/core/services/login/login.service';
 
 @Component({
@@ -8,12 +11,32 @@ import { Component } from '@angular/core';
 })
 export class NavbackComponent {
 
-  // constructor(private loginService: LoginService){}
+  titleBar: String = "Taller Mecánico"
+  userLoginOn: boolean = false;
+  userData: User = { id: 0, rol: { id: 0, name: 'none' } } as User;
 
 
-  // logout() {
-  //   console.log('logout>>>>');
-  //   this.loginService.logout()
-  // }
+  constructor(private loginService: LoginService, private router: Router){}
+  ngOnInit() {
 
+    this.loginService.currentUserLoginOn.subscribe({
+      next: (userLoginOn) => {
+        this.userLoginOn = userLoginOn;
+      }
+    });
+
+    this.loginService.currentUserData.subscribe({
+      next: (userData) => {
+        this.userData = userData
+      }
+    })
+  }
+
+  login(){
+    this.router.navigateByUrl('/login');
+  }
+  logout(){
+    this.loginService.logout();
+    this.router.navigateByUrl('/');
+  }
 }

@@ -5,3 +5,14 @@
   font-weight:bold;
   text-align: center;
 }
+.services-container{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  align-content: space-between;
+  /* padding: 50px 0px 50px 0px;
+    margin: 0px 0px 0px 0px; */
+
+}

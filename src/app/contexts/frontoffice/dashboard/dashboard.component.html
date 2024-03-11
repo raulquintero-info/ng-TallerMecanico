@@ -1,0 +1,104 @@
+<div class="title ps-3 pt-3">
+  <h5> Dashboard<i class="bi bi-chevron-right"></i> Todos | Reparando | Terminado | Entregado</h5>
+</div>
+<div class="container pt-5">
+
+  <div class="row align-items-start">
+
+    <div class="col-md-8 vehicules">
+
+      <h4 class="mb-3">Vehiculos Registrados</h4>
+
+      <div class="row" *ngFor="let vehicle of vehicles">
+        <div class="content mt-3">
+          <table style="width:100%; border-bottom:2px solid #f0eeee">
+            <tr>
+              <td rowspan="4" style=" vertical-align:top; max-width:152px; padding-right: 20px; "> <img
+                  class="vehicle-quarter" src="{{vehicle.image}}" alt=""></td>
+            </tr>
+            <tr>
+              <td class="vehicle-id" colspan="3">Id: {{vehicle.id}} <span class="vehicle-text text-center p-1"
+                style="font-weight: bold;  font-size: 10px; background-color: rgb(7, 211, 7);color: white;">{{vehicle.status.statusName}}</span></td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <div>{{ vehicle.make.name}} {{ vehicle.model}} 2.0 TSI</div>
+                <div>{{ vehicle.motor}}</div>
+                <div>{{ vehicle.id}} velocidades</div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div > <span class="vehicle-campo">Año: </span><span class="vehicle-text"> {{ vehicle.year }}</span>, </div>
+                <div><span class="vehicle-campo">Odo: </span> <span class="vehicle-text"> {{vehicle.odo}} km</span> </div>
+              </td>
+              <td>
+                <div><span class="vehicle-campo">Ultimo Ingreso: </span> <span class="vehicle-text"> {{vehicle.lastService}}</span>
+                </div>
+                <div><span class="vehicle-campo">desde: </span><span class="vehicle-text">{{vehicle.created_at}}</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>3</td>
+              <td class="pb-2"></td>
+              <td style="text-align:right"><span class="btn btn-danger btn-sm me-4" (click)="viewCar(vehicle.id)"> Historial
+                  ></span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+
+      <!-- siguiente renglon -->
+      <div class="row">
+        <div class="content mt-3">
+          <table style="width:100%; border-bottom:2px solid #f0eeee">
+            <tr>
+              <td rowspan="4" style=" vertical-align:top; max-width:152px; padding-right: 20px; "> <img
+                  class="vehicle-quarter" src="../../../../assets/images/cars/car0002_quarter.jpg" alt=""></td>
+            </tr>
+            <tr>
+              <td class="vehicle-id" colspan="3">Id: 00001
+                <span class="vehicle-text text-center p-1"
+                  style="font-weight: bold; font-size: 10px;  background-color: rgb(7, 211, 7);color: white;">En
+                  Progreso</span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">Dodge Stratus 3.1L TSI </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div class="vehicle-text"> Modelo: 2012, </div>
+                <div><span class="vehicle-campo">Odo: </span> <span class="vehicle-text"> 162563 km</span> </div>
+              </td>
+              <td>
+                <div><span class="vehicle-campo">Ultimo Ingreso: </span> <span class="vehicle-text"> 07/03/2024</span>
+                </div>
+                <div><span class="vehicle-campo">desde: </span><span class="vehicle-text">03/02/2020</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>3</td>
+              <td class="pb-2"></td>
+              <td style="text-align:right"><span class="btn btn-danger btn-sm me-4" (click)="viewCar(1)"> Historial
+                  ></span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4 activity">
+      <h4>Actividad</h4>
+      <div class="ps-2">Sin Actividad Reciente</div>
+
+      <kbd>ctrl + x</kbd>
+
+    </div>
+
+
+  </div>
+</div>

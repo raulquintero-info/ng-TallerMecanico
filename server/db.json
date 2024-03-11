@@ -1,4 +1,28 @@
 {
+  "login-customer": {
+    "email": "customer@server",
+    "authorities": [
+      {
+        "authority": "USER"
+      }
+    ],
+    "accountNonExpired": true,
+    "accountNonLocked": true,
+    "credentialsNonExpired": true,
+    "enabled": true
+  },
+  "login-admin": {
+    "email": "administrator@server",
+    "authorities": [
+      {
+        "authority": "ADMIN"
+      }
+    ],
+    "accountNonExpired": true,
+    "accountNonLocked": true,
+    "credentialsNonExpired": true,
+    "enabled": true
+  },
   "usuarios": [
     {
       "password": "$2a$10$a.K/UL.muiwmC64TdIrT/eX7CBX1kB.S6ru8Ab413jBdqGh32GXLu",
@@ -11,7 +35,134 @@
       "accountNonExpired": true,
       "accountNonLocked": true,
       "credentialsNonExpired": true,
-      "enabled": true
+      "enabled": true,
+      "autos": [
+        {
+          "id": 1,
+          "model": 2012,
+          "make": "Scirocco",
+          "brand": {
+            "id": 1,
+            "brand": "VolskWagen"
+          },
+          "image": "",
+          "servicios": [
+            {
+              "id": 1,
+              "title": "Falla en transmision, ruido raro",
+              "description": "Cliente comenta que al llegar el alto se oye como que truena algo, y tiene que volver a encender el auto para que avance",
+              "history": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 1,
+      "image": "/assets/images/cars/car0001_quarter.jpg",
+      "status": {
+        "id": 1,
+        "statusName": "en progreso"
+      },
+      "model": "Lancer",
+      "year": 1980,
+      "make": {
+        "id": 4,
+        "name": "Mitsubishi"
+      },
+      "motor": "V6 3.1L",
+      "speeds": 6,
+      "created_At": "2024-01-05",
+      "updated_at": "",
+      "odo": 0,
+      "lastService": "2024-01-05",
+      "color": ""
+    },
+    {
+      "id": 2,
+      "image": "/assets/images/cars/car0002_quarter.jpg",
+      "status": {
+        "id": 1,
+        "statusName": "en progreso"
+      },
+      "model": "Lancer",
+      "year": 1980,
+      "make": {
+        "id": 4,
+        "name": "Mitsubishi"
+      },
+      "motor": "V6 3.1L",
+      "speeds": 6,
+      "created_At": "2024-01-05",
+      "updated_at": "",
+      "odo": 0,
+      "lastService": "2024-01-05",
+      "color": ""
+    },
+    {
+      "id": 3,
+      "image": "/assets/images/cars/car0003_quarter.jpg",
+      "status": {
+        "id": 1,
+        "statusName": "en progreso"
+      },
+      "model": "civic",
+      "year": 1980,
+      "make": {
+        "id": 4,
+        "name": "honda"
+      },
+      "motor": "V6 3.1L",
+      "speeds": 6,
+      "created_At": "2024-01-05",
+      "updated_at": "",
+      "odo": 0,
+      "lastService": "2024-01-05",
+      "color": ""
+    },
+    {
+      "id": 4,
+      "image": "/assets/images/cars/car0004_quarter.jpg",
+      "status": {
+        "id": 1,
+        "statusName": "en progreso"
+      },
+      "model": "camaro",
+      "year": 1980,
+      "make": {
+        "id": 4,
+        "name": "chevrolet"
+      },
+      "motor": "V8 3.1L",
+      "speeds": 6,
+      "created_At": "2024-01-05",
+      "updated_at": "",
+      "odo": 0,
+      "lastService": "2024-01-05",
+      "color": ""
+    },
+    {
+      "id": 5,
+      "image": "/assets/images/cars/car0001_quarter.jpg",
+      "status": {
+        "id": 1,
+        "statusName": "en progreso"
+      },
+      "model": "Lancer",
+      "year": 1980,
+      "make": {
+        "id": 4,
+        "name": "Mitsubishi"
+      },
+      "motor": "V6 3.1L",
+      "speeds": 6,
+      "created_At": "2024-01-05",
+      "updated_at": "",
+      "odo": 0,
+      "lastService": "2024-01-05",
+      "color": ""
     }
   ]
 }
