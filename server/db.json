@@ -1,168 +1,213 @@
 {
-  "login-customer": {
-    "email": "customer@server",
-    "authorities": [
-      {
-        "authority": "USER"
-      }
-    ],
-    "accountNonExpired": true,
-    "accountNonLocked": true,
-    "credentialsNonExpired": true,
-    "enabled": true
-  },
-  "login-admin": {
-    "email": "administrator@server",
-    "authorities": [
-      {
-        "authority": "ADMIN"
-      }
-    ],
-    "accountNonExpired": true,
-    "accountNonLocked": true,
-    "credentialsNonExpired": true,
-    "enabled": true
-  },
   "usuarios": [
     {
-      "password": "$2a$10$a.K/UL.muiwmC64TdIrT/eX7CBX1kB.S6ru8Ab413jBdqGh32GXLu",
-      "username": "leo",
-      "authorities": [
+      "idUsuario": 1,
+      "email": "juan@server",
+      "password": "password",
+      "rol": [],
+      "empleado": null
+    }
+  ],
+  "clientes": [
+    {
+      "idCliente": 1,
+      "nombre": "juan",
+      "apellidoPaterno": "martinez",
+      "apellidoMaterno": "perez",
+      "domicilio": "desconocido",
+      "telefono": "68685559392",
+      "usuario": null,
+      "vehiculos": [
         {
-          "authority": "USER"
-        }
-      ],
-      "accountNonExpired": true,
-      "accountNonLocked": true,
-      "credentialsNonExpired": true,
-      "enabled": true,
-      "autos": [
-        {
-          "id": 1,
-          "model": 2012,
-          "make": "Scirocco",
-          "brand": {
-            "id": 1,
-            "brand": "VolskWagen"
-          },
-          "image": "",
-          "servicios": [
-            {
-              "id": 1,
-              "title": "Falla en transmision, ruido raro",
-              "description": "Cliente comenta que al llegar el alto se oye como que truena algo, y tiene que volver a encender el auto para que avance",
-              "history": []
+          "idVehiculo": 1,
+          "vin": "wer54we5r45w884554845",
+          "matricula": "dfss545",
+          "modelo": {
+            "idModelo": 1,
+            "modelo": "civic",
+            "marca": {
+              "idMarca": 1,
+              "marca": "honda"
             }
-          ]
+          },
+          "anioModelo": "2004",
+          "color": "rojo",
+          "tipoMotor": "GASOLINA",
+          "imagen": "/assets/images/cars/car0001_quarter.jpg",
+          "ordenServicio": []
+        },
+        {
+          "idVehiculo": 2,
+          "vin": "51dfwfwefwfw664g455",
+          "matricula": "rrte445",
+          "modelo": {
+            "idModelo": 2,
+            "modelo": "camaro",
+            "marca": {
+              "idMarca": 2,
+              "marca": "chevrolet"
+            }
+          },
+          "anioModelo": "2006",
+          "color": "rojo",
+          "tipoMotor": "GASOLINA",
+          "imagen": "/assets/images/cars/car0004_quarter.jpg",
+          "ordenServicio": []
+        }
+      ]
+    },
+    {
+      "idCliente": 2,
+      "nombre": "sherlock",
+      "apellidoPaterno": "holmes",
+      "apellidoMaterno": "holm",
+      "domicilio": "desconocido",
+      "telefono": "68685559392",
+      "usuario": null,
+      "vehiculos": [
+        {
+          "idVehiculo": 1,
+          "vin": "wer54we5r45w884554845",
+          "matricula": "dfss545",
+          "modelo": {
+            "idModelo": 1,
+            "modelo": "civic",
+            "marca": {
+              "idMarca": 1,
+              "marca": "honda"
+            }
+          },
+          "anioModelo": "2004",
+          "color": "rojo",
+          "tipoMotor": "GASOLINA",
+          "imagen": "/assets/images/cars/car0001_quarter.jpg",
+          "ordenServicio": []
+        },
+        {
+          "idVehiculo": 2,
+          "vin": "51dfwfwefwfw664g455",
+          "matricula": "rrte445",
+          "modelo": {
+            "idModelo": 2,
+            "modelo": "camaro",
+            "marca": {
+              "idMarca": 2,
+              "marca": "chevrolet"
+            }
+          },
+          "anioModelo": "2006",
+          "color": "rojo",
+          "tipoMotor": "GASOLINA",
+          "imagen": "/assets/images/cars/car0004_quarter.jpg",
+          "ordenServicio": []
         }
       ]
     }
   ],
-  "vehicles": [
+  "vehiculos": [
     {
-      "id": 1,
-      "image": "/assets/images/cars/car0001_quarter.jpg",
-      "status": {
-        "id": 1,
-        "statusName": "en progreso"
+      "idVehiculo": 1,
+      "vin": "wer54we5r45w884554845",
+      "matricula": "dfss545",
+      "modelo": {
+        "idModelo": 1,
+        "modelo": "civic",
+        "marca": {
+          "idMarca": 1,
+          "marca": "honda"
+        }
       },
-      "model": "Lancer",
-      "year": 1980,
-      "make": {
-        "id": 4,
-        "name": "Mitsubishi"
-      },
-      "motor": "V6 3.1L",
-      "speeds": 6,
-      "created_At": "2024-01-05",
-      "updated_at": "",
-      "odo": 0,
-      "lastService": "2024-01-05",
-      "color": ""
+      "anioModelo": "2000",
+      "color": "rojo",
+      "tipoMotor": "GASOLINA",
+      "imagen": "/assets/images/cars/car0001_quarter.jpg",
+      "ordenServicio": []
     },
     {
-      "id": 2,
-      "image": "/assets/images/cars/car0002_quarter.jpg",
-      "status": {
-        "id": 1,
-        "statusName": "en progreso"
+      "idVehiculo": 2,
+      "vin": "51dfwfwefwfw664g455",
+      "matricula": "rrte445",
+      "modelo": {
+        "idModelo": 2,
+        "modelo": "camaro",
+        "marca": {
+          "idMarca": 2,
+          "marca": "chevrolet"
+        }
       },
-      "model": "Lancer",
-      "year": 1980,
-      "make": {
-        "id": 4,
-        "name": "Mitsubishi"
-      },
-      "motor": "V6 3.1L",
-      "speeds": 6,
-      "created_At": "2024-01-05",
-      "updated_at": "",
-      "odo": 0,
-      "lastService": "2024-01-05",
-      "color": ""
-    },
-    {
-      "id": 3,
-      "image": "/assets/images/cars/car0003_quarter.jpg",
-      "status": {
-        "id": 1,
-        "statusName": "en progreso"
-      },
-      "model": "civic",
-      "year": 1980,
-      "make": {
-        "id": 4,
-        "name": "honda"
-      },
-      "motor": "V6 3.1L",
-      "speeds": 6,
-      "created_At": "2024-01-05",
-      "updated_at": "",
-      "odo": 0,
-      "lastService": "2024-01-05",
-      "color": ""
-    },
-    {
-      "id": 4,
-      "image": "/assets/images/cars/car0004_quarter.jpg",
-      "status": {
-        "id": 1,
-        "statusName": "en progreso"
-      },
-      "model": "camaro",
-      "year": 1980,
-      "make": {
-        "id": 4,
-        "name": "chevrolet"
-      },
-      "motor": "V8 3.1L",
-      "speeds": 6,
-      "created_At": "2024-01-05",
-      "updated_at": "",
-      "odo": 0,
-      "lastService": "2024-01-05",
-      "color": ""
-    },
-    {
-      "id": 5,
-      "image": "/assets/images/cars/car0001_quarter.jpg",
-      "status": {
-        "id": 1,
-        "statusName": "en progreso"
-      },
-      "model": "Lancer",
-      "year": 1980,
-      "make": {
-        "id": 4,
-        "name": "Mitsubishi"
-      },
-      "motor": "V6 3.1L",
-      "speeds": 6,
-      "created_At": "2024-01-05",
-      "updated_at": "",
-      "odo": 0,
-      "lastService": "2024-01-05",
-      "color": ""
+      "anioModelo": "2006",
+      "color": "rojo",
+      "tipoMotor": "GASOLINA",
+      "imagen": "/assets/images/cars/car0004_quarter.jpg",
+      "ordenServicio": []
     }
+  ],
+  "empleados":[
+    {
+      "idEmpleado":1,
+      "nombre": "maria",
+      "apellido_paterno":"lopez",
+      "apellido_materno": "andrade",
+      "rfc": "wefwefwe423rf3",
+      "curp":"wefew33r2444fffrr",
+      "nss": "23424252424",
+      "puesto": "tenico",
+      "observaciones": "",
+      "usuario":{}
+
+    },
+    {
+      "idEmpleado":2,
+      "nombre": "kate",
+      "apellido_paterno":"castillo",
+      "apellido_materno": "del",
+      "rfc": "wefwefwe423rf3",
+      "curp":"wefew33r2444fffrr",
+      "nss": "23424252424",
+      "puesto": "tenico",
+      "observaciones": "",
+      "usuario":{}
+
+    },
+    {
+      "idEmpleado":3,
+      "nombre": "kevin",
+      "apellido_paterno":"juarez",
+      "apellido_materno": "costner",
+      "rfc": "wefwefwe423rf3",
+      "curp":"wefew33r2444fffrr",
+      "nss": "23424252424",
+      "puesto": "tenico",
+      "observaciones": "",
+      "usuario":{}
+
+    },
+    {
+      "idEmpleado":4,
+      "nombre": "pedro",
+      "apellido_paterno":"juarez",
+      "apellido_materno": "martinez",
+      "rfc": "wefwefwe423rf3",
+      "curp":"wefew33r2444fffrr",
+      "nss": "23424252424",
+      "puesto": "tenico",
+      "observaciones": "",
+      "usuario":{}
+
+    },
+    {
+      "idEmpleado":5,
+      "nombre": "pedro",
+      "apellido_paterno":"juarez",
+      "apellido_materno": "martinez",
+      "rfc": "wefwefwe423rf3",
+      "curp":"wefew33r2444fffrr",
+      "nss": "23424252424",
+      "puesto": "tenico",
+      "observaciones": "",
+      "usuario":{}
+
+    }
+
   ]
 }

@@ -1,6 +1,6 @@
 import { Component, type OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { VehiclesService } from 'src/app/core/services/vehicles.service';
+import { CustomersService } from 'src/app/core/services/customers.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,15 +9,17 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 })
 export class DashboardComponent implements OnInit {
   vehicles: any;
-
-  constructor(private router: Router, private vehiclesService: VehiclesService){}
+  pathVehicle: string = "/vehiculo"
+  constructor(private router: Router, private customersService: CustomersService){}
 
 
   ngOnInit(): void {
 
-    this.vehiclesService.getAll().subscribe({
+    this.customersService.get(1).subscribe({
       next: resp=>{
-        this.vehicles = resp;
+        this.vehicles = resp[0].vehiculos;
+        console.log(resp)
+        console.log(this.vehicles)
       }
     })
    }

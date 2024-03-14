@@ -13,20 +13,11 @@
   justify-items: start;
 }
 
-.vehicles{
-  /* border: 1px solid rgb(202, 202, 202); */
-  margin-bottom: 10px;
-  /* background-color:yellow; */
-}
-
 .activity{
-  border-left: 1px solid rgb(202, 202, 202);
+  border-left: 0px solid rgb(202, 202, 202);
   margin-bottom: 10px;
   min-height: 500px;
   /* background-color:green */
-}
-.vehicule-image{
-  width: 100%
 }
 
 .top-view-content{
@@ -96,6 +87,15 @@
   line-height:29px;
 }
 
+.vehicles{
+  /* border: 1px solid rgb(202, 202, 202); */
+  margin-bottom: 10px;
+  /* background-color:yellow; */
+}
+
+.vehicule-image{
+  width: 100%
+}
 
 
 .vehicle-image{

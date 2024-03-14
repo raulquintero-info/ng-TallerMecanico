@@ -1,0 +1,39 @@
+
+.vehicles{
+  /* border: 1px solid rgb(202, 202, 202); */
+  margin-bottom: 10px;
+  /* background-color:yellow; */
+}
+
+.vehicule-image{
+  width: 100%
+}
+
+
+.vehicle-image{
+  width: 100%;
+
+}
+.vehicle-image:hover{
+  cursor:pointer ;
+  border: none
+}
+.vehicle-quarter{
+  height: 84px;
+  width: 200px
+ }
+.vehicle-id{
+  color: #5fd8f9;
+    font-weight: bold;
+    font-size: small;
+}
+.vehicle-brand{
+  font-weight:bold;
+}
+.vehicle-text{
+  font-size:smaller
+}
+.vehicle-campo{
+  color:rgb(201, 201, 201)
+
+}

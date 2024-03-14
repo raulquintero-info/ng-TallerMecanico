@@ -1,0 +1,51 @@
+
+<div class="container-fluid page-title ps-3 pt-3">
+  <h5><i class="bi bi-people-fill"></i> Clientes<i class="bi bi-chevron-right"></i></h5>
+</div>
+<div class="container pt-3">
+
+<div class="table-responsive">
+<table
+  class="table table-striped table-hover table-borderless table-primary align-middle"
+>
+  <thead class="table-light">
+    <tr>
+      <td colspan="10" class="pe-5" style="text-align: right; background-color:white">
+        <button class="btn btn-primary">+ Agregar</button>
+      </td>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Autos</th>
+      <th>Email</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr *ngFor="let customer of customers"
+      class="table-striped"
+    >
+      <td scope="row">{{customer.idCliente}}</td>
+      <td>{{customer.nombre}}</td>
+      <td>{{customer.apellidoPaterno}}</td>
+      <td>{{customer.vehiculos.length}}</td>
+      <td>{{customer.telefono}}</td>
+      <td>
+        <button class="btn btn-success">Ver</button>&nbsp;
+        <button class="btn btn-warning">Editar</button>
+      </td>
+    </tr>
+
+  </tbody>
+  <tfoot>
+
+  </tfoot>
+</table>
+</div>
+
+
+
+</div>
+
