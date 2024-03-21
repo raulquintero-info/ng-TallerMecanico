@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-TallerMecanico": {
+    "ng-Taller-Mecanico": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ng-TallerMecanico:build:production"
+              "browserTarget": "ng-Taller-Mecanico:build:production"
             },
             "development": {
-              "browserTarget": "ng-TallerMecanico:build:development"
+              "browserTarget": "ng-Taller-Mecanico:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-TallerMecanico:build"
+            "browserTarget": "ng-Taller-Mecanico:build"
           }
         },
         "test": {

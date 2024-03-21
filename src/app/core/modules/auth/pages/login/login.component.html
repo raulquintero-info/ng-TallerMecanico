@@ -1,0 +1,54 @@
+<div class="container mb-5">
+
+  <div class="row ms-3  mb-4">
+
+
+    <section class="login">
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-6 col-lg-6 col-xl-6 ">
+            <img src="/assets/images/logo.png" class="img-fluid" alt="Sample image">
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-4 ">
+
+
+
+            <!-- TODO: colocar mensajes de error del backend -->
+
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" formControlName="email"
+                  placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger ps-2">
+                  <div *ngIf="email.errors?.['required']">El email es obligatorio</div>
+                  <div *ngIf="email.errors?.['email']">El email es debe tener un formato valido</div>
+                </div>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" formControlName="password"
+                  placeholder="name@example.com">
+                <label for="floatingInput">Contraseña</label>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
+                  <div *ngIf="password.errors?.['required']">La contraseña obligatorio</div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary"><span *ngIf="showSpinner"
+                  class="spinner-border spinner-border-sm"></span> Iniciar Sesion</button>
+            </form>
+
+
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+  </div>
+</div>

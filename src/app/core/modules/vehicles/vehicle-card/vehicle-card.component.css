@@ -18,9 +18,12 @@
   cursor:pointer ;
   border: none
 }
+.vehicle-img{
+  max-width:300px
+}
 .vehicle-quarter{
-  height: 84px;
-  width: 200px
+
+  width: auto
  }
 .vehicle-id{
   color: #5fd8f9;
@@ -31,9 +34,19 @@
   font-weight:bold;
 }
 .vehicle-text{
-  font-size:smaller
+  font-size:smaller;
+  color: black;
 }
 .vehicle-campo{
-  color:rgb(201, 201, 201)
+  font-size:smaller;
+  color:rgb(180, 180, 180)
 
+}
+
+.card-car{
+  width:600px;
+}
+.sections{
+  flex-direction: column;
+  border: 1px solid black;
 }

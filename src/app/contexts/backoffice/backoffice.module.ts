@@ -1,34 +1,51 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RecepcionClientesComponent } from './recepcion/recepcion-clientes/recepcion-clientes.component';
-import { RecepcionVehiculosComponent } from './recepcion/recepcion-vehiculos/recepcion-vehiculos.component';
-import { RecepcionServiciosComponent } from './recepcion/recepcion-servicios/recepcion-servicios.component';
-import { TallerServicioComponent } from './taller/servicios/servicio/Taller-Servicio.component';
-import { TallerServiciosComponent } from './taller/servicios/taller-servicios/taller-servicios.component';
+import { NavbarBackComponent } from './navbar-back/navbar-back.component';
+import { DashboardBackComponent } from './pages/dashboard-back/dashboard-back.component';
+import { RouterModule } from '@angular/router';
+import { CustomersListComponent } from './pages/recepcion/customers/customers-list/customers-list.component';
+import { CustomersFormComponent } from './pages/recepcion/customers/customers-form/customers-form.component';
+import { ServicesFormComponent } from './pages/recepcion/services/services-form/services-form.component';
+import { ServicesListComponent } from './pages/recepcion/services/services-list/services-list.component';
+import { VehiclesListComponent } from './pages/recepcion/vehicles/vehicles-list/vehicles-list.component';
+import { VehiclesFormComponent } from './pages/recepcion/vehicles/vehicles-form/vehicles-form.component';
 import { VehiclesModule } from 'src/app/core/modules/vehicles/vehicles.module';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { RecepcionVehiculoComponent } from './recepcion/recepcion-vehiculo/recepcion-vehiculo.component';
-import { AdminClientesComponent } from './administracion/admin-clientes/admin-clientes.component';
-import { AdminClienteComponent } from './administracion/admin-cliente/admin-cliente.component';
+import { ServicesModule } from 'src/app/core/modules/services/services.module';
+import { ServicesViewComponent } from './pages/recepcion/services/services-view/services-view.component';
+import { VehiclesServicesListComponent } from './pages/recepcion/vehicles/vehicles-services-list/vehicles-services-list.component';
+import { CustomersModule } from 'src/app/core/modules/customers/customers.module';
+import { TallerServiciosListComponent } from './pages/taller/services/taller-servicios-list/taller-servicios-list.component';
+import { TallerVehicleListComponent } from './pages/taller/vehicles/taller-vehicle-list/taller-vehicle-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    RecepcionClientesComponent,
-    RecepcionVehiculosComponent,
-    RecepcionServiciosComponent,
-    TallerServicioComponent,
-    TallerServiciosComponent,
-    AdminDashboardComponent,
-    RecepcionVehiculoComponent,
-    AdminClientesComponent,
-    AdminClienteComponent
-
+    NavbarBackComponent,
+    DashboardBackComponent,
+    CustomersListComponent,
+    CustomersFormComponent,
+    ServicesFormComponent,
+    ServicesListComponent,
+    VehiclesListComponent,
+    VehiclesFormComponent,
+    ServicesViewComponent,
+    VehiclesServicesListComponent,
+    TallerServiciosListComponent,
+    TallerVehicleListComponent
   ],
   imports: [
     CommonModule,
-    VehiclesModule
+    RouterModule,
+    VehiclesModule,
+    ServicesModule,
+    CustomersModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  exports: [
+    NavbarBackComponent
   ]
 })
 export class BackofficeModule { }

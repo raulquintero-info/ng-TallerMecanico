@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Customer } from '../interfaces/customers.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class CustomersService {
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
-  get(id: number):Observable<any>{return this.http.get(this.url + "?idCliente=" + id)};
-
+  getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
+  create(customer: Customer):Observable<any>{return this.http.post(this.url, customer)};
+  update(customer: Customer):Observable<any>{return this.http.put(this.url, customer)};
 }

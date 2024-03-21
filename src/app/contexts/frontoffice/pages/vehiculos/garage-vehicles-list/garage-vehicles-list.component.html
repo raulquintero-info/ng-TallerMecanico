@@ -1,0 +1,70 @@
+<div class="title ps-5 pt-3">
+  <h5><i class="bi bi-car-front-fill"></i> Mi Garage</h5>
+</div>
+<div class="container pt-5">
+
+  <div class="row align-items-start">
+
+    <div class="col-md-7 vehicules" style="min-width:400px">
+
+      <h4 class="mb-3">Vehiculos Registrados</h4>
+
+
+
+      <div class="row" *ngFor="let vehicle of vehicles">
+        <div class="pt-2 pb-2 mb-2" style="background-color: #fd3a3a;">
+
+          <app-vehicle-card [vehicle]="vehicle" [path]="pathVehicle"></app-vehicle-card>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4 activity" style="min-width:500px">
+      <h4>Actividad</h4>
+      <!-- <div class="ps-2">Sin Actividad Reciente</div> -->
+
+      <div
+        class="table-responsive"
+      >
+        <table  class="table table-striped">
+          <tbody>
+            <tr class="">
+              <td class="activity-text" scope="row">12-03-2024</td>
+              <td class="activity-text">Chevrolet Camaro</td>
+              <td class="activity-text">golpeteo en motor al arrancar el vehiculo</td>
+              <td class="activity-text">Entregado</td>
+            </tr>
+            <tr class="">
+              <td  class="activity-text" scope="row">12-03-2024</td>
+              <td class="activity-text">Chevrolet Camaro</td>
+              <td class="activity-text">golpeteo en motor al arrancar el vehiculo</td>
+              <td class="activity-text">Terminado</td>
+            </tr>
+            <tr class="">
+              <td class="activity-text" scope="row">10-03-2024</td>
+              <td class="activity-text">Chevrolet Camaro</td>
+              <td class="activity-text">golpeteo en motor al arrancar el vehiculo</td>
+              <td class="activity-text">En Reparacion</td>
+            </tr>
+            <tr class="">
+              <td class="activity-text" scope="row">08-03-2024</td>
+              <td class="activity-text">Chevrolet Camaro</td>
+              <td class="activity-text">golpeteo en motor al arrancar el vehiculo</td>
+              <td class="activity-text">Diagnostico y Cotizacion</td>
+            </tr>
+            <tr class="">
+              <td class="activity-text" scope="row">06-03-2024</td>
+              <td class="activity-text">Chevrolet Camaro</td>
+              <td class="activity-text">golpeteo en motor al arrancar el vehiculo</td>
+              <td class="activity-text">Entrada</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+
+  </div>
+</div>

@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class VehiclesService {
 
-  url: string = 'http://localhost:3000/vehiculos'
+  url: string = 'http://localhost:3000/api/vehiculos'
 
   constructor(private http: HttpClient) { }
 
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
-  get(id: number):Observable<any>{return this.http.get(this.url + "?id=" + id)};
+  get(id: number):Observable<any>{return this.http.get(this.url + "/api?id=" + id)};
 
 }

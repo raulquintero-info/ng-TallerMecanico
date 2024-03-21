@@ -3,18 +3,18 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Titulo</th>
             <th scope="col">Fecha de Entrada</th>
+            <th scope="col">Titulo</th>
             <th scope="col">Status</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr class="">
-            <td scope="row">12-mar-2024</td>
-            <td>Falla al encender</td>
-            <td>En Reparacion</td>
-            <td><button class="btn btn-primary" (click)="verServicio(2)">Ver</button></td>
+          <tr class="" *ngFor="let service of services">
+            <td scope="row">{{service.created_at}}</td>
+            <td>{{service.titulo}}</td>
+            <td>{{service.status}}</td>
+            <td><button class="btn btn-primary" [routerLink]="[pathVehicle +'-view/' + '1']">Ver</button></td>
           </tr>
           <tr class="">
             <td scope="row">25-ene-2024</td>
@@ -22,7 +22,7 @@
             <td><span class="vehicle-text text-center p-1"
                 style="font-weight: bold;  font-size: 10px; background-color: rgb(7, 211, 7);color: white;">entregado</span>
             </td>
-            <td><button class="btn btn-primary" (click)="verServicio(2)">Ver</button></td>
+            <td><button class="btn btn-primary" [routerLink]="[pathVehicle +'-view/' + '2']">Ver</button></td>
           </tr>
         </tbody>
       </table>

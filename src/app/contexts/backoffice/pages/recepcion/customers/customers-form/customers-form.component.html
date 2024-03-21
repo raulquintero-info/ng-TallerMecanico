@@ -1,0 +1,81 @@
+<div class="page-title ps-3 pt-3">
+  <h5 *ngIf="!customer.idCliente">Agregar Cliente nuevo</h5>
+  <h5 *ngIf="customer.idCliente">Editar Cliente</h5>
+</div>
+<div class="container ps-5 pt-5" >
+
+<div class="form-floating mb-3">
+      <input type="idCliente" class="form-control" id="idCliente" [disabled]="true" [readOnly]="true" [ngModel]="customer.idCliente" >
+      <label for="floatingInput">Id</label>
+      <!-- <div *ngIf="idCliente.invalid && (idCliente.dirty || idCliente.touched)" class="text-danger ps-2">
+        <div *ngIf="usuario.errors?.['required']">El usuario es obligatorio</div>
+      </div> -->
+    </div>
+  <div >
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" [readOnly]="customer.idCliente>0" [disabled]="customer.idCliente>0" id="email" [(ngModel)]="user.email">
+      <label for="floatingInput">Email</label>
+      <!-- <div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)" class="text-danger ps-2">
+        <div *ngIf="usuario.errors?.['required']">El usuario es obligatorio</div>
+      </div> -->
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" [readOnly]="customer.idCliente>0" [disabled]="customer.idCliente>0" id="password" [(ngModel)]="user.password">
+      <label for="floatingInput">Contraseña</label>
+      <!-- <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
+        <div *ngIf="password.errors?.['required']">La contraseña obligatorio</div>
+      </div> -->
+    </div>
+    <div class="form-floating mb-3">
+      <input type="nombre" class="form-control" id="nombre" [(ngModel)]="customer.nombre">
+      <label for="floatingInput">Nombre</label>
+      <div  class="text-danger ps-2">
+        <!-- <div *ngIf="nombre.errors?.['required']">El Nombre es obligatorio</div> -->
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="apellidoPaterno" class="form-control" id="apellidoPaterno" [(ngModel)]="customer.apellidoPaterno">
+      <label for="floatingInput">Apellido Paterno</label>
+      <!-- <div *ngIf="apellidoPaterno.invalid && (apellidoPaterno.dirty || apellidoPaterno.touched)" class="text-danger ps-2">
+        <div *ngIf="apellidoPaterno.errors?.['required']">El Apellido Paterno es obligatorio</div>
+      </div> -->
+    </div>
+    <div class="form-floating mb-3">
+      <input type="apellidoMaterno" class="form-control" id="apellidoMaterno" [(ngModel)]="customer.apellidoMaterno">
+      <label for="floatingInput">Apellido Materno</label>
+      <!-- <div *ngIf="apellidoMaterno.invalid && (apellidoMaterno.dirty || apellidoMaterno.touched)" class="text-danger ps-2">
+        <div *ngIf="apellidoMaterno.errors?.['required']">El Apellido Materno es obligatorio</div>
+      </div> -->
+    </div>
+    <div class="form-floating mb-3">
+      <input type="domicilio" class="form-control" id="domicilio" [(ngModel)]="customer.domicilio">
+      <label for="floatingInput">Domicilio</label>
+      <!-- <div *ngIf="domicilio.invalid && (domicilio.dirty || domicilio.touched)" class="text-danger ps-2">
+        <div *ngIf="domicilio.errors?.['required']">El Domicilio es obligatorio</div>
+      </div> -->
+    </div>
+    <div class="form-floating mb-3">
+      <input type="telefono" class="form-control" id="telefono" [(ngModel)]="customer.telefono">
+      <label for="floatingInput">Telefono</label>
+      <!-- <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="text-danger ps-2">
+        <div *ngIf="telefono.errors?.['required']">El Telefono es obligatorio</div>
+      </div> -->
+    </div>
+
+
+    <!-- <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="password" formControlName="password"
+        placeholder="name@example.com">
+      <label for="floatingInput">Contraseña</label>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
+        <div *ngIf="password.errors?.['required']">La contraseña obligatorio</div>
+      </div>
+    </div> -->
+
+    <button type="submit" class="btn btn-primary" (click)="save()"><span *ngIf="showSpinner"
+        class="spinner-border spinner-border-sm"></span>Grabar</button>
+  </div>
+
+
+  </div>

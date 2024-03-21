@@ -1,45 +1,54 @@
-<div class="col-md-12 vehicles">
 
-  <!-- <h4>Ficha Tecnica</h4> -->
 
-  <div class="row">
-    <div class="content mt-4 mb-5">
-      <table style="width:100%; border-bottom:2px solid #f0eeee">
-        <tr>
-          <td rowspan="4" style=" vertical-align:top; max-width:152px; padding-right: 20px; ">
-            <img class="vehicle-quarter" [src]="vehicle.imagen" alt="">
-            <!-- <span>{{vehicle.imagen}}</span> -->
-          </td>
-        </tr>
-        <tr>
-          <td class="vehicle-id" colspan="3">Id: {{vehicle.idVehiculo}} <span class="vehicle-text text-center p-1"
-              style="font-weight: bold;  font-size: 10px; background-color: rgb(7, 211, 7);color: white;">status</span>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3">
-            <div>{{ vehicle.modelo.marca.marca | titlecase}} {{ vehicle.modelo.modelo | titlecase}} 2.0 TSI</div>
-            <div>{{ vehicle.tipoMotor | titlecase}}</div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <div> <span class="vehicle-campo">Año: </span><span class="vehicle-text"> {{ vehicle.anioModelo
-                }}</span>, </div>
-            <div><span class="vehicle-campo">Odo: </span> <span class="vehicle-text"> odometro km</span> </div>
-          </td>
-          <td>
-            <div><span class="vehicle-campo">Ultimo Ingreso: </span> <span class="vehicle-text"> lastService</span>
-            </div>
-            <div><span class="vehicle-campo">desde: </span><span class="vehicle-text">created_at</span></div>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-          <td *ngIf="path!=undefined"><button class="btn btn-danger"  (click)="verHistorial(vehicle.idVehiculo)">Historial</button></td>
-        </tr>
-      </table>
+
+<div class="d-flex flex-sm-row flex-column" style1="min-width:600px">
+  <div class="mr-auto pe-2" style1="min-width:160px;"><img  [src]="vehicle.imagen" style="max-width:100%;max-height:100%"></div>
+  <div class="text-light">
+    <h5 class="ps-2"> {{ vehicle.modelo.marca.marca | titlecase}} <!-- {{ vehicle.modelo.modelo | titlecase}} --> | {{ vehicle.anioModelo}}</h5>
+
+    <div class="d-flex p-3 flex-sm " style="min-width:400px; background-color:white">
+      <div class="mr-auto">
+        <span class="vehicle-campo">Id:</span> <span class="vehicle-text"> {{vehicle.idVehiculo}}</span>
+        <div class="vehicle-text">{{ vehicle.modelo.marca.marca | titlecase}} {{ vehicle.modelo.modelo | titlecase}}</div>
+        <div class="vehicle-text">{{ vehicle.tipoMotor | titlecase}}</div>
+        <div> <span class="vehicle-campo">Año: </span><span class="vehicle-text"> {{ vehicle.anioModelo}}</span>,</div>
+        <div><span class="vehicle-campo">Odo: </span> <span class="vehicle-text"> odometro km</span> </div>
+      </div>
+      <div class="align-self-end ms-3">
+        <div  *ngIf="path!=undefined" class="mb-2" style="text-align:center">
+          <button class="btn btn-outline-primary btn-sm" (click)="verHistorial(vehicle.idVehiculo)">Ver Historial</button>
+        </div>
+        <div><span class="vehicle-campo">Ultimo Ingreso: </span> <span class="vehicle-text"> lastService</span></div>
+        <div><span class="vehicle-campo">Desde: </span><span class="vehicle-text">created_at</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- <div class="p-2 bd-highlight mb-2 " style1="max-width: 600px; border: 1px solid #e9e9e9">
+
+  <div class="">
+    <img class="vehicle-quarter" [src]="vehicle.imagen" alt="">
+  </div>
+  <div class="d-flex p-2 flex-sm ">
+    <div class="mr-auto ms-2">
+      <span class="vehicle-campo">Id:</span> <span class="vehicle-text"> {{vehicle.idVehiculo}}</span>
+      <div class="vehicle-text">{{ vehicle.modelo.marca.marca | titlecase}} {{ vehicle.modelo.modelo | titlecase}} 2.0 TSI</div>
+      <div class="vehicle-text">{{ vehicle.tipoMotor | titlecase}}</div>
+      <div> <span class="vehicle-campo">Año: </span><span class="vehicle-text"> {{ vehicle.anioModelo}}</span>,</div>
+      <div><span class="vehicle-campo">Odo: </span> <span class="vehicle-text"> odometro km</span> </div>
+    </div>
+    <div class="align-self-end ms-3">
+      <div  *ngIf="path!=undefined" class="mb-2" style="text-align:center">
+        <button class="btn btn-outline-primary btn-sm" (click)="verHistorial(vehicle.idVehiculo)">Ver Historial</button>
+      </div>
+      <div><span class="vehicle-campo">Ultimo Ingreso: </span> <span class="vehicle-text"> lastService</span></div>
+      <div><span class="vehicle-campo">Desde: </span><span class="vehicle-text">created_at</span></div>
     </div>
   </div>
+</div> -->

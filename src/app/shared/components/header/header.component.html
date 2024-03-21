@@ -1,3 +1,4 @@
+
 <div class="container-fluid" >
   <div class="row header  ">
     <div class="col ">
@@ -25,3 +26,9 @@
     </div>
   </div>
 </div>
+
+
+
+<app-navbar-public *ngIf="role==''"></app-navbar-public>
+<app-navbar-front *ngIf="role=='CUSTOMER'"></app-navbar-front>
+<app-navbar-back *ngIf="role=='ADMIN'"></app-navbar-back>

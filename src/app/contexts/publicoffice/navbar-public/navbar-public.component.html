@@ -1,0 +1,37 @@
+
+<nav class="navbar navbar-expand-lg  navbar-dark " style="background-color:  #fd3a3a;" >
+
+  <a class="navbar-brand" routerLink="/productos/en-oferta"></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse navbar-right" id="navbarNavDropdown">
+
+    <ul class="navbar-nav ms-auto">
+
+
+
+
+      <li class="nav-item" >
+        <a class="nav-link active" aria-current="page" [routerLink]="['/']"><i class="bi bi-info-circle"></i> Acerca de Nosotros</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link active" aria-current="page" [routerLink]="['/']"><i class="bi bi-wrench-adjustable"></i> Team</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link active" aria-current="page" [routerLink]="['/']"><i class="bi bi-telephone-forward"></i> Contactanos </a>
+      </li>
+
+
+      <li  class="nav-item  dropdown ms-4 mt-1 mb-1 me-3">
+        <a class="btn btn-outline-light btn-sm"  [routerLink]="['/login']" id="navbarLogin" role="button">
+          Login <i class="bi bi-box-arrow-in-right"></i>
+        </a>
+      </li>
+
+
+    </ul>
+
+  </div>
+</nav>

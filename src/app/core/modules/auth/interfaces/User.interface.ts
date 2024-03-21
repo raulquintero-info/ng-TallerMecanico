@@ -1,12 +1,12 @@
-export interface User {
-  id:       number;
-  username: string;
-  token:    string;
-  rol:      Rol;
-  name:     string;
-}
+import { Authority } from "./authority.interface";
 
-export interface Rol {
-  id:                       number;
-  name:                     string;
+export interface User{
+  password: string;
+  username: string;
+  authorities: Authority[];
+  accountNonExpired: boolean;
+  accountNonLocked: boolean;
+  credentialsNonExpired: boolean;
+  enabled: boolean;
+
 }

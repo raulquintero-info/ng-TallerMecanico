@@ -1,11 +1,9 @@
 
-<div class="box sticky-top">
+<app-header></app-header>
 
-  <app-header></app-header>
-  <app-navfront *ngIf="userData.rol.name!='ADMIN'"></app-navfront>
-  <app-navback *ngIf="userData.rol.name=='ADMIN'"></app-navback>
+<div class="container-fluid ">
+  <router-outlet></router-outlet>
 </div>
+<br><br><br><br>
 
-<router-outlet></router-outlet>
-
-<app-footer *ngIf="userData.rol.name!='ADMIN'"></app-footer>
+<app-footer></app-footer>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -6,13 +6,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './vehicle-card.component.html',
   styleUrls: ['./vehicle-card.component.css']
 })
-export class VehicleCardComponent {
+export class VehicleCardComponent implements OnInit{
 
   @Input() vehicle: any;
   @Input() path:any;
 
   constructor(private route: Router){}
 
+  ngOnInit(){
+    console.log('vehiculo', this.vehicle)
+  }
   verHistorial(id: number){
     this.route.navigate([this.path + `/${id}`])
   }

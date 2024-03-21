@@ -2,20 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VehicleCardComponent } from './vehicle-card/vehicle-card.component';
 import { VehicleServicesComponent } from './vehicle-services/vehicle-services.component';
+import { MVehicleListComponent } from './m-vehicle-list/m-vehicle-list.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
     VehicleCardComponent,
-    VehicleServicesComponent
+    VehicleServicesComponent,
+    MVehicleListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
   exports:[
     VehicleCardComponent,
-    VehicleServicesComponent
+    VehicleServicesComponent,
+    MVehicleListComponent
   ]
 })
 export class VehiclesModule { }
