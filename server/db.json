@@ -10,7 +10,7 @@
     "username": "customer@server",
     "authorities": [
       {
-        "authority": "ADMIN"
+        "authority": "CUSTOMER"
       }
     ],
     "accountNonExpired": true,

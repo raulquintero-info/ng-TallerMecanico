@@ -15,7 +15,7 @@ export class CustomersService {
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
-  getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
+  getById(id: number):Observable<any>{return this.http.get(this.url + "?id=" + id)};
   create(customer: Customer):Observable<any>{return this.http.post(this.url, customer)};
   update(customer: Customer):Observable<any>{return this.http.put(this.url, customer)};
 }
