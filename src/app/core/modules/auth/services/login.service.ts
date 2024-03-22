@@ -37,6 +37,11 @@ export class LoginService {
     let userLogged: User;
 
     currentUser = localStorage.getItem('user')
+    // this.currentUser().subscribe({
+    //   next: (resp: any)=>{
+    //     this.currentUser = resp;
+    //   }
+    // })
 
     if(currentUser){
       userLogged = JSON.parse(currentUser);

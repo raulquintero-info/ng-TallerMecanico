@@ -8,13 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class VehicleCardComponent implements OnInit{
 
-  @Input() vehicle: any;
-  @Input() path:any;
+  @Input() vehicle: any =[];
+  @Input() path:any ="";
+  @Input() pathEdit: String = ""
 
   constructor(private route: Router){}
 
   ngOnInit(){
-    console.log('vehiculo', this.vehicle)
   }
   verHistorial(id: number){
     this.route.navigate([this.path + `/${id}`])

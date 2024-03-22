@@ -9,7 +9,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 })
 export class VehicleServicesComponent implements OnInit {
   @Input() pathVehicle: String ="";
-  @Input() services: any;
+  @Input() services: any = [];
+
   // @Input() platformBrowserDynamic
 
   constructor(private router: Router){}

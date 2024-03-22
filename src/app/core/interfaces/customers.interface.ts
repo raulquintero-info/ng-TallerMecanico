@@ -1,4 +1,5 @@
 import { Usuario } from "./usuario.interface";
+import { Vehiculo } from "./vehiculo.interface";
 
 export interface Customer{
   id?:number,
@@ -9,5 +10,5 @@ export interface Customer{
   domicilio: string,
   telefono: string,
   usuario: Usuario,
-  vehiculos: []
+  vehiculos: Vehiculo[]
   }

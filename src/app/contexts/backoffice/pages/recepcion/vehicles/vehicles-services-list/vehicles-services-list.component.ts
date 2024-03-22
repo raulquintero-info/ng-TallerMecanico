@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { VehiclesService } from 'src/app/core/services/vehicles.service';
 
 @Component({
@@ -8,8 +9,9 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
   styleUrls: ['./vehicles-services-list.component.css']
 })
 export class VehiclesServicesListComponent implements OnInit{
-
-  vehicle: any;
+  ordenesDeServicio: any =[]
+  pathEdit: string = "/admin/recepcion/vehiculos/form";
+  vehicle: Vehiculo = {} as Vehiculo;
   params: any;
   // pathVehicle: string = "/mi-garage/servicio";
   pathVehicle: string = "/admin/recepcion/servicios";
@@ -21,7 +23,8 @@ export class VehiclesServicesListComponent implements OnInit{
     this.vehiclesService.get(this.params.params.id).subscribe({
       next: resp=>{
         console.log('vehiculos',resp)
-        this.vehicle = resp[0];
+        this.vehicle = resp;
+
       }
     })
 

@@ -10,7 +10,7 @@
     "username": "customer@server",
     "authorities": [
       {
-        "authority": "CUSTOMER"
+        "authority": "ADMIN"
       }
     ],
     "accountNonExpired": true,
@@ -202,18 +202,6 @@
           "ordenServicio": []
         }
       ]
-    },
-    {
-      "id": "1d2c",
-      "idCliente": "0"
-    },
-    {
-      "id": "f7bb",
-      "idCliente": "0",
-      "nombre": "sdfdsf",
-      "apellidoPaterno": "sdf",
-      "apellidoMaterno": "sdf",
-      "domicilio": "sdf"
     }
   ],
   "vehiculos": [

@@ -22,6 +22,7 @@ import { normalGuard } from './core/guards/normal.guard';
 import { NotAuthorizedComponent } from './shared/pages/not-authorized/not-authorized.component';
 import { TallerServiciosListComponent } from './contexts/backoffice/pages/taller/services/taller-servicios-list/taller-servicios-list.component';
 import { TallerVehicleListComponent } from './contexts/backoffice/pages/taller/vehicles/taller-vehicle-list/taller-vehicle-list.component';
+import { RecepcionCustomersVehicleComponent } from './contexts/backoffice/pages/recepcion/customers/recepcion-customers-vehicle/recepcion-customers-vehicle.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -42,7 +43,7 @@ const routes: Routes = [
   {path: 'admin/recepcion/clientes-form/:id', component: CustomersFormComponent},
 
   {path: 'admin/recepcion/vehiculos', component: VehiclesListComponent},
-  {path: 'admin/recepcion/vehiculos/por-cliente/:id', component: VehiclesListComponent},
+  {path: 'admin/recepcion/vehiculos/por-cliente/:id', component: RecepcionCustomersVehicleComponent},
   {path: 'admin/recepcion/vehiculos/:id', component: VehiclesServicesListComponent},
   {path: 'admin/recepcion/vehiculos-form/:id', component: VehiclesFormComponent},
 

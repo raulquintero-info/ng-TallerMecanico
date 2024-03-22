@@ -9,6 +9,7 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 })
 export class ServicesViewComponent implements OnInit{
   vehicle: any;
+  servicio: any;
   params: any;
   constructor(private route: ActivatedRoute, private router: Router, private vehiclesService: VehiclesService){}
 

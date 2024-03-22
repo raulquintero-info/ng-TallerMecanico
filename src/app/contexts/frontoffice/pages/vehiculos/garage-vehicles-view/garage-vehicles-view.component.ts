@@ -19,8 +19,8 @@ export class GarageVehiclesViewComponent implements OnInit{
     this.route.paramMap.subscribe(params => this.params = params);
     this.vehiclesService.get(this.params.params.id).subscribe({
       next: resp=>{
-        console.log('vehiculos',resp)
-        this.vehicle = resp[0];
+        console.log('vehiculo',resp)
+        this.vehicle = resp;
       }
     })
 

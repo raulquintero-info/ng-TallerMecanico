@@ -17,6 +17,7 @@ import { CustomersModule } from 'src/app/core/modules/customers/customers.module
 import { TallerServiciosListComponent } from './pages/taller/services/taller-servicios-list/taller-servicios-list.component';
 import { TallerVehicleListComponent } from './pages/taller/vehicles/taller-vehicle-list/taller-vehicle-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecepcionCustomersVehicleComponent } from './pages/recepcion/customers/recepcion-customers-vehicle/recepcion-customers-vehicle.component';
 
 
 
@@ -33,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ServicesViewComponent,
     VehiclesServicesListComponent,
     TallerServiciosListComponent,
-    TallerVehicleListComponent
+    TallerVehicleListComponent,
+    RecepcionCustomersVehicleComponent
   ],
   imports: [
     CommonModule,
