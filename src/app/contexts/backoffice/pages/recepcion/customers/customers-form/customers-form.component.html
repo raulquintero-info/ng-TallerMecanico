@@ -1,71 +1,98 @@
-<div class="page-title ps-3 pt-3">
+<!-- <div class="page-title ps-3 pt-3">
   <h5 *ngIf="!customer.idCliente">Agregar Cliente nuevo</h5>
   <h5 *ngIf="customer.idCliente">Editar Cliente</h5>
-</div>
-<div class="container ps-5 pt-5" >
+</div> -->
 
-<div class="form-floating mb-3">
-      <input type="idCliente" class="form-control" id="idCliente" [disabled]="true" [readOnly]="true" [ngModel]="customer.idCliente" >
-      <label for="floatingInput">Id</label>
-      <!-- <div *ngIf="idCliente.invalid && (idCliente.dirty || idCliente.touched)" class="text-danger ps-2">
-        <div *ngIf="usuario.errors?.['required']">El usuario es obligatorio</div>
-      </div> -->
-    </div>
-  <div >
+<div class="container ps-5 pt-3">
 
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" [readOnly]="customer.idCliente>0" [disabled]="customer.idCliente>0" id="email" [(ngModel)]="user.email">
-      <label for="floatingInput">Email</label>
-      <!-- <div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)" class="text-danger ps-2">
-        <div *ngIf="usuario.errors?.['required']">El usuario es obligatorio</div>
-      </div> -->
+  <div class="row ">
+    <div class="col-md-5 mt-4 bg-primary text-white">
+
+      <img class=" mt-3" src="../../../../../../../assets/images/backgrounds/fondo2.jpg" style="width:100%;" alt="">
+      Lorem ipsum
+      <p class="mt-2 texto-parrafo">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel lacinia sapien, in suscipit ipsum. Nam ut
+        ultrices magna. Integer placerat libero a dolor scelerisque porta. Morbi venenatis, nibh sed cursus ornare,
+        massa augue molestie justo, sed rutrum ex tortor sit amet augue. Sed a tempus libero. Sed at orci a ex fermentum
+        auctor in et nunc. Sed venenatis risus odio, in hendrerit nibh laoreet sit amet. Nullam dapibus nulla in dictum
+        tristique. Morbi at interdum eros. Quisque ultricies et lectus a dapibus. Nullam ac ipsum pulvinar, ultrices
+        sapien vel, tempus ipsum. Donec venenatis, magna vel vehicula ultrices, lectus nibh placerat ante, id ornare
+        libero quam eu erat. Donec facilisis ex et neque consequat.
+      </p>
     </div>
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" [readOnly]="customer.idCliente>0" [disabled]="customer.idCliente>0" id="password" [(ngModel)]="user.password">
-      <label for="floatingInput">Contraseña</label>
-      <!-- <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
-        <div *ngIf="password.errors?.['required']">La contraseña obligatorio</div>
-      </div> -->
-    </div>
-    <div class="form-floating mb-3">
-      <input type="nombre" class="form-control" id="nombre" [(ngModel)]="customer.nombre">
-      <label for="floatingInput">Nombre</label>
-      <div  class="text-danger ps-2">
-        <!-- <div *ngIf="nombre.errors?.['required']">El Nombre es obligatorio</div> -->
+    <div class="col-md-7">
+      <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"></app-page-title>
+      <div class="bg-dark mb-3">&nbsp;</div>
+
+
+
+      <div class=" mb-3">
+        <label for="idCliente" class="form-label">Id</label>
+        <input type="idCliente" class="form-control" id="idCliente" [disabled]="true" [readOnly]="true"
+          [ngModel]="customer.idCliente">
+
       </div>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="apellidoPaterno" class="form-control" id="apellidoPaterno" [(ngModel)]="customer.apellidoPaterno">
-      <label for="floatingInput">Apellido Paterno</label>
-      <!-- <div *ngIf="apellidoPaterno.invalid && (apellidoPaterno.dirty || apellidoPaterno.touched)" class="text-danger ps-2">
-        <div *ngIf="apellidoPaterno.errors?.['required']">El Apellido Paterno es obligatorio</div>
-      </div> -->
-    </div>
-    <div class="form-floating mb-3">
-      <input type="apellidoMaterno" class="form-control" id="apellidoMaterno" [(ngModel)]="customer.apellidoMaterno">
-      <label for="floatingInput">Apellido Materno</label>
-      <!-- <div *ngIf="apellidoMaterno.invalid && (apellidoMaterno.dirty || apellidoMaterno.touched)" class="text-danger ps-2">
-        <div *ngIf="apellidoMaterno.errors?.['required']">El Apellido Materno es obligatorio</div>
-      </div> -->
-    </div>
-    <div class="form-floating mb-3">
-      <input type="domicilio" class="form-control" id="domicilio" [(ngModel)]="customer.domicilio">
-      <label for="floatingInput">Domicilio</label>
-      <!-- <div *ngIf="domicilio.invalid && (domicilio.dirty || domicilio.touched)" class="text-danger ps-2">
-        <div *ngIf="domicilio.errors?.['required']">El Domicilio es obligatorio</div>
-      </div> -->
-    </div>
-    <div class="form-floating mb-3">
-      <input type="telefono" class="form-control" id="telefono" [(ngModel)]="customer.telefono">
-      <label for="floatingInput">Telefono</label>
-      <!-- <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="text-danger ps-2">
-        <div *ngIf="telefono.errors?.['required']">El Telefono es obligatorio</div>
-      </div> -->
-    </div>
+      <div>
 
+        <div class=" mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" [(ngModel)]="customer.usuario.email" [readOnly]="customer.idCliente>0"
+            [disabled]="customer.idCliente>0" id="email">
 
-    <!-- <div class="form-floating mb-3">
-      <input type="password" class="form-control" id="password" formControlName="password"
+        </div>
+        <div class=" mb-3" [hidden]="customer.idCliente>0">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="text" class="form-control" [hidden]="customer.idCliente>0" id="password"
+            [(ngModel)]="customer.usuario.password">
+        </div>
+        <div><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="customer.idCliente<1">Cambiar
+            Contraseña</button></div>
+
+        <div class=" mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="nombre" class="form-control" id="nombre" [(ngModel)]="customer.nombre">
+
+        </div>
+        <div class=" mb-3">
+          <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+          <input type="apellidoPaterno" class="form-control" id="apellidoPaterno"
+            [(ngModel)]="customer.apellidoPaterno">
+
+        </div>
+        <div class=" mb-3">
+          <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+          <input type="apellidoMaterno" class="form-control" id="apellidoMaterno"
+            [(ngModel)]="customer.apellidoMaterno">
+
+        </div>
+        <div class=" mb-3">
+          <label for="domicilio" class="form-label">Domicilio</label>
+          <input type="domicilio" class="form-control" id="domicilio" [(ngModel)]="customer.domicilio">
+
+        </div>
+        <div class=" mb-3">
+          <label for="telefono" class="form-label">Telefono</label>
+          <input type="telefono" class="form-control" id="telefono" [(ngModel)]="customer.telefono">
+
+        </div>
+
+        <div class=" mb-3">
+
+          <label for="rol" class="form-label">Rol</label>
+          <select class="form-select" id="rol" multiple [(ngModel)]="customer.usuario.rol" aria-label="rol"
+            style="height: 120px">
+            <option *ngFor="let b of roles" [ngValue]="b">{{ b.nombre }}</option>
+          </select>
+        </div>
+
+        <ul>
+          <li *ngFor="let item of customer.usuario.rol">
+            <pre>{{item | json}}</pre>
+          </li>
+        </ul>
+
+        <!-- <div class=" mb-3">
+      <input type="password" class="" id="password" formControlName="password"
         placeholder="name@example.com">
       <label for="floatingInput">Contraseña</label>
       <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
@@ -73,9 +100,16 @@
       </div>
     </div> -->
 
-    <button type="submit" class="btn btn-primary" (click)="save()"><span *ngIf="showSpinner"
-        class="spinner-border spinner-border-sm"></span>Grabar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
+            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
+        <!-- {{ respuesta.error.mensaje }} -->
+      </div>
+    </div>
   </div>
 
 
-  </div>
+
+</div>
+
+
+

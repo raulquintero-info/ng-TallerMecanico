@@ -1,18 +1,19 @@
-<div class="container page-title ps-3 pt-3">
+<!-- <div class="container page-title ps-3 pt-3">
   <h5><i class="bi bi-card-checklist"></i> R. Servicios
 
-    <!-- Todos | Reparando | Terminado | Entregado -->
+    Todos | Reparando | Terminado | Entregado
   </h5>
-</div>
+</div> -->
 
-<div class="container pt-3 ">
-  <div class="row pt-3">
+<div class="container mt-3 ">
+  <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"></app-page-title>
+  <div >
     <div class="text-end bg-dark p-1 pe-2">
-      <button class="btn btn-warning ms-2">Nuevos</button>
-      <button class="btn btn-warning ms-2">LLamar</button>
-      <button class="btn btn-warning ms-2">Para Entregar</button>
-      <button class="btn btn-warning ms-2 me-5">Mas de 1 Mes</button>
-      <button class="btn btn-primary" [routerLink]="['/admin/recepcion/servicios-form/0']">+ Agregar</button>
+      <button class="btn btn-warning btn-sm ms-2">Nuevos</button>
+      <button class="btn btn-warning btn-sm ms-2">LLamar</button>
+      <button class="btn btn-warning btn-sm ms-2">Para Entregar</button>
+      <button class="btn btn-warning btn-sm ms-2 me-5">Mas de 1 Mes</button>
+      <button class="btn btn-primary btn-sm " [routerLink]="['/admin/recepcion/servicios-form/0']">+ Agregar</button>
     </div>
     <app-m-services-list [pathService]="pathService"></app-m-services-list>
 

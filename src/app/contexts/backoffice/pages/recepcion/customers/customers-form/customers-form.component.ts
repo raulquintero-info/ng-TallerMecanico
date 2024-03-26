@@ -1,70 +1,111 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit,  inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UnsubscriptionError } from 'rxjs';
 import { Customer } from 'src/app/core/interfaces/customers.interface';
+import { Rol } from 'src/app/core/interfaces/rol.interface';
 import { Usuario } from 'src/app/core/interfaces/usuario.interface';
-import { User } from 'src/app/core/modules/auth/interfaces/user.interface';
 import { CustomersService } from 'src/app/core/services/customers.service';
-import { UserssService } from 'src/app/core/services/users.service';
+import { RolService } from 'src/app/core/services/rol.service';
 
 @Component({
   selector: 'app-customers-form',
   templateUrl: './customers-form.component.html',
   styleUrls: ['./customers-form.component.css']
 })
-export class CustomersFormComponent implements OnInit{
+export class CustomersFormComponent implements OnInit {
   showSpinner: boolean = false;
-  customer: Customer = {} as Customer ;
-  user: Usuario = {} as Usuario
+  respuesta: any;
+  title: string = "Recepcion";
+  subTitle: string = "Cliente Nuevo"
+  buttons = [];
+  customer: Customer = {
+    usuario: {idUsuario: 0, email:'', password: '', rol: []} as Usuario
+  } as Customer;
+  roles: Rol[] = [{ idRol: 0, nombre: "test" }];
+  // user: Usuario = {} as Usuario
   params: any;
 
+  // toastService = inject(ToastService);
+  private route = inject(ActivatedRoute);
+  private router = inject( Router);
+  private customerService = inject(CustomersService);
+  private rolService = inject(RolService);
 
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private userService: UserssService,
-    private customerService: CustomersService
-  ){}
-
-  ngOnInit(){
+  ngOnInit() {
     this.route.paramMap.subscribe(params => this.params = params);
     this.customer.idCliente = this.params.params.id;
-    if(this.customer.idCliente>0){
+    console.log('customer inicio', this.customer);
+    if (this.customer.idCliente > 0) {
       this.customerService.getById(this.customer.idCliente).subscribe({
-        next: resp=>{
-          this.customer = resp[0];
-          this.user = this.customer.usuario;
-         console.log(this.customer)
+        next: resp => {
+          this.customer = resp;
+          this.subTitle = "Editar Cliente"
+          console.log('cliente recibido', this.customer)
 
+        },
+        error: resp => {
+          this.subTitle = 'hubo un problema con la informacion de este registro'
         }
       })
     }
-  }
-
-
-  save(){
-    this.showSpinner =true;
-
-    this.customerService.create(this.customer).subscribe({
-      next: resp=>{
-        this.customer.usuario = resp.usuario;
-        console.log('respUsuario',resp)
-
+    this.rolService.getAll().subscribe({
+      next: resp => {
+        this.roles = resp;
+        console.log('roles', resp);
       }
     })
 
-
-
-
-
-  console.log(this.customer);
-    this.showSpinner =false;
-
   }
 
 
+  save() {
+
+    this.showSpinner = true;
+    if (this.customer.idCliente > 0) {
+      console.log('cliente enviado', this.customer);
+      this.customerService.update(this.customer, 'CLIENTE').subscribe({
+        next: resp => {
+          this.customer.usuario = resp.usuario;
+          console.log('respUsuario', resp)
+          this.showSpinner = false;
+        },
+        error: resp => {
+          console.log('update error:', resp)
+          this.showSpinner = false;
+        }
+      })
+    } else {
+
+      let data = {
+        cliente: this.customer,
+        usuario: this.customer.usuario
+
+      }
+      console.log('cliente enviado', data);
+      this.customerService.create(data, 'ADMIN').subscribe({
+        next: resp => {
+          // this.customer.usuario = resp.usuario;
+          console.log('respUsuario', resp)
+          this.showSpinner = false;
+        },
+        error: resp => {
+          console.log('create error:', resp);
+          this.respuesta = resp;
+          this.showSpinner = false;
+        }
+      })
+    }
+
+
+
+
+
+    console.log(this.customer);
+
   }
+
+}
 
 
 

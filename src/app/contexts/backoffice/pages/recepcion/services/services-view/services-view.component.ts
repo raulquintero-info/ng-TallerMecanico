@@ -7,24 +7,26 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
   templateUrl: './services-view.component.html',
   styleUrls: ['./services-view.component.css']
 })
-export class ServicesViewComponent implements OnInit{
+export class ServicesViewComponent implements OnInit {
+  title: string = 'Taller AutoPro';
+  subTitle: string = 'Orden de Servicio'
   vehicle: any;
   servicio: any;
   params: any;
-  constructor(private route: ActivatedRoute, private router: Router, private vehiclesService: VehiclesService){}
+  constructor(private route: ActivatedRoute, private router: Router, private vehiclesService: VehiclesService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => this.params = params);
     this.vehiclesService.get(this.params.params.id).subscribe({
-      next: resp=>{
-        console.log('vehiculos',resp)
-        this.vehicle = resp[0];
+      next: resp => {
+        console.log('vehiculos', resp)
+        this.vehicle = resp;
       }
     })
   }
 
-  regresar(){
-    this.router.navigate(['/vehiculo/' + this.params.params.id] );
+  regresar() {
+    this.router.navigate(['/vehiculo/' + this.params.params.id]);
   }
 
-  }
+}

@@ -18,6 +18,8 @@ import { TallerServiciosListComponent } from './pages/taller/services/taller-ser
 import { TallerVehicleListComponent } from './pages/taller/vehicles/taller-vehicle-list/taller-vehicle-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecepcionCustomersVehicleComponent } from './pages/recepcion/customers/recepcion-customers-vehicle/recepcion-customers-vehicle.component';
+import { RecepcionVehicleComponent } from './pages/recepcion/vehicles/recepcion-vehicle/recepcion-vehicle.component';
+import { PageTitleComponent } from './page-title/page-title.component';
 
 
 
@@ -35,7 +37,9 @@ import { RecepcionCustomersVehicleComponent } from './pages/recepcion/customers/
     VehiclesServicesListComponent,
     TallerServiciosListComponent,
     TallerVehicleListComponent,
-    RecepcionCustomersVehicleComponent
+    RecepcionCustomersVehicleComponent,
+    RecepcionVehicleComponent,
+    PageTitleComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +49,7 @@ import { RecepcionCustomersVehicleComponent } from './pages/recepcion/customers/
     CustomersModule,
     FormsModule,
     ReactiveFormsModule,
+
   ],
   exports: [
     NavbarBackComponent

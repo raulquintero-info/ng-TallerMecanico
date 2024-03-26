@@ -1,0 +1,69 @@
+
+
+{
+  "usuario": {
+      "email": "clienteRaul@gmail.com",
+      "password": "1234"
+  },
+  "cliente": {
+      "nombre": "Raul",
+      "apellidoPaterno": "Quintero",
+      "apellidoMaterno": "X",
+      "domicilio": "Domicilio conocido # 5",
+      "telefono": 552535365
+  }
+}
+
+
+{
+  "cliente": {
+      "usuario": {
+          "rol": {
+              "idRol": [
+                  "2"
+              ]
+          },
+          "email": "customer@server.com",
+          "password": "1234"
+      },
+      "idCliente": "0",
+      "nombre": "juanito",
+      "apellidoPaterno": "martinez",
+      "apellidoMaterno": "lopez",
+      "domicilio": "av. siempre viva",
+      "telefono": "6865632378"
+  },
+  "usuario": {
+      "rol": {
+          "idRol": [
+              "2"
+          ]
+      },
+      "email": "customer@server.com",
+      "password": "1234"
+  }
+}
+
+
+
+
+{
+  "usuario": {
+      "rol": {
+          "idRol": [
+              "2"
+          ]
+      },
+      "email": "customer@server.com",
+      "password": "1234"
+  },
+  "idCliente": "0",
+  "nombre": "juanito",
+  "apellidoPaterno": "martinez",
+  "apellidoMaterno": "lopez",
+  "domicilio": "av. siempre viva",
+  "telefono": "6865632378"
+}
+
+
+

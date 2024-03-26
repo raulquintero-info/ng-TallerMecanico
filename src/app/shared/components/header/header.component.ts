@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { LoginService } from '../../../core/modules/auth/services/login.service';
 import { User } from 'src/app/core/modules/auth/interfaces/user.interface';
 
@@ -12,17 +12,13 @@ export class HeaderComponent implements OnInit {
   userData: User = {} as User;
   role: string = '';
 
-  constructor(private loginService: LoginService) { }
+  private loginService = inject(LoginService);
 
   ngOnInit() {
 
     this.loginService.checkStatus();
 
-    this.loginService.currentUserLoginOn.subscribe({
-      next: (userLoginOn) => {
-        this.userLoginOn = userLoginOn;
-      }
-    });
+
 
     this.loginService.currentUserData.subscribe({
       next: (userData) => {

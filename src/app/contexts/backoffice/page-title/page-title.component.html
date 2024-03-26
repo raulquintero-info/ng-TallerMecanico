@@ -1,0 +1,21 @@
+<div class="mt-4" style="background-color: #0078d4; width: 100%">
+  <div class="d-flex bd-highlight">
+    <div class="ps-2 pt-2 flex-grow-1 bd-highlight text-light" style="background-color: #16232c;">
+    </div>
+    <div class="p-1 ps-2 bd-highlight text-light bg-dark d-print-none">
+      <button class="btn btn-outline-light btn-sm"
+        *ngIf="printerEnabled"
+        (click)="print()"><i class="bi bi-printer"></i> Imprimir
+      </button>&nbsp;
+      <button *ngFor="let button of buttons" class="btn btn-outline-light btn-sm"
+        [routerLink]="[button.path]">
+        <i class="bi bi-plus-circle"></i> {{button.text}}
+      </button>
+    </div>
+  </div>
+  <div class="ps-2 pt-1 layered-image-blue" style="height:80px;">
+    <h5 class="text-white ps-2">{{ title | titlecase}} </h5>
+    <h3 class="text-white ps-2">{{ subTitle | titlecase}}</h3>
+    <!-- {{title}} -->
+  </div>
+</div>

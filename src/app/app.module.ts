@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 import { AuthModule } from './core/modules/auth/auth.module';
 import { authInterceptorProviders } from './core/guards/auth.interceptor';
 import { NotAuthorizedComponent } from './shared/pages/not-authorized/not-authorized.component';
-
+import { ToasterComponent } from './shared/components/toaster/toaster.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +22,7 @@ import { NotAuthorizedComponent } from './shared/pages/not-authorized/not-author
     HeaderComponent,
     NotFoundComponent,
     NotAuthorizedComponent,
+    ToasterComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,7 @@ import { NotAuthorizedComponent } from './shared/pages/not-authorized/not-author
     FrontofficeModule,
     BackofficeModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [ authInterceptorProviders ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

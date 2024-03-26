@@ -1,13 +1,26 @@
-<div class="container page-title ps-3 pt-3">
-  <h5> <i class="bi bi-people-fill"></i> Clientes</h5>
-</div>
+
 <div class="container pt-3">
 
-  <div class="pt-3">
-    <div class="text-end bg-dark p-1 pe-2">
-      <button class="btn btn-primary" [routerLink]="['/admin/recepcion/clientes-form/0']">+ Agregar</button>
-    </div>
-    <app-m-customers-list [customers]="customers" pathCustomer="/admin/recepcion/clientes"></app-m-customers-list>
+  <!-- <div class="text-end bg-dark p-1 pe-2">
+    <button class="btn btn-primary d-print-none" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;
+    <button class="btn btn-primary d-print-none" [routerLink]="['/admin/recepcion/clientes-form/0']"><i class="bi bi-plus-circle"></i> Agregar</button>
+  </div> -->
+  <div>
+    <app-page-title
+      [title]="title"
+      [subTitle]="subTitle"
+      [printerEnabled]="true"
+      [buttons]="buttons"
+      >
+    </app-page-title>
+
+  </div>
+  <div class="">
+    <app-m-customers-list
+      [customers]="customers"
+      pathCustomer="/admin/recepcion/clientes"
+      >
+    </app-m-customers-list>
   </div>
 
 

@@ -12,7 +12,7 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 export class RecepcionCustomersVehicleComponent implements OnInit {
   customer: Customer = {} as Customer;
   vehicles: any;
-  pathVehicle: string ="/admin/recepcion/vehiculos";
+  pathVehicle: string = "/admin/recepcion/vehiculos";
   params: any;
 
   constructor(
@@ -20,36 +20,52 @@ export class RecepcionCustomersVehicleComponent implements OnInit {
     private router: Router,
     private vehiclesService: VehiclesService,
     private customerService: CustomersService,
-    ){}
+  ) { }
 
 
 
-ngOnInit(){
-  this.route.paramMap.subscribe(params => this.params = params);
-  this.customer.idCliente = (this.params.params.id>0 ?  this.params.params.id : 0);
-  console.log('params',this.params);
-
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => this.params = params);
+    this.customer.idCliente = (this.params.params.id > 0 ? this.params.params.id : 0);
+    console.log('params', this.params);
     this.getCustomer(this.customer.idCliente);
-  console.log('customerId', this.customer);
-}
+    this.getVehicles(this.customer.idCliente);
 
-
-getCustomer(id: number = 0){
-  if(id>0){
-    this.customerService.getVehiclesByCustomerId(id).subscribe({
-      next: resp=>{
-        console.log('vehicles',resp);
-        this.vehicles = resp;
-      }
-    })
+    console.log('customerId', this.customer);
   }
-}
+
+  getCustomer(id:number){
+    if (id > 0) {
+      this.customerService.getById(id).subscribe({
+        next: resp => {
+          console.log('vehicles', resp);
+          this.customer = resp;
+        }
+      })
+    }
+  }
+
+  getVehicles(id: number = 0) {
+    if (id > 0) {
+      this.customerService.getVehiclesByCustomerId(id).subscribe({
+        next: resp => {
+          console.log('vehicles', resp);
+          this.vehicles = resp;
+        }
+      })
+    }
+  }
 
 
 
-ver(id: number){
-  this.router.navigate(['admin/recepcion/vehiculos/' + id]);
-}
+  ver(id: number) {
+    this.router.navigate(['admin/recepcion/vehiculos/' + id]);
+  }
+
+
+  print(){
+    window.print()
+  }
 
 
 }

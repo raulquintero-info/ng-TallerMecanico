@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ServicesListComponent {
   pathService="/admin/recepcion/servicios-view";
+  title: string = 'Recepcion';
+  subTitle: string = 'Listado de Servicios'
+
+
+
 
 }

@@ -10,6 +10,8 @@ import { CustomersService } from '../../../../../../core/services/customers.serv
   styleUrls: ['./vehicles-list.component.css']
 })
 export class VehiclesListComponent implements OnInit {
+  title: string = 'Recepcion';
+  subTitle: string = 'Lista de Vehiculos'
   customer: Customer = {} as Customer;
   vehicles: any;
   pathVehicle: string ="/admin/recepcion/vehiculos";

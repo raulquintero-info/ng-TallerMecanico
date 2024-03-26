@@ -10,6 +10,9 @@ import { CustomersService } from 'src/app/core/services/customers.service';
 export class CustomersListComponent implements OnInit {
   customers: any;
   params: any;
+  title: string = "Recepcion";
+  subTitle: string = "Lista de clientes";
+  buttons = [{text: "Agregar", path: "/admin/recepcion/clientes-form/0"}];
 
   constructor(private route: ActivatedRoute, private router: Router, private customersService: CustomersService){}
 
@@ -29,6 +32,9 @@ getall(){
   })
 }
 
+print(){
+  window.print();
+}
 verVehiculos(){
   this.router.navigate(['/admin/recepcion/vehiculos']);
 }
