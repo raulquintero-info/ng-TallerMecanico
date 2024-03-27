@@ -20,6 +20,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecepcionCustomersVehicleComponent } from './pages/recepcion/customers/recepcion-customers-vehicle/recepcion-customers-vehicle.component';
 import { RecepcionVehicleComponent } from './pages/recepcion/vehicles/recepcion-vehicle/recepcion-vehicle.component';
 import { PageTitleComponent } from './page-title/page-title.component';
+import { MarcasListComponent } from './pages/catalogos/marcas/marcas-list/marcas-list.component';
+import { MarcasFormComponent } from './pages/catalogos/marcas/marcas-form/marcas-form.component';
+import { MarcasModule } from 'src/app/core/modules/marcas/marcas.module';
+import { ModelosListComponent } from './pages/catalogos/modelos/modelos-list/modelos-list.component';
+import { ModelosFormComponent } from './pages/catalogos/modelos/modelos-form/modelos-form.component';
+import { ModelosModule } from 'src/app/core/modules/modelos/modelos.module';
 
 
 
@@ -39,16 +45,22 @@ import { PageTitleComponent } from './page-title/page-title.component';
     TallerVehicleListComponent,
     RecepcionCustomersVehicleComponent,
     RecepcionVehicleComponent,
-    PageTitleComponent
+    PageTitleComponent,
+    MarcasListComponent,
+    MarcasFormComponent,
+    ModelosListComponent,
+    ModelosFormComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     VehiclesModule,
     ServicesModule,
     CustomersModule,
-    FormsModule,
-    ReactiveFormsModule,
+    MarcasModule,
+    ModelosModule,
 
   ],
   exports: [

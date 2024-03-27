@@ -66,7 +66,7 @@ export class CustomersFormComponent implements OnInit {
       console.log('cliente enviado', this.customer);
       this.customerService.update(this.customer, 'CLIENTE').subscribe({
         next: resp => {
-          this.customer.usuario = resp.usuario;
+          // this.customer.usuario = resp.usuario;
           console.log('respUsuario', resp)
           this.showSpinner = false;
         },

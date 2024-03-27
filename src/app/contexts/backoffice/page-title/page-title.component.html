@@ -6,8 +6,8 @@
       <button class="btn btn-outline-light btn-sm"
         *ngIf="printerEnabled"
         (click)="print()"><i class="bi bi-printer"></i> Imprimir
-      </button>&nbsp;
-      <button *ngFor="let button of buttons" class="btn btn-outline-light btn-sm"
+      </button>
+      <button *ngFor="let button of buttons" class="btn btn-outline-light btn-sm ms-1"
         [routerLink]="[button.path]">
         <i class="bi bi-plus-circle"></i> {{button.text}}
       </button>

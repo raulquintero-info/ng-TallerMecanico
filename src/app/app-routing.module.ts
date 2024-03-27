@@ -24,6 +24,9 @@ import { TallerServiciosListComponent } from './contexts/backoffice/pages/taller
 import { TallerVehicleListComponent } from './contexts/backoffice/pages/taller/vehicles/taller-vehicle-list/taller-vehicle-list.component';
 import { RecepcionCustomersVehicleComponent } from './contexts/backoffice/pages/recepcion/customers/recepcion-customers-vehicle/recepcion-customers-vehicle.component';
 import { RecepcionVehicleComponent } from './contexts/backoffice/pages/recepcion/vehicles/recepcion-vehicle/recepcion-vehicle.component';
+import { MarcasListComponent } from './contexts/backoffice/pages/catalogos/marcas/marcas-list/marcas-list.component';
+import { MarcasFormComponent } from './contexts/backoffice/pages/catalogos/marcas/marcas-form/marcas-form.component';
+import { ModelosListComponent } from './contexts/backoffice/pages/catalogos/modelos/modelos-list/modelos-list.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -51,6 +54,11 @@ const routes: Routes = [
 
   {path: 'admin/taller/servicios', component: TallerServiciosListComponent},
   {path: 'admin/taller/vehiculos', component: TallerVehicleListComponent},
+
+  {path: 'admin/catalogos/marcas', component: MarcasListComponent},
+  {path: 'admin/catalogos/marcas-form/:id', component: MarcasFormComponent},
+
+  {path: 'admin/catalogos/modelos', component: ModelosListComponent},
 
   {path: 'not-authorized', component: NotAuthorizedComponent},
   {path: 'logout', component: LogoutComponent},
