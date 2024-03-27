@@ -16,9 +16,9 @@ export class RolesFormComponent implements OnInit {
   params: any;
   rol: Rol = {} as Rol;
   title: string = "Catalogos";
-  subTitle: string = "Agregar Marca";
+  subTitle: string = "Agregar Rol";
   buttons = [
-    { text: "Ver Marcas", path: "/admin/catalogos/marcas" },
+    { text: "Ver Roles", path: "/admin/catalogos/roles" },
   ];
 
   private rolesService = inject(RolService);
@@ -31,7 +31,7 @@ export class RolesFormComponent implements OnInit {
     });
 
     if (this.rol.idRol > 0) {
-      this.subTitle = 'Editar Marca';
+      this.subTitle = 'Editar Rol';
       this.rolesService.getById(this.rol.idRol).subscribe({
         next: resp => {
           this.rol = resp;

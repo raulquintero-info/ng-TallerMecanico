@@ -1,0 +1,27 @@
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-borderless  align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th width="300" class="d-print-none">Opciones</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let tipoMotor of tiposMotores" class="table-striped">
+        <td scope="row">{{tipoMotor.idTipoMotor}}</td>
+        <td>{{tipoMotor.tipoMotor| titlecase}}</td>
+        <!-- <td> {{customer.vehiculos.length? customer.vehiculos.length: 0}}</td> -->
+        <td class="d-print-none">
+          <button class="btn btn-warning btn-sm" [routerLink]="['/admin/catalogos/tipos-motor-form/' + tipoMotor.idTipoMotor]">Editar</button>&nbsp;
+          <button class="btn btn-danger btn-sm" (click)="delete(tipoMotor)">Eliminar</button>&nbsp;
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+  </table>
+</div>
+
+<app-toast [toasts]="messages"></app-toast>

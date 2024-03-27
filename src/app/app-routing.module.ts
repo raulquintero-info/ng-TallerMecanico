@@ -30,6 +30,8 @@ import { ModelosListComponent } from './contexts/backoffice/pages/catalogos/mode
 import { ModelosFormComponent } from './contexts/backoffice/pages/catalogos/modelos/modelos-form/modelos-form.component';
 import { RolesListComponent } from './contexts/backoffice/pages/catalogos/roles/roles-list/roles-list.component';
 import { RolesFormComponent } from './contexts/backoffice/pages/catalogos/roles/roles-form/roles-form.component';
+import { TipoMotorListComponent } from './contexts/backoffice/pages/catalogos/tipo-motor/tipo-motor-list/tipo-motor-list.component';
+import { TipoMotorFormComponent } from './contexts/backoffice/pages/catalogos/tipo-motor/tipo-motor-form/tipo-motor-form.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -66,6 +68,9 @@ const routes: Routes = [
 
   {path: 'admin/catalogos/roles', component: RolesListComponent},
   {path: 'admin/catalogos/roles-form/:id', component: RolesFormComponent},
+
+  {path: 'admin/catalogos/tipos-motor', component: TipoMotorListComponent},
+  {path: 'admin/catalogos/tipos-motor-form/:id', component: TipoMotorFormComponent},
 
   {path: 'not-authorized', component: NotAuthorizedComponent},
   {path: 'logout', component: LogoutComponent},

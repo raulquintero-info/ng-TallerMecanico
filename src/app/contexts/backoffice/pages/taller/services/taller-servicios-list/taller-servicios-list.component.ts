@@ -6,10 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./taller-servicios-list.component.css']
 })
 export class TallerServiciosListComponent {
-  title: string = "Catalogo";
-  subTitle: string = "Marcas";
+  title: string = "Taller";
+  subTitle: string = "Servicios";
   buttons = [
-    {text: "Agregar", path: "/admin/taller/servicios-form/0"},
+    {text: "Agregar", path: "/admin/recepcion/servicios-form/0'"},
+
   ];
   pathService="/admin/recepcion/servicios-view";
 

@@ -10,10 +10,10 @@ import { RolService } from '../../../../../../core/services/rol.service';
 export class RolesListComponent implements OnInit{
   roles: Rol[] = [];
   title: string = "Catalogo";
-  subTitle: string = "Marcas";
+  subTitle: string = "Listado de Roles";
   buttons = [
     // {text: "Ver Modelos", path: "/admin/catalogos/modelos"},
-    {text: "Agregar", path: "/admin/catalogos/marcas-form/0"},
+    {text: "Agregar", path: "/admin/catalogos/roles-form/0"},
   ];
 
   private rolesService =  inject(RolService);

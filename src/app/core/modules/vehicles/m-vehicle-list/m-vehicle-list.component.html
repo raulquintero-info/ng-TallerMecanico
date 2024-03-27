@@ -7,7 +7,7 @@
         <th>vehiculo</th>
         <th>modelo</th>
         <th>matricula</th>
-        <th width="200">Opciones</th>
+        <th class="d-print-none" width="200">Opciones</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -18,7 +18,7 @@
         <td>{{ vehicle.modelo.marca.marca | titlecase}} {{ vehicle.modelo.modelo | titlecase}}</td>
         <td>{{vehicle.anioModelo}}</td>
         <td>{{vehicle.matricula}}</td>
-        <td>
+        <td class="d-print-none">
           <button class="btn btn-success btn-sm"[routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">Ver</button>&nbsp;
           <button class="btn btn-warning btn-sm" >Editar</button>
         </td>

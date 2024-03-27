@@ -1,15 +1,5 @@
 <div class="container ps-3 pt-3">
-  <!-- <h5> <i class="bi bi-car-front-fill"></i> Vehiculos 1<span *ngIf="customer.idCliente"> de {{ customer.nombre }} {{
-      customer.apellidoMaterno }}</span></h5>
-</div>
-<div class="container">
-  <div class="pt-3">
-    <div class="text-end p-1 pe-2" style="background-color: #0078d4;">
-      <button class="btn btn-warning" [routerLink]="[pathVehicle + '-form/0']"><i class="bi bi-plus-circle"></i>
-        Agregar</button>
-    </div>
 
-  </div> -->
   <app-page-title *ngIf="!customer.idCliente" [title]="title" [subTitle]="subTitle" [printerEnabled]="true"></app-page-title>
   <app-page-title *ngIf="customer.idCliente" [title]="'Cliente:'" [subTitle]=" customer.nombre + '' + customer.apellidoPaterno"></app-page-title>
   <div>

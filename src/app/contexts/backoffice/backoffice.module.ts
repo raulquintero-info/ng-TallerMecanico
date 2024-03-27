@@ -30,6 +30,9 @@ import { ToastModule } from 'src/app/core/modules/toast/toast.module';
 import { RolesListComponent } from './pages/catalogos/roles/roles-list/roles-list.component';
 import { RolesFormComponent } from './pages/catalogos/roles/roles-form/roles-form.component';
 import { RolesModule } from 'src/app/core/modules/roles/roles.module';
+import { TipoMotorListComponent } from './pages/catalogos/tipo-motor/tipo-motor-list/tipo-motor-list.component';
+import { TipoMotorFormComponent } from './pages/catalogos/tipo-motor/tipo-motor-form/tipo-motor-form.component';
+import { TiposMotorModule } from 'src/app/core/modules/tipos-motor/tipos-motor.module';
 
 
 
@@ -55,20 +58,23 @@ import { RolesModule } from 'src/app/core/modules/roles/roles.module';
     ModelosListComponent,
     ModelosFormComponent,
     RolesListComponent,
-    RolesFormComponent
+    RolesFormComponent,
+    TipoMotorListComponent,
+    TipoMotorFormComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    ToastModule,
     VehiclesModule,
     ServicesModule,
     CustomersModule,
     MarcasModule,
     ModelosModule,
     RolesModule,
-    ToastModule,
+    TiposMotorModule,
   ],
   exports: [
     NavbarBackComponent

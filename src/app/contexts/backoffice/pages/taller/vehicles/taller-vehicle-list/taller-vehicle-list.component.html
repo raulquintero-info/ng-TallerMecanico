@@ -1,9 +1,9 @@
-<div class="container page-title ps-3 pt-3">
-  <h5> <i class="bi bi-car-front-fill"></i> Vehiculos</h5>
-</div>
-<div class="container">
-  <div class="pt-3">
-    <div class="text-end bg-dark p-1 pe-2">&nbsp
+
+<div class="container ps-3 pt-3">
+
+  <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"></app-page-title>
+  <div class="">
+    <div class="text-end bg-dark p-1 pe-2">
       <!-- <button class="btn btn-primary" [routerLink]="[pathVehicle + '-form/0']">+ Agregar</button> -->
     </div>
   <app-m-vehicle-list [vehicles]="vehicles" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
