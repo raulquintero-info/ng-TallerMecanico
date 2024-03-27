@@ -1,6 +1,21 @@
 <div class="toast-container" style="position: absolute; bottom: 70px; right: 10px;">
   <div *ngFor="let toast of toasts" class="toast fade show" data-bs-animation="true" data-bs-autohide="true" data-bs-delay="5000">
-    <div class="toast-header bg-primary text-light">
+    <div *ngIf="toast.type == undefined " class="toast-header bg-primary text-light ">
+      <strong class="me-auto"><i class="bi-globe"></i> {{toast.title}}</strong>
+      <small>{{toast.timeAgo}}</small>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+    </div>
+    <div *ngIf="toast.type == 'success' " class="toast-header  bg-success text-light">
+      <strong class="me-auto"><i class="bi-globe"></i> {{toast.title}}</strong>
+      <small>{{toast.timeAgo}}</small>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+    </div>
+    <div *ngIf="toast.type == 'warning' " class="toast-header  bg-warning text-light">
+      <strong class="me-auto"><i class="bi-globe"></i> {{toast.title}}</strong>
+      <small>{{toast.timeAgo}}</small>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+    </div>
+    <div *ngIf="toast.type == 'danger' " class="toast-header  bg-danger text-light">
       <strong class="me-auto"><i class="bi-globe"></i> {{toast.title}}</strong>
       <small>{{toast.timeAgo}}</small>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>

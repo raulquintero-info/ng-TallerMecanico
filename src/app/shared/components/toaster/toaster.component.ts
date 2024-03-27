@@ -9,5 +9,6 @@ export class ToasterComponent {
   @Input() title: string ='';
   @Input() timeAgo: string ='';
   @Input() body: string ='';
+  @Input() type: string = 'primary'
 
 }

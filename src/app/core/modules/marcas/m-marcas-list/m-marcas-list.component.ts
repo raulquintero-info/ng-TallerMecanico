@@ -23,11 +23,11 @@ delete(marca: Marca){
   this.marcasService.delete(marca.idMarca).subscribe({
     next: resp=>{
       this.refresh();
-      this.messages.push({title: "Sistema", timeAgo: "", body:"Se Ha eliminado la marca: " + marca.marca})
+      this.messages.push({title: "Sistema", timeAgo: "", body:"Se Ha eliminado la marca: " + marca.marca, type:"success"})
 
     },
     error: resp=>{
-      this.messages.push({title: "Sistema", timeAgo: "", body:"No ha sido posible Borrar el registro, intente mas tarde"})
+      this.messages.push({title: "Sistema", timeAgo: "", body:"No ha sido posible Borrar el registro, intente mas tarde", type: "danger"})
     }
   })
 }

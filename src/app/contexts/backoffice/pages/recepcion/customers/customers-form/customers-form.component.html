@@ -45,8 +45,8 @@
           <input type="text" class="form-control" [hidden]="customer.idCliente>0" id="password"
             [(ngModel)]="customer.usuario.password">
         </div>
-        <div><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="customer.idCliente<1">Cambiar
-            Contraseña</button></div>
+        <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="customer.idCliente<1">Cambiar
+            Contraseña</button></div> -->
 
         <div class=" mb-3">
           <label for="nombre" class="form-label">Nombre</label>
@@ -76,7 +76,7 @@
 
         </div>
 
-        <div class=" mb-3">
+        <div class=" mb-3" style="display:none;">
 
           <label for="rol" class="form-label">Rol</label>
           <select class="form-select" id="rol" multiple [(ngModel)]="customer.usuario.rol" aria-label="rol"
@@ -111,5 +111,5 @@
 
 </div>
 
-
+<app-toast [toasts]="messages"></app-toast>
 

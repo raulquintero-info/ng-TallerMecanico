@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UnsubscriptionError } from 'rxjs';
 import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { Rol } from 'src/app/core/interfaces/rol.interface';
+import { Toast } from 'src/app/core/interfaces/toast.interface';
 import { Usuario } from 'src/app/core/interfaces/usuario.interface';
 import { CustomersService } from 'src/app/core/services/customers.service';
 import { RolService } from 'src/app/core/services/rol.service';
@@ -16,6 +17,7 @@ import { RolService } from 'src/app/core/services/rol.service';
 export class CustomersFormComponent implements OnInit {
   showSpinner: boolean = false;
   respuesta: any;
+  messages: Toast[] = []
   title: string = "Recepcion";
   subTitle: string = "Cliente Nuevo"
   buttons = [];
@@ -66,6 +68,7 @@ export class CustomersFormComponent implements OnInit {
       console.log('cliente enviado', this.customer);
       this.customerService.update(this.customer, 'CLIENTE').subscribe({
         next: resp => {
+          this.messages.push({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type:'success' })
           // this.customer.usuario = resp.usuario;
           console.log('respUsuario', resp)
           this.showSpinner = false;
@@ -85,6 +88,7 @@ export class CustomersFormComponent implements OnInit {
       console.log('cliente enviado', data);
       this.customerService.create(data, 'ADMIN').subscribe({
         next: resp => {
+          this.messages.push({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type:'success' })
           // this.customer.usuario = resp.usuario;
           console.log('respUsuario', resp)
           this.showSpinner = false;

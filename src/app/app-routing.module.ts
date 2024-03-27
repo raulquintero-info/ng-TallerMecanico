@@ -27,6 +27,9 @@ import { RecepcionVehicleComponent } from './contexts/backoffice/pages/recepcion
 import { MarcasListComponent } from './contexts/backoffice/pages/catalogos/marcas/marcas-list/marcas-list.component';
 import { MarcasFormComponent } from './contexts/backoffice/pages/catalogos/marcas/marcas-form/marcas-form.component';
 import { ModelosListComponent } from './contexts/backoffice/pages/catalogos/modelos/modelos-list/modelos-list.component';
+import { ModelosFormComponent } from './contexts/backoffice/pages/catalogos/modelos/modelos-form/modelos-form.component';
+import { RolesListComponent } from './contexts/backoffice/pages/catalogos/roles/roles-list/roles-list.component';
+import { RolesFormComponent } from './contexts/backoffice/pages/catalogos/roles/roles-form/roles-form.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -58,7 +61,11 @@ const routes: Routes = [
   {path: 'admin/catalogos/marcas', component: MarcasListComponent},
   {path: 'admin/catalogos/marcas-form/:id', component: MarcasFormComponent},
 
-  {path: 'admin/catalogos/modelos', component: ModelosListComponent},
+  {path: 'admin/catalogos/modelos/:idMarca', component: ModelosListComponent},
+  {path: 'admin/catalogos/modelos-form/:id', component: ModelosFormComponent},
+
+  {path: 'admin/catalogos/roles', component: RolesListComponent},
+  {path: 'admin/catalogos/roles-form/:id', component: RolesFormComponent},
 
   {path: 'not-authorized', component: NotAuthorizedComponent},
   {path: 'logout', component: LogoutComponent},

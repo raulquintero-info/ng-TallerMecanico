@@ -12,7 +12,7 @@ export class MarcasListComponent implements OnInit{
   title: string = "Catalogo";
   subTitle: string = "Marcas";
   buttons = [
-    {text: "Ver Modelos", path: "/admin/catalogos/modelos"},
+    // {text: "Ver Modelos", path: "/admin/catalogos/modelos"},
     {text: "Agregar", path: "/admin/catalogos/marcas-form/0"},
   ];
 
@@ -22,6 +22,7 @@ export class MarcasListComponent implements OnInit{
   ngOnInit(){
     this.marcasService.getAll().subscribe({
       next: resp=>{
+        console.log('marcas', resp);
         this.marcas = resp;
       }
     })

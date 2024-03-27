@@ -26,6 +26,10 @@ import { MarcasModule } from 'src/app/core/modules/marcas/marcas.module';
 import { ModelosListComponent } from './pages/catalogos/modelos/modelos-list/modelos-list.component';
 import { ModelosFormComponent } from './pages/catalogos/modelos/modelos-form/modelos-form.component';
 import { ModelosModule } from 'src/app/core/modules/modelos/modelos.module';
+import { ToastModule } from 'src/app/core/modules/toast/toast.module';
+import { RolesListComponent } from './pages/catalogos/roles/roles-list/roles-list.component';
+import { RolesFormComponent } from './pages/catalogos/roles/roles-form/roles-form.component';
+import { RolesModule } from 'src/app/core/modules/roles/roles.module';
 
 
 
@@ -49,7 +53,9 @@ import { ModelosModule } from 'src/app/core/modules/modelos/modelos.module';
     MarcasListComponent,
     MarcasFormComponent,
     ModelosListComponent,
-    ModelosFormComponent
+    ModelosFormComponent,
+    RolesListComponent,
+    RolesFormComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +67,8 @@ import { ModelosModule } from 'src/app/core/modules/modelos/modelos.module';
     CustomersModule,
     MarcasModule,
     ModelosModule,
-
+    RolesModule,
+    ToastModule,
   ],
   exports: [
     NavbarBackComponent

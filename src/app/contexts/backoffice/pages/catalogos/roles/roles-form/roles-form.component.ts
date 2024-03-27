@@ -1,40 +1,40 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Marca } from 'src/app/core/interfaces/marca.interface';
+import { Rol } from 'src/app/core/interfaces/rol.interface';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
-import { MarcasService } from 'src/app/core/services/marcas.service';
+import { RolService } from 'src/app/core/services/rol.service';
 
 @Component({
-  selector: 'app-marcas-form',
-  templateUrl: './marcas-form.component.html',
-  styleUrls: ['./marcas-form.component.css']
+  selector: 'app-roles-form',
+  templateUrl: './roles-form.component.html',
+  styleUrls: ['./roles-form.component.css']
 })
-export class MarcasFormComponent implements OnInit {
+export class RolesFormComponent implements OnInit {
   showSpinner: boolean = false;
   respuesta: string = '';
   messages: Toast[] = []
   params: any;
-  marca: Marca = {} as Marca;
+  rol: Rol = {} as Rol;
   title: string = "Catalogos";
   subTitle: string = "Agregar Marca";
   buttons = [
     { text: "Ver Marcas", path: "/admin/catalogos/marcas" },
   ];
 
-  private marcasService = inject(MarcasService);
+  private rolesService = inject(RolService);
   private route = inject(ActivatedRoute);
 
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.marca.idMarca = Number(params.get('id'))
+      this.rol.idRol = Number(params.get('id'))
     });
 
-    if (this.marca.idMarca > 0) {
+    if (this.rol.idRol > 0) {
       this.subTitle = 'Editar Marca';
-      this.marcasService.getById(this.marca.idMarca).subscribe({
+      this.rolesService.getById(this.rol.idRol).subscribe({
         next: resp => {
-          this.marca = resp;
+          this.rol = resp;
         }
       })
     }
@@ -44,13 +44,13 @@ export class MarcasFormComponent implements OnInit {
   save() {
     this.showSpinner = true;
     this.respuesta = '';
-    if (this.marca.idMarca > 0) {
-      console.log('Marca Enviada', this.marca);
-      this.marcasService.createOrUpdate(this.marca).subscribe({
+    if (this.rol.idRol > 0) {
+      console.log('Rol Enviada', this.rol);
+      this.rolesService.createOrUpdate(this.rol).subscribe({
         next: resp => {
           this.messages.push({ title: "Sistema", timeAgo: "", body: "Registro Grabado", type: "success" })
 
-          this.marca = resp.marca;
+          this.rol = resp.rol;
           this.respuesta = resp.mensaje;
           console.log('Marca Recibida', resp)
           this.showSpinner = false;
@@ -63,9 +63,9 @@ export class MarcasFormComponent implements OnInit {
       })
     } else {
 
-      console.log('cliente enviado', this.marca);
+      console.log('rol enviado', this.rol);
 
-      this.marcasService.createOrUpdate(this.marca).subscribe({
+      this.rolesService.createOrUpdate(this.rol).subscribe({
         next: resp => {
           this.messages.push({ title: "Sistema", timeAgo: "", body: "Registro Grabado", type: "success" })
           console.log('respUsuario', resp)

@@ -8,14 +8,13 @@
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let marca of marcas" class="table-striped">
-        <td scope="row">{{marca.idMarca}}</td>
-        <td>{{marca.marca| titlecase}}</td>
+      <tr *ngFor="let rol of roles" class="table-striped">
+        <td scope="row">{{rol.idRol}}</td>
+        <td>{{rol.nombre| titlecase}}</td>
         <!-- <td> {{customer.vehiculos.length? customer.vehiculos.length: 0}}</td> -->
         <td class="d-print-none">
-          <button class="btn btn-success btn-sm" [routerLink]="['/admin/catalogos/modelos/' + marca.idMarca]">Ver</button>&nbsp;
-          <button class="btn btn-warning btn-sm" [routerLink]="['/admin/catalogos/marcas-form/' + marca.idMarca]">Editar</button>&nbsp;
-          <button class="btn btn-danger btn-sm" (click)="delete(marca)">Eliminar</button>&nbsp;
+          <button class="btn btn-warning btn-sm" [routerLink]="['/admin/catalogos/roles-form/' + rol.idRol]">Editar</button>&nbsp;
+          <button class="btn btn-danger btn-sm" (click)="delete(rol)">Eliminar</button>&nbsp;
         </td>
       </tr>
     </tbody>

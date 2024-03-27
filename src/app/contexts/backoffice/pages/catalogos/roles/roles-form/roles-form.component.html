@@ -26,12 +26,12 @@
       <div class=" mb-3">
         <label for="idCliente" class="form-label">Id</label>
         <input type="text" class="form-control" id="idMarca" [disabled]="true" [readOnly]="true"
-          [(ngModel)]="marca.idMarca">
+          [(ngModel)]="rol.idRol">
       </div>
       <div>
         <div class=" mb-3">
-          <label for="marca" class="form-label">Marca</label>
-          <input type="text" class="form-control" id="marca" [(ngModel)]="marca.marca">
+          <label for="marca" class="form-label">Rol</label>
+          <input type="text" class="form-control" id="marca" [(ngModel)]="rol.nombre">
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span

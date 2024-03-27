@@ -13,7 +13,8 @@
     <tbody class="table-group-divider">
       <tr *ngFor="let vehicle of vehicles" class="">
         <td scope="row">{{vehicle.idVehiculo}}</td>
-        <td><img [src]="vehicle.imagen" height="50" style="border-radius: 5px;"></td>
+        <td *ngIf="vehicle.imagen"><img [src]="vehicle.imagen" height="50" style="border-radius: 5px;"></td>
+        <td *ngIf="!vehicle.imagen"><img src="../../../../../assets/images/cars/no_image.jpg" height="50" style="border-radius: 5px;"></td>
         <td>{{ vehicle.modelo.marca.marca | titlecase}} {{ vehicle.modelo.modelo | titlecase}}</td>
         <td>{{vehicle.anioModelo}}</td>
         <td>{{vehicle.matricula}}</td>
