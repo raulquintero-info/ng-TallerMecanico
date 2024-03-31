@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let vehicle of vehicles" class="">
+      <tr *ngFor="let vehicle of vehicles" class=""  [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]" style="cursor: pointer">
         <td scope="row">{{vehicle.idVehiculo}}</td>
         <td *ngIf="vehicle.imagen"><img [src]="vehicle.imagen" height="50" style="border-radius: 5px;"></td>
         <td *ngIf="!vehicle.imagen"><img src="../../../../../assets/images/cars/no_image.jpg" height="50" style="border-radius: 5px;"></td>
@@ -19,8 +19,8 @@
         <td>{{vehicle.anioModelo}}</td>
         <td>{{vehicle.matricula}}</td>
         <td class="d-print-none">
-          <button class="btn btn-success btn-sm"[routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">Ver</button>&nbsp;
-          <button class="btn btn-warning btn-sm" >Editar</button>
+          <!-- <button class="btn btn-success btn-sm" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">Ver</button>&nbsp; -->
+          <button class="btn btn-warning btn-sm" [routerLink]="'/admin'">Editar</button>
         </td>
       </tr>
 

@@ -49,6 +49,7 @@
   background-size: cover;
   background-attachment: scroll;
   background-position: 50% 50%; */
+
   overflow: hidden;
   position: relative;
 }
@@ -79,6 +80,11 @@
   font-size: 30px;
 }
 .card-services{
+  background-image: url('../../../../../assets/images/backgrounds/fondo_top3.png');
+  /* background-position: 100dvh; */
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
   width:325px;
   height: 300px
 }
@@ -89,6 +95,7 @@
 }
 
 .our-services-title{
+
   font-size: 30px;
   font-weight: bold;
   margin-top: -45px;

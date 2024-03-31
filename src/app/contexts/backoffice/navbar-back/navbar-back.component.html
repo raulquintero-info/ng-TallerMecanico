@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark primary"  style="background-color:  #0078d4;" >
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark primary "  style="background-color:  #0078d4;" >
   <div class="container-fluid ms-3">
     <!-- <a class="navbar-brand" href="/dashboard">Dashboard</a> -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +9,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">Recepcion</a>
           <ul class="dropdown-menu">
-            <li><a href="/admin/recepcion/servicios" class="dropdown-item">Servicios <span class="badge bg-warning">to do:</span></a> </li>
+            <li><a href="/admin/recepcion/servicios" class="dropdown-item">Servicios <i class="bi bi-bookmark-fill text-warning"></i> </a> </li>
             <li><a href="/admin/recepcion/clientes" class="dropdown-item">Clientes &raquo;</a></li>
             <li><a href="/admin/recepcion/vehiculos" class="dropdown-item">Vehiculos &raquo;</a></li>
             <!-- <li><a href="/admin/recepcion/" class="dropdown-item">Productos &raquo;</a></li> -->
@@ -22,7 +22,7 @@
             Taller
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/taller/servicios">Servicios</a></li>
+            <li><a class="dropdown-item" href="/admin/taller/servicios">Servicios <span class="badge bg-warning">por hacer:</span></a></li>
             <li><hr class="dropdown-divider"></li>
             <!-- <li><a class="dropdown-item" href="/admin/taller/servicios/1">Nuevas</a></li>
             <li><a class="dropdown-item" href="/admin/taller/servicios/2">En Proceso</a></li>
@@ -59,7 +59,7 @@
             <li><a class="dropdown-item" href="/admin/catalogos/modelos/0">Modelos</a></li>
             <li><a class="dropdown-item" href="/admin/catalogos/roles">Roles</a></li>
             <li><a class="dropdown-item" href="/admin/catalogos/tipos-motor">Tipo Motor</a></li>
-            <li><a class="dropdown-item" href="/admin/catalogos/estatus-orden">Estatus Orden</a></li>
+            <li><a class="dropdown-item" href="/admin/catalogos/estatus-servicio">Estatus Servicio</a></li>
           </ul>
         </li>
 
@@ -86,8 +86,8 @@
           <ul class="dropdown-menu">
 
 
-            <li><a href="/admin/sistema/empleados" class="dropdown-item">Empleados &raquo;</a></li>
-            <li><a href="/admin/sistema/usuarios" class="dropdown-item">Usuarios &raquo;</a></li>
+            <li><a href="/admin/sistema/empleados" class="dropdown-item">Empleados  <span class="badge bg-warning">por hacer:</span>&raquo;</a></li>
+            <li><a href="/admin/sistema/usuarios" class="dropdown-item">Usuarios  <span class="badge bg-warning">por hacer:</span>&raquo;</a></li>
             <!-- <li><a href="/admin/sistema/roles" class="dropdown-item">Roles &raquo;</a>
               <ul class="dropdown-menu submenu submenu-left">
                 <li><a href="/admin/sistema/roles/altas" class="dropdown-item">Altas</a></li>
@@ -116,6 +116,17 @@
     </div>
   </div>
 </nav>
+  <div class="sub-bar">
+    <div class="container p-1">
+
+      <span class="">
+        <i class="bi bi-plus-circle"></i> Servicio
+      </span>
+      | <span class="ms-1">
+        <i class="bi bi-plus-circle"></i> Cliente
+      </span>
+    </div>
+  </div>
 
 
 

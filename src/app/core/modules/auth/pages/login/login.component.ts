@@ -15,6 +15,7 @@ import { LoginResponse } from '../../interfaces/loginResponse.interface';
 export class LoginComponent implements OnInit{
   user: User = {} as User;
   role: string = "";
+  message: string ='';
 
   showSpinner: boolean =false;
   loginForm = this.formBuilder.group({
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit{
 
   login(){
     this.showSpinner =true;
+    this.message = '';
     if (this.loginForm.valid){
 
       this.loginService.login(this.loginForm.value as Credentials).subscribe({
@@ -70,48 +72,18 @@ export class LoginComponent implements OnInit{
           console.log(error);
           this.showSpinner = false;
           if (error.status == 401) alert('Credenciales invalidas')
-          else alert('ha habido un error en el servidor, intente mas tarde');
+          else this.message = 'Ha habido un error en el servidor, intente mas tarde';
 
         }
       });
 
 
 
-
-
-
-      // this.loginService.login(this.loginForm.value as Credentials).subscribe({
-      //   next: resp=>{
-      //     console.log(resp);
-      //     // this.loginService.setToken( resp.tokenType + ' ' + resp.accessToken)
-      //     this.loginService.getCurrentUser().subscribe({
-      //       next: resp=>{
-      //         console.log(resp);
-      //         this.loginService.setUser(JSON.stringify(resp));
-      //         let path='';
-      //         switch(this.loginService.getRole()){
-      //           case 'ADMIN': path = '/admin/dashboard'; break;
-      //           case 'CUSTOMER': path = '/dashboard'; break;
-      //         }
-      //         this.showSpinner =false;
-
-      //         console.log('role', this.loginService.getRole())
-      //         console.log('path', path)
-      //         this.loginForm.reset();
-      //         this.router.navigateByUrl(path);
-      //       }
-      //     })
-      //   },
-      //   error: resp=>{
-      //   this.showSpinner = false;
-
-      //     console.log(resp);
-      //   }
-      // });
-
     } else{
       this.loginForm.markAllAsTouched();
-      alert("error")
+      this.showSpinner = false;
+
+      // alert("error")
     }
   }
 

@@ -17,6 +17,7 @@ import { ToastModule } from '../toast/toast.module';
   ],
   exports:[
     MMarcasListComponent
+
   ]
 })
 export class MarcasModule { }

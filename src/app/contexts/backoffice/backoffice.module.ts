@@ -33,6 +33,10 @@ import { RolesModule } from 'src/app/core/modules/roles/roles.module';
 import { TipoMotorListComponent } from './pages/catalogos/tipo-motor/tipo-motor-list/tipo-motor-list.component';
 import { TipoMotorFormComponent } from './pages/catalogos/tipo-motor/tipo-motor-form/tipo-motor-form.component';
 import { TiposMotorModule } from 'src/app/core/modules/tipos-motor/tipos-motor.module';
+import { CustomersViewComponent } from './pages/recepcion/customers/customers-view/customers-view.component';
+import { EstatusServicioListComponent } from './pages/catalogos/estatus-servicio/estatus-servicio-list/estatus-servicio-list.component';
+import { EstatusServicioFormComponent } from './pages/catalogos/estatus-servicio/estatus-servicio-form/estatus-servicio-form.component';
+import { EstatusServicioModule } from 'src/app/core/modules/estatus-servicio/estatus-servicio.module';
 
 
 
@@ -60,7 +64,10 @@ import { TiposMotorModule } from 'src/app/core/modules/tipos-motor/tipos-motor.m
     RolesListComponent,
     RolesFormComponent,
     TipoMotorListComponent,
-    TipoMotorFormComponent
+    TipoMotorFormComponent,
+    CustomersViewComponent,
+    EstatusServicioListComponent,
+    EstatusServicioFormComponent
   ],
   imports: [
     CommonModule,
@@ -75,6 +82,7 @@ import { TiposMotorModule } from 'src/app/core/modules/tipos-motor/tipos-motor.m
     ModelosModule,
     RolesModule,
     TiposMotorModule,
+    EstatusServicioModule
   ],
   exports: [
     NavbarBackComponent

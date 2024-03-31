@@ -7,7 +7,7 @@
   "currentuser": {
     "id": 1,
     "password": "$2a$10$a.K/UL.muiwmC64TdIrT/eX7CBX1kB.S6ru8Ab413jBdqGh32GXLu",
-    "username": "customer@server",
+    "username": "admin@server.com",
     "authorities": [
       {
         "authority": "ADMIN"

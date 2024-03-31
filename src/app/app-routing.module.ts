@@ -32,6 +32,9 @@ import { RolesListComponent } from './contexts/backoffice/pages/catalogos/roles/
 import { RolesFormComponent } from './contexts/backoffice/pages/catalogos/roles/roles-form/roles-form.component';
 import { TipoMotorListComponent } from './contexts/backoffice/pages/catalogos/tipo-motor/tipo-motor-list/tipo-motor-list.component';
 import { TipoMotorFormComponent } from './contexts/backoffice/pages/catalogos/tipo-motor/tipo-motor-form/tipo-motor-form.component';
+import { CustomersViewComponent } from './contexts/backoffice/pages/recepcion/customers/customers-view/customers-view.component';
+import { EstatusServicioListComponent } from './contexts/backoffice/pages/catalogos/estatus-servicio/estatus-servicio-list/estatus-servicio-list.component';
+import { EstatusServicioFormComponent } from './contexts/backoffice/pages/catalogos/estatus-servicio/estatus-servicio-form/estatus-servicio-form.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -50,9 +53,11 @@ const routes: Routes = [
 
   {path: 'admin/recepcion/clientes', component: CustomersListComponent},
   {path: 'admin/recepcion/clientes-form/:id', component: CustomersFormComponent},
+  {path: 'admin/recepcion/clientes-view/:id', component: CustomersViewComponent},
 
   {path: 'admin/recepcion/vehiculos', component: VehiclesListComponent},
   {path: 'admin/recepcion/vehiculos/por-cliente/:id', component: RecepcionCustomersVehicleComponent},
+  {path: 'admin/recepcion/vehiculos/por-cliente-sel/:id', component: RecepcionCustomersVehicleComponent},
   {path: 'admin/recepcion/vehiculos/:id', component: RecepcionVehicleComponent},
   {path: 'admin/recepcion/vehiculos-form/:id', component: VehiclesFormComponent},
 
@@ -71,6 +76,9 @@ const routes: Routes = [
 
   {path: 'admin/catalogos/tipos-motor', component: TipoMotorListComponent},
   {path: 'admin/catalogos/tipos-motor-form/:id', component: TipoMotorFormComponent},
+
+  {path: 'admin/catalogos/estatus-servicio', component: EstatusServicioListComponent},
+  {path: 'admin/catalogos/estatus-servicio-form/:id', component: EstatusServicioFormComponent},
 
   {path: 'not-authorized', component: NotAuthorizedComponent},
   {path: 'logout', component: LogoutComponent},

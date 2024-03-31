@@ -5,15 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class VehiclesService {
+export class ServicesService {
 
-  url: string = 'http://localhost:8080/api/vehiculos'
+  url: string = 'http://localhost:8080/api/ordenesServicio'
 
   constructor(private http: HttpClient) { }
 
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
-  get(id: number):Observable<any>{return this.http.get(this.url + "/api?id=" + id)};
+  get(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
 
 }

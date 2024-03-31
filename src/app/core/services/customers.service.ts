@@ -1,20 +1,41 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from '../interfaces/customers.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomersService {
+  urlTemp: string = 'http://localhost:3000';
+  url: string = 'http://localhost:8080/api/clientes';
+  // url_create: string = "http://localhost:8080/api/registroUsuarioCliente";
 
-  urlTemp: string = 'http://localhost:3000'
-  url: string = 'http://localhost:8080/api/clientes'
-  // url_create: string = "http://localhost:8080/api/registroUsuarioCliente"
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  currentCustomerData: BehaviorSubject<Customer> = new BehaviorSubject<Customer>({} as Customer)
 
+  get currentCustomer(): Observable<Customer>{
+    return this.currentCustomerData.asObservable();
+  }
 
+  getCurrentCustomer(){
+    let currentCustomerData: any;
+
+    currentCustomerData = localStorage.getItem('customer');
+    currentCustomerData = JSON.parse(currentCustomerData);
+    console.log('check if', currentCustomerData)
+    if (currentCustomerData){
+      this.currentCustomerData.next(currentCustomerData);
+    } else{
+      this.currentCustomerData.next({} as Customer);
+    }
+
+  }
+  setCurrentCustomer(customer: Customer) {
+    this.currentCustomerData.next(customer);
+    localStorage.setItem('customer', customer ? JSON.stringify(customer) : '');
+  }
 
   getAll():Observable<any>{return this.http.get(this.url)};
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};

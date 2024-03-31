@@ -1,0 +1,83 @@
+
+<!-- anonimo -->
+<div *ngIf="role==''" class="main-front mb-3" style="background-color: black; color:white;width: 100%;height: 200px">
+  <div class="input-group mb-3" style="max-width: 700px;">
+    <input type="text" class="form-control" placeholder="E-mail" aria-label="Recipient's username"
+      aria-describedby="button-addon2">
+    <button class="btn btn-primary" type="button" id="button-addon2">Suscribirse al Boletin de notificaciones</button>
+  </div>
+</div>
+
+<!-- anonimo y cliente -->
+<div *ngIf="role!='ADMIN'" class=" text-center mt-5 pt-2 d-print-none"
+  style="border-top: 1px solid #d3d3d3; width: 100%;height: 28px;color: #8f8f8f;  margin-bottom:10px">
+  <span style="font-size:14px;">Autopro. Taller mecanico</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style="font-size:16px;"><i class="bi bi-instagram"></i> &nbsp;<i class="bi bi-facebook"></i>&nbsp; <i
+      class="bi bi-whatsapp"></i></span>
+</div>
+
+
+
+<!-- aministrador -->
+
+<div *ngIf="role=='ADMIN'" class=" fixed-bottom ps-3 text-left d-print-none"
+  style="background-color: #0078d4; color:white;width: 100%;height: 28px; padding-top: 3px; ">
+  <div *ngIf="this.currentCustomer.idCliente">
+
+    <span class="menu-btn" [routerLink]="'/admin/recepcion/clientes'">
+      Cliente: <span >{{currentCustomer.nombre + ' ' + currentCustomer.apellidoPaterno }} </span>
+      <i class="bi bi-chevron-right"></i></span>
+      <span class="menu-btn" [routerLink]="'/admin/recepcion/vehiculos/por-cliente-sel/' + currentCustomer.idCliente">
+        Vehiculos ({{currentCustomer.vehiculos.length}})
+      </span>
+      <!-- Button trigger modal -->
+      | <span class="menu-btn ms-1" data-bs-toggle="modal" data-bs-target="#servicesModal">
+        <i class="bi bi-plus-circle"></i> Vehiculo
+      </span>
+      | <span class="menu-btn ms-1" data-bs-toggle="modal" data-bs-target="#servicesModal">
+        <i class="bi bi-plus-circle"></i> Servicio
+      </span>
+      | <i class="bi bi-x-square ms-1" (click)="clearCustomer()" style="cursor: pointer"></i>
+    </div>
+
+</div>
+
+
+
+<!-- Modal Vehiculos -->
+<div class="modal fade" id="vehiclesModal" tabindex="-1" aria-labelledby="vehiclesModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Vehiculos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="servicesModal" tabindex="-1" aria-labelledby="servicesModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Servicios Abiertos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

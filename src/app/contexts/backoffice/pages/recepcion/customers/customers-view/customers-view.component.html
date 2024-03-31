@@ -1,0 +1,45 @@
+<div class="container pt-3">
+
+  <!-- <div class="text-end bg-dark p-1 pe-2">
+    <button class="btn btn-primary d-print-none" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;
+    <button class="btn btn-primary d-print-none" [routerLink]="['/admin/recepcion/clientes-form/0']"><i class="bi bi-plus-circle"></i> Agregar</button>
+  </div> -->
+  <div>
+    <app-page-title [title]="title" [subTitle]="customer.nombre + ' ' + customer.apellidoPaterno"
+      [printerEnabled]="true">
+    </app-page-title>
+
+  </div>
+  <div>
+
+    <div class="bg-dark text-white fw-bold p-2">
+      <div class="d-flex bd-highlight">
+        <div class="flex-fill p-2 bd-highlight">
+          Informacion Personal
+          <!-- <i class="bi bi-pencil-square text-warning d-print-none" style="cursor: pointer" [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente"></i> -->
+        </div>
+        <div class="p-2 bd-highlight ">
+          <button class="badge bg-warning text-dark" [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente">Editar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row mt-3 mb-3">
+        <div class="col-4"><span class="title-field">Nombre:</span> {{ customer.nombre | titlecase}}</div>
+        <div class="col-4"><span class="title-field">Apellido P:</span> {{ customer.apellidoPaterno | titlecase}}</div>
+        <div class="col-4"><span class="title-field">Apellido M:</span> {{ customer.apellidoMaterno |titlecase }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"><span class="title-field">Tel:</span> {{ customer.telefono }}</div>
+        <div class="col-6"><span class="title-field">Direccion:</span> {{ customer.domicilio }}</div>
+      </div>
+    </div>
+
+    <div class="bg-dark text-white fw-bold p-2 mt-5">Vehiculos</div>
+    <div>
+      <app-m-vehicle-list [vehicles]="customer.vehiculos" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
+    </div>
+
+  </div>

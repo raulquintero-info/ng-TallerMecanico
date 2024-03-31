@@ -1,0 +1,23 @@
+.main-front{
+  display:grid;
+  place-items: center;
+  width: 100%;
+  height: 450px;
+  /* text-align: center; */
+  color: white;
+  background-image: url('../../../../assets/images/backgrounds/fondo3.jpg');
+  /* background-position: 100dvh; */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.menu-btn{
+  padding:5px;
+  margin:2px;
+  font-size: small;
+}
+.menu-btn:hover{
+  background-color: #0d3e86;
+  cursor: pointer;
+}

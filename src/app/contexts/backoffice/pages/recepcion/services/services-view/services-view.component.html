@@ -1,28 +1,37 @@
-<!-- <div class="container page-title ps-3 pt-3">
-  <h5>Servicio</h5>
-</div> -->
-<div class="container mt-3">
 
-  <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"></app-page-title>
-  <br>
+<div class="container pt-3">
 
-  <div class="service-title mb-3">Cambio de Aceite</div>
+  <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
+
+  <div class="service-title mb-3">
+    <div class="row">
+      <div class="col-md-6 ps-4">
+        </div>
+      <div class="col-md-6 pe-4" style="text-align: right;">
+        Orden de Servicio No: {{'000000'}}
+      </div>
+    </div>
+  </div>
+
   <hr>
   <div class="row">
     <div class="col-md-8 ">
       <div class="container">
         <div class="row">
           <div class="col-md-6 ">
-            <div class="service-subtitle">Servicio por:</div>
-            <div>Cambio de aceite<!-- {{vehicle.ordenServicio.title}} --></div>
+            <div class="service-title">{{service.falla | titlecase}}</div>
+            <div class="service-subtitle mt-3">Observaciones:</div>
+            <div>{{service.observaciones |titlecase}}</div>
 
-            <div class="service-subtitle mt-3">Atendio</div>
-            <div>Nombre del Empleado</div>
-            <div class="service-subtitle">Fecha y Hora</div>
-            <div>10-02-2024</div>
+             <!-- To do: asociar con empleado  -->
+
+            <!-- <div class="service-subtitle mt-3">Atendio</div>
+            <div>Nombre del Empleado</div> -->
+            <div class="service-subtitle mt-2">Fecha y Hora</div>
+            <div> {{ service.fechaOrden}}</div>
           </div>
           <div class="col-md-6 ">
-            <div class="service-title">{{vehicle.modelo.marca.marca}} {{vehicle.modelo.modelo}}</div>
+            <!-- <div class="service-title">{{service.falla | titlecase}}</div> -->
             <!-- <app-vehicle-card [vehicle]="vehicle"></app-vehicle-card> -->
 
 
@@ -31,11 +40,11 @@
         </div>
 
         <hr>
-        <div>Datos del Vehiculos</div>
-        <div>Marca: </div>
-        <div>Modelo: </div>
-        <div>Año: </div>
-        <div>VIN: </div>
+        <div class="service-subtitle">Datos del Vehiculos</div>
+        <div>Marca: {{ vehicle.modelo.marca.marca | titlecase}}</div>
+        <div>Modelo: {{ vehicle.modelo.modelo }}</div>
+        <div>Año: {{ vehicle.anioModelo }}</div>
+        <div>VIN: {{ vehicle.vin | uppercase }}</div>
         <hr>
         <div class="service-subtitle mt-5">Comentarios</div>
         <div class="comentarios mt-3 p-3">No se han agregado comentarios</div>
@@ -57,16 +66,17 @@
       <div>
         <table style="width:100%">
           <tr>
-            <td>aceite</td>
-            <td class="t-right">800.00</td>
+            <td colspan="2">Aceite</td>
+            <td class="text-right"style="width:80px">800.00</td>
           </tr>
           <tr>
-            <td class="last-line">mano de obra</td>
-            <td class="last-line t-right">300.00</td>
+            <td colspan="2" class="last-line">Mano de obra</td>
+            <td class="last-line text-right">300.00</td>
           </tr>
           <tr>
-            <td>total</td>
-            <td class=t-right>1100.00</td>
+            <td></td>
+            <td class="text-right" style="font-weight: bold;">Total $</td>
+            <td class=text-right>1100.00</td>
           </tr>
 
 
