@@ -22,7 +22,7 @@
             Taller
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/taller/servicios">Servicios <span class="badge bg-warning">por hacer:</span></a></li>
+            <li><a class="dropdown-item" href="/admin/taller/servicios">Servicios  <i class="bi bi-bookmark-fill text-warning"></i></a></li>
             <li><hr class="dropdown-divider"></li>
             <!-- <li><a class="dropdown-item" href="/admin/taller/servicios/1">Nuevas</a></li>
             <li><a class="dropdown-item" href="/admin/taller/servicios/2">En Proceso</a></li>
@@ -86,8 +86,8 @@
           <ul class="dropdown-menu">
 
 
-            <li><a href="/admin/sistema/empleados" class="dropdown-item">Empleados  <span class="badge bg-warning">por hacer:</span>&raquo;</a></li>
-            <li><a href="/admin/sistema/usuarios" class="dropdown-item">Usuarios  <span class="badge bg-warning">por hacer:</span>&raquo;</a></li>
+            <li><a href="/admin/sistema/empleados" class="dropdown-item">Empleados   <i class="bi bi-bookmark-fill text-warning"></i></a></li>
+            <li><a href="/admin/sistema/usuarios" class="dropdown-item">Usuarios   <i class="bi bi-bookmark-fill text-warning"></i></a></li>
             <!-- <li><a href="/admin/sistema/roles" class="dropdown-item">Roles &raquo;</a>
               <ul class="dropdown-menu submenu submenu-left">
                 <li><a href="/admin/sistema/roles/altas" class="dropdown-item">Altas</a></li>
@@ -117,13 +117,16 @@
   </div>
 </nav>
   <div class="sub-bar">
-    <div class="container p-1">
+    <div class="container p-1" style="border-right: 1px solid #00000029">
 
-      <span class="">
+      <span class="sub-menu" [routerLink]="'/admin/recepcion/servicios-form/0'">
         <i class="bi bi-plus-circle"></i> Servicio
       </span>
-      | <span class="ms-1">
+      <span class="sub-menu ms-1"  [routerLink]="'/admin/recepcion/clientes-form/0'">
         <i class="bi bi-plus-circle"></i> Cliente
+      </span>
+      <span class="sub-menu ms-1"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="bi bi-search"></i> Buscar Cliente
       </span>
     </div>
   </div>
@@ -131,6 +134,41 @@
 
 
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Buscar Cliente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control form-control-lg" type="text" (keyup)="searchCustomer()" [(ngModel)]="word"
+          placeholder="Nombre del cliente" aria-label=".form-control-lg example">
+        <div >
+          <br>Resultados:
+          <table class="table table-striped  table-borderless">
+            <thead>
+            <tr>
+              <th>Nombre</th><th>Telefono</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr *ngFor="let customer of customers" (click)="selCustomer(customer)" data-bs-dismiss="modal">
+              <td>{{customer.nombre}} {{customer.apellidoPaterno}}</td><td>{{ customer.telefono }} </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

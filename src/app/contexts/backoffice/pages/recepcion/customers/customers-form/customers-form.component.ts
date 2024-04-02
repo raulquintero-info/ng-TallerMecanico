@@ -86,7 +86,7 @@ export class CustomersFormComponent implements OnInit {
 
       }
       console.log('cliente enviado', data);
-      this.customerService.create(data, 'ADMIN').subscribe({
+      this.customerService.create(data, 'CLIENTE').subscribe({
         next: resp => {
           this.messages.push({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type:'success' })
           // this.customer.usuario = resp.usuario;

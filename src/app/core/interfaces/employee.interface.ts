@@ -1,6 +1,6 @@
 import { Usuario } from "./usuario.interface";
 
-export interface empleado{
+export interface Employee{
   idEmpleado: number;
   nombre: string;
   rfc: string;

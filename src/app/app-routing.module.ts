@@ -35,6 +35,8 @@ import { TipoMotorFormComponent } from './contexts/backoffice/pages/catalogos/ti
 import { CustomersViewComponent } from './contexts/backoffice/pages/recepcion/customers/customers-view/customers-view.component';
 import { EstatusServicioListComponent } from './contexts/backoffice/pages/catalogos/estatus-servicio/estatus-servicio-list/estatus-servicio-list.component';
 import { EstatusServicioFormComponent } from './contexts/backoffice/pages/catalogos/estatus-servicio/estatus-servicio-form/estatus-servicio-form.component';
+import { EmployeesListComponent } from './contexts/backoffice/pages/sistema/employees/employees-list/employees-list.component';
+import { EmployeesFormComponent } from './contexts/backoffice/pages/sistema/employees/employees-form/employees-form.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -79,6 +81,9 @@ const routes: Routes = [
 
   {path: 'admin/catalogos/estatus-servicio', component: EstatusServicioListComponent},
   {path: 'admin/catalogos/estatus-servicio-form/:id', component: EstatusServicioFormComponent},
+
+  {path: 'admin/sistema/empleados', component: EmployeesListComponent},
+  {path: 'admin/sistema/empleados-form/:id', component: EmployeesFormComponent},
 
   {path: 'not-authorized', component: NotAuthorizedComponent},
   {path: 'logout', component: LogoutComponent},

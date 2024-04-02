@@ -5,25 +5,25 @@
         <th>id</th>
         <th>Nombre</th>
         <th>Apellido</th>
-        <th>Telefono</th>
+        <th>Puesto</th>
+        <th>NSS</th>
         <th width="300" class="d-print-none">Opciones</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let customer of customers" class="table-striped" (click)="setCurrentCustomer(customer)" style="cursor: pointer;">
-        <td scope="row">{{customer.idCliente}}</td>
-        <td>{{customer.nombre | titlecase}}</td>
-        <td>{{customer.apellidoPaterno | titlecase}}</td>
+      <tr *ngFor="let employee of employees" class="table-striped" (click)="employeeView(employee.idEmpleado)" style="cursor: pointer;">
+        <td scope="row">{{employee.idEmpleado}}</td>
+        <td>{{employee.nombre | titlecase}}</td>
+        <td>{{employee.apellidoPaterno | titlecase}}</td>
         <!-- <td> {{customer.vehiculos.length? customer.vehiculos.length: 0}}</td> -->
-        <td>{{customer.telefono | phone}}</td>
+        <td>{{employee.puesto}}</td>
+        <td>{{ employee.nss }} </td>
         <td class="d-print-none">
           <!-- <button class="btn btn-success" [routerLink]="['/admin/recepcion/vehiculos-form'+'/' + customer.idCliente]">Ver</button>&nbsp; -->
           <!-- <button class="btn btn-warning btn-sm" [routerLink]="['/admin/recepcion/clientes-view/' + customer.idCliente]">Editar</button>&nbsp; -->
-          <button class="btn btn-secondary btn-sm"
-            [routerLink]="['/admin/recepcion/vehiculos/por-cliente/'+customer.idCliente]">Vehiculos ({{customer.vehiculos.length}})
+          <button class="btn btn-warning btn-sm"
+            [routerLink]="['/admin/sistema/empleados-form/'+ employee.idEmpleado]">Editar
           </button>
-          <button class="btn btn-danger btn-sm ms-2" (click)="delete(customer.idCliente)">Eliminar</button>&nbsp;
-
         </td>
       </tr>
     </tbody>
@@ -32,4 +32,3 @@
     </tfoot>
   </table>
 </div>
-<app-toast [toasts]="messages" class="position-realtive"></app-toast>

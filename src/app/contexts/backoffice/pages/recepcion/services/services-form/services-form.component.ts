@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./services-form.component.css']
 })
 export class ServicesFormComponent {
-
+  title: string = 'Recepcion';
+  subTitle: string = 'Crear Servicio'
+  buttons =[{text: 'Servicios', path: "/admin/recepcion/servicios-form/0"}];
 }

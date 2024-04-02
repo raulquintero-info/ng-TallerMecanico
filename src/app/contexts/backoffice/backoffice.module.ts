@@ -37,6 +37,9 @@ import { CustomersViewComponent } from './pages/recepcion/customers/customers-vi
 import { EstatusServicioListComponent } from './pages/catalogos/estatus-servicio/estatus-servicio-list/estatus-servicio-list.component';
 import { EstatusServicioFormComponent } from './pages/catalogos/estatus-servicio/estatus-servicio-form/estatus-servicio-form.component';
 import { EstatusServicioModule } from 'src/app/core/modules/estatus-servicio/estatus-servicio.module';
+import { EmployeesListComponent } from './pages/sistema/employees/employees-list/employees-list.component';
+import { EmployeesFormComponent } from './pages/sistema/employees/employees-form/employees-form.component';
+import { EmployeesModule } from 'src/app/core/modules/employees/employees.module';
 
 
 
@@ -67,7 +70,9 @@ import { EstatusServicioModule } from 'src/app/core/modules/estatus-servicio/est
     TipoMotorFormComponent,
     CustomersViewComponent,
     EstatusServicioListComponent,
-    EstatusServicioFormComponent
+    EstatusServicioFormComponent,
+    EmployeesListComponent,
+    EmployeesFormComponent
   ],
   imports: [
     CommonModule,
@@ -82,7 +87,8 @@ import { EstatusServicioModule } from 'src/app/core/modules/estatus-servicio/est
     ModelosModule,
     RolesModule,
     TiposMotorModule,
-    EstatusServicioModule
+    EstatusServicioModule,
+    EmployeesModule
   ],
   exports: [
     NavbarBackComponent

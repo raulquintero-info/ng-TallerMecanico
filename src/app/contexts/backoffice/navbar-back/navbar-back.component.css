@@ -4,3 +4,12 @@
   font-size:small;
   text-align: right;
 }
+.sub-menu{
+  cursor: pointer;
+  padding:7px;
+  border-left: 1px solid #00000029;
+  color:#777777
+}
+.sub-menu:hover{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

@@ -12,14 +12,17 @@
   </div>
   <div>
 
-    <div class="bg-dark text-white fw-bold p-2">
+    <div class="bg-dark text-white fw-bold p-2" style="background-color: #16232c;">
       <div class="d-flex bd-highlight">
         <div class="flex-fill p-2 bd-highlight">
           Informacion Personal
           <!-- <i class="bi bi-pencil-square text-warning d-print-none" style="cursor: pointer" [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente"></i> -->
         </div>
         <div class="p-2 bd-highlight ">
-          <button class="badge bg-warning text-dark" [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente">Editar</button>
+          <button *ngIf="customer.vehiculos.length<1" class="badge bg-danger text-dark text-white"
+            (click)="delete(customer.idCliente)">Eliminar</button>
+          <button class="badge bg-warning text-dark"
+            [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente">Editar</button>
         </div>
       </div>
     </div>
@@ -37,9 +40,48 @@
       </div>
     </div>
 
-    <div class="bg-dark text-white fw-bold p-2 mt-5">Vehiculos</div>
-    <div>
-      <app-m-vehicle-list [vehicles]="customer.vehiculos" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
+    <div class="container mt-5">
+      <div class="row">
+
+        <div class="col-md-7">
+
+          <div class="bg-dark text-white fw-bold p-2">
+            <div class="d-flex bd-highlight">
+              <div class="flex-fill p-2 bd-highlight" style="background-color: #16232c;">
+                Vehiculos
+              </div>
+              <div class="p-2 bd-highlight ">
+                <button class="badge bg-warning text-dark"
+                  [routerLink]="'/admin/recepcion/vehiculos-form/0' ">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <app-m-vehicle-list [vehicles]="customer.vehiculos" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
+          </div>
+
+        </div>
+        <div class="col-md-5">
+
+          <div class="bg-dark text-white fw-bold p-2">
+            <div class="d-flex bd-highlight">
+              <div class="flex-fill p-2 bd-highlight" style="background-color: #16232c;">
+                Servicios Abiertos
+              </div>
+              <div class="p-2 bd-highlight ">
+                <button class="badge bg-warning text-dark"
+                  [routerLink]="'/admin/recepcion/vehiculos-form/0' ">Agregar</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <app-m-services-list [services]="services" [pathService]="pathService"></app-m-services-list>
+          </div>
+
+        </div>
+      </div>
     </div>
+
+
 
   </div>
