@@ -8,8 +8,8 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
   styleUrls: ['./taller-vehicle-list.component.css']
 })
 export class TallerVehicleListComponent implements OnInit {
-  title: string = 'Recepcion';
-  subTitle: string = 'Lista de Vehiculos';
+  title: string = 'Taller';
+  subTitle: string = 'Lista de todos los Vehiculos';
   vehicles: any;
   pathVehicle: string ="/admin/recepcion/vehiculos";
   params: any;

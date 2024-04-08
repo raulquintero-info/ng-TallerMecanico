@@ -4,17 +4,17 @@
     <thead>
       <tr>
         <th scope="col">Titulo</th>
+        <th>Vehiculo</th>
         <th scope="col">Fecha de Entrada</th>
         <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="" *ngFor="let service of services" (click)="verServicio(service.idOrdenServicio)" style="cursor: pointer">
-        <td scope="row">{{ service.fechaOrden | date: 'short'}}
-
-        </td>
-        <td>{{ service.falla }}</td>
-        <td>{{ service.estatusServicio.estatusServicio }}</td>
+      <tr *ngFor="let service of services" (click)="verServicio(service.idOrdenServicio)" style="cursor: pointer">
+        <td  class="text-row" scope="row">{{ service.fechaOrden | date: 'short'}}</td>
+        <td> {{ service.idServicio }}</td>
+        <td  class="text-row">{{ service.falla }}</td>
+        <td  class="text-row">{{ service.estatusServicio.estatusServicio }}</td>
       </tr>
 
     </tbody>

@@ -1,7 +1,7 @@
 <div class="container ps-3 pt-3">
 
-  <app-page-title *ngIf="!customer.idCliente" [title]="title" [subTitle]="subTitle" [printerEnabled]="true"></app-page-title>
-  <app-page-title *ngIf="customer.idCliente" [title]="'Cliente:'" [subTitle]=" customer.nombre + '' + customer.apellidoPaterno"></app-page-title>
+  <app-page-title *ngIf="!customer.idCliente" [title]="title" [subTitle]="subTitle" [printerEnabled]="true"  [buttons]="buttons"></app-page-title>
+  <app-page-title *ngIf="customer.idCliente" [title]="'Cliente:'" [subTitle]=" customer.nombre + '' + customer.apellidoPaterno"  [buttons]="buttons"></app-page-title>
   <div>
     <app-m-vehicle-list [vehicles]="vehicles" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
   </div>

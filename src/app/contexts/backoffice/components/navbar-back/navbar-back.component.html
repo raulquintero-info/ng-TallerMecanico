@@ -1,3 +1,5 @@
+
+
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark primary "  style="background-color:  #0078d4;" >
   <div class="container-fluid ms-3">
     <!-- <a class="navbar-brand" href="/dashboard">Dashboard</a> -->
@@ -57,7 +59,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/admin/catalogos/marcas">Marcas</a></li>
             <li><a class="dropdown-item" href="/admin/catalogos/modelos/0">Modelos</a></li>
-            <li><a class="dropdown-item" href="/admin/catalogos/roles">Roles</a></li>
+            <!-- <li><a class="dropdown-item" href="/admin/catalogos/roles">Roles</a></li> -->
             <li><a class="dropdown-item" href="/admin/catalogos/tipos-motor">Tipo Motor</a></li>
             <li><a class="dropdown-item" href="/admin/catalogos/estatus-servicio">Estatus Servicio</a></li>
           </ul>
@@ -116,8 +118,10 @@
     </div>
   </div>
 </nav>
-  <div class="sub-bar">
+  <div class=" sticky-top sub-bar" style="top:56px; z-index: 1">
     <div class="container p-1" style="border-right: 1px solid #00000029">
+
+
 
       <span class="sub-menu" [routerLink]="'/admin/recepcion/servicios-form/0'">
         <i class="bi bi-plus-circle"></i> Servicio
@@ -128,9 +132,13 @@
       <span class="sub-menu ms-1"  data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i class="bi bi-search"></i> Buscar Cliente
       </span>
+      <span *ngIf="currentCustomer.idCliente" class="sub-menu me-1" [routerLink]="'/admin/recepcion/clientes-view/' + currentCustomer.idCliente"style="right: 20px">
+        <i class="bi bi-arrow-down-square"></i>
+        Cliente: <span style="font-weight: bold; color:#0078d4">{{ currentCustomer.nombre + ' ' + currentCustomer.apellidoPaterno | titlecase}}</span>
+      </span>
+      <i *ngIf="currentCustomer.idCliente" class="bi bi-x-lg" (click)="clearCustomer()" style="cursor: pointer"></i>
     </div>
   </div>
-
 
 
 
@@ -145,21 +153,25 @@
       </div>
       <div class="modal-body">
         <input class="form-control form-control-lg" type="text" (keyup)="searchCustomer()" [(ngModel)]="word"
-          placeholder="Nombre del cliente" aria-label=".form-control-lg example">
+          placeholder="Nombre del cliente o Tel." aria-label=".form-control-lg example">
         <div >
           <br>Resultados:
-          <table class="table table-striped  table-borderless">
-            <thead>
-            <tr>
-              <th>Nombre</th><th>Telefono</th>
+          <div class="table-responsive">
+
+            <table class="table table-striped  table-borderless ">
+              <thead>
+                <tr>
+              <th>Nombre</th><th>Telefono</th><th>Vehi.</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
             <tr *ngFor="let customer of customers" (click)="selCustomer(customer)" data-bs-dismiss="modal">
               <td>{{customer.nombre}} {{customer.apellidoPaterno}}</td><td>{{ customer.telefono }} </td>
+              <td>{{ customer.vehiculos.length}}</td>
             </tr>
-            </tbody>
-          </table>
+          </tbody>
+        </table>
+      </div>
 
         </div>
       </div>

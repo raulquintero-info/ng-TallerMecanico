@@ -1,4 +1,3 @@
-
 <div class="container pt-3">
 
   <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
@@ -6,9 +5,9 @@
   <div class="service-title mb-3">
     <div class="row">
       <div class="col-md-6 ps-4">
-        </div>
+      </div>
       <div class="col-md-6 pe-4" style="text-align: right;">
-        Orden de Servicio No: {{'000000'}}
+        Orden de Servicio No: {{vehicle.idVehiculo}}
       </div>
     </div>
   </div>
@@ -19,11 +18,21 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 ">
+            <div class="service-subtitle">Datos del Vehiculos</div>
+            <div>Marca:
+              <button class="btn btn-link btn-sm" [routerLink]="'/admin/recepcion/vehiculos/' + vehicle.idVehiculo">
+                {{ vehicle.modelo.marca.marca | titlecase}} <i class="bi bi-link-45deg"></i>
+              </button>
+            </div>
+            <div>Modelo: {{ vehicle.modelo.modelo }}</div>
+            <div>Año: {{ vehicle.anioModelo }}</div>
+            <div>VIN: {{ vehicle.vin | uppercase }}</div>
+            <hr>
             <div class="service-title">{{service.falla | titlecase}}</div>
             <div class="service-subtitle mt-3">Observaciones:</div>
             <div>{{service.observaciones |titlecase}}</div>
 
-             <!-- To do: asociar con empleado  -->
+            <!-- To do: asociar con empleado  -->
 
             <!-- <div class="service-subtitle mt-3">Atendio</div>
             <div>Nombre del Empleado</div> -->
@@ -39,12 +48,7 @@
           </div>
         </div>
 
-        <hr>
-        <div class="service-subtitle">Datos del Vehiculos</div>
-        <div>Marca: {{ vehicle.modelo.marca.marca | titlecase}}</div>
-        <div>Modelo: {{ vehicle.modelo.modelo }}</div>
-        <div>Año: {{ vehicle.anioModelo }}</div>
-        <div>VIN: {{ vehicle.vin | uppercase }}</div>
+
         <hr>
         <div class="service-subtitle mt-5">Comentarios</div>
         <div class="comentarios mt-3 p-3">No se han agregado comentarios</div>
@@ -53,7 +57,7 @@
 
     </div>
     <div class="col-md-4 ">
-      <div class="service-title">
+      <div class="service-title d-print-none">
         <table style="width: 100%">
           <tr>
             <td>Cuenta</td>
@@ -67,7 +71,7 @@
         <table style="width:100%">
           <tr>
             <td colspan="2">Aceite</td>
-            <td class="text-right"style="width:80px">800.00</td>
+            <td class="text-right" style="width:80px">800.00</td>
           </tr>
           <tr>
             <td colspan="2" class="last-line">Mano de obra</td>
@@ -80,7 +84,7 @@
           </tr>
 
 
-          <tr>
+          <tr class="d-print-none">
             <td></td>
             <td style="text-align:right">
               <div class="btn-group mt-3" role="group">

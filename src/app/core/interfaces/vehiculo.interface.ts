@@ -1,4 +1,6 @@
 import { Customer } from "./customers.interface";
+import { Modelo } from "./modelo.interface";
+import { TipoMotor } from "./tipoMotor.interface";
 
 export interface Vehiculo{
   idVehiculo: number;
@@ -6,8 +8,8 @@ export interface Vehiculo{
   matricula: string;
   imagen: string;
   color: string;
-  anio_modelo: string
+  anioModelo: string
   cliente: Customer;
-  // modelo: Modelo;
-
+  modelo: Modelo;
+  tipoMotor: TipoMotor;
 }

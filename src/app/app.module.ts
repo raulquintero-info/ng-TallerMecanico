@@ -15,6 +15,7 @@ import { AuthModule } from './core/modules/auth/auth.module';
 import { authInterceptorProviders } from './core/guards/auth.interceptor';
 import { NotAuthorizedComponent } from './shared/pages/not-authorized/not-authorized.component';
 import { ToasterComponent } from './shared/components/toaster/toaster.component';
+import { ToastModule } from './core/modules/toast/toast.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { ToasterComponent } from './shared/components/toaster/toaster.component'
     AuthModule,
     PublicofficeModule,
     FrontofficeModule,
-    BackofficeModule
+    BackofficeModule,
+    ToastModule
   ],
   providers: [ authInterceptorProviders ],
   bootstrap: [AppComponent]

@@ -15,35 +15,39 @@
     <div class="bg-dark text-white fw-bold p-2" style="background-color: #16232c;">
       <div class="d-flex bd-highlight">
         <div class="flex-fill p-2 bd-highlight">
-          Informacion Personal
-          <!-- <i class="bi bi-pencil-square text-warning d-print-none" style="cursor: pointer" [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente"></i> -->
+          <!-- Informacion Personal -->
+          <!-- <i class="bi bi-pencil-square text-warning d-print-none" style="cursor: pointer"
+            [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente"></i> -->
         </div>
         <div class="p-2 bd-highlight ">
-          <button *ngIf="customer.vehiculos.length<1" class="badge bg-danger text-dark text-white"
-            (click)="delete(customer.idCliente)">Eliminar</button>
-          <button class="badge bg-warning text-dark"
-            [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente">Editar</button>
+
+
         </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row mt-3 mb-3">
-        <div class="col-4"><span class="title-field">Nombre:</span> {{ customer.nombre | titlecase}}</div>
-        <div class="col-4"><span class="title-field">Apellido P:</span> {{ customer.apellidoPaterno | titlecase}}</div>
-        <div class="col-4"><span class="title-field">Apellido M:</span> {{ customer.apellidoMaterno |titlecase }}</div>
-      </div>
-
-      <div class="row">
-        <div class="col-4"><span class="title-field">Tel:</span> {{ customer.telefono }}</div>
-        <div class="col-6"><span class="title-field">Direccion:</span> {{ customer.domicilio }}</div>
       </div>
     </div>
 
     <div class="container mt-5">
       <div class="row">
+        <div class="col-md-4 pt-2 bg-dark text-white">
 
-        <div class="col-md-7">
+          <div class="d-flex bd-highlight">
+            <div class="pt-2 flex-fill bd-highlight fw-bold" style="background-color: #16232c;">Datos del Cliente </div>
+            <div class="pt-2 bd-highlight"><button class="badge bg-warning text-dark"
+              [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente">Editar</button>
+            </div>
+          </div>
+          <!-- <span class="title-field ">Nombre:</span> -->
+          <div class="ps-2">
+            <div class="fw-bold" style="font-size:larger">
+              {{ customer.nombre | titlecase}} <br>
+              {{ customer.apellidoPaterno | titlecase}}<br>
+              {{ customer.apellidoMaterno |titlecase }}<br>
+            </div>
+            <div><span class="title-field">Tel:</span> {{ customer.telefono }}</div>
+            <div><span class="title-field">Direccion:</span> {{ customer.domicilio }}</div>
+          </div>
+        </div>
+        <div class="col-md-8 ">
 
           <div class="bg-dark text-white fw-bold p-2">
             <div class="d-flex bd-highlight">
@@ -52,7 +56,7 @@
               </div>
               <div class="p-2 bd-highlight ">
                 <button class="badge bg-warning text-dark"
-                  [routerLink]="'/admin/recepcion/vehiculos-form/0' ">Agregar</button>
+                  [routerLink]="'/admin/recepcion/clientes/'+ customer.idCliente +'/vehiculo-form/0' ">Agregar</button>
               </div>
             </div>
           </div>
@@ -61,27 +65,27 @@
           </div>
 
         </div>
-        <div class="col-md-5">
+      </div>
 
-          <div class="bg-dark text-white fw-bold p-2">
-            <div class="d-flex bd-highlight">
-              <div class="flex-fill p-2 bd-highlight" style="background-color: #16232c;">
-                Servicios Abiertos
-              </div>
-              <div class="p-2 bd-highlight ">
-                <button class="badge bg-warning text-dark"
-                  [routerLink]="'/admin/recepcion/vehiculos-form/0' ">Agregar</button>
-              </div>
-            </div>
-          </div>
-          <div>
-            <app-m-services-list [services]="services" [pathService]="pathService"></app-m-services-list>
-          </div>
+    </div>
+  </div>
 
-        </div>
+
+
+
+
+  <div class="bg-dark text-white fw-bold mt-3 p-2">
+    <div class="d-flex bd-highlight">
+      <div class="flex-fill p-2 bd-highlight" style="background-color: #16232c;">
+        Servicios Abiertos
+      </div>
+      <div class="p-2 bd-highlight ">
+        <button class="badge bg-warning text-dark" [routerLink]="'/admin/recepcion/vehiculos-form/0' ">Agregar</button>
       </div>
     </div>
-
-
-
   </div>
+  <div>
+    <app-m-services-list [services]="services" [pathService]="pathService"></app-m-services-list>
+  </div>
+
+</div>

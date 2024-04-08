@@ -1,8 +1,3 @@
-<!-- <div class="page-title ps-3 pt-3">
-  <h5 *ngIf="!customer.idCliente">Agregar Cliente nuevo</h5>
-  <h5 *ngIf="customer.idCliente">Editar Cliente</h5>
-</div> -->
-
 <div class="container ps-5 pt-3">
 
   <div class="row ">
@@ -55,14 +50,12 @@
         </div>
         <div class=" mb-3">
           <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
-          <input type="text" class="form-control" id="apellidoPaterno"
-            [(ngModel)]="customer.apellidoPaterno">
+          <input type="text" class="form-control" id="apellidoPaterno" [(ngModel)]="customer.apellidoPaterno">
 
         </div>
         <div class=" mb-3">
           <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
-          <input type="text" class="form-control" id="apellidoMaterno"
-            [(ngModel)]="customer.apellidoMaterno">
+          <input type="text" class="form-control" id="apellidoMaterno" [(ngModel)]="customer.apellidoMaterno">
 
         </div>
         <div class=" mb-3">
@@ -92,13 +85,13 @@
         </ul>
 
         <!-- <div class=" mb-3">
-      <input type="password" class="" id="password" formControlName="password"
-        placeholder="name@example.com">
-      <label for="floatingInput">Contraseña</label>
-      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
-        <div *ngIf="password.errors?.['required']">La contraseña obligatorio</div>
-      </div>
-    </div> -->
+            <input type="password" class="" id="password" formControlName="password"
+              placeholder="name@example.com">
+            <label for="floatingInput">Contraseña</label>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
+              <div *ngIf="password.errors?.['required']">La contraseña obligatorio</div>
+            </div>
+          </div> -->
 
         <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
             *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar</button>
@@ -112,4 +105,3 @@
 </div>
 
 <app-toast [toasts]="messages" class="position-realtive"></app-toast>
-

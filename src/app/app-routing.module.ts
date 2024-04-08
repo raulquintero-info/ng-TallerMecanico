@@ -61,7 +61,8 @@ const routes: Routes = [
   {path: 'admin/recepcion/vehiculos/por-cliente/:id', component: RecepcionCustomersVehicleComponent},
   {path: 'admin/recepcion/vehiculos/por-cliente-sel/:id', component: RecepcionCustomersVehicleComponent},
   {path: 'admin/recepcion/vehiculos/:id', component: RecepcionVehicleComponent},
-  {path: 'admin/recepcion/vehiculos-form/:id', component: VehiclesFormComponent},
+  {path: 'admin/recepcion/vehiculos-form/:idVehicle', component: VehiclesFormComponent},
+  {path: 'admin/recepcion/clientes/:idCustomer/vehiculo-form/:idVehicle', component: VehiclesFormComponent},
 
 
   {path: 'admin/taller/servicios', component: TallerServiciosListComponent},

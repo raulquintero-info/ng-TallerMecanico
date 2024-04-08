@@ -1,0 +1,10 @@
+.banner-left{
+  color: white;
+  & img{
+    width: 100%
+  }
+  & .texto-parrafo{
+    font-size:13px;
+    color: white
+  }
+}

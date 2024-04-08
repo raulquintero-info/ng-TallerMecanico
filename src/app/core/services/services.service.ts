@@ -14,6 +14,6 @@ export class ServicesService {
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
-  get(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
+  getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
 
 }

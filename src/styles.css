@@ -34,3 +34,10 @@
     url("/assets/images/backgrounds/fondo_top4.png");
   background-repeat: repeat;
 }
+.text-row{
+  font-size: 13px;
+}
+.row-link:hover{
+  cursor:pointer;
+  text-decoration: underline;
+}

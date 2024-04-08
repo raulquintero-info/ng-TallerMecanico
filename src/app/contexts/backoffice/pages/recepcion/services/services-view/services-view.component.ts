@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Button } from 'src/app/core/interfaces/button.interface';
 import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
+import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { VehiclesService } from 'src/app/core/services/vehicles.service';
 
@@ -18,7 +19,7 @@ export class ServicesViewComponent implements OnInit {
   ];
 
   service: OrdenServicio = {} as OrdenServicio;
-  vehicle: any;
+  vehicle: Vehiculo = {} as Vehiculo;
   servicio: any;
   params: any;
   constructor(
@@ -37,9 +38,9 @@ export class ServicesViewComponent implements OnInit {
       }
     })
 
-    this.servicesService.get(this.params.params.id).subscribe({
+    this.servicesService.getById(this.params.params.id).subscribe({
       next: resp => {
-        console.log('servicios', resp)
+        console.log('servicio', resp)
         this.service = resp;
       }
     })

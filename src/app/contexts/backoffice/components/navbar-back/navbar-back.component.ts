@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/modules/auth/interfaces/user.interface';
 import { LoginService } from 'src/app/core/modules/auth/services/login.service';
-import { Employee } from '../../../core/interfaces/employee.interface';
+import { Employee } from '../../../../core/interfaces/employee.interface';
 import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { CustomersService } from 'src/app/core/services/customers.service';
 
@@ -17,6 +17,7 @@ export class NavbarBackComponent implements OnInit {
   titleBar: String = "Taller Mecánico"
   userLoginOn: boolean = false;
   userData: User = { "username":"", authorities:[{}] } as User;
+  currentCustomer: Customer = {} as Customer;
 
 
   constructor(private loginService: LoginService, private router: Router, private customersService: CustomersService){}
@@ -33,6 +34,12 @@ export class NavbarBackComponent implements OnInit {
         this.userData = userData
       }
     })
+    this.customersService.getCurrentCustomer();
+    this.customersService.currentCustomer.subscribe({
+      next: (currentCustomer: Customer) =>{
+        this.currentCustomer = currentCustomer;
+      }
+    });
     console.log('hola');
     this.searchCustomer();
   }
@@ -40,12 +47,17 @@ export class NavbarBackComponent implements OnInit {
 
   searchCustomer(){
       console.log(this.word);
-      this.customersService.getAll().subscribe({
-        next: (resp: any)=>{
-          console.log(resp)
-          this.customers = resp;
-        }
-      })
+      if(this.word.length > 2){
+
+        this.customersService.search(this.word).subscribe({
+          next: (resp: any)=>{
+            console.log(resp)
+            this.customers = resp;
+          }
+        });
+      } else{
+        this.customers=[];
+      }
   }
 
   selCustomer(customer: Customer){
@@ -61,6 +73,10 @@ export class NavbarBackComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+  clearCustomer() {
+    this.customersService.setCurrentCustomer({} as Customer);
+    this.router.navigateByUrl("/admin/dashboard");
+  }
 
 
 }

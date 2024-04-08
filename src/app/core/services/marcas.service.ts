@@ -17,6 +17,7 @@ export class MarcasService {
 
   getAll():Observable<any>{return this.http.get(this.url)};
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
+  getModelosById(id: number):Observable<any>{return this.http.get(this.url + "/" + id + '/modelos')};
   delete(id: number):Observable<any>{return this.http.delete(this.url + "/" + id)}
   createOrUpdate(marca: Marca):Observable<any>{
     console.log('marca enviada',marca);

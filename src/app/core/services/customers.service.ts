@@ -33,13 +33,14 @@ export class CustomersService {
 
   }
   setCurrentCustomer(customer: Customer) {
+    customer.vehiculos = [];
     this.currentCustomerData.next(customer);
     localStorage.setItem('customer', customer ? JSON.stringify(customer) : '');
   }
 
   getAll():Observable<any>{return this.http.get(this.url)};
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
-  search(word: string):Observable<any>{return this.http.get(this.url + '/' + word)};
+  search(word: string):Observable<any>{return this.http.get(this.url + '/buscar?searchTerm=' + word)};
   //todo: actualizar url , en espera de integracion de spring security
   getCurrentUser():Observable<any>{return this.http.get(this.urlTemp+'/currentuser')};
   create(customer: any, roleName: string):Observable<any>{return this.http.post(this.url+ '?role=' + roleName, customer)};

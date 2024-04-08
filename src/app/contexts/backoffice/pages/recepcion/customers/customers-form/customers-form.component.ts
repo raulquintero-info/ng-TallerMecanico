@@ -103,6 +103,7 @@ export class CustomersFormComponent implements OnInit {
 
 
 
+    this.messages.pop()
 
 
     console.log(this.customer);

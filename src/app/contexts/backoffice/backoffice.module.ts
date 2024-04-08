@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarBackComponent } from './navbar-back/navbar-back.component';
+import { NavbarBackComponent } from './components/navbar-back/navbar-back.component';
 import { DashboardBackComponent } from './pages/dashboard-back/dashboard-back.component';
 import { RouterModule } from '@angular/router';
 import { CustomersListComponent } from './pages/recepcion/customers/customers-list/customers-list.component';
@@ -19,7 +19,7 @@ import { TallerVehicleListComponent } from './pages/taller/vehicles/taller-vehic
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecepcionCustomersVehicleComponent } from './pages/recepcion/customers/recepcion-customers-vehicle/recepcion-customers-vehicle.component';
 import { RecepcionVehicleComponent } from './pages/recepcion/vehicles/recepcion-vehicle/recepcion-vehicle.component';
-import { PageTitleComponent } from './page-title/page-title.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 import { MarcasListComponent } from './pages/catalogos/marcas/marcas-list/marcas-list.component';
 import { MarcasFormComponent } from './pages/catalogos/marcas/marcas-form/marcas-form.component';
 import { MarcasModule } from 'src/app/core/modules/marcas/marcas.module';

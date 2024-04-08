@@ -13,6 +13,7 @@ export class VehiclesListComponent implements OnInit {
   title: string = 'Recepcion';
   subTitle: string = 'Lista de Vehiculos'
   customer: Customer = {} as Customer;
+  buttons = [{text: "Agregar", path: "/admin/recepcion/vehiculos-form/0"}];
   vehicles: any;
   pathVehicle: string ="/admin/recepcion/vehiculos";
   params: any;
