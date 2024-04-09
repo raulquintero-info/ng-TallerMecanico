@@ -53,6 +53,7 @@ export class VehiclesFormComponent implements OnInit {
       this.customersService.getById(this.customer.idCliente).subscribe({
         next: (customer: Customer)=>{
           customer.vehiculos = [];
+          this.customer = customer;
           this.vehicle.cliente = customer;
         }
       })

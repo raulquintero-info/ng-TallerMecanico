@@ -16,6 +16,7 @@ import { RolService } from 'src/app/core/services/rol.service';
 })
 export class CustomersFormComponent implements OnInit {
   showSpinner: boolean = false;
+  isSaved: boolean = false;
   respuesta: any;
   messages: Toast[] = []
   title: string = "Recepcion";
@@ -88,13 +89,17 @@ export class CustomersFormComponent implements OnInit {
       console.log('cliente enviado', data);
       this.customerService.create(data, 'CLIENTE').subscribe({
         next: resp => {
+          console.log('customer resp', resp)
+          this.customer = resp.Cliente
           this.messages.push({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type:'success' })
           // this.customer.usuario = resp.usuario;
           console.log('respUsuario', resp)
           this.showSpinner = false;
+          this.isSaved =true;
         },
         error: resp => {
           console.log('create error:', resp);
+          this.messages.push({ title: "Sistema", timeAgo: "", body: 'El Registro no se pudo grabar', type:'danger' })
           this.respuesta = resp;
           this.showSpinner = false;
         }

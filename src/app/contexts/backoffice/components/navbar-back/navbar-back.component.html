@@ -133,7 +133,7 @@
         <i class="bi bi-search"></i> Buscar Cliente
       </span>
       <span *ngIf="currentCustomer.idCliente" class="sub-menu me-1" [routerLink]="'/admin/recepcion/clientes-view/' + currentCustomer.idCliente"style="right: 20px">
-        <i class="bi bi-arrow-down-square"></i>
+        <i class="bi bi-pin-angle-fill"></i>
         Cliente: <span style="font-weight: bold; color:#0078d4">{{ currentCustomer.nombre + ' ' + currentCustomer.apellidoPaterno | titlecase}}</span>
       </span>
       <i *ngIf="currentCustomer.idCliente" class="bi bi-x-lg" (click)="clearCustomer()" style="cursor: pointer"></i>

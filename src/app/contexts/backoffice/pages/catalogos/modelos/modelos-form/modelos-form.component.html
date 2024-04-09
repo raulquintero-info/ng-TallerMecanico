@@ -38,7 +38,7 @@
           <select [(ngModel)]="modelo.marca">
             <label for="modelo" class="form-label">Marca</label>
             <!-- <option value="0">Seleccioone una marca</option> -->
-            <option *ngFor="let marca of marcas" [ngValue]="marca.idMarca">{{marca.marca}}</option>
+            <option *ngFor="let marca of marcas"  [ngValue]="marca.idMarca">{{marca.marca}} {{marca.idMarca}}</option>
           </select>
         </div>
         <div class=" mb-3">
@@ -50,6 +50,6 @@
     </div>
   </div>
 </div>
-
+{{ modelo.marca.idMarca | json }}
 
 <app-toast [toasts]="messages"></app-toast>

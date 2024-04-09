@@ -1,13 +1,141 @@
-<div class="container pt-3">
 
 
-  <app-page-title
-    [title]="title"
-    [subTitle]="subTitle"
-    [printerEnabled]="true"
-    [buttons]="buttons"
-    >
-  </app-page-title>
+<div class="container ps-5 pt-3">
+
+  <div class="row ">
+    <div class="col-md-5 mt-4 bg-primary text-white">
+
+      <img class=" mt-3" src="../../../../../../../assets/images/backgrounds/fondo2.jpg" style="width:100%;" alt="">
+      Lorem ipsum
+      <p class="mt-2 texto-parrafo">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel lacinia sapien, in suscipit ipsum. Nam ut
+        ultrices magna. Integer placerat libero a dolor scelerisque porta. Morbi venenatis, nibh sed cursus ornare,
+        massa augue molestie justo, sed rutrum ex tortor sit amet augue. Sed a tempus libero. Sed at orci a ex fermentum
+        auctor in et nunc. Sed venenatis risus odio, in hendrerit nibh laoreet sit amet. Nullam dapibus nulla in dictum
+        tristique. Morbi at interdum eros. Quisque ultricies et lectus a dapibus. Nullam ac ipsum pulvinar, ultrices
+        sapien vel, tempus ipsum. Donec venenatis, magna vel vehicula ultrices, lectus nibh placerat ante, id ornare
+        libero quam eu erat. Donec facilisis ex et neque consequat.
+      </p>
+    </div>
+    <div class="col-md-7">
+  <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
+      <div class="bg-dark mb-3">&nbsp;</div>
+
+
+
+      <div class=" mb-3">
+        <label for="idCliente" class="form-label">Id</label>
+        <input type="idCliente" class="form-control" id="idCliente" [disabled]="true" [readOnly]="true"
+          [ngModel]="employee.idEmpleado">
+
+      </div>
+      <div>
+
+        <div class=" mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" [(ngModel)]="employee.usuario.email" [readOnly]="employee.idEmpleado>0"
+            [disabled]="employee.idEmpleado>0" id="email">
+
+        </div>
+        <div class=" mb-3" [hidden]="employee.idEmpleado>0">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" [hidden]="employee.idEmpleado>0" id="password"
+            [(ngModel)]="employee.usuario.password">
+        </div>
+        <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="employee.idCliente<1">Cambiar
+            Contraseña</button></div> -->
+
+        <div class=" mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="employee.nombre">
+
+        </div>
+        <div class=" mb-3">
+          <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+          <input type="text" class="form-control" id="apellidoPaterno" [(ngModel)]="employee.apellidoPaterno">
+
+        </div>
+        <div class=" mb-3">
+          <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+          <input type="text" class="form-control" id="apellidoMaterno" [(ngModel)]="employee.apellidoMaterno">
+
+        </div>
+        <div class=" mb-3">
+          <label for="rfc" class="form-label">RFC</label>
+          <input type="text" class="form-control" id="rfc" [(ngModel)]="employee.rfc">
+
+        </div>
+        <div class=" mb-3">
+          <label for="telefono" class="form-label">Telefono</label>
+          <input type="text" class="form-control" id="telefono" [(ngModel)]="employee.curp">
+
+        </div>
+        <div class=" mb-3">
+          <label for="puesto" class="form-label">Puesto</label>
+          <input type="text" class="form-control" id="puesto" [(ngModel)]="employee.puesto">
+
+        </div>
+        <div class=" mb-3">
+          <label for="observaciones" class="form-label">Observaciones</label>
+          <input type="text" class="form-control" id="observaciones" [(ngModel)]="employee.observaciones">
+
+        </div>
+
+
+        <!-- <div class=" mb-3" style1="display:none;">
+
+          <label for="rol" class="form-label">Rol</label>
+          <select class="form-select" id="rol" multiple [(ngModel)]="employee.usuario.rol" aria-label="rol"
+            style="height: 120px">
+            <option *ngFor="let b of roles" [selected]="employee.usuario.rol[0].idRol" [ngValue]="b">{{ b.nombre }}</option>
+          </select>
+        </div> -->
+
+        <!-- <ul>
+          <li *ngFor="let item of employee.usuario.rol">
+            <pre>{{item | json}}</pre>
+          </li>
+        </ul> -->
+
+        <!-- <div class=" mb-3">
+            <input type="password" class="" id="password" formControlName="password"
+              placeholder="name@example.com">
+            <label for="floatingInput">Contraseña</label>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
+              <div *ngIf="password.errors?.['required']">La contraseña obligatorio</div>
+            </div>
+          </div> -->
+
+        <button type="submit" class="btn btn-primary" *ngIf="!isSaved" [disabled]="showSpinner" (click)="save()"><span
+            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
+        </button>
+        <button type="submit" class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner" [routerLink]="'/admin/recepcion/empleados-view/' + employee.idEmpleado"><span
+            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Continuar
+        </button>
+        <!-- {{ respuesta.error.mensaje }} -->
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
 
+<app-toast [toasts]="messages" class="position-realtive"></app-toast>
+<pre>
+  {{ employee | json}}
+</pre>
 
+
+
+<!-- {
+  "usuario": {
+    "email": "nvadmin@server.com",
+    "password": "1234"
+  },
+  "idEmpleado": "0",
+  "nombre": "nuevo admin",
+  "apellidoPaterno": "nv ",
+  "apellidoMaterno": "nuevo",
+  "rfc": "23423423jklj234kjk34",
+  "curp": "6865554444" -->

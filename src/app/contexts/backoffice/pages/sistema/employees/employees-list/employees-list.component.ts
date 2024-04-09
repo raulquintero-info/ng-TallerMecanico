@@ -9,7 +9,7 @@ import { EmployeesService } from 'src/app/core/services/employees.service';
 })
 export class EmployeesListComponent implements OnInit {
   title: string = "Sistema";
-  subTitle: string = "Editar Empleado";
+  subTitle: string = "Lista de Empleado";
   buttons = [{text: "Agregar", path: "/admin/sistema/empleados-form/0"}];
   employees: Employee[] = [];
 

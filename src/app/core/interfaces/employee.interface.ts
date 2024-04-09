@@ -10,5 +10,5 @@ export interface Employee{
   nss: string;
   observaciones: string;
   puesto: string;
-  ususario: Usuario;
+  usuario: Usuario;
 }

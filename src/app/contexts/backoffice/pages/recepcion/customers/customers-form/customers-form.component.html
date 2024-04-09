@@ -37,7 +37,7 @@
         </div>
         <div class=" mb-3" [hidden]="customer.idCliente>0">
           <label for="password" class="form-label">Contraseña</label>
-          <input type="text" class="form-control" [hidden]="customer.idCliente>0" id="password"
+          <input type="password" class="form-control" [hidden]="customer.idCliente>0" id="password"
             [(ngModel)]="customer.usuario.password">
         </div>
         <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="customer.idCliente<1">Cambiar
@@ -93,8 +93,12 @@
             </div>
           </div> -->
 
-        <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
-            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar</button>
+        <button type="submit" class="btn btn-primary" *ngIf="!isSaved" [disabled]="showSpinner" (click)="save()"><span
+            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
+        </button>
+        <button type="submit" class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner" [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente"><span
+            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Continuar
+        </button>
         <!-- {{ respuesta.error.mensaje }} -->
       </div>
     </div>
