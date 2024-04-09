@@ -73,6 +73,8 @@ export class CustomersFormComponent implements OnInit {
           // this.customer.usuario = resp.usuario;
           console.log('respUsuario', resp)
           this.showSpinner = false;
+          this.isSaved =true;
+
         },
         error: resp => {
           console.log('update error:', resp)

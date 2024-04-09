@@ -16,7 +16,7 @@ export class ModelosFormComponent implements OnInit {
   respuesta: string = '';
   messages: Toast[] = []
   params: any;
-  modelo: Modelo = {} as Modelo;
+  modelo: Modelo = { marca:{} as Marca } as Modelo;
   marcas: Marca[] =[];
   title: string = "Catalogos";
   subTitle: string = "Agregar Modelo";

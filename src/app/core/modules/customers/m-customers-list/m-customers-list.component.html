@@ -11,13 +11,13 @@
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let customer of customers" class="table-striped" (click)="setCurrentCustomer(customer)" style="cursor: pointer;">
-        <td scope="row">{{customer.idCliente}}</td>
-        <td>{{customer.nombre | titlecase}}</td>
-        <td>{{customer.apellidoPaterno | titlecase}}</td>
+      <tr *ngFor="let customer of customers" class="table-striped" >
+        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;" scope="row">{{customer.idCliente}}</td>
+        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;" >{{customer.nombre | titlecase}}</td>
+        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.apellidoPaterno | titlecase}}</td>
         <!-- <td> {{customer.vehiculos.length? customer.vehiculos.length: 0}}</td> -->
-        <td>{{customer.telefono | phone}}</td>
-        <td>{{ customer.vehiculos.length }}</td>
+        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.telefono | phone}}</td>
+        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{ customer.vehiculos.length }}</td>
         <td class="d-print-none" >
           <!-- <button class="btn btn-success" [routerLink]="['/admin/recepcion/vehiculos-form'+'/' + customer.idCliente]">Ver</button>&nbsp; -->
           <!-- <button class="btn btn-warning btn-sm" [routerLink]="['/admin/recepcion/clientes-view/' + customer.idCliente]">Editar</button>&nbsp; -->

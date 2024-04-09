@@ -31,7 +31,7 @@ export class MCustomersListComponent {
         // this.router.navigateByUrl("'/recepcion/clientes'");
       },
       error: resp=>{
-        this.messages.push({ title: "Sistema", timeAgo: "", body: 'No se ha podido Borrar este registro', type:'danger' });
+        this.messages.push({ title: "Sistema", timeAgo: "", body: 'No se ha podido Borrar este registro.', type:'danger' });
       }
     });
   }
