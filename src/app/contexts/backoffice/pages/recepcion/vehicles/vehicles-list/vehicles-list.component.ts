@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VehiclesService } from 'src/app/core/services/vehicles.service';
 import { Customer } from '../../../../../../core/interfaces/customers.interface';
 import { CustomersService } from '../../../../../../core/services/customers.service';
+import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
 
 @Component({
   selector: 'app-vehicles-list',
@@ -23,6 +24,7 @@ export class VehiclesListComponent implements OnInit {
     private router: Router,
     private vehiclesService: VehiclesService,
     private customerService: CustomersService,
+    private toastService: ToastService
     ){}
 
 
@@ -38,7 +40,18 @@ ngOnInit(){
   console.log('customerId', this.customer);
 }
 
-
+deleteById(id: number){
+  console.log('id view', id);
+  this.vehiclesService.deleteById(id).subscribe({
+    next: (resp: any)=>{
+      this.getall();
+      this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Eliminado', type: 'warning' })
+    },
+    error: (resp: any)=>{
+      this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro no pudo ser eliminado', type: 'danger' })
+    }
+  });
+}
 getCustomer(id: number = 0){
   if(id>0){
     this.customerService.getById(id).subscribe({

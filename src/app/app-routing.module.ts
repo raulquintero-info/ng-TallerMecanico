@@ -37,6 +37,8 @@ import { EstatusServicioListComponent } from './contexts/backoffice/pages/catalo
 import { EstatusServicioFormComponent } from './contexts/backoffice/pages/catalogos/estatus-servicio/estatus-servicio-form/estatus-servicio-form.component';
 import { EmployeesListComponent } from './contexts/backoffice/pages/sistema/employees/employees-list/employees-list.component';
 import { EmployeesFormComponent } from './contexts/backoffice/pages/sistema/employees/employees-form/employees-form.component';
+import { UsersListComponent } from './contexts/backoffice/pages/sistema/users/users-list/users-list.component';
+import { UsersFormComponent } from './contexts/backoffice/pages/sistema/users/users-form/users-form.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -67,6 +69,10 @@ const routes: Routes = [
 
   {path: 'admin/taller/servicios', component: TallerServiciosListComponent},
   {path: 'admin/taller/vehiculos', component: TallerVehicleListComponent},
+
+  {path: 'admin/sistema/usuarios', component: UsersListComponent},
+  {path: 'admin/sistema/usuarios-editar/:id', component: UsersFormComponent},
+  {path: 'admin/sistema/usuarios-nuevo/:id', component: UsersFormComponent},
 
   {path: 'admin/catalogos/marcas', component: MarcasListComponent},
   {path: 'admin/catalogos/marcas-form/:id', component: MarcasFormComponent},

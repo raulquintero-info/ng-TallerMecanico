@@ -7,6 +7,7 @@ import { EmployeesService } from '../../../../../../core/services/employees.serv
 import { Employee } from 'src/app/core/interfaces/employee.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/core/interfaces/usuario.interface';
+import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
 
 @Component({
   selector: 'app-employees-form',
@@ -17,18 +18,18 @@ export class EmployeesFormComponent implements OnInit {
   showSpinner: boolean = false;
   isSaved: boolean = false;
   respuesta: string = '';
-  messages: Toast[] = [];
   title: string = "Sistema";
   subTitle: string = "Editar Empleado";
   buttons = [{ text: "Empleados", path: "/admin/sistema/empleados" }];
   customer: Customer = {} as Customer;
   roles: Rol[] = [];
-  employee: Employee = {usuario: {email:''} as Usuario} as Employee;
+  employee: Employee = {usuario: {idUsuario: 0,email:''} as Usuario} as Employee;
   params: any;
 
   private rolesService = inject(RolService);
   private employeesService = inject(EmployeesService);
   private route = inject(ActivatedRoute);
+  private toastService = inject(ToastService);
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => this.params = params);
@@ -41,7 +42,7 @@ export class EmployeesFormComponent implements OnInit {
           employee.usuario.rol = [
             {
               "idRol": 1,
-              "nombre": "ADMIN"
+              "nombre": "EMPLEADO"
             }
           ]
           this.employee = employee;
@@ -51,7 +52,7 @@ export class EmployeesFormComponent implements OnInit {
       this.employee.usuario.rol = [
         {
           "idRol": 1,
-          "nombre": "ADMIN"
+          "nombre": "EMPLEADO"
         }
       ]
     }
@@ -66,15 +67,14 @@ export class EmployeesFormComponent implements OnInit {
 
   }
 
-  save() {
+  save(employee: Employee) {
 
     this.showSpinner = true;
-    if (this.employee.idEmpleado > 0) {
-      console.log('empleado enviado', this.customer);
-      this.employeesService.update(this.employee, 'ADMIN').subscribe({
+    if (employee.idEmpleado > 0) {
+      console.log('empleado enviado', employee);
+      this.employeesService.update(employee, 'ADMIN').subscribe({
         next: resp => {
-          this.messages.push({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
-          // this.customer.usuario = resp.usuario;
+          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
           console.log('respUsuario', resp)
           this.showSpinner = false;
           this.isSaved = true;
@@ -88,30 +88,96 @@ export class EmployeesFormComponent implements OnInit {
     } else {
 
       let data = {
-        cliente: this.employee,
-        usuario: this.employee.usuario
+        empleado: employee,
+        usuario: employee.usuario
 
       }
-      console.log('cliente enviado', data);
-      this.employeesService.create(data, 'ADMIN').subscribe({
+      console.log('empleado enviado', data);
+      this.employeesService.create(data, 'EMPLEADO').subscribe({
         next: resp => {
           console.log('empleado resp', resp)
-          this.customer = resp.empleado
-          this.messages.push({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
+          this.employee = resp.Empleado
+          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
           this.showSpinner = false;
           this.isSaved = true;
         },
         error: resp => {
           console.log('create error:', resp);
-          this.messages.push({ title: "Sistema", timeAgo: "", body: 'El Registro no se pudo grabar', type: 'danger' })
+          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: 'El Registro no se pudo grabar', type: 'danger' })
           this.respuesta = resp;
           this.showSpinner = false;
         }
       })
     }
 
-    this.messages.pop()
   }
 
+  delete(id: number){
+    this.employeesService.delete(id).subscribe({
+      next: resp=>{
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: 'El Registro ha sido borrado', type: 'warning' })
+
+      }
+    });
+  }
+
+  onNewEmployee(employee: Employee):void{
+    this.employee = employee;
+    this.save(employee);
+    console.log(employee)
+  }
 
 }
+
+
+
+// {
+//   "idCliente": 42,
+//   "nombre": "nuevo",
+//   "apellidoPaterno": "usuario",
+//   "apellidoMaterno": "user",
+//   "domicilio": "desconocido",
+//   "telefono": "6865554444",
+//   "usuario": {
+//       "idUsuario": 35,
+//       "email": null,
+//       "password": null,
+//       "rol": []
+//   },
+//   "vehiculos": null
+// }
+
+// {
+//   "employee": {
+//       "usuario": {
+//           "idUsuario": 0,
+//           "email": "root",
+//           "rol": [
+//               {
+//                   "idRol": 1,
+//                   "nombre": "EMPLEADO"
+//               }
+//           ],
+//           "password": "12345"
+//       },
+//       "idEmpleado": "0",
+//       "nombre": "root",
+//       "apellidoPaterno": "admin",
+//       "apellidoMaterno": "aministrador",
+//       "rfc": "dsfsdf234234sdf",
+//       "curp": "6865554444",
+//       "puesto": "tecnico",
+//       "observaciones": "sin observaciones"
+//   },
+//   "usuario": {
+//       "idUsuario": 0,
+//       "email": "root",
+//       "rol": [
+//           {
+//               "idRol": 1,
+//               "nombre": "EMPLEADO"
+//           }
+//       ],
+//       "password": "12345"
+//   }
+// }

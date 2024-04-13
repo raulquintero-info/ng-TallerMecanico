@@ -3,7 +3,8 @@
   <app-page-title *ngIf="!customer.idCliente" [title]="title" [subTitle]="subTitle" [printerEnabled]="true"  [buttons]="buttons"></app-page-title>
   <app-page-title *ngIf="customer.idCliente" [title]="'Cliente:'" [subTitle]=" customer.nombre + '' + customer.apellidoPaterno"  [buttons]="buttons"></app-page-title>
   <div>
-    <app-m-vehicle-list [vehicles]="vehicles" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
+
+      <app-m-vehicle-list [vehicles]="vehicles" (onDeleteById)="deleteById($event)" [pathVehicle]="pathVehicle "></app-m-vehicle-list>
   </div>
 
 

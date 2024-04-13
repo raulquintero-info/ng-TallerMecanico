@@ -6,7 +6,7 @@
   </div> -->
   <div>
     <app-page-title [title]="title" [subTitle]="customer.nombre + ' ' + customer.apellidoPaterno"
-      [printerEnabled]="true">
+      [printerEnabled]="true" [buttons]="buttons">
     </app-page-title>
 
   </div>
@@ -28,12 +28,12 @@
 
     <div class="container mt-5">
       <div class="row">
-        <div class="col-md-4 pt-2 bg-dark text-white">
+        <div class="col-md-4 pt-2 bg-dark text-white pb-3">
 
-          <div class="d-flex bd-highlight">
+          <div class="d-flex bd-highlight pb-2" style="border-bottom: 1px solid rgb(150, 148, 148);">
             <div class="pt-2 flex-fill bd-highlight fw-bold" style="background-color: #16232c;">Datos del Cliente </div>
-            <div class="pt-2 bd-highlight"><button class="badge bg-warning text-dark"
-              [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente">Editar</button>
+            <div class=" bd-highlight"><button class="btn btn-outline-light btn-sm"
+              [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente"><i class="bi bi-pencil-square"></i> Editar</button>
             </div>
           </div>
           <!-- <span class="title-field ">Nombre:</span> -->
@@ -54,9 +54,9 @@
               <div class="flex-fill p-2 bd-highlight" style="background-color: #16232c;">
                 Vehiculos
               </div>
-              <div class="p-2 bd-highlight ">
-                <button class="badge bg-warning text-dark"
-                  [routerLink]="'/admin/recepcion/clientes/'+ customer.idCliente +'/vehiculo-form/0' ">Agregar</button>
+              <div class="p-21bd-highlight ">
+                <button class="btn btn-outline-light btn-sm "
+                  [routerLink]="'/admin/recepcion/clientes/'+ customer.idCliente +'/vehiculo-form/0' "><i class="bi bi-plus-square"></i> Agregar</button>
               </div>
             </div>
           </div>
@@ -79,8 +79,8 @@
       <div class="flex-fill p-2 bd-highlight" style="background-color: #16232c;">
         Servicios Abiertos
       </div>
-      <div class="p-2 bd-highlight ">
-        <button class="badge bg-warning text-dark" [routerLink]="'/admin/recepcion/vehiculos-form/0' ">Agregar</button>
+      <div class="p-1 bd-highlight ">
+        <button class="btn btn-outline-light btn-sm " [routerLink]="'/admin/recepcion/vehiculos-form/0' "><i class="bi bi-plus-square"></i> Nuevo</button>
       </div>
     </div>
   </div>

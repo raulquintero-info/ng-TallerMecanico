@@ -21,7 +21,7 @@
         <td class="d-print-none">
           <!-- <button class="btn btn-success btn-sm" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">Ver</button>&nbsp; -->
           <button class="btn btn-warning btn-sm" [routerLink]="'/admin/recepcion/vehiculos-form/' + vehicle.idVehiculo">Editar</button>
-          <button class="btn btn-danger btn-sm ms-2" (click)="delete(vehicle.idVehiculo)"><i class="bi bi-trash"></i></button>
+          <button class="btn btn-danger btn-sm ms-2" (click)="emitDelete(vehicle.idVehiculo)"><i class="bi bi-trash"></i></button>
         </td>
       </tr>
 
@@ -30,6 +30,8 @@
 
     </tfoot>
   </table>
+  <br>
+  <!-- <div *ngIf="!vehicles.length" class=" text-center border border-yellow text-muted font-light" ><i class="bi bi-exclamation-circle-fill"></i> Aun no se han agregado vehiculos</div> -->
 </div>
 
 

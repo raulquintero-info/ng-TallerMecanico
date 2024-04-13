@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { NavbarBackComponent } from './components/navbar-back/navbar-back.component';
 import { DashboardBackComponent } from './pages/dashboard-back/dashboard-back.component';
-import { RouterModule } from '@angular/router';
 import { CustomersListComponent } from './pages/recepcion/customers/customers-list/customers-list.component';
 import { CustomersFormComponent } from './pages/recepcion/customers/customers-form/customers-form.component';
 import { ServicesFormComponent } from './pages/recepcion/services/services-form/services-form.component';
@@ -16,7 +17,6 @@ import { VehiclesServicesListComponent } from './pages/recepcion/vehicles/vehicl
 import { CustomersModule } from 'src/app/core/modules/customers/customers.module';
 import { TallerServiciosListComponent } from './pages/taller/services/taller-servicios-list/taller-servicios-list.component';
 import { TallerVehicleListComponent } from './pages/taller/vehicles/taller-vehicle-list/taller-vehicle-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecepcionCustomersVehicleComponent } from './pages/recepcion/customers/recepcion-customers-vehicle/recepcion-customers-vehicle.component';
 import { RecepcionVehicleComponent } from './pages/recepcion/vehicles/recepcion-vehicle/recepcion-vehicle.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
@@ -40,6 +40,8 @@ import { EstatusServicioModule } from 'src/app/core/modules/estatus-servicio/est
 import { EmployeesListComponent } from './pages/sistema/employees/employees-list/employees-list.component';
 import { EmployeesFormComponent } from './pages/sistema/employees/employees-form/employees-form.component';
 import { EmployeesModule } from 'src/app/core/modules/employees/employees.module';
+import { UsersListComponent } from './pages/sistema/users/users-list/users-list.component';
+import { UsersFormComponent } from './pages/sistema/users/users-form/users-form.component';
 
 
 
@@ -72,7 +74,9 @@ import { EmployeesModule } from 'src/app/core/modules/employees/employees.module
     EstatusServicioListComponent,
     EstatusServicioFormComponent,
     EmployeesListComponent,
-    EmployeesFormComponent
+    EmployeesFormComponent,
+    UsersListComponent,
+    UsersFormComponent
   ],
   imports: [
     CommonModule,

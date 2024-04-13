@@ -3,22 +3,32 @@
   <div class="row ">
     <div class="col-md-5 mt-4 bg-primary banner-left">
 
-      <img class=" mt-3" src="../../../../../../../assets/images/backgrounds/fondo2.jpg" alt="">
-      Lorem ipsum
-      <p class="mt-2 texto-parrafo">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel lacinia sapien, in suscipit ipsum. Nam ut
-        ultrices magna. Integer placerat libero a dolor scelerisque porta. Morbi venenatis, nibh sed cursus ornare,
-        massa augue molestie justo, sed rutrum ex tortor sit amet augue. Sed a tempus libero. Sed at orci a ex fermentum
-        auctor in et nunc. Sed venenatis risus odio, in hendrerit nibh laoreet sit amet. Nullam dapibus nulla in dictum
-        tristique. Morbi at interdum eros. Quisque ultricies et lectus a dapibus. Nullam ac ipsum pulvinar, ultrices
-        sapien vel, tempus ipsum. Donec venenatis, magna vel vehicula ultrices, lectus nibh placerat ante, id ornare
-        libero quam eu erat. Donec facilisis ex et neque consequat.
-      </p>
+      <div class="mt-2 text-uppercase" style="font-weight: bold">{{ vehicle.modelo.marca.marca }} {{ vehicle.modelo.modelo}}</div>
+      <img class="mb-2" [src]="vehicle.imagen" alt="">
+      <button class="btn btn-outline-light btn-sm"><i class="bi bi-camera"></i> Cambiar Imagen</button>
+      <div class="mt-3">
+        Lorem ipsum
+
+        <p class="mt-2 texto-parrafo">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel lacinia sapien, in suscipit ipsum. Nam ut
+          ultrices magna. Integer placerat libero a dolor scelerisque porta. Morbi venenatis, nibh sed cursus ornare,
+          massa augue molestie justo, sed rutrum ex tortor sit amet augue. Sed a tempus libero. Sed at orci a ex fermentum
+          auctor in et nunc. Sed venenatis risus odio, in hendrerit nibh laoreet sit amet. Nullam dapibus nulla in dictum
+          tristique. Morbi at interdum eros. Quisque ultricies et lectus a dapibus. Nullam ac ipsum pulvinar, ultrices
+          sapien vel, tempus ipsum. Donec venenatis, magna vel vehicula ultrices, lectus nibh placerat ante, id ornare
+          libero quam eu erat. Donec facilisis ex et neque consequat.
+        </p>
+      </div>
     </div>
     <div class="col-md-7">
       <app-page-title [title]="customer.nombre + ' ' + customer.apellidoPaterno" [subTitle]="subTitle"
         [printerEnabled]="true"></app-page-title>
       <div class="bg-dark mb-3">&nbsp;</div>
+
+      <div class=" mb-3">
+        <label for="imagen" class="form-label">Imagen</label>
+        <input type="file" class="form-control" id="imagen" (change)="captureFile($event)">
+      </div>
 
       <div class=" mb-3">
         <label for="vin" class="form-label">VIN</label>
@@ -37,12 +47,10 @@
         <label for="color" class="form-label">Color</label>
         <input type="text" class="form-control" id="color" [(ngModel)]="vehicle.color">
       </div>
-      <div class=" mb-3">
+      <!-- <div class=" mb-3">
         <label for="imagen" class="form-label">Imagen</label>
         <input type="text" class="form-control" id="imagen" [(ngModel)]="vehicle.imagen">
-      </div>
-
-
+      </div> -->
 
 
 
@@ -99,8 +107,6 @@
 
   </div>
 
-  <app-toast [toasts]="messages" class="position-realtive"></app-toast>
 
   <pre>{{vehicle | json}}
-{{messages | json}}
 </pre>

@@ -7,6 +7,7 @@ import { Modelo } from 'src/app/core/interfaces/modelo.interface';
 import { TipoMotor } from 'src/app/core/interfaces/tipoMotor.interface';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
+import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
 import { CustomersService } from 'src/app/core/services/customers.service';
 import { MarcasService } from 'src/app/core/services/marcas.service';
 import { ModelossService } from 'src/app/core/services/modelos.service';
@@ -22,6 +23,7 @@ export class VehiclesFormComponent implements OnInit {
   showSpinner: boolean = false;
   params: any;
   vehicle: Vehiculo = {modelo:{marca:{} as Marca} as Modelo} as Vehiculo;
+  imagen: string = '/assets/images/cars/no_image.jpg';
   marcas: Marca[]=[];
   modelos: Modelo[] = [];
   customer: Customer = {} as Customer;
@@ -29,7 +31,6 @@ export class VehiclesFormComponent implements OnInit {
   title: string = 'Recepcion';
   subTitle: string = 'Agregar Vehiculo';
   buttons =[];
-  messages: Toast[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,7 +39,8 @@ export class VehiclesFormComponent implements OnInit {
     private tiposMotorService: TipoMotorService,
     private customersService: CustomersService,
     private vehiclesService: VehiclesService,
-    private modelsService: ModelossService
+    private modelsService: ModelossService,
+    private toastService: ToastService
   ){}
 
 
@@ -103,11 +105,18 @@ export class VehiclesFormComponent implements OnInit {
     console.log('vehicle', this.vehicle);
     this.vehiclesService.saveOrUpdate(this.vehicle).subscribe({
       next: resp=>{
-        this.messages.push({ title: "Sistema", timeAgo: "", body: "Registro Grabado", type: "success" })
-
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type:'success' })
       }
     })
   }
+
+  captureFile(event: any){
+    this.vehicle.imagen = '/assets/images/cars/' + event.target.files[0].name;
+    console.log(event);
+  }
+
+
+
 
 
 }

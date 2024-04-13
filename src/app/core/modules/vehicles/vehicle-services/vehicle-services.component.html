@@ -11,10 +11,10 @@
         </thead>
         <tbody>
           <tr class="" *ngFor="let service of services">
-            <td scope="row">{{service.created_at}}</td>
-            <td>{{service.titulo}}</td>
-            <td>{{service.status}}</td>
-            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + '2']">Ver</button></td>
+            <td scope="row">{{service.fechaOrden |date}}</td>
+            <td>{{service.falla}}</td>
+            <td>{{service.estatusServicio.estatusServicio}}</td>
+            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">Ver</button></td>
           </tr>
           <tr class="">
             <td scope="row">25-ene-2024</td>
@@ -23,38 +23,6 @@
                 style="font-weight: bold;  font-size: 10px; background-color: rgb(7, 211, 7);color: white;">entregado</span>
             </td>
             <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + '3']">Ver</button></td>
-          </tr>
-          <tr class="">
-            <td scope="row">25-ene-2024</td>
-            <td>cambio de aceite</td>
-            <td><span class="vehicle-text text-center p-1"
-                style="font-weight: bold;  font-size: 10px; background-color: rgb(7, 211, 7);color: white;">entregado</span>
-            </td>
-            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + '4']">Ver</button></td>
-          </tr>
-          <tr class="">
-            <td scope="row">25-ene-2024</td>
-            <td>cambio de aceite</td>
-            <td><span class="vehicle-text text-center p-1"
-                style="font-weight: bold;  font-size: 10px; background-color: rgb(7, 211, 7);color: white;">entregado</span>
-            </td>
-            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + '2']">Ver</button></td>
-          </tr>
-          <tr class="">
-            <td scope="row">25-ene-2024</td>
-            <td>cambio de aceite</td>
-            <td><span class="vehicle-text text-center p-1"
-                style="font-weight: bold;  font-size: 10px; background-color: rgb(7, 211, 7);color: white;">entregado</span>
-            </td>
-            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + '3']">Ver</button></td>
-          </tr>
-          <tr class="">
-            <td scope="row">25-ene-2024</td>
-            <td>cambio de aceite</td>
-            <td><span class="vehicle-text text-center p-1"
-                style="font-weight: bold;  font-size: 10px; background-color: rgb(7, 211, 7);color: white;">entregado</span>
-            </td>
-            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + '4']">Ver</button></td>
           </tr>
 
         </tbody>

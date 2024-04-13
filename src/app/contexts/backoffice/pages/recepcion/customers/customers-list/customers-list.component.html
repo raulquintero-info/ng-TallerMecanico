@@ -1,4 +1,3 @@
-
 <div class="container pt-3">
 
   <!-- <div class="text-end bg-dark p-1 pe-2">
@@ -6,21 +5,26 @@
     <button class="btn btn-primary d-print-none" [routerLink]="['/admin/recepcion/clientes-form/0']"><i class="bi bi-plus-circle"></i> Agregar</button>
   </div> -->
   <div>
-    <app-page-title
-      [title]="title"
-      [subTitle]="subTitle"
-      [printerEnabled]="true"
-      [buttons]="buttons"
-      >
-    </app-page-title>
+    <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
 
   </div>
   <div class="">
-    <app-m-customers-list
-      [customers]="customers"
-      pathCustomer="/admin/recepcion/clientes"
+    <app-m-customers-list [customers]="customers" pathCustomer="/admin/recepcion/clientes"></app-m-customers-list>
+
+    <div *ngIf="isLoadingCustomers; else showMessage" style="width: 100%; text-align: center">
+      <div class="spinner-border text-primary " >
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <ng-template #showMessage>
+      <div *ngIf='errorMessage'
+        class="alert alert-danger"
+        role="alert"
       >
-    </app-m-customers-list>
+        <strong>Error.- </strong> {{ errorMessage }}
+      </div>
+
+    </ng-template>
   </div>
 
 
