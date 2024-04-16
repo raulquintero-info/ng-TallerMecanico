@@ -1,0 +1,12 @@
+
+<div class="text-end">
+    <button class="btn btn-primary" (click)="previousPage()" [disabled]="currentPage === 1"> << </button>
+    
+    <ng-container *ngFor="let page of getPages()">
+        <button class="btn btn-secondary" style="margin-left: 10px" (click)="goToPage(page)" [disabled]="currentPage === page">{{ page }}</button>
+    </ng-container>
+    
+    <!-- <span>Pagina {{ currentPage }} de {{ totalPages }}</span> -->
+    
+    <button class="btn btn-primary" style="margin-left: 10px" (click)="nextPage()" [disabled]="currentPage === totalPages"> >> </button>
+</div>

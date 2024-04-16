@@ -40,6 +40,7 @@ import { EstatusServicioModule } from 'src/app/core/modules/estatus-servicio/est
 import { EmployeesListComponent } from './pages/sistema/employees/employees-list/employees-list.component';
 import { EmployeesFormComponent } from './pages/sistema/employees/employees-form/employees-form.component';
 import { EmployeesModule } from 'src/app/core/modules/employees/employees.module';
+import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
 
 
 
@@ -72,7 +73,8 @@ import { EmployeesModule } from 'src/app/core/modules/employees/employees.module
     EstatusServicioListComponent,
     EstatusServicioFormComponent,
     EmployeesListComponent,
-    EmployeesFormComponent
+    EmployeesFormComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
