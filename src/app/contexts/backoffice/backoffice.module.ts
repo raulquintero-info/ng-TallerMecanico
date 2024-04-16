@@ -42,6 +42,7 @@ import { EmployeesFormComponent } from './pages/sistema/employees/employees-form
 import { EmployeesModule } from 'src/app/core/modules/employees/employees.module';
 import { UsersListComponent } from './pages/sistema/users/users-list/users-list.component';
 import { UsersFormComponent } from './pages/sistema/users/users-form/users-form.component';
+import { UsersModule } from 'src/app/core/modules/users/users.module';
 
 
 
@@ -77,6 +78,7 @@ import { UsersFormComponent } from './pages/sistema/users/users-form/users-form.
     EmployeesFormComponent,
     UsersListComponent,
     UsersFormComponent
+
   ],
   imports: [
     CommonModule,
@@ -92,7 +94,8 @@ import { UsersFormComponent } from './pages/sistema/users/users-form/users-form.
     RolesModule,
     TiposMotorModule,
     EstatusServicioModule,
-    EmployeesModule
+    EmployeesModule,
+    UsersModule
   ],
   exports: [
     NavbarBackComponent

@@ -74,6 +74,7 @@ export class EmployeesFormComponent implements OnInit {
       console.log('empleado enviado', employee);
       this.employeesService.update(employee, 'ADMIN').subscribe({
         next: resp => {
+          this.employee = resp.empleado
           this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
           console.log('respUsuario', resp)
           this.showSpinner = false;

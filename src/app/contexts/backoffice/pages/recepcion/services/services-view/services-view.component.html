@@ -7,7 +7,13 @@
       <div class="col-md-6 ps-4">
       </div>
       <div class="col-md-6 pe-4" style="text-align: right;">
-        Orden de Servicio No: {{vehicle.idVehiculo}}
+        Orden de Servicio No: {{vehicle.idVehiculo}} <span class="badge bg-secondary d-print-none">
+          <select [(ngModel)]="service.estatusServicio" (change)="updateStatus()">
+            <option *ngFor="let item of statusList"
+              [selected]="item.idEstatusServicio==service.estatusServicio.idEstatusServicio"
+              [ngValue]="item">{{item.estatusServicio}}</option>
+          </select>
+        </span>
       </div>
     </div>
   </div>
@@ -18,26 +24,41 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 ">
-            <div class="service-subtitle">Datos del Vehiculos</div>
-            <div>Marca:
-              <button class="btn btn-link btn-sm" [routerLink]="'/admin/recepcion/vehiculos/' + vehicle.idVehiculo">
-                {{ vehicle.modelo.marca.marca | titlecase}} <i class="bi bi-link-45deg"></i>
-              </button>
+            <div class="service-title">Datos del Cliente</div>
+            <div class="p-2">
+              <div>Cliente: {{ currentCustomer.nombre + ' ' + currentCustomer.apellidoPaterno}}</div>
+              <div>Tel: {{ currentCustomer.telefono }}</div>
             </div>
-            <div>Modelo: {{ vehicle.modelo.modelo }}</div>
-            <div>Año: {{ vehicle.anioModelo }}</div>
-            <div>VIN: {{ vehicle.vin | uppercase }}</div>
-            <hr>
-            <div class="service-title">{{service.falla | titlecase}}</div>
-            <div class="service-subtitle mt-3">Observaciones:</div>
-            <div>{{service.observaciones |titlecase}}</div>
+            <div class="service-title mt-2">Datos del Vehiculos</div>
+            <div class="p-2">
+              <div>Marca:
+                {{ vehicle.modelo.marca.marca | titlecase}}
+              </div>
+              <div>Modelo: {{ vehicle.modelo.modelo }}</div>
+              <div>Año: {{ vehicle.anioModelo }}</div>
+              <div>
+                VIN:
+                <button class="btn btn-link btn-sm" [routerLink]="'/admin/recepcion/vehiculos/' + vehicle.idVehiculo">
+                  {{ vehicle.vin | uppercase }}  <i class="bi bi-link-45deg"></i>
+                </button>
+              </div>
+            </div>
 
-            <!-- To do: asociar con empleado  -->
+            <div class="service-title">Descripcion de la Falla  <span class="badge bg-secondary d-print-none">{{service.estatusServicio.estatusServicio}}</span></div>
+              <div class="p-2">
 
-            <!-- <div class="service-subtitle mt-3">Atendio</div>
-            <div>Nombre del Empleado</div> -->
-            <div class="service-subtitle mt-2">Fecha y Hora</div>
-            <div> {{ service.fechaOrden}}</div>
+                <div> <strong>{{service.falla | titlecase}}</strong></div>
+                <div class="service-subtitle mt-3">Observaciones:</div>
+                <div>{{service.observaciones |titlecase}}</div>
+
+                <!-- To do: asociar con empleado  -->
+                <!-- <div class="service-subtitle mt-3">Atendio</div>
+                  <div>Nombre del Empleado</div> -->
+
+                <div class="service-subtitle mt-2">Fecha y Hora</div>
+                <div> {{ service.fechaOrden | date:'short'}}</div>
+              </div>
+
           </div>
           <div class="col-md-6 ">
             <!-- <div class="service-title">{{service.falla | titlecase}}</div> -->
@@ -49,14 +70,27 @@
         </div>
 
 
-        <hr>
-        <div class="service-subtitle mt-5">Comentarios</div>
-        <div class="comentarios mt-3 p-3">No se han agregado comentarios</div>
+
+        <div class="d-flex d-print-none justify-content-between service-subtitle mt-3">
+          <div class="">Comentarios</div>
+          <div><button class="btn btn-outline-dark btn-sm" (click)="displayBoxComment()">Agregar comentario</button></div>
+        </div>
+        <div class="mt-3 d-print-none" *ngIf="showBoxComment; else comments">
+          <textarea class="p-2" name=""  id="newComment"  rows="7" style="width:100%" [(ngModel)]="newComment"></textarea>
+          <div class="text-end">
+            <button class="btn btn-primary" (click)="addComment()">Grabar</button>
+            <button class="btn btn-danger" (click)="showBoxComment=false">Cancelar</button>
+          </div>
+        </div>
+        <ng-template #comments>
+
+          <pre class="comentarios mt-3 p-3 d-print-none">{{ service.comentarios}}</pre>
+        </ng-template>
 
       </div>
 
     </div>
-    <div class="col-md-4 ">
+    <div class="col-md-4">
       <div class="service-title d-print-none">
         <table style="width: 100%">
           <tr>
@@ -67,7 +101,7 @@
       </div>
 
       <hr>
-      <div>
+      <div class="">
         <table style="width:100%">
           <tr>
             <td colspan="2">Aceite</td>
@@ -101,4 +135,16 @@
     </div>
 
   </div>
+  <div class="d-none d-print-block p-2" style="font-size: smaller;">
+    Terminos y Condiciones
+    <div class="mt-2">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut erat placerat, placerat dui eget, semper neque. Maecenas ornare vitae libero euismod consectetur. Aenean ipsum est, imperdiet nec dui eget, hendrerit efficitur sem. Vestibulum imperdiet ex tortor, vel gravida libero porttitor id. Vivamus tempus dui vitae erat dictum, id tempus velit rutrum. Aenean id pharetra metus. Aliquam ornare dolor nunc, quis malesuada risus vestibulum sed. Proin et dictum mauris, quis placerat mauris. Suspendisse maximus felis eget felis iaculis dictum. Integer pellentesque velit aliquet nisl congue, in dapibus augue porttitor.
+      <br><Br>
+        Aenean dictum eros quis erat maximus, non ultricies lectus luctus. Etiam condimentum sapien massa, et tincidunt arcu posuere ut. Aenean accumsan quis libero consequat varius. Cras id risus a quam gravida viverra et quis nisl. Proin semper ullamcorper ornare. Sed eleifend sit amet quam eu sodales. Fusce commodo, purus venenatis tempor ultrices, velit lacus aliquam orci, at molestie lectus sem nec nulla. Vestibulum congue metus sit amet turpis faucibus interdum. Donec laoreet dapibus magna, non tristique mauris pellentesque eget. Sed ut ante vel est porta pharetra. Quisque urna velit, scelerisque ac sagittis at, blandit gravida turpis. Mauris quam diam, euismod ut efficitur vel, aliquet auctor sapien. Quisque ac est eget eros tristique fringilla.
+    </div>
+  </div>
 </div>
+<!-- <pre>
+  {{ service | json }}
+  {{ vehicle | json }}
+</pre> -->

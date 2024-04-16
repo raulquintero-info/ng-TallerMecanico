@@ -3,6 +3,7 @@ import { Customer } from '../../../interfaces/customers.interface';
 import { CustomersService } from 'src/app/core/services/customers.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
+import { ToastService } from '../../toast/services/toast.service';
 
 @Component({
   selector: 'app-m-customers-list',
@@ -16,6 +17,7 @@ export class MCustomersListComponent {
 
   private customersService = inject(CustomersService);
   private router = inject(Router);
+  private toastService = inject(ToastService)
 
   setCurrentCustomer(customer: Customer) {
     this.customersService.setCurrentCustomer(customer);
@@ -27,11 +29,12 @@ export class MCustomersListComponent {
     this.customersService.delete(id).subscribe({
       next: resp=>{
         console.log("eliminar registro");
-        alert("El registro fue Elimindado!");
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Eliminado', type: 'success' })
+
         // this.router.navigateByUrl("'/recepcion/clientes'");
       },
       error: resp=>{
-        this.messages.push({ title: "Sistema", timeAgo: "", body: 'No se ha podido Borrar este registro.', type:'danger' });
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' No se ha podido Borrar este registro', type: 'danger' })
       }
     });
   }

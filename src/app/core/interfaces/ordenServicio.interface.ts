@@ -6,8 +6,10 @@ export interface OrdenServicio{
   factura: number;
   fechaOrden: string;
   kilometraje: string;
-  vehiculo: Vehiculo
+  vehiculo?: Vehiculo
+  vehiculos?: Vehiculo
   falla: string;
   observaciones: string;
-  estatusServicio: EstatusServicio
+  comentarios: string;
+  estatusServicio: EstatusServicio;
 }

@@ -3,30 +3,26 @@
     <thead class="table-dark">
       <tr>
         <th>id</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Puesto</th>
+        <th>Email</th>
         <th>Rol</th>
-        <th>RFC</th>
         <th width="150" class="d-print-none">Opciones</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let employee of employees" class="table-striped"  style="cursor: pointer;">
-        <td scope="row">{{employee.idEmpleado}}</td>
-        <td>{{employee.nombre | titlecase}}</td>
-        <td>{{employee.apellidoPaterno | titlecase}}</td>
+      <tr *ngFor="let user of users" class="table-striped" (click)="employeeView(user.idUsuario)" style="cursor: pointer;">
+        <td scope="row">{{user.idUsuario}}</td>
+        <td>{{user.email| titlecase}}</td>
+        <td>
+          {{user.rol[0].nombre}}
+        </td>
         <!-- <td> {{customer.vehiculos.length? customer.vehiculos.length: 0}}</td> -->
-        <td>{{employee.puesto}}</td>
-        <td>{{ employee.usuario.rol[0].nombre }} </td>
-        <td>{{ employee.rfc }} </td>
         <td class="d-print-none">
           <!-- <button class="btn btn-success" [routerLink]="['/admin/recepcion/vehiculos-form'+'/' + customer.idCliente]">Ver</button>&nbsp; -->
           <!-- <button class="btn btn-warning btn-sm" [routerLink]="['/admin/recepcion/clientes-view/' + customer.idCliente]">Editar</button>&nbsp; -->
-          <button class="btn btn-warning btn-sm"
-            [routerLink]="['/admin/sistema/empleados-form/'+ employee.idEmpleado]">Editar
+          <!-- <button class="btn btn-warning btn-sm"
+            [routerLink]="['/admin/sistema/empleados-form/'+ user.idUsuario]">Editar
           </button>
-          <button class="btn btn-sm btn-danger ms-2" *ngIf="employee.idEmpleado!=1" (click)="emitDelete(employee.idEmpleado)"><i class="bi bi-trash"></i></button>
+          <button class="btn btn-sm btn-danger ms-2" *ngIf="user.idUsuario!=1" (click)="emitDelete(user.idUsuario)"><i class="bi bi-trash"></i></button> -->
         </td>
       </tr>
     </tbody>
@@ -35,3 +31,6 @@
     </tfoot>
   </table>
 </div>
+<pre>
+  <!-- {{users | json}} -->
+</pre>

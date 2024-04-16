@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { VehiclesService } from 'src/app/core/services/vehicles.service';
+import { OrdenServicio } from '../../../../../../core/interfaces/ordenServicio.interface';
 
 @Component({
   selector: 'app-vehicles-services-list',
@@ -12,7 +13,7 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 export class VehiclesServicesListComponent implements OnInit{
   ordenesDeServicio: any =[]
   pathEdit: string = "/admin/recepcion/vehiculos/form";
-  vehicle: Vehiculo = {} as Vehiculo;
+  vehicle: Vehiculo = {ordenServicio: [{}]} as Vehiculo;
   params: any;
   // pathVehicle: string = "/mi-garage/servicio";
   pathVehicle: string = "/admin/recepcion/servicios";

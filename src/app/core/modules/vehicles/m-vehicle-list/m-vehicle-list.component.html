@@ -2,11 +2,12 @@
   <table  class="table table-striped table-hover table-borderless  align-middle">
     <thead class="table-dark">
       <tr>
-        <th>id</th>
-        <th>foto</th>
-        <th>vehiculo</th>
-        <th>modelo</th>
-        <th>matricula</th>
+        <th>Id</th>
+        <th>Foto</th>
+        <th>Vehiculo</th>
+        <th>Modelo</th>
+        <th>Matricula</th>
+        <th>Servicios</th>
         <th class="d-print-none" width="150">Opciones</th>
       </tr>
     </thead>
@@ -18,10 +19,11 @@
         <td class="text-row row-link" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">{{ vehicle.modelo.marca.marca | titlecase}} {{ vehicle.modelo.modelo | titlecase}}</td>
         <td class="text-row row-link" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">{{vehicle.anioModelo}}</td>
         <td class="text-row row-link" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">{{vehicle.matricula}}</td>
+        <td class="text-row row-link text-center" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">{{vehicle.ordenServicio.length}}</td>
         <td class="d-print-none">
           <!-- <button class="btn btn-success btn-sm" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">Ver</button>&nbsp; -->
           <button class="btn btn-warning btn-sm" [routerLink]="'/admin/recepcion/vehiculos-form/' + vehicle.idVehiculo">Editar</button>
-          <button class="btn btn-danger btn-sm ms-2" (click)="emitDelete(vehicle.idVehiculo)"><i class="bi bi-trash"></i></button>
+          <button class="btn btn-danger btn-sm ms-2" *ngIf="!vehicle.ordenServicio.length" (click)="emitDelete(vehicle.idVehiculo)"><i class="bi bi-trash"></i></button>
         </td>
       </tr>
 
@@ -34,6 +36,8 @@
   <!-- <div *ngIf="!vehicles.length" class=" text-center border border-yellow text-muted font-light" ><i class="bi bi-exclamation-circle-fill"></i> Aun no se han agregado vehiculos</div> -->
 </div>
 
-
+<!-- <pre>
+  {{ vehicles | json }}
+</pre> -->
 
 

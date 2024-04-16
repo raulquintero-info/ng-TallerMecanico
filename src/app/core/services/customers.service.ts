@@ -32,7 +32,11 @@ export class CustomersService {
     }
 
   }
+
+
+
   setCurrentCustomer(customer: Customer) {
+    console.log('set cliente', customer);
     customer.vehiculos = [];
     this.currentCustomerData.next(customer);
     localStorage.setItem('customer', customer ? JSON.stringify(customer) : '');
@@ -48,7 +52,7 @@ export class CustomersService {
   delete(id: number):Observable<any>{return this.http.delete(this.url + "/" + id)}
 
   //todo: cambiar la ruta para obtener los vehiculos del cliente actual, en esperea de spring security
-  getVehicles():Observable<any>{return this.http.get(this.url+'/1/vehiculos')};
+  getVehicles():Observable<any>{return this.http.get(this.url+'/16/vehiculos')};
   getVehiclesByCustomerId(id: number):Observable<any>{return this.http.get(this.url + `/${id}/vehiculos`)}
 
 }

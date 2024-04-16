@@ -1,9 +1,6 @@
 <div class="container pt-3">
 
-  <!-- <div class="text-end bg-dark p-1 pe-2">
-    <button class="btn btn-primary d-print-none" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;
-    <button class="btn btn-primary d-print-none" [routerLink]="['/admin/recepcion/clientes-form/0']"><i class="bi bi-plus-circle"></i> Agregar</button>
-  </div> -->
+
   <div>
     <app-page-title [title]="title" [subTitle]="customer.nombre + ' ' + customer.apellidoPaterno"
       [printerEnabled]="true" [buttons]="buttons">
@@ -27,8 +24,8 @@
     </div>
 
     <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-4 pt-2 bg-dark text-white pb-3">
+      <div class="row" >
+        <div class="col-md-4 pt-2 mb-3 bg-dark text-white pb-3">
 
           <div class="d-flex bd-highlight pb-2" style="border-bottom: 1px solid rgb(150, 148, 148);">
             <div class="pt-2 flex-fill bd-highlight fw-bold" style="background-color: #16232c;">Datos del Cliente </div>
@@ -63,6 +60,24 @@
           <div>
             <app-m-vehicle-list [vehicles]="customer.vehiculos" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
           </div>
+          <div class="float-end">
+
+              <!-- <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav> -->
+            </div>
 
         </div>
       </div>
@@ -85,7 +100,7 @@
     </div>
   </div>
   <div>
-    <app-m-services-list [services]="services" [pathService]="pathService"></app-m-services-list>
+    <app-m-services-list [services]="services" [customer]="customer" [pathService]="pathService"></app-m-services-list>
   </div>
-
+<pre>{{services|json}}</pre>
 </div>

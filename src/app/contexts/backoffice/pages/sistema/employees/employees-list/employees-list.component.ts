@@ -31,20 +31,21 @@ export class EmployeesListComponent implements OnInit {
     })
   }
 
-  deleteById(id: number){
+  onDeleteById(id: number){
     this.employeesService.delete(id).subscribe({
       next: resp=>{
         this.loadEmployees();
         this.messages.push({ title: "Sistema", timeAgo: "", body: ' Registro Eliminado', type: 'warning' })
       },
       error: resp=>{
+        console.log('resp error', resp);
         this.messages.push({ title: "Sistema", timeAgo: "", body: ' Registro no pudo ser eliminado', type: 'danger' })
       }
     });
   }
 
-  onDeleteById(id: number){
-    this.deleteById(id);
-  }
+  // onDeleteById(id: number){
+  //   this.deleteById(id);
+  // }
 
 }

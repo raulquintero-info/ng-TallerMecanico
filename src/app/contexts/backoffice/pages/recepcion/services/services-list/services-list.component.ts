@@ -11,7 +11,9 @@ export class ServicesListComponent implements OnInit{
   pathService="/admin/recepcion/servicios-view";
   title: string = 'Recepcion';
   subTitle: string = 'Listado de Servicios'
-  buttons =[{text: 'Agregar', path: "/admin/recepcion/servicios-form/0"}];
+  buttons =[
+    // {text: 'Agregar', path: "/admin/recepcion/servicios-form/0"}
+  ];
   services: any;
 
   private servicesService = inject(ServicesService);

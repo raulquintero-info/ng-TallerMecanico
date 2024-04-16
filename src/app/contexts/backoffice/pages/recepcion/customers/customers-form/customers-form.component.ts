@@ -1,4 +1,4 @@
-import { Component,  OnInit,  inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UnsubscriptionError } from 'rxjs';
@@ -23,7 +23,7 @@ export class CustomersFormComponent implements OnInit {
   subTitle: string = "Cliente Nuevo"
   buttons = [];
   customer: Customer = {
-    usuario: {idUsuario: 0, email:'', password: '', rol: []} as Usuario
+    usuario: { idUsuario: 0, email: '', password: '', rol: [] } as Usuario
   } as Customer;
   roles: Rol[] = [{ idRol: 0, nombre: "test" }];
   // user: Usuario = {} as Usuario
@@ -31,8 +31,8 @@ export class CustomersFormComponent implements OnInit {
 
   // toastService = inject(ToastService);
   private route = inject(ActivatedRoute);
-  private router = inject( Router);
-  private customerService = inject(CustomersService);
+  private router = inject(Router);
+  private customersService = inject(CustomersService);
   private rolService = inject(RolService);
   private toastService = inject(ToastService);
 
@@ -41,7 +41,7 @@ export class CustomersFormComponent implements OnInit {
     this.customer.idCliente = this.params.params.id;
     console.log('customer inicio', this.customer);
     if (this.customer.idCliente > 0) {
-      this.customerService.getById(this.customer.idCliente).subscribe({
+      this.customersService.getById(this.customer.idCliente).subscribe({
         next: resp => {
           this.customer = resp;
           this.subTitle = "Editar Cliente"
@@ -66,16 +66,17 @@ export class CustomersFormComponent implements OnInit {
   save() {
 
     this.showSpinner = true;
+
     if (this.customer.idCliente > 0) {
+      this.customer.usuario.rol.push({ idRol: 1, nombre: 'CLIENTE' } as Rol);
       console.log('cliente enviado', this.customer);
-      this.customerService.update(this.customer, 'CLIENTE').subscribe({
+      this.customersService.update(this.customer, 'CLIENTE').subscribe({
         next: resp => {
-          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type:'success' })
+          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Actualizado', type: 'success' })
           // this.customer.usuario = resp.usuario;
           console.log('respUsuario', resp)
           this.showSpinner = false;
-          this.isSaved =true;
-
+          this.isSaved = true;
         },
         error: resp => {
           console.log('update error:', resp)
@@ -90,19 +91,20 @@ export class CustomersFormComponent implements OnInit {
 
       }
       console.log('cliente enviado', data);
-      this.customerService.create(data, 'CLIENTE').subscribe({
+      this.customersService.create(data, 'CLIENTE').subscribe({
         next: resp => {
           console.log('customer resp', resp)
-          this.customer = resp.Cliente
-          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type:'success' })
+          this.customer = resp.Cliente;
+          this.customersService.setCurrentCustomer(resp.Cliente);
+          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
           // this.customer.usuario = resp.usuario;
           console.log('respUsuario', resp)
           this.showSpinner = false;
-          this.isSaved =true;
+          this.isSaved = true;
         },
         error: resp => {
           console.log('create error:', resp);
-          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: 'El Registro no se pudo grabar', type:'danger' })
+          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: 'El Registro no se pudo grabar', type: 'danger' })
           this.respuesta = resp;
           this.showSpinner = false;
         }

@@ -44,6 +44,7 @@ export class RecepcionVehicleComponent  implements OnInit{
         console.log(this.ordenesDeServicio);
       }
     });
+    document.querySelector('#newComment');
   }
 
 

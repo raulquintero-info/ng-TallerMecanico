@@ -1,5 +1,6 @@
 import { Customer } from "./customers.interface";
 import { Modelo } from "./modelo.interface";
+import { OrdenServicio } from "./ordenServicio.interface";
 import { TipoMotor } from "./tipoMotor.interface";
 
 export interface Vehiculo{
@@ -12,4 +13,5 @@ export interface Vehiculo{
   cliente: Customer;
   modelo: Modelo;
   tipoMotor: TipoMotor;
+  ordenServicio: OrdenServicio[];
 }

@@ -17,7 +17,7 @@ export class UserssService {
   getAll():Observable<any>{return this.http.get(this.url)};
   get(id: number):Observable<any>{return this.http.get(this.url + '/' + id)};
   create(user: Usuario):Observable<any>{return this.http.post(this.url, user)};
-
+  deleteById(id: number): Observable<any>{return this.http.delete(this.url + '/' + id)};
 
 
 }

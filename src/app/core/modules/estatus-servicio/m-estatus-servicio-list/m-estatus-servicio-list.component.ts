@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { EstatusServicio } from '../../../interfaces/estatusServicio.interface';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
-import { EstatusServicioService } from '../../../services/estatusServicio.service';
+import { EstatusService } from '../../../services/estatusService.service';
 
 @Component({
   selector: 'app-m-estatus-servicio-list',
@@ -14,7 +14,7 @@ export class MEstatusServicioListComponent implements OnDestroy{
   @Input() estatusServicios: EstatusServicio[] = [];
 
 
-  private estatusServicioService = inject(EstatusServicioService);
+  private estatusServicioService = inject(EstatusService);
 
   delete(estatusServicio: EstatusServicio){
 

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
+import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 
 @Component({
   selector: 'app-vehicle-services',
@@ -10,14 +11,14 @@ import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 })
 export class VehicleServicesComponent implements OnInit {
   @Input() pathVehicle: String ="";
-  @Input() services: OrdenServicio[] = [];
+  @Input() vehicle: Vehiculo = {} as Vehiculo;
 
   // @Input() platformBrowserDynamic
 
   constructor(private router: Router){}
 
   ngOnInit(){
-    console.log(this.services);
+    console.log(this.vehicle);
   }
 
 

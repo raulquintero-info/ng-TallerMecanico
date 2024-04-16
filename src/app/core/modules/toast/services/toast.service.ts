@@ -23,7 +23,7 @@ export class ToastService {
     this.messagesList.next(tempList);
     setInterval(()=>{
 
-      tempList.pop();
+      tempList.shift();
       this.messagesList.next(tempList);
     },15000);
   }
