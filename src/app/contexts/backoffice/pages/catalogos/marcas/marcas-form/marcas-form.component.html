@@ -3,13 +3,11 @@
   <div class="row ">
     <div class="col-md-5 mt-4 bg-primary text-white">
 
-      <img class=" mt-3" src="../../../../../../../assets/images/portadas/marcas_portada.jpg"
-        style="width:100%;
-          box-shadow: rgba(0, 0, 0, .2) 0 5px 30px;"
-        alt="">
-        <div class="mt-3">
-          Lorem ipsum
-        </div>
+      <img class=" mt-3" src="../../../../../../../assets/images/portadas/marcas_portada.jpg" style="width:100%;
+          box-shadow: rgba(0, 0, 0, .2) 0 5px 30px;" alt="">
+      <div class="mt-3">
+        Lorem ipsum
+      </div>
       <p class="mt-2 texto-parrafo">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel lacinia sapien, in suscipit ipsum. Nam ut
         ultrices magna. Integer placerat libero a dolor scelerisque porta. Morbi venenatis, nibh sed cursus ornare,
@@ -26,22 +24,33 @@
       <div class="bg-dark mb-3">&nbsp;</div>
 
 
-
-      <div class=" mb-3">
-        <label for="idCliente" class="form-label">Id</label>
-        <input type="text" class="form-control" id="idMarca" [disabled]="true" [readOnly]="true"
-          [(ngModel)]="marca.idMarca">
-      </div>
-      <div>
+      <form [formGroup]="marcaForm">
         <div class=" mb-3">
-          <label for="marca" class="form-label">Marca</label>
-          <input type="text" class="form-control" id="marca" [(ngModel)]="marca.marca">
+          <label for="idCliente" class="form-label">Id</label>
+          <input formControlName="idMarca" type="text" class="form-control" id="idMarca" [disabled]="true" [readOnly]="true">
         </div>
+        <div>
+          <div class=" mb-3">
+            <label for="marca" class="form-label">Marca</label>
+            <input formControlName="marca" type="text" class="form-control" id="marca" name="marca">
+          </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
-            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
-      </div>
+          <!-- validacion  -->
+          <div
+            *ngIf="marcaForm.controls.marca.invalid && (marcaForm.controls.marca.dirty || marcaForm.controls.marca.touched)"
+            class="alert alert-danger">
+            <div *ngIf="marcaForm.controls.marca.errors?.['required']">
+              La descripción de la marca no puede quedar vacía.
+            </div>
+            <div *ngIf="marcaForm.controls.marca.errors?.['minlength']">
+              Debe tener como mínimo 2 caracteres.
+            </div>
+          </div>
 
+          <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
+              *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

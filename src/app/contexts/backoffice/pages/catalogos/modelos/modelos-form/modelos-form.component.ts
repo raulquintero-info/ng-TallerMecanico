@@ -5,6 +5,7 @@ import { Modelo } from 'src/app/core/interfaces/modelo.interface';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
 import { ModelossService } from 'src/app/core/services/modelos.service';
 import { MarcasService } from '../../../../../../core/services/marcas.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-modelos-form',
@@ -27,7 +28,13 @@ export class ModelosFormComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private modelosService = inject(ModelossService);
   private marcasService = inject(MarcasService);
-
+  private formBuilder = inject(FormBuilder);
+ 
+  
+  modeloForm =this.formBuilder.group({
+    modelo: ['', [Validators.required, Validators.minLength(2)]],
+    marca: [null, Validators.required] // Crear un FormControl para la marca
+  })
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -43,6 +50,12 @@ export class ModelosFormComponent implements OnInit {
           // if(!this.modelo.marca)
           //   this.modelo.marca = {idMarca:1, marca: ''};
           console.log('modelo', this.modelo);
+
+          // Cargar los datos al formulario
+          this.modeloForm.patchValue({
+            modelo: resp.modelo,
+            marca: resp.marca.idMarca 
+          });
         }
       })
     }

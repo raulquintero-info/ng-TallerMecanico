@@ -3,13 +3,11 @@
   <div class="row ">
     <div class="col-md-5 mt-4 bg-primary text-white">
 
-      <img class=" mt-3" src="../../../../../../../assets/images/portadas/estatus_portada.webp"
-        style="width:100%;
-          box-shadow: rgba(0, 0, 0, .2) 0 5px 30px;"
-        alt="">
-        <div class="mt-3">
-          Lorem ipsum
-        </div>
+      <img class=" mt-3" src="../../../../../../../assets/images/portadas/estatus_portada.webp" style="width:100%;
+          box-shadow: rgba(0, 0, 0, .2) 0 5px 30px;" alt="">
+      <div class="mt-3">
+        Lorem ipsum
+      </div>
       <p class="mt-2 texto-parrafo">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel lacinia sapien, in suscipit ipsum. Nam ut
         ultrices magna. Integer placerat libero a dolor scelerisque porta. Morbi venenatis, nibh sed cursus ornare,
@@ -26,22 +24,34 @@
       <div class="bg-dark mb-3">&nbsp;</div>
 
 
-
-      <div class=" mb-3">
-        <label for="idCliente" class="form-label">Id</label>
-        <input type="text" class="form-control" id="idMarca" [disabled]="true" [readOnly]="true"
-          [(ngModel)]="estatusServicio.idEstatusServicio">
-      </div>
-      <div>
+      <form [formGroup]="estatusServicioForm">
         <div class=" mb-3">
-          <label for="marca" class="form-label">Estatus de Servicio</label>
-          <input type="text" class="form-control" id="estatusServicio" [(ngModel)]="estatusServicio.estatusServicio">
+          <label for="idCliente" class="form-label">Id</label>
+          <input type="text" class="form-control" id="idEstatusServicio" [disabled]="true" [readOnly]="true"
+            formControlName="idEstatusServicio">
         </div>
+        <div>
+          <div class=" mb-3">
+            <label for="marca" class="form-label">Estatus de Servicio</label>
+            <input type="text" class="form-control" id="estatusServicio" formControlName="estatusServicio">
+          </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
-            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
-      </div>
+          <!-- validacion  -->
+          <div
+            *ngIf="estatusServicioForm.controls.estatusServicio.invalid && (estatusServicioForm.controls.estatusServicio.dirty || estatusServicioForm.controls.estatusServicio.touched)"
+            class="alert alert-danger">
+            <div *ngIf="estatusServicioForm.controls.estatusServicio.errors?.['required']">
+              La descripción de la marca no puede quedar vacía.
+            </div>
+            <div *ngIf="estatusServicioForm.controls.estatusServicio.errors?.['minlength']">
+              Debe tener como mínimo 5 caracteres.
+            </div>
+          </div>
 
+          <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
+              *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

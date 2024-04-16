@@ -22,30 +22,32 @@
       <div class="bg-dark mb-3">&nbsp;</div>
 
 
-
-      <div class=" mb-3">
-        <label for="idCliente" class="form-label">Id</label>
-        <input type="text" class="form-control" id="idMarca" [disabled]="true" [readOnly]="true"
-          [(ngModel)]="modelo.idModelo">
-      </div>
-      <div>
-        <div class=" mb-3">
+      <form [formGroup]="modeloForm">
+        <div class="mb-3">
           <label for="modelo" class="form-label">Modelo</label>
-          <input type="text" class="form-control" id="modelo" [(ngModel)]="modelo.modelo">
+          <input formControlName="modelo" type="text" class="form-control" id="modelo">
+          <div *ngIf="modeloForm.controls.modelo.invalid && (modeloForm.controls.modelo.dirty || modeloForm.controls.modelo.touched)" class="alert alert-danger">
+            <div *ngIf="modeloForm.controls.modelo.errors?.['required']">La descripción del modelo no puede quedar vacía.</div>
+            <div *ngIf="modeloForm.controls.modelo.errors?.['minlength']">Debe tener como mínimo 2 caracteres.</div>
+          </div>
         </div>
-
-        <div class=" mb-3">
-          <select [(ngModel)]="modelo.marca">
-            <label for="modelo" class="form-label">Marca</label>
-            <!-- <option value="0">Seleccioone una marca</option> -->
-            <option *ngFor="let marca of marcas"  [ngValue]="marca.idMarca">{{marca.marca}} {{marca.idMarca}}</option>
+      
+        <div class="mb-3">
+          <label for="marca" class="form-label">Marca</label>
+          <select formControlName="marca" class="form-select" id="marca">
+            <option value="">Selecciona una marca</option>
+            <option *ngFor="let marca of marcas" [value]="marca.idMarca">{{ marca.marca }}</option>
           </select>
+          <div *ngIf="modeloForm.controls.marca.invalid && (modeloForm.controls.marca.dirty || modeloForm.controls.marca.touched)" class="alert alert-danger">
+            <div *ngIf="modeloForm.controls.marca.errors?.['required']">Debe seleccionar una marca.</div>
+          </div>
         </div>
-        <div class=" mb-3">
-          <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
-              *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
-        </div>
-      </div>
+      
+        <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()">
+          <span *ngIf="showSpinner" class="spinner-border spinner-border-sm"></span> Grabar
+        </button>
+      </form>
+
 
     </div>
   </div>

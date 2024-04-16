@@ -22,22 +22,35 @@
       <div class="bg-dark mb-3">&nbsp;</div>
 
 
-
-      <div class=" mb-3">
-        <label for="idCliente" class="form-label">Id</label>
-        <input type="text" class="form-control" id="idMarca" [disabled]="true" [readOnly]="true"
-          [(ngModel)]="tipoMotor.idTipoMotor">
-      </div>
-      <div>
+      <form [formGroup]="tipoMotorForm">
         <div class=" mb-3">
-          <label for="marca" class="form-label">Tipo de Motor( Combustible )</label>
-          <input type="text" class="form-control" id="marca" [(ngModel)]="tipoMotor.tipoMotor">
+          <label for="idCliente" class="form-label">Id</label>
+          <input type="text" class="form-control" id="idTipoMotor" [disabled]="true" [readOnly]="true"
+          formControlName="idTipoMotor">
         </div>
+        <div>
+          <div class=" mb-3">
+            <label for="marca" class="form-label">Tipo de Motor( Combustible )</label>
+            <input type="text" class="form-control" id="tipoMotor" formControlName="tipoMotor">
+          </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
-            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
-      </div>
+          <!-- validacion  -->
+          <div
+            *ngIf="tipoMotorForm.controls.tipoMotor.invalid && (tipoMotorForm.controls.tipoMotor.dirty || tipoMotorForm.controls.tipoMotor.touched)"
+            class="alert alert-danger">
+            <div *ngIf="tipoMotorForm.controls.tipoMotor.errors?.['required']">
+              La descripción de la marca no puede quedar vacía.
+            </div>
+            <div *ngIf="tipoMotorForm.controls.tipoMotor.errors?.['minlength']">
+              Debe tener como mínimo 5 caracteres.
+            </div>
+          </div>
 
+          <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
+              *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
+        </div>
+      </form>
+      
     </div>
   </div>
 </div>
