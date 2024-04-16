@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Marca } from '../interfaces/marca.interface';
+import { Page } from '../interfaces/page.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class MarcasService {
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
+  getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
   getModelosById(id: number):Observable<any>{return this.http.get(this.url + "/" + id + '/modelos')};
   delete(id: number):Observable<any>{return this.http.delete(this.url + "/" + id)}
