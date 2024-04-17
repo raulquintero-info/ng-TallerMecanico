@@ -41,7 +41,9 @@ import { EmployeesListComponent } from './pages/sistema/employees/employees-list
 import { EmployeesFormComponent } from './pages/sistema/employees/employees-form/employees-form.component';
 import { EmployeesModule } from 'src/app/core/modules/employees/employees.module';
 import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
-
+import { UsersListComponent } from './pages/sistema/users/users-list/users-list.component';
+import { UsersFormComponent } from './pages/sistema/users/users-form/users-form.component';
+import { UsersModule } from 'src/app/core/modules/users/users.module';
 
 
 @NgModule({
@@ -74,7 +76,9 @@ import { PaginationComponent } from 'src/app/shared/components/pagination/pagina
     EstatusServicioFormComponent,
     EmployeesListComponent,
     EmployeesFormComponent,
-    PaginationComponent
+    PaginationComponent,
+    UsersFormComponent,
+    UsersListComponent
   ],
   imports: [
     CommonModule,
@@ -90,7 +94,8 @@ import { PaginationComponent } from 'src/app/shared/components/pagination/pagina
     RolesModule,
     TiposMotorModule,
     EstatusServicioModule,
-    EmployeesModule
+    EmployeesModule,
+    UsersModule
   ],
   exports: [
     NavbarBackComponent
