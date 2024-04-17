@@ -12,5 +12,10 @@
     <app-m-services-list [pathService]="pathService"></app-m-services-list>
 
 
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChanged)="onPageChange($event)"
+    ></app-pagination>
 
 </div>

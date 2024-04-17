@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Page } from 'src/app/core/interfaces/page.interface';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
 import { User } from 'src/app/core/modules/auth/interfaces/user.interface';
 import { UserssService } from 'src/app/core/services/users.service';
@@ -17,11 +18,18 @@ export class UsersListComponent implements OnInit {
   users: User[] = [];
   messages: Toast[] = [];
 
+  currentPage: number = 1;
+  totalPages: number = 1;
+
+  paginador: any;
+
   private usersService = inject(UserssService);
 
   ngOnInit(){
 
-    this.loadEmployees();
+    //this.loadEmployees();
+    
+    this.loadUsuarios(this.currentPage-1);
 
   }
 
@@ -50,4 +58,18 @@ export class UsersListComponent implements OnInit {
     this.deleteById(id);
   }
 
+
+  loadUsuarios(page: number) { 
+    this.usersService
+      .getPaginatedData(page)
+      .subscribe((data: Page<any>) => {
+        this.users = data.content;
+        this.totalPages = data.totalPages;
+        this.currentPage = data.number + 1;
+      });
+  }
+
+  onPageChange(page: number) {
+    this.loadUsuarios(page-1);
+  }
 }
