@@ -1,6 +1,4 @@
-<!-- <div class="container page-title ps-3 pt-3">
-  <h5>Vehiculos - Historial de Servicios</h5>
-</div> -->
+
 <div *ngIf="vehicle.idVehiculo" class="container ps-5 pt-5">
 
 
@@ -12,7 +10,9 @@
       <div class="p-1 ps-2 bd-highlight bg-dark text-light d-print-none">
         <button class="btn btn-outline-light btn-sm" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;
         <button class="btn btn-outline-light btn-sm" [routerLink]="'/admin/recepcion/vehiculos-form/'+ vehicle.idVehiculo">
-          <i class="bi bi-pencil-square"></i> Editar </button>
+          <i class="bi bi-pencil-square"></i> Editar V.</button>
+          <button class="btn ms-1 btn-outline-light btn-sm" [routerLink]="'/admin/recepcion/servicios-form/0/'+vehicle.idVehiculo">
+            <i class="bi bi-plus-circle"></i> Servicio Nuevo </button>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
     </div>
   </div>
   <div>
-    <app-vehicle-services [services]="ordenesDeServicio" [pathVehicle]="pathVehicle">
+    <app-vehicle-services [vehicle]="vehicle" [pathVehicle]="pathVehicle">
     </app-vehicle-services>
   </div>
 

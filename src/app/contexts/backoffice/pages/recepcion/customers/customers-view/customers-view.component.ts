@@ -17,6 +17,8 @@ export class CustomersViewComponent {
   params: any;
   customer: Customer = {} as Customer;
   services: any;
+  openServices: any;
+  buttons = [{text: "Clientes", path: "/admin/recepcion/clientes"}];
   pathVehicle: string ="/admin/recepcion/vehiculos";
   pathService="/admin/recepcion/servicios-view";
 
@@ -42,6 +44,7 @@ export class CustomersViewComponent {
 
       }
     })
+
 
   }
 

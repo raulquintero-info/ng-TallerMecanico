@@ -7,7 +7,7 @@ import { EstatusServicio } from '../interfaces/estatusServicio.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class EstatusServicioService {
+export class EstatusService {
 
 
   url: string = 'http://localhost:8080/api/estatusServicios'

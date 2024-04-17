@@ -7,17 +7,25 @@ import { Toast } from 'src/app/core/interfaces/toast.interface';
 })
 export class ToastService {
 
-  messagesList: BehaviorSubject<Toast> = new BehaviorSubject<Toast>({} as Toast);
+  messagesList: BehaviorSubject<Array<Toast>> = new BehaviorSubject<Toast[]>([]);
 
   constructor() { }
 
 
-  get messages(): Observable<Toast> {
+  get messages(): Observable<Toast[]> {
     return this.messagesList.asObservable();
   }
 
   addMessage(message: Toast){
-    this.messagesList.next(message);
+    let  tempList = this.messagesList.value;
+    message.timeAgo = Date();
+    tempList.push(message);
+    this.messagesList.next(tempList);
+    setInterval(()=>{
+
+      tempList.shift();
+      this.messagesList.next(tempList);
+    },15000);
   }
 
 }

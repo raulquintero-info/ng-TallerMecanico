@@ -19,3 +19,7 @@
   border-bottom: 1px solid black;
 }
 
+pre{
+  padding: 2px;
+  border: 1px solid rgb(168, 168, 168)
+}

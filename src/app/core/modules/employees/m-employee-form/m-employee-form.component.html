@@ -1,0 +1,99 @@
+<form (ngSubmit)="emitEmployee()">
+
+  <div class=" mb-3">
+    <label for="idCliente" class="form-label">Id</label>
+    <input type="idCliente" class="form-control" [disabled]="true" [readOnly]="true" [ngModel]="employee.idEmpleado"
+      id="idCliente" name="idCliente">
+
+  </div>
+
+  <div class=" mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.usuario.email" [readOnly]="employee.idEmpleado>0"
+      [disabled]="employee.idEmpleado>0" id="email" name="email">
+
+  </div>
+  <div class=" mb-3" [hidden]="employee.idEmpleado>0">
+    <label for="password" class="form-label">Contraseña</label>
+    <input type="password" class="form-control" [hidden]="employee.idEmpleado>0" id="password" name="password"
+      [(ngModel)]="employee.usuario.password">
+  </div>
+  <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="employee.idCliente<1">Cambiar
+    Contraseña</button></div> -->
+
+  <div class=" mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.nombre" id="nombre" name="nombre">
+
+  </div>
+  <div class=" mb-3">
+    <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.apellidoPaterno" id="apellidoPaterno"
+      name="apellidoPaterno">
+
+  </div>
+  <div class=" mb-3">
+    <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.apellidoMaterno" id="apellidoMaterno"
+      name="apellidoMaterno">
+
+  </div>
+  <div class=" mb-3">
+    <label for="rfc" class="form-label">RFC</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.rfc" id="rfc" name="rfc">
+
+  </div>
+  <div class=" mb-3">
+    <label for="telefono" class="form-label">Telefono</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.curp" id="telefono" name="telefono">
+
+  </div>
+  <div class=" mb-3">
+    <label for="puesto" class="form-label">Puesto</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.puesto" id="puesto" name="puesto">
+
+  </div>
+  <div class=" mb-3">
+    <label for="observaciones" class="form-label">Observaciones</label>
+    <input type="text" class="form-control" [(ngModel)]="employee.observaciones" id="observaciones"
+      name="observaciones">
+
+  </div>
+
+
+  <!-- <div class=" mb-3" style1="display:none;">
+
+    <label for="rol" class="form-label">Rol</label>
+    <select class="form-select" id="rol" multiple [(ngModel)]="employee.usuario.rol" aria-label="rol"
+    style="height: 120px">
+    <option *ngFor="let b of roles" [selected]="employee.usuario.rol[0].idRol" [ngValue]="b">{{ b.nombre }}</option>
+      </select>
+    </div> -->
+
+  <!-- <ul>
+      <li *ngFor="let item of employee.usuario.rol">
+        <pre>{{item | json}}</pre>
+      </li>
+    </ul> -->
+
+  <!-- <div class=" mb-3">
+      <input type="password" class="" id="password" formControlName="password"
+      placeholder="name@example.com">
+      <label for="floatingInput">Contraseña</label>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
+        <div *ngIf="password.errors?.['required']">La contraseña obligatorio</div>
+      </div>
+    </div> -->
+
+
+
+  <button type="submit" class="btn btn-primary" *ngIf="!isSaved" [disabled]="showSpinner"><span
+        *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
+    </button>
+    <button type="button" class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner"
+      [routerLink]="'/admin/sistema/empleados/'"><span *ngIf="showSpinner"
+        class="spinner-border spinner-border-sm"> </span> Continuar
+    </button>
+
+
+</form>

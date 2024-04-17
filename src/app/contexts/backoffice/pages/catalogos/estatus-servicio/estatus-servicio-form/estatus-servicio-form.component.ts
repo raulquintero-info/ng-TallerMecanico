@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { EstatusServicio } from '../../../../../../core/interfaces/estatusServicio.interface';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
-import { EstatusServicioService } from 'src/app/core/services/estatusServicio.service';
+import { EstatusService } from 'src/app/core/services/estatusService.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -22,7 +22,7 @@ export class EstatusServicioFormComponent implements OnInit {
     { text: "Ver Estatus", path: "/admin/catalogos/estatus-servicio" },
   ];
 
-  private marcasService = inject(EstatusServicioService);
+  private marcasService = inject(EstatusService);
   private route = inject(ActivatedRoute);
   private formBuilder = inject(FormBuilder);
 

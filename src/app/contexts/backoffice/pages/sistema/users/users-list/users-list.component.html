@@ -1,0 +1,25 @@
+<div class="container pt-3">
+  <div>
+    <app-page-title
+      [title]="title"
+      [subTitle]="subTitle"
+      [printerEnabled]="true"
+      [buttons]="buttons"
+      >
+    </app-page-title>
+
+  </div>
+  <div class="">
+    <app-m-users-list
+      [users]="users"
+      (onDeleteId)="onDeleteById($event)"
+      pathCustomer="/admin/recepcion/clientes"
+      >
+    </app-m-users-list>
+  </div>
+
+
+
+
+
+</div>

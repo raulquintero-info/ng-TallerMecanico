@@ -19,12 +19,13 @@
       <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"></app-page-title>
       <div class="bg-dark mb-3">&nbsp;</div>
 
+      <form  (submit)="save()">
 
 
       <div class=" mb-3">
         <label for="idCliente" class="form-label">Id</label>
         <input type="idCliente" class="form-control" id="idCliente" [disabled]="true" [readOnly]="true"
-          [ngModel]="customer.idCliente">
+          [ngModel]="customer.idCliente" name="idCliente">
 
       </div>
       <div>
@@ -32,57 +33,56 @@
         <div class=" mb-3">
           <label for="email" class="form-label">Email</label>
           <input type="text" class="form-control" [(ngModel)]="customer.usuario.email" [readOnly]="customer.idCliente>0"
-            [disabled]="customer.idCliente>0" id="email">
+            [disabled]="customer.idCliente>0" id="email" name="email">
 
         </div>
         <div class=" mb-3" [hidden]="customer.idCliente>0">
           <label for="password" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" [hidden]="customer.idCliente>0" id="password"
-            [(ngModel)]="customer.usuario.password">
+          <input type="password" class="form-control" [hidden]="customer.idCliente>0"
+            [(ngModel)]="customer.usuario.password" id="password" name="password">
         </div>
         <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="customer.idCliente<1">Cambiar
             Contraseña</button></div> -->
 
         <div class=" mb-3">
           <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" [(ngModel)]="customer.nombre">
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="customer.nombre" name="nombre">
 
         </div>
         <div class=" mb-3">
           <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
-          <input type="text" class="form-control" id="apellidoPaterno" [(ngModel)]="customer.apellidoPaterno">
+          <input type="text" class="form-control" id="apellidoPaterno" [(ngModel)]="customer.apellidoPaterno" name="apellidoPaterno">
 
         </div>
         <div class=" mb-3">
           <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
-          <input type="text" class="form-control" id="apellidoMaterno" [(ngModel)]="customer.apellidoMaterno">
+          <input type="text" class="form-control" id="apellidoMaterno" [(ngModel)]="customer.apellidoMaterno" name="apellidoMaterno">
 
         </div>
         <div class=" mb-3">
           <label for="domicilio" class="form-label">Domicilio</label>
-          <input type="text" class="form-control" id="domicilio" [(ngModel)]="customer.domicilio">
+          <input type="text" class="form-control" id="domicilio" [(ngModel)]="customer.domicilio" name =domicilio>
 
         </div>
         <div class=" mb-3">
           <label for="telefono" class="form-label">Telefono</label>
-          <input type="text" class="form-control" id="telefono" [(ngModel)]="customer.telefono">
+          <input type="text" class="form-control" id="telefono" [(ngModel)]="customer.telefono" name="telefono">
 
         </div>
 
         <div class=" mb-3" style="display:none;">
-
           <label for="rol" class="form-label">Rol</label>
-          <select class="form-select" id="rol" multiple [(ngModel)]="customer.usuario.rol" aria-label="rol"
+          <select class="form-select" id="rol" multiple [(ngModel)]="customer.usuario.rol" aria-label="rol" name="rol"
             style="height: 120px">
             <option *ngFor="let b of roles" [ngValue]="b">{{ b.nombre }}</option>
           </select>
         </div>
 
-        <ul>
+        <!-- <ul>
           <li *ngFor="let item of customer.usuario.rol">
             <pre>{{item | json}}</pre>
           </li>
-        </ul>
+        </ul> -->
 
         <!-- <div class=" mb-3">
             <input type="password" class="" id="password" formControlName="password"
@@ -93,14 +93,15 @@
             </div>
           </div> -->
 
-        <button type="submit" class="btn btn-primary" *ngIf="!isSaved" [disabled]="showSpinner" (click)="save()"><span
+        <button type="submit" class="btn btn-primary" *ngIf="!isSaved"  [disabled]="showSpinner"><span
             *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
         </button>
-        <button type="submit" class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner" [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente"><span
-            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Continuar
-        </button>
-        <!-- {{ respuesta.error.mensaje }} -->
       </div>
+    </form>
+    <button class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner" [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente"><span
+        *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Continuar
+    </button>
+    <!-- {{ respuesta.error.mensaje }} -->
     </div>
   </div>
 
@@ -108,4 +109,3 @@
 
 </div>
 
-<app-toast [toasts]="messages" class="position-realtive"></app-toast>

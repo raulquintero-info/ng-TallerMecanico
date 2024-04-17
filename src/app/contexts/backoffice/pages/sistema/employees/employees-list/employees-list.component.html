@@ -1,10 +1,5 @@
 
 <div class="container pt-3">
-
-  <!-- <div class="text-end bg-dark p-1 pe-2">
-    <button class="btn btn-primary d-print-none" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;
-    <button class="btn btn-primary d-print-none" [routerLink]="['/admin/recepcion/clientes-form/0']"><i class="bi bi-plus-circle"></i> Agregar</button>
-  </div> -->
   <div>
     <app-page-title
       [title]="title"
@@ -18,6 +13,7 @@
   <div class="">
     <app-m-employees-list
       [employees]="employees"
+      (onDeleteId)="onDeleteById($event)"
       pathCustomer="/admin/recepcion/clientes"
       >
     </app-m-employees-list>

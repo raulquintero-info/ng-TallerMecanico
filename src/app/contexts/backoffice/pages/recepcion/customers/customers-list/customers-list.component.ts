@@ -8,6 +8,8 @@ import { CustomersService } from 'src/app/core/services/customers.service';
   styleUrls: ['./customers-list.component.css']
 })
 export class CustomersListComponent implements OnInit {
+  isLoadingCustomers: boolean = true;
+  errorMessage: string = '';
   customers: any;
   params: any;
   title: string = "Recepcion";
@@ -28,6 +30,11 @@ getall(){
     next: resp=>{
       console.log(resp);
       this.customers = resp;
+      this.isLoadingCustomers = false;
+    },
+    error: resp=>{
+      this.isLoadingCustomers = false;
+      this.errorMessage = 'Hubo un problema al tratar de obtener la informacion';
     }
   })
 }
