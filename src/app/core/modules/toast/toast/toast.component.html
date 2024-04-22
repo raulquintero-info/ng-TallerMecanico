@@ -12,12 +12,12 @@
     </div>
     <div *ngIf="toast.type == 'warning' " class="toast-header  bg-warning text-light">
       <strong class="me-auto"><i class="bi-globe"></i> {{toast.title}}</strong>
-      <small>{{toast.timeAgo}}</small>
+      <small>{{toast.timeAgo | date:'shortTime'}}</small>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
     </div>
     <div *ngIf="toast.type == 'danger' " class="toast-header  bg-danger text-light">
       <strong class="me-auto"><i class="bi-globe"></i> {{toast.title}}</strong>
-      <small>{{toast.timeAgo}}</small>
+      <small>{{toast.timeAgo | date:'shortTime'}}</small>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
     </div>
     <div class="toast-body">

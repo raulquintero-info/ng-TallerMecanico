@@ -15,8 +15,8 @@
   padding-right: 4px;
 }
 
-.last-line {
-  border-bottom: 1px solid black;
+.total-line {
+  border-top: 1px solid black;
 }
 
 pre{

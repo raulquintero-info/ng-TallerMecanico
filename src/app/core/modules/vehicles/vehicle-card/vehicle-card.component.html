@@ -1,86 +1,20 @@
-<!-- <div>
-  <h5 class="ps-2 text-white"> {{ vehicle.modelo.marca.marca | titlecase}} {{ vehicle.modelo.modelo | titlecase}}
-    | {{ vehicle.anioModelo}} <span *ngIf="pathEdit" class="clickable text-warning"
-    [routerLink]="['/admin/recepcion/vehiculos-form/' + vehicle.idVehiculo]">
-    <i class="bi bi-pencil-square"></i></span>
-  </h5>
-  </div> -->
 
 
-<!-- <div class="d-flex flex-sm-row  flex-wrap" style1="min-width:600px">
-  <div class="d-flex bd-highlight">
-
-    <div class="p-2 flex-fill bd-highlight">
-
-      <div class="d-flex p-3 flex-sm " style="min-width:400px; background-color:white">
-        <div class="mr-auto">
-          <span class="vehicle-campo">Id:</span> <span class="vehicle-text"> {{vehicle.idVehiculo}}</span>
-          <div class="vehicle-text">{{ vehicle.modelo.marca.marca | titlecase}} <br>{{ vehicle.modelo.modelo |
-            titlecase}}</div>
-          <div class="vehicle-text">{{ vehicle.tipoMotor | titlecase}}Gasolina</div>
-          <div> <span class="vehicle-campo">Año: </span><span class="vehicle-text"> {{ vehicle.anioModelo}}</span>,
-          </div>
-          <div><span class="vehicle-campo">Odo: </span> <span class="vehicle-text"> odometro km</span> </div>
-        </div>
-        <div class="align-self-end ms-3">
-          <div *ngIf="path!=undefined" class="mb-2" style="text-align:center">
-            <button class="btn btn-outline-primary btn-sm" *ngIf="path"
-              [routerLink]="this.path + '/'+ vehicle.idVehiculo">Ver Historial</button>
-          </div>
-          <div><span class="vehicle-campo">Placas: </span> <span class="vehicle-text"> {{vehicle.matricula |
-              uppercase}}</span></div>
-          <div><span class="vehicle-campo">VIN: </span> <span class="vehicle-text"> {{vehicle.vin | uppercase}}</span>
-          </div>
-          <div><span class="vehicle-campo">Ultimo Ingreso: </span> <span class="vehicle-text"> lastService</span></div>
-          <div><span class="vehicle-campo">Desde: </span><span class="vehicle-text">created_at</span></div>
-        </div>
-      </div>
-
-    </div>
-    <div class="p-2 flex-fill bd-highlight">
-      <div class="mr-auto pe-2" style1="min-width:160px;"><img [src]="vehicle.imagen"
-          style="max-width:100%;max-height:100%"></div>
-    </div>
+<div class="card text-center m-2" style="width: 180px">
+  <div class="card-header">
+   {{ vehicle.anioModelo}}
   </div>
-</div> -->
-
-
-
-
-<div class="row mb-3" style="min-width:570px; border: 0px solid blue">
-  <div class="p-2 col-md-9">
-    <div class="d-flex p-3 flex-md " style="min-width:380px; background-color:white">
-      <div class="mr-auto">
-        <span class="vehicle-campo">Id:</span> <span class="vehicle-text"> {{vehicle.idVehiculo}}</span>
-        <div class="vehicle-text">{{ vehicle.modelo.marca.marca | titlecase}} <br>{{ vehicle.modelo.modelo | titlecase}}
-        </div>
-        <div class="vehicle-text">{{ vehicle.tipoMotor.tipoMotor| titlecase}} </div>
-        <div> <span class="vehicle-campo">Año: </span><span class="vehicle-text"> {{ vehicle.anioModelo}}</span>,</div>
-        <div><span class="vehicle-campo">Odo: </span> <span class="vehicle-text"> odometro km</span> </div>
-      </div>
-      <div>&nbsp;</div>
-      <div class="align-self-end ms-3">
-        <div *ngIf="path!=undefined" class="mb-2" style="text-align:center">
-          <button class="btn btn-outline-primary btn-sm" *ngIf="path"
-            [routerLink]="this.path + '/'+ vehicle.idVehiculo">Ver Historial</button>
-        </div>
-        <div><span class="vehicle-campo">Placas: </span> <span class="vehicle-text"> {{vehicle.matricula |
-            uppercase}}</span></div>
-        <div><span class="vehicle-campo">VIN: </span> <span class="vehicle-text"> {{vehicle.vin| uppercase}}</span>
-        </div>
-        <div><span class="vehicle-campo">Ultimo Ingreso: </span> <span class="vehicle-text"> lastService</span></div>
-        <div><span class="vehicle-campo">Desde: </span><span class="vehicle-text">created_at</span></div>
-      </div>
-      <!-- <div style="text-align:center;">
-        <img [src]="'/assets/images/logos/' + vehicle.modelo.marca.marca + '.png'" style="max-height: 130px"></div> -->
-    </div>
-  </div>
-  <div class="p-2 col-md-3">
+  <div class="card-body">
     <div *ngIf="vehicle.imagen" class="mr-auto pe-2" style="max-width:300px;"><img class="rounded"
-        [src]="vehicle.imagen" style="max-width:100%;max-height:100%">
-    </div>
-    <div *ngIf="!vehicle.imagen" class="mr-auto pe-2" style="max-width:300px;"><img class="rounded"
-        src="../../../../../assets/images/cars/no_image.jpg" style="max-width:100%;max-height:100%">
-    </div>
+      [src]="vehicle.imagen" style="max-width:100%;height:80px">
+  </div>
+  <div *ngIf="!vehicle.imagen" class="mr-auto pe-2" style="max-width:300px;"><img class="rounded"
+      src="../../../../../assets/images/cars/no_image.jpg" style="max-width:100%;height:80px">
+  </div>
+    <!-- <h4 class="card-title">{{ vehicle.modelo.modelo}}</h4> -->
+    <p class="card-text">
+      {{vehicle.modelo.marca.marca + ' ' + vehicle.modelo.modelo | titlecase}}
+      {{ vehicle.vin | slice: 0 :8}}
+    </p>
   </div>
 </div>

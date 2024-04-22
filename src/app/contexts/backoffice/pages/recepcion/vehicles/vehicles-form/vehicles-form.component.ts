@@ -47,24 +47,25 @@ export class VehiclesFormComponent implements OnInit {
 
   ngOnInit(){
     this.route.paramMap.subscribe(params => this.params = params);
-    this.customer.idCliente = this.params.get('idCustomer');
+    // this.customer.idCliente = this.params.get('idCustomer');
     this.vehicle.idVehiculo = this.params.get('idVehicle');
     console.log(this.params.params.id);
 
-    if(this.customer.idCliente>0){
-      this.customersService.getById(this.customer.idCliente).subscribe({
-        next: (customer: Customer)=>{
-          customer.vehiculos = [];
-          this.customer = customer;
-          this.vehicle.cliente = customer;
-        }
-      })
-    }
+    // if(this.customer.idCliente>0){
+    //   this.customersService.getById(this.customer.idCliente).subscribe({
+    //     next: (customer: Customer)=>{
+    //       customer.vehiculos = [];
+    //       this.customer = customer;
+    //       this.vehicle.cliente = customer;
+    //     }
+    //   })
+    // }
     if(this.vehicle.idVehiculo>0){
       this.vehiclesService.get(this.vehicle.idVehiculo).subscribe({
         next: (vehicle: Vehiculo)=>{
           console.log('vehicle', vehicle)
           this.vehicle = vehicle;
+          this.vehicle.ordenServicio = [];
           this.customersService.currentCustomer.subscribe({
             next: resp=>{
               this.vehicle.cliente = resp;

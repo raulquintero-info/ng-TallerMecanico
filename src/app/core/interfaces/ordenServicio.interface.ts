@@ -1,3 +1,5 @@
+import { DetalleOrdenServicios } from "./detalleOrdenServicios.interface";
+import { Employee } from "./employee.interface";
 import { EstatusServicio } from "./estatusServicio.interface";
 import { Vehiculo } from "./vehiculo.interface";
 
@@ -12,4 +14,6 @@ export interface OrdenServicio{
   observaciones: string;
   comentarios: string;
   estatusServicio: EstatusServicio;
+  detalleOrdenServicios: DetalleOrdenServicios[];
+  empleado: Employee
 }

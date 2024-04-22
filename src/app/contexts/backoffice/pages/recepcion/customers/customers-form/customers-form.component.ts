@@ -44,6 +44,7 @@ export class CustomersFormComponent implements OnInit {
       this.customersService.getById(this.customer.idCliente).subscribe({
         next: resp => {
           this.customer = resp;
+          this.customer.vehiculos =[];
           this.subTitle = "Editar Cliente"
           console.log('cliente recibido', this.customer)
 

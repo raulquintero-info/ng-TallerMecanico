@@ -3,18 +3,20 @@
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th scope="col">Titulo</th>
+        <th>ID</th>
+        <th scope="col">Fecha</th>
         <th>Vehiculo</th>
-        <th scope="col">Fecha de Entrada</th>
+        <th scope="col">Falla</th>
         <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let service of services" (click)="verServicio(service.idOrdenServicio)" style="cursor: pointer">
+        <td class="text-row">{{service.idOrdenServicio}}</td>
         <td  class="text-row" scope="row">{{ service.fechaOrden | date: 'short'}}</td>
-        <td> {{ service.idServicio }}</td>
-        <td  class="text-row">{{ service.falla }}</td>
-        <td  class="text-row">{{ service.estatusServicio.estatusServicio }}</td>
+        <td class="text-row"> {{ service.vehiculo.modelo.marca.marca +' '+ service.vehiculo.modelo.modelo  | titlecase}}</td>
+        <td  class="text-row">{{ service.falla | titlecase}}</td>
+        <td  class="text-row">{{ service.estatusServicio.estatusServicio | titlecase}}</td>
       </tr>
 
     </tbody>

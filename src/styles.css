@@ -41,3 +41,10 @@
   cursor:pointer;
   text-decoration: underline;
 }
+.cancelBtn{
+  border-right: 10px solid #df3545
+}
+
+.acceptBtn{
+  border-right: 10px solid #028a02
+}

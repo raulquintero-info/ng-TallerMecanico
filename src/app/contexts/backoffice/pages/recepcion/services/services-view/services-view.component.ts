@@ -14,6 +14,8 @@ import { formatDate } from '@angular/common';
 import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
 import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { CustomersService } from '../../../../../../core/services/customers.service';
+import { DetalleOrdenServicios } from 'src/app/core/interfaces/detalleOrdenServicios.interface';
+import { Employee } from 'src/app/core/interfaces/employee.interface';
 
 @Component({
   selector: 'app-services-view',
@@ -22,6 +24,8 @@ import { CustomersService } from '../../../../../../core/services/customers.serv
 })
 export class ServicesViewComponent implements OnInit {
   showBoxComment: boolean = false;
+  showBoxAddItem: boolean = false;
+  item: DetalleOrdenServicios = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
   title: string = 'Taller AutoPro';
   subTitle: string = 'Orden de Servicio'
   buttons = [
@@ -29,7 +33,7 @@ export class ServicesViewComponent implements OnInit {
   ];
 
   currentCustomer: Customer = {} as Customer;
-  service: OrdenServicio = { estatusServicio: {idEstatusServicio:0} as EstatusServicio } as OrdenServicio;
+  service: OrdenServicio = { idOrdenServicio: 0, estatusServicio: {idEstatusServicio:0} as EstatusServicio } as OrdenServicio;
   vehicle: Vehiculo = { modelo: { marca: {} as Marca } as Modelo } as Vehiculo;
   servicio: OrdenServicio = {} as OrdenServicio;
   statusList: EstatusServicio[] = []
@@ -54,19 +58,7 @@ export class ServicesViewComponent implements OnInit {
       this.loadService();
     });
 
-    this.servicesService.getById(this.params.get('id')).subscribe({
-      next: resp => {
-        console.log('servicio', resp)
-        this.service = resp;
-      }
-    })
 
-    this.vehiclesService.get(this.params.get('idVehiculo')).subscribe({
-      next: resp => {
-        console.log('vehiculos', resp)
-        this.vehicle = resp;
-      }
-    })
 
     this.statusService.getAll().subscribe({
       next: resp => {
@@ -86,12 +78,46 @@ export class ServicesViewComponent implements OnInit {
   loadService() {
     this.servicesService.getById(this.params.get('id')).subscribe({
       next: resp => {
-        console.log('servicio', resp)
+        console.log('servicio cargado', resp)
         this.service = resp;
+        this.vehicle = resp.vehiculo;
+      },
+      error: resp=>{
+        console.log('error');
       }
+
     });
 
   }
+
+  addItem(){
+    console.log('agregando item')
+    this.item.ordenServicio.idOrdenServicio = this.service.idOrdenServicio;
+    this.servicesService.addItem(this.item).subscribe({
+      next: resp =>{
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Sericio Agregado", type:'success' })
+        this.showBoxAddItem =false;
+        this.loadService();
+
+      },
+      error: resp=>{
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo agregar el item", type:'danger' })
+
+      }
+    });
+  }
+
+  deleteItem(id: number){
+    console.log('eliminar item')
+    this.servicesService.deleteItem(id).subscribe({
+      next: resp=>{
+
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Servicio Eliminado", type:'warning' })
+        this.loadService();
+      }
+    });
+  }
+
 
   displayBoxComment() {
     this.showBoxComment=true;
@@ -105,7 +131,6 @@ export class ServicesViewComponent implements OnInit {
 
   getDate(): string{
     return formatDate(new Date(), 'yyyy-MM-dd HH:mm', 'en-US');
-    // return `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()} ${fecha.getHours()}:${fecha.getMinutes()} ${fecha.getTime()}`;
   }
 
   addComment(){
@@ -120,21 +145,19 @@ export class ServicesViewComponent implements OnInit {
   }
 
   save(message: string){
-    this.vehicle.ordenServicio =[];
-    this.vehicle.cliente= this.currentCustomer;
-    this.service.vehiculo = this.vehicle ;
-
-
-    console.log('servicio enviado',this.service);
+    this.service.vehiculo!.ordenServicio =[];
+   
     this.servicesService.saveOrUpdate(this.service).subscribe({
       next: resp=>{
+        // debugger
         console.log('response service',resp)
         this.service=resp.OrdenDeServicio;
+        this.service.vehiculo = this.vehicle
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: message, type:'success' })
       },
       error: (resp: any)=>{
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Hubo un problema al tratar de Grabar', type:'danger' })
-        console.log(resp);
+        console.log('error',resp);
 
       }
     });

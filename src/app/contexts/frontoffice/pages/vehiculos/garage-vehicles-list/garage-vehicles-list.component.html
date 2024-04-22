@@ -11,10 +11,12 @@
 
 
 
-      <div class="row" *ngFor="let vehicle of vehicles">
-        <div class="pt-2 pb-2 mb-2" style="background-color: #fd3a3a;">
+      <div class="row" >
+        <div class="d-flex flex-wrap pt-2 pb-2 mb-2" style1="background-color: #fd3a3a;">
+          <div *ngFor="let vehicle of vehicles">
 
-          <app-vehicle-card [vehicle]="vehicle" [path]="pathVehicle"></app-vehicle-card>
+            <app-vehicle-card  [vehicle]="vehicle" [path]="pathVehicle"></app-vehicle-card>
+          </div>
         </div>
       </div>
 

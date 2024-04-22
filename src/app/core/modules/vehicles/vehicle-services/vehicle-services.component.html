@@ -14,7 +14,7 @@
             <td scope="row">{{service.fechaOrden |date}}</td>
             <td>{{service.falla}}</td>
             <td>{{service.estatusServicio.estatusServicio}}</td>
-            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio + '/' + vehicle.idVehiculo]">Ver</button></td>
+            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">Ver</button></td>
           </tr>
           <!-- <tr class="">
             <td scope="row">25-ene-2024</td>

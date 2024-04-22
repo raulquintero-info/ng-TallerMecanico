@@ -61,7 +61,7 @@ export class ServicesFormComponent implements OnInit {
   save(){
     this.vehicle.cliente = this.currentCustomer;
     this.vehicle.ordenServicio = [];
-    this.service.vehiculos =  {idVehiculo:this.vehicle.idVehiculo} as Vehiculo;
+    this.service.vehiculo =  {idVehiculo:this.vehicle.idVehiculo} as Vehiculo;
     this.service.estatusServicio = {idEstatusServicio:1} as EstatusServicio;
     this.service.fechaOrden = new Date().toUTCString();
     console.log('servicio enviado', this.service);
@@ -69,11 +69,14 @@ export class ServicesFormComponent implements OnInit {
       next: resp=>{
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Servicio Grabado', type: 'success' })
         console.log('servicio resp', resp);
-        this.service = resp.OrdenDeServicio;
-        this.router.navigate(['admin/recepcion/servicios-view/'+resp.OrdenDeServicio.idOrdenServicio +'/' + this.vehicle.idVehiculo]);
+        this.service = resp.ordenDeServicio;
+        this.router.navigate(['admin/recepcion/servicios-view/'+resp.ordenDeServicio.idOrdenServicio +'/' + this.vehicle.idVehiculo]);
       },
       error: resp=>{
         console.log('error', resp)
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Servicio Grabado', type: 'success' })
+        // this.router.navigate(['admin/recepcion/servicios-view/'+resp.OrdenDeServicio.idOrdenServicio +'/' + this.vehicle.idVehiculo]);
+
       }
     });
   }

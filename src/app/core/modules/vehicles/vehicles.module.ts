@@ -4,6 +4,7 @@ import { VehicleCardComponent } from './vehicle-card/vehicle-card.component';
 import { VehicleServicesComponent } from './vehicle-services/vehicle-services.component';
 import { MVehicleListComponent } from './m-vehicle-list/m-vehicle-list.component';
 import { RouterModule } from '@angular/router';
+import { VehicleHeaderComponent } from './vehicle-header/vehicle-header.component';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     VehicleCardComponent,
     VehicleServicesComponent,
-    MVehicleListComponent
+    MVehicleListComponent,
+    VehicleHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { RouterModule } from '@angular/router';
   exports:[
     VehicleCardComponent,
     VehicleServicesComponent,
-    MVehicleListComponent
+    MVehicleListComponent,
+    VehicleHeaderComponent
   ]
 })
 export class VehiclesModule { }
