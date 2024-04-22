@@ -19,72 +19,164 @@
       <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"></app-page-title>
       <div class="bg-dark mb-3">&nbsp;</div>
 
-      <form  (submit)="save()">
 
-
-      <div class=" mb-3">
-        <label for="idCliente" class="form-label">Id</label>
-        <input type="idCliente" class="form-control" id="idCliente" [disabled]="true" [readOnly]="true"
-          [ngModel]="customer.idCliente" name="idCliente">
-
-      </div>
-      <div>
+      <form [formGroup]="customersForm" (submit)="save()">
 
         <div class=" mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" [(ngModel)]="customer.usuario.email" [readOnly]="customer.idCliente>0"
-            [disabled]="customer.idCliente>0" id="email" name="email">
+          <label for="idCliente" class="form-label">Id</label>
+          <input type="idCliente" class="form-control" id="idCliente" [disabled]="true" [readOnly]="true"
+            formControlName="idCliente" name="idCliente">
 
         </div>
-        <div class=" mb-3" [hidden]="customer.idCliente>0">
-          <label for="password" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" [hidden]="customer.idCliente>0"
-            [(ngModel)]="customer.usuario.password" id="password" name="password">
-        </div>
-        <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="customer.idCliente<1">Cambiar
+        <div>
+
+          <div class=" mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" formControlName="email"
+              [readOnly]="customer.idCliente>0" [disabled]="customer.idCliente>0" id="email" name="email">
+          </div>
+
+          <!-- validacion  -->
+          <div
+            *ngIf="customersForm.controls.email.invalid  && (customersForm.controls.email.dirty || customersForm.controls.email.touched)"
+            class="alert alert-danger">
+            <div *ngIf="customersForm.controls.email.errors?.['required']">
+              El email es requerido.
+            </div>
+            <div *ngIf="customersForm.controls.email.errors?.['email']">
+              El Email debe tener un formato válido.
+            </div>
+          </div>
+
+
+          <div class=" mb-3" [hidden]="customer.idCliente>0">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" [hidden]="customer.idCliente>0"
+              formControlName="password" id="password" name="password">
+          </div>
+          <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="customer.idCliente<1">Cambiar
             Contraseña</button></div> -->
 
-        <div class=" mb-3">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" [(ngModel)]="customer.nombre" name="nombre">
-
-        </div>
-        <div class=" mb-3">
-          <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
-          <input type="text" class="form-control" id="apellidoPaterno" [(ngModel)]="customer.apellidoPaterno" name="apellidoPaterno">
-
-        </div>
-        <div class=" mb-3">
-          <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
-          <input type="text" class="form-control" id="apellidoMaterno" [(ngModel)]="customer.apellidoMaterno" name="apellidoMaterno">
-
-        </div>
-        <div class=" mb-3">
-          <label for="domicilio" class="form-label">Domicilio</label>
-          <input type="text" class="form-control" id="domicilio" [(ngModel)]="customer.domicilio" name =domicilio>
-
-        </div>
-        <div class=" mb-3">
-          <label for="telefono" class="form-label">Telefono</label>
-          <input type="text" class="form-control" id="telefono" [(ngModel)]="customer.telefono" name="telefono">
-
+            <!-- validacion  -->
+          <div
+          *ngIf="customersForm.controls.password.invalid  && (customersForm.controls.password.dirty || customersForm.controls.password.touched)"
+          class="alert alert-danger">
+          <div *ngIf="customersForm.controls.password.errors?.['required']">
+            El password no puede quedar vacío.
+          </div>
+          <div *ngIf="customersForm.controls.password.errors?.['minlength']">
+            Debe tener como mínimo 8 caracteres.
+          </div>
         </div>
 
-        <div class=" mb-3" style="display:none;">
-          <label for="rol" class="form-label">Rol</label>
-          <select class="form-select" id="rol" multiple [(ngModel)]="customer.usuario.rol" aria-label="rol" name="rol"
-            style="height: 120px">
-            <option *ngFor="let b of roles" [ngValue]="b">{{ b.nombre }}</option>
-          </select>
-        </div>
+          <div class=" mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" name="nombre">
 
-        <!-- <ul>
+          </div>
+
+          <!-- validacion  -->
+          <div
+            *ngIf="customersForm.controls.nombre.invalid  && (customersForm.controls.nombre.dirty || customersForm.controls.nombre.touched)"
+            class="alert alert-danger">
+            <div *ngIf="customersForm.controls.nombre.errors?.['required']">
+              el nombre no puede quedar vacío.
+            </div>
+            <div *ngIf="customersForm.controls.nombre.errors?.['minlength']">
+              Debe tener como mínimo 5 caracteres.
+            </div>
+          </div>
+
+          <div class=" mb-3">
+            <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+            <input type="text" class="form-control" id="apellidoPaterno" formControlName="apellidoPat"
+              name="apellidoPaterno">
+
+          </div>
+
+          <!-- validacion  -->
+          <div
+            *ngIf="customersForm.controls.apellidoPat.invalid  && (customersForm.controls.apellidoPat.dirty || customersForm.controls.apellidoPat.touched)"
+            class="alert alert-danger">
+            <div *ngIf="customersForm.controls.apellidoPat.errors?.['required']">
+              El apellido paterno no puede quedar vacío.
+            </div>
+            <div *ngIf="customersForm.controls.apellidoPat.errors?.['minlength']">
+              Debe tener como mínimo 5 caracteres.
+            </div>
+          </div>
+
+          <div class=" mb-3">
+            <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+            <input type="text" class="form-control" id="apellidoMaterno" formControlName="apellidoMat"
+              name="apellidoMaterno">
+
+          </div>
+
+          <!-- validacion  -->
+          <div
+            *ngIf="customersForm.controls.apellidoMat.invalid  && (customersForm.controls.apellidoMat.dirty || customersForm.controls.apellidoMat.touched)"
+            class="alert alert-danger">
+            <div *ngIf="customersForm.controls.apellidoMat.errors?.['required']">
+              El apellido materno no puede quedar vacío.
+            </div>
+            <div *ngIf="customersForm.controls.apellidoMat.errors?.['minlength']">
+              Debe tener como mínimo 5 caracteres.
+            </div>
+          </div>
+
+          <div class=" mb-3">
+            <label for="domicilio" class="form-label">Domicilio</label>
+            <input type="text" class="form-control" id="domicilio" formControlName="domicilio" name=domicilio>
+
+          </div>
+
+          <!-- validacion  -->
+          <div
+            *ngIf="customersForm.controls.domicilio.invalid  && (customersForm.controls.domicilio.dirty || customersForm.controls.domicilio.touched)"
+            class="alert alert-danger">
+            <div *ngIf="customersForm.controls.domicilio.errors?.['required']">
+              El domicilio no puede quedar vacío.
+            </div>
+            <div *ngIf="customersForm.controls.domicilio.errors?.['minlength']">
+              Debe tener como mínimo 10 caracteres.
+            </div>
+          </div>
+
+          <div class=" mb-3">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input type="number" class="form-control" id="telefono" formControlName="telefono" name="telefono">
+
+          </div>
+
+          <!-- validacion  -->
+          <div
+            *ngIf="customersForm.controls.telefono.invalid  && (customersForm.controls.telefono.dirty || customersForm.controls.telefono.touched)"
+            class="alert alert-danger">
+            <div *ngIf="customersForm.controls.telefono.errors?.['required']">
+              El telefono no puede quedar vacío.
+            </div>
+            <div *ngIf="customersForm.controls.telefono.errors?.['minlength']">
+              Debe tener como mínimo 10 digitos.
+            </div>
+          </div>
+
+
+          <div class=" mb-3" style="display:none;">
+            <label for="rol" class="form-label">Rol</label>
+            <select class="form-select" id="rol" multiple [(ngModel)]="customer.usuario.rol" [ngModelOptions]="{standalone: true}" aria-label="rol" name="rol"
+              style="height: 120px">
+              <option *ngFor="let b of roles" [ngValue]="b">{{ b.nombre }}</option>
+            </select>
+          </div>
+
+          <!-- <ul>
           <li *ngFor="let item of customer.usuario.rol">
             <pre>{{item | json}}</pre>
           </li>
         </ul> -->
 
-        <!-- <div class=" mb-3">
+          <!-- <div class=" mb-3">
             <input type="password" class="" id="password" formControlName="password"
               placeholder="name@example.com">
             <label for="floatingInput">Contraseña</label>
@@ -93,19 +185,19 @@
             </div>
           </div> -->
 
-        <button type="submit" class="btn btn-primary" *ngIf="!isSaved"  [disabled]="showSpinner"><span
-            *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
-        </button>
-      </div>
-    </form>
-    <button class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner" [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente"><span
-        *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Continuar
-    </button>
-    <!-- {{ respuesta.error.mensaje }} -->
+          <button type="submit" class="btn btn-primary" *ngIf="!isSaved" [disabled]="showSpinner"><span
+              *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
+          </button>
+        </div>
+      </form>
+      <button class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner"
+        [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente"><span *ngIf="showSpinner"
+          class="spinner-border spinner-border-sm"> </span> Continuar
+      </button>
+      <!-- {{ respuesta.error.mensaje }} -->
     </div>
   </div>
 
 
 
 </div>
-

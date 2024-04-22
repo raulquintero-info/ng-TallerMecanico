@@ -29,12 +29,25 @@ export class CustomersFormComponent implements OnInit {
   // user: Usuario = {} as Usuario
   params: any;
 
+
   // toastService = inject(ToastService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private customersService = inject(CustomersService);
   private rolService = inject(RolService);
   private toastService = inject(ToastService);
+  private  formBuild = inject(FormBuilder);
+
+  customersForm = this.formBuild.group({
+    idCliente: [''],
+    email : ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
+    nombre: ['', [Validators.required, Validators.minLength(2)]],
+    apellidoPat: ['', [Validators.required, Validators.minLength(2)]],
+    apellidoMat: ['', [Validators.required, Validators.minLength(2)]],
+    domicilio: ['', [Validators.required, Validators.minLength(10)]],
+    telefono: ['', [Validators.required, Validators.minLength(10)]],
+  })
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => this.params = params);
@@ -46,6 +59,15 @@ export class CustomersFormComponent implements OnInit {
           this.customer = resp;
           this.subTitle = "Editar Cliente"
           console.log('cliente recibido', this.customer)
+
+          this.customersForm.patchValue({
+            email: this.customer.usuario.email,
+            nombre: this.customer.nombre,
+            apellidoPat: this.customer.apellidoPaterno,
+            apellidoMat: this.customer.apellidoMaterno,
+            domicilio: this.customer.domicilio,
+            telefono: this.customer.telefono
+          });
 
         },
         error: resp => {
@@ -66,6 +88,27 @@ export class CustomersFormComponent implements OnInit {
   save() {
 
     this.showSpinner = true;
+
+    // Verificar si el formulario es válido
+    if (this.customersForm.invalid) {
+      // Marcar los controles del formulario como tocados para mostrar los mensajes de error
+      this.customersForm.markAllAsTouched();
+      this.showSpinner = false; // Detener el spinner
+      return; // Detener el proceso de guardado
+    }
+    // asignar valores del formulario
+
+    //datos cliente
+    this.customer.nombre = this.customersForm.value.nombre!;
+    this.customer.apellidoPaterno = this.customersForm.value.apellidoPat!;
+    this.customer.apellidoMaterno = this.customersForm.value.apellidoMat!;
+    this.customer.domicilio = this.customersForm.value.domicilio!;
+    this.customer.telefono = this.customersForm.value.telefono!;
+
+    // datos usuario
+    this.customer.usuario.email = this.customersForm.value.email!;
+    this.customer.usuario.password = this.customersForm.value.password!;
+
 
     if (this.customer.idCliente > 0) {
       this.customer.usuario.rol.push({ idRol: 1, nombre: 'CLIENTE' } as Rol);
