@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Vehiculo } from '../interfaces/vehiculo.interface';
+import { Page } from '../interfaces/page.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class VehiclesService {
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
+  getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
   get(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
   deleteById(id: number):Observable<any>{return this.http.delete(this.url + '/' +id)};
   saveOrUpdate(vehicle: Vehiculo):Observable<any>{

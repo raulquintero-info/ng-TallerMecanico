@@ -3,6 +3,7 @@ import { EstatusServicio } from '../../../../../../core/interfaces/estatusServic
 import { Toast } from 'src/app/core/interfaces/toast.interface';
 import { EstatusService } from 'src/app/core/services/estatusService.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-estatus-servicio-form',
@@ -23,7 +24,12 @@ export class EstatusServicioFormComponent implements OnInit {
 
   private marcasService = inject(EstatusService);
   private route = inject(ActivatedRoute);
+  private formBuilder = inject(FormBuilder);
 
+  estatusServicioForm = this.formBuilder.group({
+    idEstatusServicio: [''],
+    estatusServicio: ['', [Validators.required, Validators.minLength(5)]]
+  });
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -35,6 +41,9 @@ export class EstatusServicioFormComponent implements OnInit {
       this.marcasService.getById(this.estatusServicio.idEstatusServicio).subscribe({
         next: resp => {
           this.estatusServicio = resp;
+          this.estatusServicioForm.get("idEstatusServicio")?.setValue(resp.idEstatusServicio);
+          this.estatusServicioForm.get("idEstatusServicio")?.disable();
+          this.estatusServicioForm.get("estatusServicio")?.setValue(resp.estatusServicio);
         }
       })
     }
@@ -44,6 +53,18 @@ export class EstatusServicioFormComponent implements OnInit {
   save() {
     this.showSpinner = true;
     this.respuesta = '';
+
+    // Verificar si el formulario es válido
+    if (this.estatusServicioForm.invalid) {
+      // Marcar los controles del formulario como tocados para mostrar los mensajes de error
+      this.estatusServicioForm.markAllAsTouched();
+      this.showSpinner = false; // Detener el spinner
+      return; // Detener el proceso de guardado
+    }
+
+    // Asignar los valores del formulario al objeto marca
+    this.estatusServicio.estatusServicio = this.estatusServicioForm.value.estatusServicio!;
+
     if (this.estatusServicio.idEstatusServicio > 0) {
       console.log('Marca Enviada', this.estatusServicio);
       this.marcasService.createOrUpdate(this.estatusServicio).subscribe({

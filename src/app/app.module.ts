@@ -16,6 +16,7 @@ import { authInterceptorProviders } from './core/guards/auth.interceptor';
 import { NotAuthorizedComponent } from './shared/pages/not-authorized/not-authorized.component';
 import { ToasterComponent } from './shared/components/toaster/toaster.component';
 import { ToastModule } from './core/modules/toast/toast.module';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { ToastModule } from './core/modules/toast/toast.module';
     PublicofficeModule,
     FrontofficeModule,
     BackofficeModule,
-    ToastModule
+    ToastModule,
+    FormsModule
   ],
   providers: [ authInterceptorProviders ],
   bootstrap: [AppComponent]

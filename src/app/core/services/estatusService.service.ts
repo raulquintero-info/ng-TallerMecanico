@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Marca } from '../interfaces/marca.interface';
 import { EstatusServicio } from '../interfaces/estatusServicio.interface';
+import { Page } from '../interfaces/page.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class EstatusService {
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
+  getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
   delete(id: number):Observable<any>{return this.http.delete(this.url + "/" + id)}
   createOrUpdate(estatusServicio: EstatusServicio):Observable<any>{

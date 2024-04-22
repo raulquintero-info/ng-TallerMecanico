@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Modelo } from '../interfaces/modelo.interface';
+import { Page } from '../interfaces/page.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class ModelossService {
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
+  getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
   getByIdMarca(id: number):Observable<any>{return this.http.get(this.urlMarcas + "/" + id + '/modelos')};
   delete(id: number):Observable<any>{return this.http.delete(this.url + "/" + id)};

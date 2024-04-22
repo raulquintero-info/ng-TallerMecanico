@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Page } from 'src/app/core/interfaces/page.interface';
+import { ServicesService } from 'src/app/core/services/services.service';
 
 @Component({
   selector: 'app-taller-servicios-list',
@@ -13,5 +15,36 @@ export class TallerServiciosListComponent {
 
   ];
   pathService="/admin/recepcion/servicios-view";
+
+  services: any;
+
+  currentPage: number = 1;
+  totalPages: number = 1;
+
+  paginador: any;
+
+
+  private servicesService = inject(ServicesService);
+
+  ngOnInit() {
+    
+    this.loadServices(this.currentPage-1);
+  }
+
+  loadServices(page: number) { 
+    this.servicesService
+      .getPaginatedData(page)
+      .subscribe((data: Page<any>) => {
+        this.services = data.content;
+        this.totalPages = data.totalPages;
+        this.currentPage = data.number + 1;
+      });
+  }
+
+  onPageChange(page: number) {
+    this.loadServices(page-1);
+
+  }
+
 
 }
