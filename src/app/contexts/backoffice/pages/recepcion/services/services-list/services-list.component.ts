@@ -38,13 +38,14 @@ export class ServicesListComponent implements OnInit{
     // })
 
     this.loadServices(this.currentPage-1);
-  
+
   }
 
-  loadServices(page: number) { 
+  loadServices(page: number) {
     this.servicesService
       .getPaginatedData(page)
       .subscribe((data: Page<any>) => {
+        console.log('servicios', data.content);
         this.services = data.content;
         this.totalPages = data.totalPages;
         this.currentPage = data.number + 1;

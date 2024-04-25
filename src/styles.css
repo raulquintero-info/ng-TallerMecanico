@@ -26,7 +26,7 @@
 }
 .layered-image-blue {
   background: linear-gradient(to bottom, transparent, #047bd5),
-    url(/assets/images/backgrounds/fondo_top4.png);
+    url("/assets/images/backgrounds/fondo_top4.png");
   background-repeat: repeat;
 }
 .layered-image-right {
@@ -47,4 +47,15 @@
 
 .acceptBtn{
   border-right: 10px solid #028a02
+}
+
+.modal-dialog{
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.show-json{
+  padding: 1em;
+  font-family: "Lucida Console", Monaco, monospace;
+
 }

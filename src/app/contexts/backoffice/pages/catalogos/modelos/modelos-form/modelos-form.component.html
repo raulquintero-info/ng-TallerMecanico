@@ -3,7 +3,7 @@
   <div class="row ">
     <div class="col-md-5 mt-4 bg-primary text-white">
 
-      <img class=" mt-3" src="../../../../../../../assets/images/portadas/marcas_portada.jpg" style="width:100%;"
+      <img class=" mt-3" src="/assets/images/portadas/marcas_portada.jpg" style="width:100%;"
         alt="">
       Lorem ipsum
       <p class="mt-2 texto-parrafo">
@@ -31,18 +31,18 @@
             <div *ngIf="modeloForm.controls.modelo.errors?.['minlength']">Debe tener como mínimo 2 caracteres.</div>
           </div>
         </div>
-      
+
         <div class="mb-3">
           <label for="marca" class="form-label">Marca</label>
           <select formControlName="marca" class="form-select" id="marca">
             <option value="">Selecciona una marca</option>
-            <option *ngFor="let marca of marcas" [value]="marca.idMarca">{{ marca.marca }}</option>
+            <option *ngFor="let marca of marcas" [value]="marca">{{ marca.marca }}</option>
           </select>
           <div *ngIf="modeloForm.controls.marca.invalid && (modeloForm.controls.marca.dirty || modeloForm.controls.marca.touched)" class="alert alert-danger">
             <div *ngIf="modeloForm.controls.marca.errors?.['required']">Debe seleccionar una marca.</div>
           </div>
         </div>
-      
+
         <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()">
           <span *ngIf="showSpinner" class="spinner-border spinner-border-sm"></span> Grabar
         </button>

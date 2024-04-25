@@ -10,16 +10,16 @@
         </div>
         <div class="col-md-6 pe-4" style="text-align: right;">
           Orden de Servicio No: {{service.idOrdenServicio}} <span class="badge bg-secondary d-print-none">
-            <select [(ngModel)]="service.estatusServicio" (change)="updateStatus()">
+            <select [(ngModel)]="service.estatusServicio" (change)="updateStatus()" name="estatusServicio">
               <option *ngFor="let item of statusList"
-                [selected]="item.idEstatusServicio==service.estatusServicio.idEstatusServicio" [ngValue]="item">
+                [selected]="item.idEstatusServicio==5" [ngValue]="item">
+                {{item.idEstatusServicio+' - '+service.estatusServicio.idEstatusServicio +' '}}
                 {{item.estatusServicio}}</option>
             </select>
           </span>
         </div>
       </div>
     </div>
-
     <hr>
     <div class="row">
       <div class="col-md-8 ">
@@ -133,7 +133,7 @@
 
             <div class="pt-3 d-print-none" colspan="3" style="text-align:right; margin-top: 6px;">
               <button type="button" class="btn btn-secondary btn-sm" (click)="showBoxAddItem=true;">Agregar Servicio</button>
-              <button type="button" class="btn btn-primary btn-sm ms-2">Cobrar</button>
+              <button type="button" class="btn btn-primary btn-sm ms-2"(click)="openPopup()">Cobrar</button>
               <!-- <button type="button" class="btn btn-secondary">Pagar</button> -->
             </div>
           </ng-template>
@@ -185,7 +185,7 @@
   </div>
 </ng-template>
 <pre>
-  {{ service | json }}
+  <!-- {{ service | json }} -->
   <!-- {{ vehicle | json }} -->
 </pre>
 <ng-template #serviceNotFound>
@@ -198,3 +198,43 @@
 
   </div>
 </ng-template>
+
+
+
+
+
+
+
+
+
+<!-- modal -->
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Autopro </h4>
+      </div>
+      <div class="modal-body">
+        <table style="width:100%">
+          <tr><td>Total a Pagar</td><td></td><td>$1100.00</td></tr>
+          <tr><td>Cantidad recibida</td><td></td><td><input type="number" value="1100.00"></td></tr>
+          <tr><td>Cambio</td><td></td><td>$0.00</td></tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+          No
+        </button>
+        <button type="button" class="btn btn-primary"
+                (click)="facturar()">
+          Continuar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

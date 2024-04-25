@@ -41,7 +41,8 @@ export class CustomersFormComponent implements OnInit {
   customersForm = this.formBuild.group({
     idCliente: [''],
     email : ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
+    password: [''],
+    // password: ['', [Validators.required, Validators.minLength(8)]],
     nombre: ['', [Validators.required, Validators.minLength(2)]],
     apellidoPat: ['', [Validators.required, Validators.minLength(2)]],
     apellidoMat: ['', [Validators.required, Validators.minLength(2)]],
@@ -50,8 +51,10 @@ export class CustomersFormComponent implements OnInit {
   })
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => this.params = params);
-    this.customer.idCliente = this.params.params.id;
+    this.route.paramMap.subscribe(params => {
+      this.params = params
+      this.customer.idCliente = this.params.params.id;
+
     console.log('customer inicio', this.customer);
     if (this.customer.idCliente > 0) {
       this.customersService.getById(this.customer.idCliente).subscribe({
@@ -75,7 +78,10 @@ export class CustomersFormComponent implements OnInit {
           this.subTitle = 'hubo un problema con la informacion de este registro'
         }
       })
+    } else {
+      this.customer = {usuario: { idUsuario: 0, email: '', password: '', rol: [] } as Usuario} as Customer;
     }
+  });
     this.rolService.getAll().subscribe({
       next: resp => {
         this.roles = resp;
@@ -162,6 +168,12 @@ export class CustomersFormComponent implements OnInit {
     console.log(this.customer);
 
   }
+
+
+  cambiarPassword(){
+
+  }
+
 
 }
 

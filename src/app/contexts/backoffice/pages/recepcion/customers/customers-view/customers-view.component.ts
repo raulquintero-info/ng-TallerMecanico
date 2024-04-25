@@ -5,6 +5,8 @@ import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
+import { VehiclesService } from '../../../../../../core/services/vehicles.service';
+import { ToastService } from '../../../../../../core/modules/toast/services/toast.service';
 
 @Component({
   selector: 'app-customers-view',
@@ -28,6 +30,8 @@ export class CustomersViewComponent {
   private customersService = inject(CustomersService);
   private servicesService = inject(ServicesService);
   private router = inject(Router);
+  private vehiclesService = inject(VehiclesService);
+  private toastsService = inject(ToastService);
 
   ngOnInit(){
 
@@ -57,15 +61,16 @@ export class CustomersViewComponent {
     })
   }
 
-  delete(id: number){
-    this.customersService.delete(id).subscribe({
+  deleteVehicleById(id: number){
+    this.vehiclesService.deleteById(id).subscribe({
       next: resp=>{
-        console.log("eliminar registro");
-        alert("El registro fue Elimindado!");
-        this.router.navigateByUrl("'/recepcion/clientes'");
+        console.log("registro eliminado");
+        this.toastsService.addMessage({ title: "Sistema", timeAgo: "", body: 'Registro Eliminado', type:'danger' });
+
+        this.getCustomer(this.customer.idCliente);
       },
       error: resp=>{
-        this.messages.push({ title: "Sistema", timeAgo: "", body: 'No se ha podido Borrar este registro', type:'danger' });
+        this.toastsService.addMessage({ title: "Sistema", timeAgo: "", body: 'No se ha podido Borrar este registro', type:'danger' });
       }
     });
   }

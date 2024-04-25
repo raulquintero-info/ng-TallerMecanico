@@ -13,13 +13,16 @@ export class MVehicleListComponent {
   @Input() vehicles: Vehiculo[] = [];
   @Input() pathVehicle: string = "";
   @Output() onDeleteById: EventEmitter<number> = new EventEmitter();
-
+  @Output() onSeleccById: EventEmitter<Vehiculo> = new EventEmitter();
 
   emitDelete(id: number){
     this.onDeleteById.emit(id);
     console.log('idVehiculo', id)
   }
 
+  emitVehicle(vehicle: Vehiculo){
+    this.onSeleccById.emit(vehicle);
+  }
 
   // private vehiclesService = inject(VehiclesService);
   // private toastService = inject(ToastService);

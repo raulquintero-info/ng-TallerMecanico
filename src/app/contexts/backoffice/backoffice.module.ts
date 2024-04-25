@@ -44,6 +44,7 @@ import { PaginationComponent } from 'src/app/shared/components/pagination/pagina
 import { UsersListComponent } from './pages/sistema/users/users-list/users-list.component';
 import { UsersFormComponent } from './pages/sistema/users/users-form/users-form.component';
 import { UsersModule } from 'src/app/core/modules/users/users.module';
+import { FacturasViewComponent } from './pages/recepcion/facturas/facturas-view/facturas-view.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { UsersModule } from 'src/app/core/modules/users/users.module';
     EmployeesFormComponent,
     PaginationComponent,
     UsersFormComponent,
-    UsersListComponent
+    UsersListComponent,
+    FacturasViewComponent
   ],
   imports: [
     CommonModule,

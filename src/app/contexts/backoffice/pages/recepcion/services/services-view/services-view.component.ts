@@ -23,6 +23,7 @@ import { Employee } from 'src/app/core/interfaces/employee.interface';
   styleUrls: ['./services-view.component.css']
 })
 export class ServicesViewComponent implements OnInit {
+  displayStyle: string = 'none';
   showBoxComment: boolean = false;
   showBoxAddItem: boolean = false;
   item: DetalleOrdenServicios = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
@@ -98,6 +99,7 @@ export class ServicesViewComponent implements OnInit {
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Sericio Agregado", type:'success' })
         this.showBoxAddItem =false;
         this.loadService();
+        this.item ={} as DetalleOrdenServicios;
 
       },
       error: resp=>{
@@ -146,7 +148,7 @@ export class ServicesViewComponent implements OnInit {
 
   save(message: string){
     this.service.vehiculo!.ordenServicio =[];
-   
+
     this.servicesService.saveOrUpdate(this.service).subscribe({
       next: resp=>{
         // debugger
@@ -162,4 +164,17 @@ export class ServicesViewComponent implements OnInit {
       }
     });
   }
+
+  facturar(){
+    this.router.navigateByUrl('/admin/recepcion/facturas-view/1');
+  }
+
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
+
 }

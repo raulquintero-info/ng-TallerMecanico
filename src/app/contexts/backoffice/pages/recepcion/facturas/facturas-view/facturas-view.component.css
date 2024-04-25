@@ -1,0 +1,25 @@
+.factura-title {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 2px;
+}
+.totales{
+  text-align: right
+}
+.titulos{
+  width: 90px;
+}
+.subtotal{
+  background-color: white;
+  text-align:right;
+  border-top:1px solid black;
+  border-bottom: none;
+  font-weight: bold;
+}
+.grandTotal{
+  font-size: 24px;
+}
+.grandTotalTitle{
+  font-weight: bold;
+}

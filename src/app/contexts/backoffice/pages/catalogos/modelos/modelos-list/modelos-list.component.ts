@@ -33,13 +33,22 @@ export class ModelosListComponent implements OnInit {
       this.marca.idMarca = Number(params.get('idMarca'))
     });
 
-    this.marcasService.getById(this.marca.idMarca).subscribe({
-      next: resp => {
-        this.marca = resp;
-        this.subTitle = this.subTitle + this.marca.marca;
-      }
-    })
+    if (this.marca.idMarca > 0) {
+      // this.marcasService.getById(this.marca.idMarca).subscribe({
+      //   next: resp => {
+      //     this.marca = resp;
+      //     this.subTitle = this.subTitle + this.marca.marca;
+      //   }
+      // });
+      this.modelosService.getByIdMarca(this.marca.idMarca).subscribe({
+            next: resp => {
+              this.modelos = resp;
+            }
+          })
+    } else {
 
+      this.loadModelos(this.currentPage - 1);
+    }
 
     // if (this.marca.idMarca > 0) {
 
@@ -57,11 +66,10 @@ export class ModelosListComponent implements OnInit {
     //   })
     // }
 
-    this.loadModelos(this.currentPage-1);
   }
 
 
-  loadModelos(page: number) { 
+  loadModelos(page: number) {
     this.modelosService
       .getPaginatedData(page)
       .subscribe((data: Page<any>) => {
@@ -72,7 +80,7 @@ export class ModelosListComponent implements OnInit {
   }
 
   onPageChange(page: number) {
-    this.loadModelos(page-1);
+    this.loadModelos(page - 1);
   }
 
 }

@@ -39,6 +39,7 @@ import { EmployeesListComponent } from './contexts/backoffice/pages/sistema/empl
 import { EmployeesFormComponent } from './contexts/backoffice/pages/sistema/employees/employees-form/employees-form.component';
 import { UsersListComponent } from './contexts/backoffice/pages/sistema/users/users-list/users-list.component';
 import { UsersFormComponent } from './contexts/backoffice/pages/sistema/users/users-form/users-form.component';
+import { FacturasViewComponent } from './contexts/backoffice/pages/recepcion/facturas/facturas-view/facturas-view.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -67,6 +68,7 @@ const routes: Routes = [
   {path: 'admin/recepcion/vehiculos-form/:idVehicle', component: VehiclesFormComponent},
   {path: 'admin/recepcion/clientes/:idCustomer/vehiculo-form/:idVehicle', component: VehiclesFormComponent},
 
+  {path: 'admin/recepcion/facturas-view/:idFactura', component: FacturasViewComponent},
 
   {path: 'admin/taller/servicios', component: TallerServiciosListComponent},
   {path: 'admin/taller/vehiculos', component: TallerVehicleListComponent},

@@ -58,7 +58,7 @@
             </div>
           </div>
           <div>
-            <app-m-vehicle-list [vehicles]="customer.vehiculos" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
+            <app-m-vehicle-list [vehicles]="customer.vehiculos"  (onDeleteById)="deleteVehicleById($event)" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
           </div>
           <div class="float-end">
 
@@ -95,7 +95,7 @@
         Servicios Abiertos
       </div>
       <div class="p-1 bd-highlight ">
-        <button class="btn btn-outline-light btn-sm " [routerLink]="'/admin/recepcion/vehiculos-form/0' "><i class="bi bi-plus-square"></i> Nuevo</button>
+        <!-- <button class="btn btn-outline-light btn-sm " [routerLink]="'/admin/recepcion/vehiculos-form/0' "><i class="bi bi-plus-square"></i> Nuevo</button> -->
       </div>
     </div>
   </div>

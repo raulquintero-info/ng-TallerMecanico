@@ -22,15 +22,15 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 export class VehiclesFormComponent implements OnInit {
   showSpinner: boolean = false;
   params: any;
-  vehicle: Vehiculo = {modelo:{marca:{} as Marca} as Modelo} as Vehiculo;
+  vehicle: Vehiculo = { modelo: { marca: {} as Marca } as Modelo } as Vehiculo;
   imagen: string = '/assets/images/cars/no_image.jpg';
-  marcas: Marca[]=[];
+  marcas: Marca[] = [];
   modelos: Modelo[] = [];
   customer: Customer = {} as Customer;
   tiposMotor: TipoMotor[] = [];
   title: string = 'Recepcion';
   subTitle: string = 'Agregar Vehiculo';
-  buttons =[];
+  buttons = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -41,11 +41,11 @@ export class VehiclesFormComponent implements OnInit {
     private vehiclesService: VehiclesService,
     private modelsService: ModelossService,
     private toastService: ToastService
-  ){}
+  ) { }
 
 
 
-  ngOnInit(){
+  ngOnInit() {
     this.route.paramMap.subscribe(params => this.params = params);
     // this.customer.idCliente = this.params.get('idCustomer');
     this.vehicle.idVehiculo = this.params.get('idVehicle');
@@ -60,29 +60,46 @@ export class VehiclesFormComponent implements OnInit {
     //     }
     //   })
     // }
-    if(this.vehicle.idVehiculo>0){
+
+    if (this.vehicle.idVehiculo > 0) {
       this.vehiclesService.get(this.vehicle.idVehiculo).subscribe({
-        next: (vehicle: Vehiculo)=>{
+        next: (vehicle: Vehiculo) => {
           console.log('vehicle', vehicle)
           this.vehicle = vehicle;
           this.vehicle.ordenServicio = [];
-          this.customersService.currentCustomer.subscribe({
-            next: resp=>{
-              this.vehicle.cliente = resp;
+          this.modelsService.getByIdMarca(vehicle.modelo.marca.idMarca).subscribe({
+            next: (modelos: Modelo[]) => {
+              this.modelos = modelos;
             }
           })
+
+
         }
       })
     }
 
+    let temp = localStorage.getItem('customer');
+    this.customer = JSON.parse(<string>temp);
+    console.log('customer', temp, this.customer);
+    // todo: activar cuando el login y security esten funcionand
+    // this.customersService.currentCustomer.subscribe({
+    //   next: resp=>{
+    //     this.console
+    //     this.vehicle.cliente = resp;
+    //   }
+    // })
+
+
     this.marcasService.getAll().subscribe({
-      next: (marcas: Marca[])=>{
+      next: (marcas: Marca[]) => {
         console.log('marcas', marcas)
         this.marcas = marcas;
       }
     });
+
+
     this.tiposMotorService.getAll().subscribe({
-      next: (tiposMotor: TipoMotor[])=>{
+      next: (tiposMotor: TipoMotor[]) => {
         this.tiposMotor = tiposMotor;
       }
     })
@@ -90,35 +107,43 @@ export class VehiclesFormComponent implements OnInit {
 
   }
 
-  loadModels(id: any){
+  loadModels(id: any) {
     id = id.split(': ')[1];
     console.log('modelos', id);
-    if (id>=0)
-    this.modelsService.getByIdMarca(id).subscribe({
-      next: (modelos: Modelo[])=>{
-        console.log('modelos', modelos, id)
-        this.modelos = modelos
-      }
-    })
+    if (id >= 0)
+      this.modelsService.getByIdMarca(id).subscribe({
+        next: (modelos: Modelo[]) => {
+          console.log('modelos', modelos, id)
+          this.modelos = modelos
+        }
+      })
   }
 
-  save(){
+  save() {
+    this.vehicle.cliente = this.customer;
     console.log('vehicle', this.vehicle);
     this.vehiclesService.saveOrUpdate(this.vehicle).subscribe({
-      next: resp=>{
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type:'success' })
+      next: resp => {
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
       }
     })
   }
 
-  captureFile(event: any){
+  captureFile(event: any) {
     this.vehicle.imagen = '/assets/images/cars/' + event.target.files[0].name;
     console.log(event);
   }
 
 
+  compareMarca(item1: any, item2: any) {
+    console.log(item1 + '-' + item2.idMarca)
+    return item1 && item2 ? item1.idMarca === item2.idMarca : item1 === item2;
+  }
 
+  compareModelo(item1: any, item2: any) {
 
+    return item1 && item2 ? item1.idModelo === item2.idModelo : item1 === item2;
+  }
 
 }
 

@@ -58,9 +58,9 @@
         <div class="col-md-6">
           <div class=" mb-3">
             <label for="marca" class="form-label">Marca</label>
-            <select class="form-select" #selectMarca id="marca" [(ngModel)]="vehicle.modelo.marca"
-              (change)="loadModels(selectMarca.selectedOptions[0].attributes[1].value)" aria-label="marca">
-              <option value="-1" readonly>Seleccione una Marca</option>
+            <select name="marca" class="form-select" #selectMarca id="marca" [(ngModel)]="vehicle.modelo.marca" [compareWith]="compareMarca"
+              (change)="loadModels(selectMarca.value)" aria-label="marca">
+              <!-- <option value="-1" readonly>Seleccione una Marca</option> -->
               <option *ngFor="let b of marcas" [ngValue]="b.idMarca">{{ b.marca }}</option>
             </select>
           </div>
@@ -68,8 +68,8 @@
         <div class="col-md-6">
           <div class=" mb-3">
             <label for="modelo" class="form-label">Modelo</label>
-            <select class="form-select" id="modelo" [disabled]="!modelos.length" [(ngModel)]="vehicle.modelo"
-              aria-label="modelo" placeholder="Seleccione un modelo">
+            <select name="modelo" class="form-select" id="modelo" [disabled]="!modelos.length" [(ngModel)]="vehicle.modelo"
+              aria-label="modelo" placeholder="Seleccione un modelo"  [compareWith]="compareModelo">
               <!-- <option selected value="-1">Seleccione un Modelo</option> -->
               <option *ngFor="let b of modelos" [ngValue]="b">{{ b.modelo }}</option>
             </select>
@@ -84,9 +84,8 @@
         <div class="col-md-6">
           <div class=" mb-3">
             <label for="tipoMotor" class="form-label">Tipo de Motor</label>
-            <select class="form-select" id="tipoMotor" [disabled]="!tiposMotor.length" [(ngModel)]="vehicle.tipoMotor"
-              aria-label="modelo" placeholder="Seleccione un modelo">
-              <!-- <option selected value="-1">Seleccione un Modelo</option> -->
+            <select class="form-select" name="tipoMotor" id="tipoMotor" [disabled]="!tiposMotor.length" [(ngModel)]="vehicle.tipoMotor"
+              aria-label="modelo" placeholder="Seleccione un modelo" [compareWith]="compareModelo">
               <option *ngFor="let b of tiposMotor" [selected]="b.idTipoMotor==1" [ngValue]="b">{{ b.tipoMotor }}
               </option>
             </select>
