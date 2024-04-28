@@ -54,8 +54,15 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.show-json{
-  padding: 1em;
+.format-json{
+    background-color: ghostwhite;
+    border: 1px solid silver;
+    padding: 10px 20px;
+    margin: 20px;
+    border-radius: 4px;
+   width: 80%;
+   margin-left: auto;
+   margin-right: auto;
   font-family: "Lucida Console", Monaco, monospace;
 
 }

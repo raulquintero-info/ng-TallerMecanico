@@ -24,6 +24,7 @@ import { Employee } from 'src/app/core/interfaces/employee.interface';
 })
 export class ServicesViewComponent implements OnInit {
   displayStyle: string = 'none';
+  isLoadingService = false;
   showBoxComment: boolean = false;
   showBoxAddItem: boolean = false;
   item: DetalleOrdenServicios = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
@@ -77,14 +78,19 @@ export class ServicesViewComponent implements OnInit {
   }
 
   loadService() {
+    this.isLoadingService = true
     this.servicesService.getById(this.params.get('id')).subscribe({
       next: resp => {
         console.log('servicio cargado', resp)
         this.service = resp;
         this.vehicle = resp.vehiculo;
+        this.isLoadingService = false;
       },
       error: resp=>{
         console.log('error');
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo cargar la informacion", type:'danger' })
+        this.isLoadingService = false;
+
       }
 
     });

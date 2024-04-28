@@ -1,7 +1,15 @@
-<ng-container *ngIf="service.idOrdenServicio>1; then showService else serviceNotFound "></ng-container>
+<ng-container *ngIf="!isLoadingService; then showService else spinnerTemplate "></ng-container>
 
 <ng-template #showService>
-  <div class="container pt-3">
+
+  <div *ngIf="service.idOrdenServicio<1" class="container pt-3">
+
+    <div class="alert alert-danger" role="alert">
+      <strong>404.-</strong> Servicio no Encontrado
+    </div>
+  </div>
+
+  <div *ngIf="service.idOrdenServicio>0"  class="container pt-3">
     <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
 
     <div class="service-title mb-3">
@@ -184,16 +192,16 @@
     </div>
   </div>
 </ng-template>
-<pre>
-  <!-- {{ service | json }} -->
-  <!-- {{ vehicle | json }} -->
-</pre>
-<ng-template #serviceNotFound>
-  <div class="container pt-3">
-
-    <div class="alert alert-danger" role="alert">
-      <strong>404.-</strong> Servicio no Encontrado
+<!-- <pre>
+  {{ service | json }}
+  {{ vehicle | json }}
+</pre> -->
+<ng-template #spinnerTemplate>
+  <div class="container pt-3 ">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+      <span class="visually-hidden">Loading...</span>
     </div>
+    
 
 
   </div>
