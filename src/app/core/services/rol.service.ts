@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Rol } from '../interfaces/rol.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RolService {
 
-  url: string = 'http://localhost:8080/api/roles'
+  url: string =  environment.api + '/api/roles'
 
   constructor(private http: HttpClient) { }
 

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Marca } from '../interfaces/marca.interface';
 import { EstatusServicio } from '../interfaces/estatusServicio.interface';
 import { Page } from '../interfaces/page.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { Page } from '../interfaces/page.interface';
 export class EstatusService {
 
 
-  url: string = 'http://localhost:8080/api/estatusServicios'
+  url: string =  environment.api + '/api/estatusServicios'
 
   private http = inject(HttpClient);
 

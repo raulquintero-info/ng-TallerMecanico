@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TipoMotor } from '../interfaces/tipoMotor.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { TipoMotor } from '../interfaces/tipoMotor.interface';
 export class TipoMotorService {
 
 
-  url: string = 'http://localhost:8080/api/tiposMotor';
+  url: string =  environment.api + '/api/tiposMotor';
 
   private http = inject(HttpClient);
 

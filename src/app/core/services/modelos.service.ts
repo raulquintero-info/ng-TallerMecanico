@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Modelo } from '../interfaces/modelo.interface';
 import { Page } from '../interfaces/page.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ import { Page } from '../interfaces/page.interface';
 export class ModelossService {
 
 
-  url: string = 'http://localhost:8080/api/modelos'
-  urlMarcas: string = 'http://localhost:8080/api/marcas'
+  url: string =  environment.api + '/api/modelos'
+  urlMarcas: string =  environment.api + '/api/marcas'
 
   private http = inject(HttpClient);
 

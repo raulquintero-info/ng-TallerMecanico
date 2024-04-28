@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Customer } from '../interfaces/customers.interface';
 import { Usuario } from '../interfaces/usuario.interface';
 import { Page } from '../interfaces/page.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserssService {
 
-  url: string = 'http://localhost:8080/api/usuarios'
+  url: string =  environment.api + '/api/usuarios'
 
   constructor(private http: HttpClient) { }
 

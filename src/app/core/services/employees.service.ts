@@ -4,12 +4,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from '../interfaces/customers.interface';
 import { Employee } from '../interfaces/employee.interface';
 import { Page } from '../interfaces/page.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
-  url: string = 'http://localhost:8080/api/empleados';
+  url: string = environment.api +'/api/empleados';
   // url_create: string = "http://localhost:8080/api/registroUsuarioCliente";
 
   private http = inject(HttpClient);

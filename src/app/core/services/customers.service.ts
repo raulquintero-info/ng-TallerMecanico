@@ -3,14 +3,14 @@ import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from '../interfaces/customers.interface';
 import { Page } from '../interfaces/page.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomersService {
   urlTemp: string = 'http://localhost:3000';
-  url: string = 'http://localhost:8080/api/clientes';
-  // url_create: string = "http://localhost:8080/api/registroUsuarioCliente";
+  url: string = environment.api + '/api/clientes' ; //'http://localhost:8080/api/clientes';
 
   private http = inject(HttpClient);
 

@@ -4,14 +4,15 @@ import { Observable } from 'rxjs';
 import { OrdenServicio } from '../interfaces/ordenServicio.interface';
 import { Page } from '../interfaces/page.interface';
 import { DetalleOrdenServicios } from '../interfaces/detalleOrdenServicios.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicesService {
 
-  url: string = 'http://localhost:8080/api/ordenesServicio'
-  urlDetalle: string = 'http://localhost:8080/api/detalleOrdenServicio'
+  url: string =  environment.api + '/api/ordenesServicio'
+  urlDetalle: string =  environment.api + '/api/detalleOrdenServicio'
 
 
   constructor(private http: HttpClient) { }
