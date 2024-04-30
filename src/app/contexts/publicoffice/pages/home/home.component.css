@@ -11,7 +11,7 @@
   height: 450px;
   /* text-align: center; */
   color: white;
-  background-image: url('/assets/images/background_claro.jpg');
+  background-image: url('/angular/assets/images/background_claro.jpg');
   /* background-position: 100dvh; */
   background-position: center;
   background-size: cover;
@@ -80,7 +80,7 @@
   font-size: 30px;
 }
 .card-services{
-  background-image: url('/assets/images/backgrounds/fondo_top3.png');
+  background-image: url('/angular/assets/images/backgrounds/fondo_top3.png');
   /* background-position: 100dvh; */
   background-position: left;
   background-size: cover;

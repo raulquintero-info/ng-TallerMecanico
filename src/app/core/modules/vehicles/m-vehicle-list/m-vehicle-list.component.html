@@ -15,7 +15,7 @@
       <tr *ngFor="let vehicle of vehicles" class="" >
         <td class="text-row" scope="row">{{vehicle.idVehiculo}}</td>
         <td *ngIf="vehicle.imagen"><img [src]="vehicle.imagen" height="50" style="border-radius: 5px;"></td>
-        <td *ngIf="!vehicle.imagen"><img src="..//angular/assets/images/cars/no_image.jpg" height="50" style="border-radius: 5px;"></td>
+        <td *ngIf="!vehicle.imagen"><img src="/angular/assets/images/cars/no_image.jpg" height="50" style="border-radius: 5px;"></td>
         <td class="text-row row-link" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">{{ vehicle.modelo.marca.marca | titlecase}} {{ vehicle.modelo.modelo | titlecase}}</td>
         <td class="text-row row-link" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">{{vehicle.anioModelo}}</td>
         <!-- <td class="text-row row-link" (click)="emitVehicle(vehicle)">{{vehicle.matricula}}</td> -->

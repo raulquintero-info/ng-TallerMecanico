@@ -11,9 +11,9 @@
         <li class="nav-item dropdown">
           <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown">Recepcion</a>
           <ul class="dropdown-menu">
-            <li><a href="/admin/recepcion/servicios" class="dropdown-item">Servicios <i class="bi bi-bookmark-fill text-warning"></i> </a> </li>
-            <li><a href="/admin/recepcion/clientes" class="dropdown-item">Clientes &raquo;</a></li>
-            <li><a href="/admin/recepcion/vehiculos" class="dropdown-item">Vehiculos &raquo;</a></li>
+            <li><a [routerLink]="'/admin/recepcion/servicios'" class="dropdown-item">Servicios <i class="bi bi-bookmark-fill text-warning"></i> </a> </li>
+            <li><a [routerLink]="'/admin/recepcion/clientes'" class="dropdown-item">Clientes &raquo;</a></li>
+            <li><a [routerLink]="'/admin/recepcion/vehiculos'" class="dropdown-item">Vehiculos &raquo;</a></li>
             <!-- <li><a href="/admin/recepcion/" class="dropdown-item">Productos &raquo;</a></li> -->
           </ul>
         </li>
@@ -24,14 +24,14 @@
             Taller
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/taller/servicios">Servicios  <i class="bi bi-bookmark-fill text-warning"></i></a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/taller/servicios'">Servicios  <i class="bi bi-bookmark-fill text-warning"></i></a></li>
             <li><hr class="dropdown-divider"></li>
             <!-- <li><a class="dropdown-item" href="/admin/taller/servicios/1">Nuevas</a></li>
             <li><a class="dropdown-item" href="/admin/taller/servicios/2">En Proceso</a></li>
             <li><a class="dropdown-item" href="/admin/taller/servicios/3">Terminados</a></li>
             <li><a class="dropdown-item" href="/admin/taller/servicios/4">Pendientes</a></li>
             <li><hr class="dropdown-divider"></li> -->
-            <li><a class="dropdown-item" href="admin/taller/vehiculos">Vehiculos</a></li>
+            <li><a class="dropdown-item" [routerLink]="'admin/taller/vehiculos'">Vehiculos</a></li>
 
 
             <!-- <li><a class="dropdown-item" href="/admin/ordenes-por-status/4">Refacciones</a></li> -->
@@ -57,11 +57,11 @@
             Catalogos
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/catalogos/marcas">Marcas</a></li>
-            <li><a class="dropdown-item" href="/admin/catalogos/modelos/0">Modelos</a></li>
-            <!-- <li><a class="dropdown-item" href="/admin/catalogos/roles">Roles</a></li> -->
-            <li><a class="dropdown-item" href="/admin/catalogos/tipos-motor">Tipo Motor</a></li>
-            <li><a class="dropdown-item" href="/admin/catalogos/estatus-servicio">Estatus Servicio</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/marcas'">Marcas</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/modelos/0'">Modelos</a></li>
+            <!-- <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/roles">Roles</a></li> -->
+            <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/tipos-motor'">Tipo Motor</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/estatus-servicio'">Estatus Servicio</a></li>
           </ul>
         </li>
 
@@ -88,8 +88,8 @@
           <ul class="dropdown-menu">
 
 
-            <li><a href="/admin/sistema/empleados" class="dropdown-item">Empleados   <i class="bi bi-bookmark-fill text-warning"></i></a></li>
-            <li><a href="/admin/sistema/usuarios" class="dropdown-item">Usuarios   <i class="bi bi-bookmark-fill text-warning"></i></a></li>
+            <li><a [routerLink]="'/admin/sistema/empleados'" class="dropdown-item">Empleados   <i class="bi bi-bookmark-fill text-warning"></i></a></li>
+            <li><a [routerLink]="'/admin/sistema/usuarios'" class="dropdown-item">Usuarios   <i class="bi bi-bookmark-fill text-warning"></i></a></li>
             <!-- <li><a href="/admin/sistema/roles" class="dropdown-item">Roles &raquo;</a>
               <ul class="dropdown-menu submenu submenu-left">
                 <li><a href="/admin/sistema/roles/altas" class="dropdown-item">Altas</a></li>
@@ -108,7 +108,7 @@
             {{ userData.username }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" routerLink="/perfil"><i class="bi bi-person-fill"></i> Mi Perfil</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/perfil'"><i class="bi bi-person-fill"></i> Mi Perfil</a></li>
 
             <li><hr class="dropdown-divider"></li>
             <li><button class="dropdown-item"   [routerLink]="['/logout']" routerLinkActive="router-link-active" ><i class="bi bi-door-closed"></i> Cerrar Sesión</button></li>

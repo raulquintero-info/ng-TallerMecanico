@@ -18,11 +18,10 @@
         </div>
         <div class="col-md-6 pe-4" style="text-align: right;">
           Orden de Servicio No: {{service.idOrdenServicio}} <span class="badge bg-secondary d-print-none">
-            <select [(ngModel)]="service.estatusServicio" (change)="updateStatus()" name="estatusServicio">
+            <select [(ngModel)]="service.estatusServicio" (change)="updateStatus()"  [compareWith]="compareStatus" name="estatusServicio">
               <option *ngFor="let item of statusList"
                 [selected]="item.idEstatusServicio==5" [ngValue]="item">
-                {{item.idEstatusServicio+' - '+service.estatusServicio.idEstatusServicio +' '}}
-                {{item.estatusServicio}}</option>
+                {{item.estatusServicio | titlecase}}</option>
             </select>
           </span>
         </div>
@@ -201,7 +200,7 @@
     <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
-    
+
 
 
   </div>

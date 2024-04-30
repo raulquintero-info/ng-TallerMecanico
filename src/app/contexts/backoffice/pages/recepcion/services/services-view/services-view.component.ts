@@ -171,6 +171,11 @@ export class ServicesViewComponent implements OnInit {
     });
   }
 
+  compareStatus(item1: any, item2: any) {
+
+    return item1 && item2 ? item1.idModelo === item2.idModelo : item1 === item2;
+  }
+
   facturar(){
     this.router.navigateByUrl('/admin/recepcion/facturas-view/1');
   }

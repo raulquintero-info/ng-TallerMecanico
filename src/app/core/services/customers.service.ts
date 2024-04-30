@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from '../interfaces/customers.interface';
 import { Page } from '../interfaces/page.interface';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 // import { environment } from 'src/environments/environment';
 
 @Injectable({
