@@ -9,7 +9,7 @@ export const normalGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state:
   const loginService = inject(LoginService);
 
       let role = loginService.getRole();
-      if(role == "USER"){
+      if(role == "CLIENTE"){
         return true;
       }
 

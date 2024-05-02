@@ -1,9 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Marca } from 'src/app/core/interfaces/marca.interface';
 import { Modelo } from 'src/app/core/interfaces/modelo.interface';
 import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 import { Page } from 'src/app/core/interfaces/page.interface';
+import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
+import { EstatusServicio } from 'src/app/core/interfaces/estatusServicio.interface';
 
 @Component({
   selector: 'app-services-list',
@@ -17,7 +20,12 @@ export class ServicesListComponent implements OnInit{
   buttons =[
     // {text: 'Agregar', path: "/admin/recepcion/servicios-form/0"}
   ];
-  services: OrdenServicio[] = [{}as OrdenServicio];
+  services: OrdenServicio[] = [
+    {
+      estatusServicio: {} as EstatusServicio,
+      vehiculo:{modelo: {marca: {} as Marca } as Modelo} as Vehiculo
+    } as OrdenServicio
+  ];
 
   currentPage: number = 1;
   totalPages: number = 1;

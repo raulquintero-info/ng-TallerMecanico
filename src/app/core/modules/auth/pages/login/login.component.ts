@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit{
 
   showSpinner: boolean =false;
   loginForm = this.formBuilder.group({
-    email:['', [Validators.required, Validators.email,]],
+    // email:['', [Validators.required, Validators.email,]],
+    username:['',[]],
     password:['', [Validators.required]],
   })
 
@@ -33,9 +34,13 @@ export class LoginComponent implements OnInit{
     // window.location.reload();
   }
 
-  public get email(){
-    return this.loginForm.controls.email;
-  }
+  // public get email(){
+  //   return this.loginForm.controls.email;
+  // }
+
+  public get username(){
+      return this.loginForm.controls.username;
+    }
 
   public get password(){
     return this.loginForm.controls.password;
@@ -54,17 +59,23 @@ export class LoginComponent implements OnInit{
 
           this.loginService.currentUser().subscribe({
             next: (userData:User)=>{
+              console.log('USER', userData);
               localStorage.setItem('user',JSON.stringify(userData));
               localStorage.setItem('userLoginOn', JSON.stringify(true));
 
               this.showSpinner = false;
               this.loginService.checkStatus();
               let url ="";
-              switch(userData.authorities[0].authority){
-                case "CUSTOMER": url="/mi-garage"; break;
+              switch(userData.role){
+                // switch(userData.authorities[0].authority){
+                case "CLIENTE": url="/mi-garage"; break;
                 case "ADMIN": url="/admin/dashboard"; break;
               }
+
               this.router.navigateByUrl(url);
+            },
+            error: resp=>{
+              console.log('error', resp)
             }
           })
         },

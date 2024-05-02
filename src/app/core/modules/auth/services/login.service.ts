@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
-  url: string = "http://localhost:3000";
+  url: string = "http://localhost:8080/api/auth";
   private userDataLocal: User = {} as User;
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -46,7 +46,8 @@ export class LoginService {
     if(currentUser){
       userLogged = JSON.parse(currentUser);
       this.currentUserData.next(userLogged);
-      this.currentRole.next(userLogged.authorities[0].authority);
+      this.currentRole.next(userLogged.role!);
+      // this.currentRole.next(userLogged.authorities[0].authority);
       this.currentUserLoginOn.next(true);
       console.log(userLogged);
     } else {
@@ -60,10 +61,15 @@ export class LoginService {
 
   login(credentials: Credentials): Observable<LoginResponse> {
     console.log(credentials)
-    return this.http.get<LoginResponse>(this.url + '/login').pipe(
+    return this.http.post<LoginResponse>(this.url + '/login',credentials).pipe(
       tap((loginResponse: LoginResponse) => {
         localStorage.setItem('token', loginResponse.accessToken ? loginResponse.accessToken : '');
-        this.http.get<User>(this.url + '/currentuser')
+        console.log('login response', loginResponse);
+        // this.http.get<User>(this.url + '/current-user').subscribe({
+        //   next: resp=>{
+        //     localStorage.setItem('user', JSON.stringify(resp));
+        //   }
+        // })
       }),
       catchError(this.handleError)
     );
@@ -71,7 +77,7 @@ export class LoginService {
 
   currentUser(): Observable<User> {
 
-    return this.http.get<User>(this.url + '/currentuser').pipe(
+    return this.http.get<User>(this.url + '/current-user').pipe(
       tap((userData: User) => {
         localStorage.setItem('user', JSON.stringify(userData));
         localStorage.setItem('userLoginOn', JSON.stringify(true));
@@ -109,7 +115,8 @@ export class LoginService {
     if (user == undefined)
       return '';
     else
-      return user.authorities[0].authority;
+      return user.role;
+      // return user.authorities[0].authority;
   }
 
   getToken(){

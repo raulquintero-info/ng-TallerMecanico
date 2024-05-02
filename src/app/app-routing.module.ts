@@ -46,16 +46,16 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'register', component: RegisterComponent},
 
-  {path: 'mi-garage', component: GarageVehiclesListComponent},
-  {path: 'mi-garage/mi-vehiculo/:id', component: GarageVehiclesViewComponent},
-  {path: 'mi-garage/servicio-view/:id', component: ServiceComponent},
+  {path: 'mi-garage', component: GarageVehiclesListComponent, canActivate: [normalGuard]},
+  {path: 'mi-garage/mi-vehiculo/:id', component: GarageVehiclesViewComponent, canActivate: [normalGuard]},
+  {path: 'mi-garage/servicio-view/:id', component: ServiceComponent, canActivate: [normalGuard]},
 
-  {path:'admin/dashboard', component: DashboardBackComponent},
+  {path:'admin/dashboard', component: DashboardBackComponent, canActivate: [adminGuard]},
 
   {path: 'admin/recepcion/servicios', component: ServicesListComponent, canActivate: [adminGuard]},
-  {path: 'admin/recepcion/servicios-form/:id/:idVehiculo', component: ServicesFormComponent},
-  {path: 'admin/recepcion/servicios-view/:id/:idVehiculo', component: ServicesViewComponent},
-  {path: 'admin/recepcion/servicios-view/:id', component: ServicesViewComponent},
+  {path: 'admin/recepcion/servicios-form/:id/:idVehiculo', component: ServicesFormComponent, canActivate: [adminGuard]},
+  {path: 'admin/recepcion/servicios-view/:id/:idVehiculo', component: ServicesViewComponent, canActivate: [adminGuard]},
+  {path: 'admin/recepcion/servicios-view/:id', component: ServicesViewComponent},   
 
   {path: 'admin/recepcion/clientes', component: CustomersListComponent},
   {path: 'admin/recepcion/clientes-form/:id', component: CustomersFormComponent},

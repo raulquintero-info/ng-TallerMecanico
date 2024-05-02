@@ -6,11 +6,11 @@ export interface User{
   email: string;
   password: string;
   username: string;
-  authorities: Authority[];
+  authorities?: Authority[];
   accountNonExpired: boolean;
   accountNonLocked: boolean;
   credentialsNonExpired: boolean;
   enabled: boolean;
   rol: Rol[];
-
+  role?: string;
 }

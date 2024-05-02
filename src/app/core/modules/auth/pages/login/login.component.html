@@ -19,13 +19,13 @@
               <div *ngIf="message" class="badge bg-danger  mb-2" > {{ message }} </div>
 
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" formControlName="email"
+                <input type="email" class="form-control" id="email" formControlName="username"
                   placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
-                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger ps-2">
+                <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger ps-2">
                   <div *ngIf="email.errors?.['required']">El email es obligatorio</div>
                   <div *ngIf="email.errors?.['email']">El email es debe tener un formato valido</div>
-                </div>
+                </div> -->
               </div>
 
               <div class="form-floating mb-3">
