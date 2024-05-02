@@ -1,4 +1,6 @@
+import { animation } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Button } from 'src/app/core/interfaces/button.interface';
 import { Customer } from 'src/app/core/interfaces/customers.interface';
@@ -17,7 +19,7 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 @Component({
   selector: 'app-vehicles-form',
   templateUrl: './vehicles-form.component.html',
-  styleUrls: ['./vehicles-form.component.css']
+  styleUrls: ['./vehicles-form.component.css'],
 })
 export class VehiclesFormComponent implements OnInit {
   showSpinner: boolean = false;
@@ -40,13 +42,22 @@ export class VehiclesFormComponent implements OnInit {
     private customersService: CustomersService,
     private vehiclesService: VehiclesService,
     private modelsService: ModelossService,
-    private toastService: ToastService
-  ) { }
+    private toastService: ToastService,
+    private formBuilder: FormBuilder
+  ) {}
 
-
+  vehicleForm = this.formBuilder.group({
+    vin: ['', [Validators.required, Validators.minLength(17)]],
+    matricula: ['', [Validators.required, Validators.minLength(6)]],
+    anio: ['', [Validators.required, Validators.minLength(4)]],
+    color: ['', [Validators.required, Validators.minLength(3)]],
+    marca: [0, Validators.required],
+    modelo : [0, Validators.required],
+    tipoMotor: [0, Validators.required],
+  });
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => this.params = params);
+    this.route.paramMap.subscribe((params) => (this.params = params));
     // this.customer.idCliente = this.params.get('idCustomer');
     this.vehicle.idVehiculo = this.params.get('idVehicle');
     console.log(this.params.params.id);
@@ -64,18 +75,31 @@ export class VehiclesFormComponent implements OnInit {
     if (this.vehicle.idVehiculo > 0) {
       this.vehiclesService.get(this.vehicle.idVehiculo).subscribe({
         next: (vehicle: Vehiculo) => {
-          console.log('vehicle', vehicle)
+          console.log('vehicle', vehicle);
           this.vehicle = vehicle;
           this.vehicle.ordenServicio = [];
-          this.modelsService.getByIdMarca(vehicle.modelo.marca.idMarca).subscribe({
-            next: (modelos: Modelo[]) => {
-              this.modelos = modelos;
-            }
-          })
 
+          this.modelsService
+            .getByIdMarca(vehicle.modelo.marca.idMarca)
+            .subscribe({
+              next: (modelos: Modelo[]) => {
+                this.modelos = modelos;
+              },
+            });
 
-        }
-      })
+          // Cargar los datos al formulario
+          this.vehicleForm.patchValue({
+            vin: vehicle.vin,
+            matricula: vehicle.matricula,
+            anio: vehicle.anioModelo,
+            color: vehicle.color,
+            marca: vehicle.modelo.marca.idMarca,
+            modelo: vehicle.modelo.idModelo,
+            tipoMotor: vehicle.tipoMotor.idTipoMotor
+        });
+        
+        },
+      });
     }
 
     let temp = localStorage.getItem('customer');
@@ -89,62 +113,63 @@ export class VehiclesFormComponent implements OnInit {
     //   }
     // })
 
-
+    
     this.marcasService.getAll().subscribe({
       next: (marcas: Marca[]) => {
         console.log('marcas', marcas)
         this.marcas = marcas;
       }
     });
-
+  
 
     this.tiposMotorService.getAll().subscribe({
       next: (tiposMotor: TipoMotor[]) => {
         this.tiposMotor = tiposMotor;
-      }
-    })
-
-
+      },
+    });
   }
 
   loadModels(id: any) {
-    id = id.split(': ')[1];
+    //id = id.split(': ')[1];
     console.log('modelos', id);
     if (id >= 0)
       this.modelsService.getByIdMarca(id).subscribe({
         next: (modelos: Modelo[]) => {
-          console.log('modelos', modelos, id)
-          this.modelos = modelos
-        }
-      })
+          console.log('modelos', modelos, id);
+          this.modelos = modelos;
+        },
+      });
   }
 
   save() {
     this.vehicle.cliente = this.customer;
     console.log('vehicle', this.vehicle);
     this.vehiclesService.saveOrUpdate(this.vehicle).subscribe({
-      next: resp => {
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
-      }
-    })
+      next: (resp) => {
+        this.toastService.addMessage({
+          title: 'Sistema',
+          timeAgo: '',
+          body: ' Registro Grabado',
+          type: 'success',
+        });
+      },
+    });
   }
 
   captureFile(event: any) {
-    this.vehicle.imagen = '/angular/assets/images/cars/' + event.target.files[0].name;
+    this.vehicle.imagen =
+      '/angular/assets/images/cars/' + event.target.files[0].name;
     console.log(event);
   }
 
-
   compareMarca(item1: any, item2: any) {
-    console.log(item1 + '-' + item2.idMarca)
+    console.log(item1 + '-' + item2.idMarca);
     return item1 && item2 ? item1.idMarca === item2.idMarca : item1 === item2;
   }
 
   compareModelo(item1: any, item2: any) {
-
     return item1 && item2 ? item1.idModelo === item2.idModelo : item1 === item2;
   }
-
 }
 
 // title: string;
@@ -168,7 +193,6 @@ export class VehiclesFormComponent implements OnInit {
 //       "idCliente":1
 //   }
 // }
-
 
 // {
 //   "cliente": {
@@ -195,6 +219,3 @@ export class VehiclesFormComponent implements OnInit {
 //   "anioModelo": "2016",
 //   "color": "blanco"
 // }
-
-
-

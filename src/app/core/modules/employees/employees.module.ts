@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MEmployeesListComponent } from './m-employees-list/m-employees-list.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MEmployeeFormComponent } from './m-employee-form/m-employee-form.component';
 import { EmployeesFormComponent } from 'src/app/contexts/backoffice/pages/sistema/employees/employees-form/employees-form.component';
 
@@ -16,7 +16,8 @@ import { EmployeesFormComponent } from 'src/app/contexts/backoffice/pages/sistem
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     MEmployeesListComponent,

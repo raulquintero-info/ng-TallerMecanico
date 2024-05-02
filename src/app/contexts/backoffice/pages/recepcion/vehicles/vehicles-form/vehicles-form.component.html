@@ -3,7 +3,8 @@
   <div class="row ">
     <div class="col-md-5 mt-4 bg-primary banner-left">
 
-      <div class="mt-2 text-uppercase" style="font-weight: bold">{{ vehicle.modelo.marca.marca }} {{ vehicle.modelo.modelo}}</div>
+      <div class="mt-2 text-uppercase" style="font-weight: bold">{{ vehicle.modelo.marca.marca }} {{
+        vehicle.modelo.modelo}}</div>
       <img class="mb-2" [src]="vehicle.imagen" alt="">
       <button class="btn btn-outline-light btn-sm"><i class="bi bi-camera"></i> Cambiar Imagen</button>
       <div class="mt-3">
@@ -12,8 +13,10 @@
         <p class="mt-2 texto-parrafo">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel lacinia sapien, in suscipit ipsum. Nam ut
           ultrices magna. Integer placerat libero a dolor scelerisque porta. Morbi venenatis, nibh sed cursus ornare,
-          massa augue molestie justo, sed rutrum ex tortor sit amet augue. Sed a tempus libero. Sed at orci a ex fermentum
-          auctor in et nunc. Sed venenatis risus odio, in hendrerit nibh laoreet sit amet. Nullam dapibus nulla in dictum
+          massa augue molestie justo, sed rutrum ex tortor sit amet augue. Sed a tempus libero. Sed at orci a ex
+          fermentum
+          auctor in et nunc. Sed venenatis risus odio, in hendrerit nibh laoreet sit amet. Nullam dapibus nulla in
+          dictum
           tristique. Morbi at interdum eros. Quisque ultricies et lectus a dapibus. Nullam ac ipsum pulvinar, ultrices
           sapien vel, tempus ipsum. Donec venenatis, magna vel vehicula ultrices, lectus nibh placerat ante, id ornare
           libero quam eu erat. Donec facilisis ex et neque consequat.
@@ -25,82 +28,133 @@
         [printerEnabled]="true"></app-page-title>
       <div class="bg-dark mb-3">&nbsp;</div>
 
-      <div class=" mb-3">
-        <label for="imagen" class="form-label">Imagen</label>
-        <input type="file" class="form-control" id="imagen" (change)="captureFile($event)">
-      </div>
+      <form [formGroup]="vehicleForm">
+        <div class=" mb-3">
+          <label for="imagen" class="form-label">Imagen</label>
+          <input type="file" class="form-control" id="imagen" (change)="captureFile($event)">
+        </div>
 
-      <div class=" mb-3">
-        <label for="vin" class="form-label">VIN</label>
-        <input type="text" class="form-control" [(ngModel)]="vehicle.vin" id="vin">
-      </div>
+        <div class=" mb-3">
+          <label for="vin" class="form-label">VIN</label>
+          <input type="text" class="form-control" formControlName="vin" id="vin">
+          <div
+            *ngIf="vehicleForm.controls.vin.invalid && (vehicleForm.controls.vin.dirty || vehicleForm.controls.vin.touched)"
+            class="alert alert-danger">
+            <div *ngIf="vehicleForm.controls.vin.errors?.['required']">El VIN no puede quedar vacío.</div>
+            <div *ngIf="vehicleForm.controls.vin.errors?.['minlength']">Debe tener 17 caracteres.</div>
+          </div>
+        </div>
 
-      <div class=" mb-3">
-        <label for="matricula" class="form-label">Matircula</label>
-        <input type="text" class="form-control" id="matricula" [(ngModel)]="vehicle.matricula">
-      </div>
-      <div class=" mb-3">
-        <label for="Año" class="form-label">Año</label>
-        <input type="number" class="form-control" id="matricula" [(ngModel)]="vehicle.anioModelo">
-      </div>
-      <div class=" mb-3">
-        <label for="color" class="form-label">Color</label>
-        <input type="text" class="form-control" id="color" [(ngModel)]="vehicle.color">
-      </div>
-      <!-- <div class=" mb-3">
+        <div class=" mb-3">
+          <label for="matricula" class="form-label">Matricula</label>
+          <input type="text" class="form-control" id="matricula" formControlName="matricula">
+          <div
+            *ngIf="vehicleForm.controls.matricula.invalid && (vehicleForm.controls.matricula.dirty || vehicleForm.controls.matricula.touched)"
+            class="alert alert-danger">
+            <div *ngIf="vehicleForm.controls.matricula.errors?.['required']">La matrícula no puede quedar vacía.</div>
+            <div *ngIf="vehicleForm.controls.matricula.errors?.['minlength']">Debe tener 6 caracteres.</div>
+          </div>
+        </div>
+
+        <div class=" mb-3">
+          <label for="Año" class="form-label">Año</label>
+          <input type="number" class="form-control" id="matricula" formControlName="anio">
+          <div
+            *ngIf="vehicleForm.controls.anio.invalid && (vehicleForm.controls.anio.dirty || vehicleForm.controls.anio.touched)"
+            class="alert alert-danger">
+            <div *ngIf="vehicleForm.controls.anio.errors?.['required']">El año no puede quedar vacío.</div>
+            <div *ngIf="vehicleForm.controls.anio.errors?.['minlength']">Debe tener 4 caracteres.</div>
+          </div>
+        </div>
+
+        <div class=" mb-3">
+          <label for="color" class="form-label">Color</label>
+          <input type="text" class="form-control" id="color" formControlName="color">
+          <div
+            *ngIf="vehicleForm.controls.color.invalid && (vehicleForm.controls.color.dirty || vehicleForm.controls.color.touched)"
+            class="alert alert-danger">
+            <div *ngIf="vehicleForm.controls.color.errors?.['required']">El color no puede quedar vacío.</div>
+            <div *ngIf="vehicleForm.controls.color.errors?.['minlength']">Debe tener 4 caracteres.</div>
+          </div>
+        </div>
+        <!-- <div class=" mb-3">
         <label for="imagen" class="form-label">Imagen</label>
         <input type="text" class="form-control" id="imagen" [(ngModel)]="vehicle.imagen">
       </div> -->
 
 
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class=" mb-3">
-            <label for="marca" class="form-label">Marca</label>
-            <select name="marca" class="form-select" #selectMarca id="marca" [(ngModel)]="vehicle.modelo.marca" [compareWith]="compareMarca"
-              (change)="loadModels(selectMarca.value)" aria-label="marca">
-              <!-- <option value="-1" readonly>Seleccione una Marca</option> -->
-              <option *ngFor="let b of marcas" [ngValue]="b.idMarca">{{ b.marca }}</option>
-            </select>
+        <div class="row">
+          <div class="col-md-6">
+            <div class=" mb-3">
+              <label for="marca" class="form-label">Marca</label>
+              <select formControlName="marca" class="form-select" name="marca" #selectMarca id="marca" 
+                [compareWith]="compareMarca" (change)="loadModels(selectMarca.value)" aria-label="marca">
+                <!-- [(ngModel)]="vehicle.modelo.marca" -->
+                <!-- <option value="-1" readonly>Seleccione una Marca</option> -->
+                <option *ngFor="let b of marcas" [value]="b.idMarca">{{ b.marca }}</option>
+              </select>
+              <div
+                *ngIf="vehicleForm.controls.marca.invalid && (vehicleForm.controls.marca.dirty || vehicleForm.controls.marca.touched)"
+                class="alert alert-danger">
+                <div *ngIf="vehicleForm.controls.marca.errors?.['required']">Debe seleccionar una marca.</div>
+              </div>
+            </div>
+          </div>
+
+          
+
+
+          <div class="col-md-6">
+            <div class=" mb-3">
+              <label for="modelo" class="form-label">Modelo</label>
+              <select formControlName="modelo" name="modelo" class="form-select" id="modelo" 
+                aria-label="modelo" placeholder="Seleccione un modelo"
+                [compareWith]="compareModelo">
+                <!-- <option selected value="-1">Seleccione un Modelo</option> -->
+                <option *ngFor="let b of modelos" [value]="b.idModelo">{{ b.modelo }}</option>
+              </select>
+              <div
+                *ngIf="vehicleForm.controls.modelo.invalid && (vehicleForm.controls.modelo.dirty || vehicleForm.controls.modelo.touched)"
+                class="alert alert-danger">
+                <div *ngIf="vehicleForm.controls.modelo.errors?.['required']">Debe seleccionar un modelo.</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class=" mb-3">
-            <label for="modelo" class="form-label">Modelo</label>
-            <select name="modelo" class="form-select" id="modelo" [disabled]="!modelos.length" [(ngModel)]="vehicle.modelo"
-              aria-label="modelo" placeholder="Seleccione un modelo"  [compareWith]="compareModelo">
-              <!-- <option selected value="-1">Seleccione un Modelo</option> -->
-              <option *ngFor="let b of modelos" [ngValue]="b">{{ b.modelo }}</option>
-            </select>
+
+
+        <!-- modelo - tipoMotor = cliente  -->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class=" mb-3">
+              <label for="tipoMotor" class="form-label">Tipo de Motor</label>
+              <select formControlName="tipoMotor" class="form-select" name="tipoMotor" id="tipoMotor" 
+                aria-label="tipoMotor" placeholder="Seleccione un Tipo de Motor">
+                <option *ngFor="let b of tiposMotor" [selected]="b.idTipoMotor==1"  [value]="b.idTipoMotor">{{ b.tipoMotor }}
+                </option>
+              </select>
+              <div *ngIf="vehicleForm.controls.tipoMotor.invalid && (vehicleForm.controls.tipoMotor.dirty || vehicleForm.controls.tipoMotor.touched)" class="alert alert-danger">
+                <div *ngIf="vehicleForm.controls.tipoMotor.errors?.['required']">Debe seleccionar un Tipo de Motor.</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
 
-      <!-- modelo - tipoMotor = cliente  -->
+          <div class="col-md-6" style="text-align: center"><br>
+            <button type="submit" class="btn btn-primary" style="width: 100%;" [disabled]="showSpinner"
+              (click)="save()"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
+              Vehiculo
+            </button>
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class=" mb-3">
-            <label for="tipoMotor" class="form-label">Tipo de Motor</label>
-            <select class="form-select" name="tipoMotor" id="tipoMotor" [disabled]="!tiposMotor.length" [(ngModel)]="vehicle.tipoMotor"
-              aria-label="modelo" placeholder="Seleccione un modelo" [compareWith]="compareModelo">
-              <option *ngFor="let b of tiposMotor" [selected]="b.idTipoMotor==1" [ngValue]="b">{{ b.tipoMotor }}
-              </option>
-            </select>
           </div>
-        </div>
-        <div class="col-md-6" style="text-align: center"><br>
-          <button type="submit" class="btn btn-primary" style="width: 100%;" [disabled]="showSpinner"
-            (click)="save()"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar Vehiculo
-          </button>
+
 
         </div>
-
-
-      </div>
+      </form>
     </div>
+
 
 
 

@@ -1,65 +1,168 @@
-<form (ngSubmit)="emitEmployee()">
+<form [formGroup]="employeeForm" (ngSubmit)="emitEmployee()">
+
 
   <div class=" mb-3">
-    <label for="idCliente" class="form-label">Id</label>
-    <input type="idCliente" class="form-control" [disabled]="true" [readOnly]="true" [ngModel]="employee.idEmpleado"
-      id="idCliente" name="idCliente">
+    <label for="idEmpleado" class="form-label">Id</label>
+    <input type="idEmpleado" class="form-control" [disabled]="true" [readOnly]="true" 
+      formControlName="idEmpleado" id="idEmpleado" name="idEmpleado">
 
   </div>
 
   <div class=" mb-3">
     <label for="email" class="form-label">Email</label>
-    <input type="text" class="form-control" [(ngModel)]="employee.usuario.email" [readOnly]="employee.idEmpleado>0"
+    <input type="text" class="form-control" formControlName="email" [readOnly]="employee.idEmpleado>0"
       [disabled]="employee.idEmpleado>0" id="email" name="email">
-
   </div>
+
+  <!-- validacion  -->
+  <div
+    *ngIf="employeeForm.controls.email.invalid  && (employeeForm.controls.email.dirty || employeeForm.controls.email.touched)"
+    class="alert alert-danger">
+    <div *ngIf="employeeForm.controls.email.errors?.['required']">
+      El email es requerido.
+    </div>
+    <div *ngIf="employeeForm.controls.email.errors?.['email']">
+      El Email debe tener un formato válido.
+    </div>
+  </div>
+
   <div class=" mb-3" [hidden]="employee.idEmpleado>0">
     <label for="password" class="form-label">Contraseña</label>
     <input type="password" class="form-control" [hidden]="employee.idEmpleado>0" id="password" name="password"
-      [(ngModel)]="employee.usuario.password">
+      formControlName="password" type="password" id="password">
+  </div>
+
+  <div
+    *ngIf="employeeForm.controls.password.invalid  && (employeeForm.controls.password.dirty || employeeForm.controls.password.touched)"
+    class="alert alert-danger">
+    <div *ngIf="employeeForm.controls.password.errors?.['required']">
+      El password no puede quedar vacío.
+    </div>
+    <div *ngIf="employeeForm.controls.password.errors?.['minlength']">
+      Debe tener como mínimo 8 caracteres.
+    </div>
   </div>
   <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="employee.idCliente<1">Cambiar
     Contraseña</button></div> -->
 
   <div class=" mb-3">
     <label for="nombre" class="form-label">Nombre</label>
-    <input type="text" class="form-control" [(ngModel)]="employee.nombre" id="nombre" name="nombre">
+    <input type="text" class="form-control" formControlName="nombre" id="nombre" name="nombre">
 
   </div>
+  <div
+    *ngIf="employeeForm.controls.nombre.invalid  && (employeeForm.controls.nombre.dirty || employeeForm.controls.nombre.touched)"
+    class="alert alert-danger">
+    <div *ngIf="employeeForm.controls.nombre.errors?.['required']">
+      El nombre no puede quedar vacío.
+    </div>
+    <div *ngIf="employeeForm.controls.nombre.errors?.['minlength']">
+      Debe tener como mínimo 3 caracteres.
+    </div>
+  </div>
+
+
   <div class=" mb-3">
     <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
-    <input type="text" class="form-control" [(ngModel)]="employee.apellidoPaterno" id="apellidoPaterno"
+    <input type="text" class="form-control" formControlName="aPaterno" id="apellidoPaterno"
       name="apellidoPaterno">
 
   </div>
+
+  <div
+    *ngIf="employeeForm.controls.aPaterno.invalid  && (employeeForm.controls.aPaterno.dirty || employeeForm.controls.aPaterno.touched)"
+    class="alert alert-danger">
+    <div *ngIf="employeeForm.controls.aPaterno.errors?.['required']">
+      El apellido Paterno no puede quedar vacío.
+    </div>
+    <div *ngIf="employeeForm.controls.aPaterno.errors?.['minlength']">
+      Debe tener como mínimo 3 caracteres.
+    </div>
+  </div>
+
   <div class=" mb-3">
     <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
-    <input type="text" class="form-control" [(ngModel)]="employee.apellidoMaterno" id="apellidoMaterno"
+    <input type="text" class="form-control" formControlName="aMaterno" id="apellidoMaterno"
       name="apellidoMaterno">
+
+      <div
+      *ngIf="employeeForm.controls.aMaterno.invalid  && (employeeForm.controls.aMaterno.dirty || employeeForm.controls.aMaterno.touched)"
+      class="alert alert-danger">
+      <div *ngIf="employeeForm.controls.aMaterno.errors?.['required']">
+        El apellido Materno no puede quedar vacío.
+      </div>
+      <div *ngIf="employeeForm.controls.aMaterno.errors?.['minlength']">
+        Debe tener como mínimo 3 caracteres.
+      </div>
+    </div>
 
   </div>
   <div class=" mb-3">
     <label for="rfc" class="form-label">RFC</label>
-    <input type="text" class="form-control" [(ngModel)]="employee.rfc" id="rfc" name="rfc">
-
+    <input type="text" class="form-control" formControlName="rfc" id="rfc" name="rfc">
   </div>
+
+  <div
+    *ngIf="employeeForm.controls.rfc.invalid  && (employeeForm.controls.rfc.dirty || employeeForm.controls.rfc.touched)"
+    class="alert alert-danger">
+    <div *ngIf="employeeForm.controls.rfc.errors?.['required']">
+      El RFC no puede quedar vacío.
+    </div>
+    <div *ngIf="employeeForm.controls.rfc.errors?.['minlength']">
+      Debe tener como mínimo 12 caracteres.
+    </div>
+  </div>
+
   <div class=" mb-3">
-    <label for="telefono" class="form-label">Telefono</label>
-    <input type="text" class="form-control" [(ngModel)]="employee.curp" id="telefono" name="telefono">
-
+    <label for="curp" class="form-label">CURP</label>
+    <input type="text" class="form-control" formControlName="curp" id="curp" name="curp">
   </div>
+
+  <div
+    *ngIf="employeeForm.controls.curp.invalid  && (employeeForm.controls.curp.dirty || employeeForm.controls.curp.touched)"
+    class="alert alert-danger">
+    <div *ngIf="employeeForm.controls.curp.errors?.['required']">
+      El CURP no puede quedar vacío.
+    </div>
+    <div *ngIf="employeeForm.controls.curp.errors?.['minlength']">
+      Debe tener como mínimo 18 caracteres.
+    </div>
+  </div>
+
   <div class=" mb-3">
     <label for="puesto" class="form-label">Puesto</label>
-    <input type="text" class="form-control" [(ngModel)]="employee.puesto" id="puesto" name="puesto">
+    <input type="text" class="form-control" formControlName="puesto" id="puesto" name="puesto">
 
   </div>
+
+  <div
+    *ngIf="employeeForm.controls.puesto.invalid  && (employeeForm.controls.puesto.dirty || employeeForm.controls.puesto.touched)"
+    class="alert alert-danger">
+    <div *ngIf="employeeForm.controls.puesto.errors?.['required']">
+      El Puesto no puede quedar vacío.
+    </div>
+    <div *ngIf="employeeForm.controls.puesto.errors?.['minlength']">
+      Debe tener como mínimo 5 caracteres.
+    </div>
+  </div>
+
   <div class=" mb-3">
     <label for="observaciones" class="form-label">Observaciones</label>
-    <input type="text" class="form-control" [(ngModel)]="employee.observaciones" id="observaciones"
+    <input type="text" class="form-control" formControlName="observaciones" id="observaciones"
       name="observaciones">
 
   </div>
 
+  <div
+    *ngIf="employeeForm.controls.observaciones.invalid  && (employeeForm.controls.observaciones.dirty || employeeForm.controls.observaciones.touched)"
+    class="alert alert-danger">
+    <div *ngIf="employeeForm.controls.observaciones.errors?.['required']">
+      Las observaciones no pueden quedar vacías.
+    </div>
+    <div *ngIf="employeeForm.controls.observaciones.errors?.['minlength']">
+      Debe tener como mínimo 10 caracteres.
+    </div>
+  </div>
 
   <!-- <div class=" mb-3" style1="display:none;">
 
@@ -87,13 +190,13 @@
 
 
 
-  <button type="submit" class="btn btn-primary" *ngIf="!isSaved" [disabled]="showSpinner"><span
-        *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
-    </button>
-    <button type="button" class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner"
-      [routerLink]="'/admin/sistema/empleados/'"><span *ngIf="showSpinner"
-        class="spinner-border spinner-border-sm"> </span> Continuar
-    </button>
+  <button type="submit" class="btn btn-primary" *ngIf="!isSaved" [disabled]="showSpinner"><span *ngIf="showSpinner"
+      class="spinner-border spinner-border-sm"> </span> Grabar
+  </button>
+  <button type="button" class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner"
+    [routerLink]="'/admin/sistema/empleados/'"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm">
+    </span> Continuar
+  </button>
 
 
 </form>
