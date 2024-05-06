@@ -8,12 +8,14 @@ export const normalGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state:
   const router = inject(Router)
   const loginService = inject(LoginService);
 
+      loginService.checkStatus();
       let role = loginService.getRole();
       if(role == "CLIENTE"){
         return true;
       }
 
-      router.navigate(['not-authorized']);
+      router.navigateByUrl("not-authorized", {skipLocationChange: true});
+      // router.navigate(['not-authorized']);
       return false;
 
 

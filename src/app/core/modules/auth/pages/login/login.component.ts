@@ -15,7 +15,7 @@ import { LoginResponse } from '../../interfaces/loginResponse.interface';
 export class LoginComponent implements OnInit{
   user: User = {} as User;
   role: string = "";
-  message: string ='';
+  message: string ='8080';
 
   showSpinner: boolean =false;
   loginForm = this.formBuilder.group({

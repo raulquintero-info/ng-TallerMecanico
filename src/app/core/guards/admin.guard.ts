@@ -14,7 +14,7 @@ export const adminGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: 
         return true;
       }
 
-      router.navigate(['not-authorized']);
+      router.navigateByUrl("not-authorized", {skipLocationChange: true});
       return false;
 
 

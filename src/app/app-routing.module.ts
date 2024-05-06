@@ -55,7 +55,7 @@ const routes: Routes = [
   {path: 'admin/recepcion/servicios', component: ServicesListComponent, canActivate: [adminGuard]},
   {path: 'admin/recepcion/servicios-form/:id/:idVehiculo', component: ServicesFormComponent, canActivate: [adminGuard]},
   {path: 'admin/recepcion/servicios-view/:id/:idVehiculo', component: ServicesViewComponent, canActivate: [adminGuard]},
-  {path: 'admin/recepcion/servicios-view/:id', component: ServicesViewComponent},   
+  {path: 'admin/recepcion/servicios-view/:id', component: ServicesViewComponent},
 
   {path: 'admin/recepcion/clientes', component: CustomersListComponent},
   {path: 'admin/recepcion/clientes-form/:id', component: CustomersFormComponent},
