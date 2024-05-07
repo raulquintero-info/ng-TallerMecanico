@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "/angular/#/",
+            "baseHref": "/ngTallerMecanico/#/",
             "outputPath": "docs/angular/",
             "index": "src/index.html",
             "main": "src/main.ts",
