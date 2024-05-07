@@ -55,51 +55,50 @@ const routes: Routes = [
   {path: 'admin/recepcion/servicios', component: ServicesListComponent, canActivate: [adminGuard]},
   {path: 'admin/recepcion/servicios-form/:id/:idVehiculo', component: ServicesFormComponent, canActivate: [adminGuard]},
   {path: 'admin/recepcion/servicios-view/:id/:idVehiculo', component: ServicesViewComponent, canActivate: [adminGuard]},
-  {path: 'admin/recepcion/servicios-view/:id', component: ServicesViewComponent},
+  {path: 'admin/recepcion/servicios-view/:id', component: ServicesViewComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/recepcion/clientes', component: CustomersListComponent},
-  {path: 'admin/recepcion/clientes-form/:id', component: CustomersFormComponent},
-  {path: 'admin/recepcion/clientes-view/:id', component: CustomersViewComponent},
+  {path: 'admin/recepcion/clientes', component: CustomersListComponent, canActivate: [adminGuard]},
+  {path: 'admin/recepcion/clientes-form/:id', component: CustomersFormComponent, canActivate: [adminGuard]},
+  {path: 'admin/recepcion/clientes-view/:id', component: CustomersViewComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/recepcion/vehiculos', component: VehiclesListComponent},
-  {path: 'admin/recepcion/vehiculos/por-cliente/:id', component: RecepcionCustomersVehicleComponent},
-  {path: 'admin/recepcion/vehiculos/por-cliente-sel/:id', component: RecepcionCustomersVehicleComponent},
-  {path: 'admin/recepcion/vehiculos/:id', component: RecepcionVehicleComponent},
-  {path: 'admin/recepcion/vehiculos-form/:idVehicle', component: VehiclesFormComponent},
-  {path: 'admin/recepcion/clientes/:idCustomer/vehiculo-form/:idVehicle', component: VehiclesFormComponent},
+  {path: 'admin/recepcion/vehiculos', component: VehiclesListComponent, canActivate: [adminGuard]},
+  {path: 'admin/recepcion/vehiculos/por-cliente/:id', component: RecepcionCustomersVehicleComponent, canActivate: [adminGuard]},
+  {path: 'admin/recepcion/vehiculos/por-cliente-sel/:id', component: RecepcionCustomersVehicleComponent, canActivate: [adminGuard]},
+  {path: 'admin/recepcion/vehiculos/:id', component: RecepcionVehicleComponent, canActivate: [adminGuard]},
+  {path: 'admin/recepcion/vehiculos-form/:idVehicle', component: VehiclesFormComponent, canActivate: [adminGuard]},
+  {path: 'admin/recepcion/clientes/:idCustomer/vehiculo-form/:idVehicle', component: VehiclesFormComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/recepcion/facturas-view/:idFactura', component: FacturasViewComponent},
+  {path: 'admin/recepcion/facturas-view/:idFactura', component: FacturasViewComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/taller/servicios', component: TallerServiciosListComponent},
-  {path: 'admin/taller/vehiculos', component: TallerVehicleListComponent},
+  {path: 'admin/taller/servicios', component: TallerServiciosListComponent, canActivate: [adminGuard]},
+  {path: 'admin/taller/vehiculos', component: TallerVehicleListComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/sistema/usuarios', component: UsersListComponent},
-  {path: 'admin/sistema/usuarios-editar/:id', component: UsersFormComponent},
-  {path: 'admin/sistema/usuarios-nuevo/:id', component: UsersFormComponent},
+  {path: 'admin/sistema/usuarios', component: UsersListComponent, canActivate: [adminGuard]},
+  {path: 'admin/sistema/usuarios-editar/:id', component: UsersFormComponent, canActivate: [adminGuard]},
+  {path: 'admin/sistema/usuarios-nuevo/:id', component: UsersFormComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/catalogos/marcas', component: MarcasListComponent},
-  {path: 'admin/catalogos/marcas-form/:id', component: MarcasFormComponent},
+  {path: 'admin/catalogos/marcas', component: MarcasListComponent, canActivate: [adminGuard]},
+  {path: 'admin/catalogos/marcas-form/:id', component: MarcasFormComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/catalogos/modelos/:idMarca', component: ModelosListComponent},
-  {path: 'admin/catalogos/modelos-form/:id', component: ModelosFormComponent},
+  {path: 'admin/catalogos/modelos/:idMarca', component: ModelosListComponent, canActivate: [adminGuard]},
+  {path: 'admin/catalogos/modelos-form/:id', component: ModelosFormComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/catalogos/roles', component: RolesListComponent},
-  {path: 'admin/catalogos/roles-form/:id', component: RolesFormComponent},
+  {path: 'admin/catalogos/roles', component: RolesListComponent, canActivate: [adminGuard]},
+  {path: 'admin/catalogos/roles-form/:id', component: RolesFormComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/catalogos/tipos-motor', component: TipoMotorListComponent},
-  {path: 'admin/catalogos/tipos-motor-form/:id', component: TipoMotorFormComponent},
+  {path: 'admin/catalogos/tipos-motor', component: TipoMotorListComponent, canActivate: [adminGuard]},
+  {path: 'admin/catalogos/tipos-motor-form/:id', component: TipoMotorFormComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/catalogos/estatus-servicio', component: EstatusServicioListComponent},
-  {path: 'admin/catalogos/estatus-servicio-form/:id', component: EstatusServicioFormComponent},
+  {path: 'admin/catalogos/estatus-servicio', component: EstatusServicioListComponent, canActivate: [adminGuard]},
+  {path: 'admin/catalogos/estatus-servicio-form/:id', component: EstatusServicioFormComponent, canActivate: [adminGuard]},
 
-  {path: 'admin/sistema/empleados', component: EmployeesListComponent},
-  {path: 'admin/sistema/empleados-form/:id', component: EmployeesFormComponent},
+  {path: 'admin/sistema/empleados', component: EmployeesListComponent, canActivate: [adminGuard]},
+  {path: 'admin/sistema/empleados-form/:id', component: EmployeesFormComponent, canActivate: [adminGuard]},
 
   {path: 'not-authorized', component: NotAuthorizedComponent},
   {path: 'logout', component: LogoutComponent},
   {path: '**', component: NotFoundComponent}
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

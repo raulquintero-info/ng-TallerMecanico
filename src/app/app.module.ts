@@ -17,7 +17,6 @@ import { NotAuthorizedComponent } from './shared/pages/not-authorized/not-author
 import { ToasterComponent } from './shared/components/toaster/toaster.component';
 import { ToastModule } from './core/modules/toast/toast.module';
 import { FormsModule } from '@angular/forms';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,8 +39,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     FormsModule
   ],
   providers: [
-    authInterceptorProviders,
-    {provide: LocationStrategy, useClass:HashLocationStrategy}
+    authInterceptorProviders
+    // {provide: LocationStrategy, useClass:HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

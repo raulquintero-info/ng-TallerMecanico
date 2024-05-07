@@ -27,14 +27,15 @@ export class TallerServiciosListComponent {
   private servicesService = inject(ServicesService);
 
   ngOnInit() {
-    
+
     this.loadServices(this.currentPage-1);
   }
 
-  loadServices(page: number) { 
+  loadServices(page: number) {
     this.servicesService
       .getPaginatedData(page)
       .subscribe((data: Page<any>) => {
+        console.log('serviciosTaller',data.content);
         this.services = data.content;
         this.totalPages = data.totalPages;
         this.currentPage = data.number + 1;
@@ -46,5 +47,13 @@ export class TallerServiciosListComponent {
 
   }
 
+  getByStatus(status: string){
+    this.servicesService.getByStatus(status).subscribe({
+      next: resp=>{
+        console.log('tallerFilter', resp);
+        this.services = resp;
+      }
+    });
+  }
 
 }

@@ -24,9 +24,11 @@ import { Employee } from 'src/app/core/interfaces/employee.interface';
 })
 export class ServicesViewComponent implements OnInit {
   displayStyle: string = 'none';
+  displayStyleDelete: string = 'none';
   isLoadingService = false;
   showBoxComment: boolean = false;
   showBoxAddItem: boolean = false;
+  showBoxDelete: boolean = false;
   item: DetalleOrdenServicios = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
   title: string = 'Taller AutoPro';
   subTitle: string = 'Orden de Servicio'
@@ -159,7 +161,7 @@ export class ServicesViewComponent implements OnInit {
       next: resp=>{
         // debugger
         console.log('response service',resp)
-        this.service=resp.OrdenDeServicio;
+        this.service=resp.ordenServicio;
         this.service.vehiculo = this.vehicle
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: message, type:'success' })
       },
@@ -173,7 +175,7 @@ export class ServicesViewComponent implements OnInit {
 
   compareStatus(item1: any, item2: any) {
 
-    return item1 && item2 ? item1.idModelo === item2.idModelo : item1 === item2;
+    return item1 && item2 ? item1.idOrdenServicio === item2.idOrdenServicio : item1 === item2;
   }
 
   facturar(){
@@ -187,5 +189,13 @@ export class ServicesViewComponent implements OnInit {
     this.displayStyle = "none";
   }
 
+  openModalDelete() {
+    this.displayStyleDelete = "block";
+  }
+  closeModalDelete(){
+    this.displayStyleDelete = "none";
+  }
+  onDelete(){
 
+  }
 }

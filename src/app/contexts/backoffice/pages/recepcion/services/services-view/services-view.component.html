@@ -35,8 +35,8 @@
             <div class="col-md-6 ">
               <div class="service-title">Datos del Cliente</div>
               <div class="p-2">
-                <div>Cliente: {{ currentCustomer.nombre + ' ' + currentCustomer.apellidoPaterno}}</div>
-                <div>Tel: {{ currentCustomer.telefono }}</div>
+                <div>Cliente: {{ vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno}}</div>
+                <div>Tel: {{ vehicle.cliente.telefono }}</div>
               </div>
               <div class="service-title mt-2">Datos del Vehiculos</div>
               <div class="p-2">
@@ -98,7 +98,8 @@
 
             <pre class="comentarios mt-3 p-3 d-print-none">{{ service.comentarios}}</pre>
           </ng-template>
-
+          <hr>
+          <div class="text-end"><button class="btn btn-sm btn-danger"  (click)="openModalDelete()">Eliminar Servicio</button></div>
         </div>
 
       </div>
@@ -167,6 +168,7 @@
           </ng-template>
 
         </div>
+
       </div>
 
     </div>
@@ -240,6 +242,34 @@
         <button type="button" class="btn btn-primary"
                 (click)="facturar()">
           Continuar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyleDelete}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">AutoPro </h4>
+      </div>
+      <div class="modal-body">
+       Esta seguro que desea eliminar este Servicio?
+       <div>Este proceso es irreversible</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+                (click)="onDelete()">
+          Si
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="closeModalDelete()">
+          Cancelar
         </button>
       </div>
     </div>

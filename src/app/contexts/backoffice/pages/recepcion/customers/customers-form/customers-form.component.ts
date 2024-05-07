@@ -72,6 +72,7 @@ export class CustomersFormComponent implements OnInit {
             domicilio: this.customer.domicilio,
             telefono: this.customer.telefono
           });
+          this.customersForm.get('password')?.disable();
 
         },
         error: resp => {

@@ -24,14 +24,14 @@
       </div>
     </div>
     <div class="col-md-7">
-      <app-page-title [title]="customer.nombre + ' ' + customer.apellidoPaterno" [subTitle]="subTitle"
+      <app-page-title [title]="vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno" [subTitle]="subTitle"
         [printerEnabled]="true"></app-page-title>
       <div class="bg-dark mb-3">&nbsp;</div>
 
       <form [formGroup]="vehicleForm">
         <div class=" mb-3">
           <label for="imagen" class="form-label">Imagen</label>
-          <input type="file" class="form-control" id="imagen" (change)="captureFile($event)">
+          <input type="file" class="form-control" formControlName="imagen"  id="imagen" (change)="captureFile($event)">
         </div>
 
         <div class=" mb-3">
@@ -88,7 +88,7 @@
           <div class="col-md-6">
             <div class=" mb-3">
               <label for="marca" class="form-label">Marca</label>
-              <select formControlName="marca" class="form-select" name="marca" #selectMarca id="marca" 
+              <select formControlName="marca" class="form-select" name="marca" #selectMarca id="marca"
                 [compareWith]="compareMarca" (change)="loadModels(selectMarca.value)" aria-label="marca">
                 <!-- [(ngModel)]="vehicle.modelo.marca" -->
                 <!-- <option value="-1" readonly>Seleccione una Marca</option> -->
@@ -102,13 +102,13 @@
             </div>
           </div>
 
-          
+
 
 
           <div class="col-md-6">
             <div class=" mb-3">
               <label for="modelo" class="form-label">Modelo</label>
-              <select formControlName="modelo" name="modelo" class="form-select" id="modelo" 
+              <select formControlName="modelo" name="modelo" class="form-select" id="modelo"
                 aria-label="modelo" placeholder="Seleccione un modelo"
                 [compareWith]="compareModelo">
                 <!-- <option selected value="-1">Seleccione un Modelo</option> -->
@@ -130,7 +130,7 @@
           <div class="col-md-6">
             <div class=" mb-3">
               <label for="tipoMotor" class="form-label">Tipo de Motor</label>
-              <select formControlName="tipoMotor" class="form-select" name="tipoMotor" id="tipoMotor" 
+              <select formControlName="tipoMotor" class="form-select" name="tipoMotor" id="tipoMotor"
                 aria-label="tipoMotor" placeholder="Seleccione un Tipo de Motor">
                 <option *ngFor="let b of tiposMotor" [selected]="b.idTipoMotor==1"  [value]="b.idTipoMotor">{{ b.tipoMotor }}
                 </option>

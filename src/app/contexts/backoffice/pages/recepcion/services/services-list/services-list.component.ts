@@ -67,4 +67,12 @@ export class ServicesListComponent implements OnInit{
 
   }
 
+  getByStatus(status: string){
+    this.servicesService.getByStatus(status).subscribe({
+      next: resp=>{
+        this.services = resp;
+      }
+    });
+  }
+
 }

@@ -11,7 +11,7 @@
   height: 450px;
   /* text-align: center; */
   color: white;
-  background-image: url('/ng-TallerMecanico/assets/images/background_claro.jpg');
+  background-image: url('/assets/images/background_claro.jpg');
   /* background-position: 100dvh; */
   background-position: center;
   background-size: cover;
@@ -44,7 +44,7 @@
   text-align: center;
 }
 .services{
-  /* background-image: url(/ng-TallerMecanico/assets/images/p3.png);
+  /* background-image: url(/assets/images/p3.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
@@ -80,7 +80,7 @@
   font-size: 30px;
 }
 .card-services{
-  background-image: url('/ng-TallerMecanico/assets/images/backgrounds/fondo_top3.png');
+  background-image: url('/assets/images/backgrounds/fondo_top3.png');
   /* background-position: 100dvh; */
   background-position: left;
   background-size: cover;

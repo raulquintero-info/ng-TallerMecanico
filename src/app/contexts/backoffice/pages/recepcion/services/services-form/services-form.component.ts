@@ -69,7 +69,7 @@ export class ServicesFormComponent implements OnInit {
       next: resp=>{
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Servicio Grabado', type: 'success' })
         console.log('servicio resp', resp);
-        this.service = resp.ordenDeServicio;
+        this.service = resp.ordenServicio;
         this.router.navigate(['admin/recepcion/servicios-view/'+resp.ordenDeServicio.idOrdenServicio +'/' + this.vehicle.idVehiculo]);
       },
       error: resp=>{

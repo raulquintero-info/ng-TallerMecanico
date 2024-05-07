@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 .page-title {
@@ -21,12 +22,12 @@
 }
 .layered-image {
   background: linear-gradient(to left, transparent, #6b6b6b),
-    url("/ng-TallerMecanico/assets/images/backgrounds/fondo_top4.png");
+    url("/assets/images/backgrounds/fondo_top4.png");
   background-repeat: repeat;
 }
 .layered-image-blue {
   background: linear-gradient(to bottom, transparent, #047bd5),
-    url("/ng-TallerMecanico/assets/images/backgrounds/fondo_top4.png");
+    url("/assets/images/backgrounds/fondo_top4.png");
   background-repeat: repeat;
 }
 .layered-image-right {

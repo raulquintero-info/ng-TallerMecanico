@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TipoMotor } from 'src/app/core/interfaces/tipoMotor.interface';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 
 @Component({

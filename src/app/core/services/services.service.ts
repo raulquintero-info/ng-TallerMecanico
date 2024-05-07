@@ -22,6 +22,7 @@ export class ServicesService {
   getAll():Observable<any>{return this.http.get(this.url)};
   getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
+  getByStatus(status: string):Observable<any>{return this.http.get(this.url + "/estatus/" + status)};
   saveOrUpdate(service: OrdenServicio):Observable<any>{
     console.log('servicio enviado', service);
     return (service.idOrdenServicio>0)

@@ -24,8 +24,8 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 export class VehiclesFormComponent implements OnInit {
   showSpinner: boolean = false;
   params: any;
-  vehicle: Vehiculo = { modelo: { marca: {} as Marca } as Modelo } as Vehiculo;
-  imagen: string = '/ng-TallerMecanico/assets/images/cars/no_image.jpg';
+  vehicle: Vehiculo = { modelo: { marca: {} as Marca, } as Modelo } as Vehiculo;
+  imagen: string = '/assets/images/cars/no_image.jpg';
   marcas: Marca[] = [];
   modelos: Modelo[] = [];
   customer: Customer = {} as Customer;
@@ -62,15 +62,7 @@ export class VehiclesFormComponent implements OnInit {
     this.vehicle.idVehiculo = this.params.get('idVehicle');
     console.log(this.params.params.id);
 
-    // if(this.customer.idCliente>0){
-    //   this.customersService.getById(this.customer.idCliente).subscribe({
-    //     next: (customer: Customer)=>{
-    //       customer.vehiculos = [];
-    //       this.customer = customer;
-    //       this.vehicle.cliente = customer;
-    //     }
-    //   })
-    // }
+
 
     if (this.vehicle.idVehiculo > 0) {
       this.vehiclesService.get(this.vehicle.idVehiculo).subscribe({
@@ -106,12 +98,12 @@ export class VehiclesFormComponent implements OnInit {
     this.customer = JSON.parse(<string>temp);
     console.log('customer', temp, this.customer);
     // todo: activar cuando el login y security esten funcionand
-    // this.customersService.currentCustomer.subscribe({
-    //   next: resp=>{
-    //     this.console
-    //     this.vehicle.cliente = resp;
-    //   }
-    // })
+    this.customersService.currentCustomer.subscribe({
+      next: resp=>{
+        // this.console
+        this.vehicle.cliente = resp;
+      }
+    })
 
 
     this.marcasService.getAll().subscribe({
@@ -142,7 +134,6 @@ export class VehiclesFormComponent implements OnInit {
   }
 
   save() {
-    this.vehicle.cliente = this.customer;
     console.log('vehicle', this.vehicle);
     this.vehiclesService.saveOrUpdate(this.vehicle).subscribe({
       next: (resp) => {
@@ -158,7 +149,7 @@ export class VehiclesFormComponent implements OnInit {
 
   captureFile(event: any) {
     this.vehicle.imagen =
-      '/ng-TallerMecanico/assets/images/cars/' + event.target.files[0].name;
+      '/assets/images/cars/' + event.target.files[0].name;
     console.log(event);
   }
 
@@ -172,50 +163,3 @@ export class VehiclesFormComponent implements OnInit {
   }
 }
 
-// title: string;
-//   timeAgo: string;
-//   body: string;
-//   type?: string;
-
-// {
-//   "vin":"555555624",
-//   "matricula":"HHA2345",
-//   "modelo":{
-//       "idModelo":471
-//   },
-//   "anioModelo":2018,
-//   "color": "Azul",
-//   "tipoMotor": {
-//       "idTipoMotor":1
-//   },
-//   "imagen": "",
-//   "cliente":{
-//       "idCliente":1
-//   }
-// }
-
-// {
-//   "cliente": {
-//     "idCliente": 1,
-//     "nombre": "juanito",
-//     "apellidoPaterno": "martinez",
-//     "apellidoMaterno": "perez",
-//     "domicilio": "desconocido",
-//     "telefono": "6865632378",
-//     "usuario": {
-//       "idUsuario": 1,
-//       "email": "juan@server",
-//       "password": "1234",
-//       "rol": []
-//     },
-//     "vehiculos": []
-//   },
-//   "modelo": {
-//     "idTipoMotor": 1,
-//     "tipoMotor": "gasolina"
-//   },
-//   "vin": "1f232342334kkjkl2k",
-//   "matricula": "5768ddf1",
-//   "anioModelo": "2016",
-//   "color": "blanco"
-// }

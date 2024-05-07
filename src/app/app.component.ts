@@ -1,13 +1,13 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ToastService } from './core/modules/toast/services/toast.service';
+import { Component, inject } from '@angular/core';
 import { Toast } from './core/interfaces/toast.interface';
+import { ToastService } from './core/modules/toast/services/toast.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'ng-Taller-Mecanico';
   messages: Toast[] = [];
   private toastService = inject(ToastService);
@@ -21,10 +21,8 @@ export class AppComponent implements OnInit{
     });
 
 
-   
 
 
   }
-
 
 }
