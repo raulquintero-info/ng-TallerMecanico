@@ -25,7 +25,7 @@ export class VehiclesFormComponent implements OnInit {
   showSpinner: boolean = false;
   params: any;
   vehicle: Vehiculo = { modelo: { marca: {} as Marca } as Modelo } as Vehiculo;
-  imagen: string = '/angular/assets/images/cars/no_image.jpg';
+  imagen: string = '/ng-TallerMecanico/assets/images/cars/no_image.jpg';
   marcas: Marca[] = [];
   modelos: Modelo[] = [];
   customer: Customer = {} as Customer;
@@ -97,7 +97,7 @@ export class VehiclesFormComponent implements OnInit {
             modelo: vehicle.modelo.idModelo,
             tipoMotor: vehicle.tipoMotor.idTipoMotor
         });
-        
+
         },
       });
     }
@@ -113,14 +113,14 @@ export class VehiclesFormComponent implements OnInit {
     //   }
     // })
 
-    
+
     this.marcasService.getAll().subscribe({
       next: (marcas: Marca[]) => {
         console.log('marcas', marcas)
         this.marcas = marcas;
       }
     });
-  
+
 
     this.tiposMotorService.getAll().subscribe({
       next: (tiposMotor: TipoMotor[]) => {
@@ -158,7 +158,7 @@ export class VehiclesFormComponent implements OnInit {
 
   captureFile(event: any) {
     this.vehicle.imagen =
-      '/angular/assets/images/cars/' + event.target.files[0].name;
+      '/ng-TallerMecanico/assets/images/cars/' + event.target.files[0].name;
     console.log(event);
   }
 

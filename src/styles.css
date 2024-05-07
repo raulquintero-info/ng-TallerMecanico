@@ -21,17 +21,17 @@
 }
 .layered-image {
   background: linear-gradient(to left, transparent, #6b6b6b),
-    url("/angular/assets/images/backgrounds/fondo_top4.png");
+    url("/ng-TallerMecanico/assets/images/backgrounds/fondo_top4.png");
   background-repeat: repeat;
 }
 .layered-image-blue {
   background: linear-gradient(to bottom, transparent, #047bd5),
-    url("/angular/assets/images/backgrounds/fondo_top4.png");
+    url("/ng-TallerMecanico/assets/images/backgrounds/fondo_top4.png");
   background-repeat: repeat;
 }
 .layered-image-right {
   background: linear-gradient(to right, transparent, #0078d4),
-    url("/angular/assets/images/backgrounds/fondo_top4.png");
+    url("/ng-TallerMecanico/assets/images/backgrounds/fondo_top4.png");
   background-repeat: repeat;
 }
 .text-row{
