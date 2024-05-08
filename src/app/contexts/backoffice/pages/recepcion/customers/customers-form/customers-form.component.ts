@@ -23,7 +23,7 @@ export class CustomersFormComponent implements OnInit {
   subTitle: string = "Cliente Nuevo"
   buttons = [];
   customer: Customer = {
-    usuario: { idUsuario: 0, email: '', password: '', rol: [] } as Usuario
+    usuario: { idUsuario: 0, username: '', password: '', rol: [] } as Usuario
   } as Customer;
   roles: Rol[] = [{ idRol: 0, nombre: "test" }];
   // user: Usuario = {} as Usuario
@@ -40,7 +40,7 @@ export class CustomersFormComponent implements OnInit {
 
   customersForm = this.formBuild.group({
     idCliente: [''],
-    email : ['', [Validators.required, Validators.email]],
+    username : ['', [Validators.required, Validators.email]],
     password: [''],
     // password: ['', [Validators.required, Validators.minLength(8)]],
     nombre: ['', [Validators.required, Validators.minLength(2)]],
@@ -65,7 +65,7 @@ export class CustomersFormComponent implements OnInit {
           console.log('cliente recibido', this.customer)
 
           this.customersForm.patchValue({
-            email: this.customer.usuario.email,
+            username: this.customer.usuario.username,
             nombre: this.customer.nombre,
             apellidoPat: this.customer.apellidoPaterno,
             apellidoMat: this.customer.apellidoMaterno,
@@ -80,7 +80,7 @@ export class CustomersFormComponent implements OnInit {
         }
       })
     } else {
-      this.customer = {usuario: { idUsuario: 0, email: '', password: '', rol: [] } as Usuario} as Customer;
+      this.customer = {usuario: { idUsuario: 0, username: '', password: '', rol: [] } as Usuario} as Customer;
     }
   });
     this.rolService.getAll().subscribe({
@@ -114,7 +114,7 @@ export class CustomersFormComponent implements OnInit {
     this.customer.telefono = this.customersForm.value.telefono!;
 
     // datos usuario
-    this.customer.usuario.email = this.customersForm.value.email!;
+    this.customer.usuario.username = this.customersForm.value.username!;
     this.customer.usuario.password = this.customersForm.value.password!;
 
 

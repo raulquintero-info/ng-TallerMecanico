@@ -24,7 +24,15 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 export class VehiclesFormComponent implements OnInit {
   showSpinner: boolean = false;
   params: any;
-  vehicle: Vehiculo = { modelo: { marca: {} as Marca, } as Modelo } as Vehiculo;
+  vehicle: Vehiculo = {
+    vin: '',
+    matricula: '',
+    anioModelo: '2024',
+    color: '',
+    imagen: '/assets/images/cars/no_image.jpg',
+    modelo: { marca: {} as Marca, } as Modelo,
+    cliente: {nombre: '', apellidoPaterno: '' } as Customer
+  } as Vehiculo;
   imagen: string = '/assets/images/cars/no_image.jpg';
   marcas: Marca[] = [];
   modelos: Modelo[] = [];
@@ -47,6 +55,7 @@ export class VehiclesFormComponent implements OnInit {
   ) {}
 
   vehicleForm = this.formBuilder.group({
+    imagen:[''],
     vin: ['', [Validators.required, Validators.minLength(17)]],
     matricula: ['', [Validators.required, Validators.minLength(6)]],
     anio: ['', [Validators.required, Validators.minLength(4)]],
@@ -135,6 +144,13 @@ export class VehiclesFormComponent implements OnInit {
 
   save() {
     console.log('vehicle', this.vehicle);
+    this.vehicle.vin = this.vehicleForm.value.vin!;
+    this.vehicle.matricula = this.vehicleForm.value.matricula!;
+    this.vehicle.anioModelo = this.vehicleForm.value.anio!;
+    this.vehicle.color = this.vehicleForm.value.color!;
+
+    this.vehicle.modelo.idModelo = this.vehicleForm.value.modelo!;
+
     this.vehiclesService.saveOrUpdate(this.vehicle).subscribe({
       next: (resp) => {
         this.toastService.addMessage({

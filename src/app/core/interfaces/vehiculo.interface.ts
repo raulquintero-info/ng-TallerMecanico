@@ -10,6 +10,7 @@ export interface Vehiculo{
   imagen: string;
   color: string;
   anioModelo: string
+  kilometraje: string;
   cliente: Customer;
   modelo: Modelo;
   tipoMotor: TipoMotor;

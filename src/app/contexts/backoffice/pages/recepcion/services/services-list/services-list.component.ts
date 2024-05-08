@@ -21,10 +21,10 @@ export class ServicesListComponent implements OnInit{
     // {text: 'Agregar', path: "/admin/recepcion/servicios-form/0"}
   ];
   services: OrdenServicio[] = [
-    {
-      estatusServicio: {} as EstatusServicio,
-      vehiculo:{modelo: {marca: {} as Marca } as Modelo} as Vehiculo
-    } as OrdenServicio
+    // {
+    //   estatusServicio: {} as EstatusServicio,
+    //   vehiculo:{modelo: {marca: {} as Marca } as Modelo} as Vehiculo
+    // } as OrdenServicio
   ];
 
   currentPage: number = 1;

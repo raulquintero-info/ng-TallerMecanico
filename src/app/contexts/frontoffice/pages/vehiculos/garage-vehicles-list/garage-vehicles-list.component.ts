@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/core/modules/auth/services/login.service';
 import { CustomersService } from 'src/app/core/services/customers.service';
@@ -12,10 +12,15 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 export class GarageVehiclesListComponent implements OnInit{
   vehicles: any;
   pathVehicle: string = "/mi-garage/mi-vehiculo"
-  constructor(private router: Router, private customersService: CustomersService, private loginService: LoginService){}
+  constructor(
+    private renderer: Renderer2,
+    private router: Router,
+    private customersService:
+    CustomersService, private loginService: LoginService){}
 
 
   ngOnInit(): void {
+    this.renderer.addClass(document.body, 'bg');
 
     this.customersService.getVehicles().subscribe({
       next: resp=>{

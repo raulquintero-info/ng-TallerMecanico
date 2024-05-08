@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Marca } from 'src/app/core/interfaces/marca.interface';
 import { Modelo } from 'src/app/core/interfaces/modelo.interface';
@@ -18,9 +18,16 @@ export class GarageVehiclesViewComponent implements OnInit{
   params: any;
   pathVehicle: string = "/mi-garage/servicio";
 
-  constructor(private route: ActivatedRoute,private vehiclesService: VehiclesService, private router: Router, private servicesService: ServicesService){}
+  constructor(
+    private renderer: Renderer2,
+    private route: ActivatedRoute,
+    private vehiclesService: VehiclesService,
+    private router: Router,
+    private servicesService: ServicesService){}
 
   ngOnInit(){
+    this.renderer.addClass(document.body, 'bg');
+
     this.route.paramMap.subscribe(params => this.params = params);
     this.vehiclesService.get(this.params.params.id).subscribe({
       next: resp=>{

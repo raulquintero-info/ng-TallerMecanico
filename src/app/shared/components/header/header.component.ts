@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { LoginService } from '../../../core/modules/auth/services/login.service';
 import { User } from 'src/app/core/modules/auth/interfaces/user.interface';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,7 @@ import { User } from 'src/app/core/modules/auth/interfaces/user.interface';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  env: string = '';
   userLoginOn: boolean = false;
   userData: User = {} as User;
   role: string = '';
@@ -16,6 +18,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
+    this.env = environment.production ? 'prod' : 'dev';
     this.loginService.checkStatus();
 
 

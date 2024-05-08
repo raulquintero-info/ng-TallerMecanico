@@ -15,7 +15,9 @@
       <button class="btn btn-warning btn-sm ms-2" (click)="getByStatus('r. mas de 1 mes')">Mas de 1 Mes</button>
       <!-- <button class="btn btn-primary btn-sm " [routerLink]="['/admin/recepcion/servicios-form/0']">+ Agregar</button> -->
     </div>
-    <app-m-services-list [services]="services" [pathService]="pathService"></app-m-services-list>
+    <ng-template [ngIf]="services.length>0">
+      <app-m-services-list  [services]="services" [pathService]="pathService"></app-m-services-list>
+    </ng-template>
 
 
   </div>

@@ -1,3 +1,4 @@
+import { Rol } from "./rol.interface";
 import { Usuario } from "./usuario.interface";
 
 export interface Employee{
@@ -11,4 +12,5 @@ export interface Employee{
   observaciones: string;
   puesto: string;
   usuario: Usuario;
+  role:Rol
 }

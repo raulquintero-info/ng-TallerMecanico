@@ -21,7 +21,6 @@ export class EmployeesFormComponent implements OnInit {
   title: string = "Sistema";
   subTitle: string = "Editar Empleado";
   buttons = [{ text: "Empleados", path: "/admin/sistema/empleados" }];
-  customer: Customer = {} as Customer;
   roles: Rol[] = [];
   employee: Employee = {usuario: {idUsuario: 0,email:''} as Usuario} as Employee;
   params: any;
@@ -30,7 +29,7 @@ export class EmployeesFormComponent implements OnInit {
   private employeesService = inject(EmployeesService);
   private route = inject(ActivatedRoute);
   private toastService = inject(ToastService);
-  
+
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => this.params = params);
@@ -89,11 +88,12 @@ export class EmployeesFormComponent implements OnInit {
       })
     } else {
 
+      //preparando informacion pra enviar al endpoint
       let data = {
-        empleado: employee,
-        usuario: employee.usuario
-
+        usuario: employee.usuario,
+        empleado: {} as  Employee,
       }
+      data.empleado.usuario = {} as Usuario;
       console.log('empleado enviado', data);
       this.employeesService.create(data, 'EMPLEADO').subscribe({
         next: resp => {

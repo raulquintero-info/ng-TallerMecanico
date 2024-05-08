@@ -67,3 +67,15 @@
   font-family: "Lucida Console", Monaco, monospace;
 
 }
+.bg {
+  /* The image used */
+  background-image: url("/assets/images/backgrounds/fondo_car_01.jpg");
+
+  /* Full height */
+  height: 120%;
+
+  /* Center and scale the image nicely */
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -3,25 +3,25 @@
 
   <div class=" mb-3">
     <label for="idEmpleado" class="form-label">Id</label>
-    <input type="idEmpleado" class="form-control" [disabled]="true" [readOnly]="true" 
+    <input type="idEmpleado" class="form-control" [disabled]="true" [readOnly]="true"
       formControlName="idEmpleado" id="idEmpleado" name="idEmpleado">
 
   </div>
 
   <div class=" mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input type="text" class="form-control" formControlName="email" [readOnly]="employee.idEmpleado>0"
-      [disabled]="employee.idEmpleado>0" id="email" name="email">
+    <label for="username" class="form-label">Email</label>
+    <input type="text" class="form-control" formControlName="username" [readOnly]="employee.idEmpleado>0"
+      [disabled]="employee.idEmpleado>0" id="username" name="username">
   </div>
 
   <!-- validacion  -->
   <div
-    *ngIf="employeeForm.controls.email.invalid  && (employeeForm.controls.email.dirty || employeeForm.controls.email.touched)"
+    *ngIf="employeeForm.controls.username.invalid  && (employeeForm.controls.username.dirty || employeeForm.controls.username.touched)"
     class="alert alert-danger">
-    <div *ngIf="employeeForm.controls.email.errors?.['required']">
+    <div *ngIf="employeeForm.controls.username.errors?.['required']">
       El email es requerido.
     </div>
-    <div *ngIf="employeeForm.controls.email.errors?.['email']">
+    <div *ngIf="employeeForm.controls.username.errors?.['email']">
       El Email debe tener un formato válido.
     </div>
   </div>
@@ -164,14 +164,13 @@
     </div>
   </div>
 
-  <!-- <div class=" mb-3" style1="display:none;">
+  <div class=" mb-3" style1="display:none;">
 
     <label for="rol" class="form-label">Rol</label>
-    <select class="form-select" id="rol" multiple [(ngModel)]="employee.usuario.rol" aria-label="rol"
-    style="height: 120px">
-    <option *ngFor="let b of roles" [selected]="employee.usuario.rol[0].idRol" [ngValue]="b">{{ b.nombre }}</option>
+    <select class="form-select" id="rol" formControlName="role" [(ngModel)]="employee.usuario.rol" aria-label="rol">
+    <option *ngFor="let b of roles"  [ngValue]="b">{{ b.nombre }}</option>
       </select>
-    </div> -->
+    </div>
 
   <!-- <ul>
       <li *ngFor="let item of employee.usuario.rol">
@@ -200,3 +199,7 @@
 
 
 </form>
+<pre>
+
+  {{ employeeForm.value| json}}
+</pre>

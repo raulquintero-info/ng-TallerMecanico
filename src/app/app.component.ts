@@ -14,7 +14,7 @@ export class AppComponent {
   private toastService = inject(ToastService);
 
   constructor() {
-    console.log(environment.production?'envioronment: Production' : 'envioronment: development'); // Logs false for development environment
+    console.log(environment.production?'envioronment: Production' : 'envioronment: Development'); // Logs false for development environment
   }
 
   ngOnInit(){

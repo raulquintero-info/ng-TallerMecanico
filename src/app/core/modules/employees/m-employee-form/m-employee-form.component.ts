@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Employee } from 'src/app/core/interfaces/employee.interface';
+import { Rol } from 'src/app/core/interfaces/rol.interface';
+import { Usuario } from 'src/app/core/interfaces/usuario.interface';
 
 @Component({
   selector: 'app-m-employee-form',
@@ -8,19 +10,21 @@ import { Employee } from 'src/app/core/interfaces/employee.interface';
   styleUrls: ['./m-employee-form.component.css']
 })
 export class MEmployeeFormComponent implements OnChanges {
-@Input() employee: Employee = {} as Employee;
+@Input() employee: Employee = {usuario:{idUsuario: 0}as Usuario} as Employee;
+@Input() roles: Rol[] = [];
 @Input() showSpinner: boolean = false;
 @Input() isSaved: boolean = false;
 
-@Output()
-onNewEmployee:EventEmitter<Employee> = new EventEmitter();
 
-private formBuild = inject(FormBuilder); 
+@Output()
+onNewEmployee:EventEmitter<any> = new EventEmitter();
+
+private formBuild = inject(FormBuilder);
 
   employeeForm = this.formBuild.group({
-    idEmpleado: [''],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
+    idEmpleado: [0],
+    username: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(4)]],
     nombre: ['', [Validators.required, Validators.minLength(3)]],
     aPaterno: ['', [Validators.required, Validators.minLength(3)]],
     aMaterno: ['', [Validators.required, Validators.minLength(3)]],
@@ -29,6 +33,7 @@ private formBuild = inject(FormBuilder);
     //telefono: ['', [Validators.required, Validators.minLength(10)]],
     puesto: ['', [Validators.required, Validators.minLength(5)]],
     observaciones: ['', [Validators.required, Validators.minLength(10)]],
+    role: [{} as Rol]
   })
 
 
@@ -40,7 +45,7 @@ private formBuild = inject(FormBuilder);
 
   cargaDatos(employee: Employee){
     this.employeeForm.patchValue({
-      email: this.employee.usuario.email,
+      username: this.employee.usuario.username,
       password: this.employee.usuario.password,
       nombre: this.employee.nombre,
       aPaterno: this.employee.apellidoPaterno,
@@ -49,13 +54,27 @@ private formBuild = inject(FormBuilder);
       curp: this.employee.curp,
       //telefono: this.employee.
       puesto: this.employee.puesto,
-      observaciones: this.employee.observaciones
-    })
+      observaciones: this.employee.observaciones,
+      role: this.employee.role    })
   }
 
 
 emitEmployee():void {
+  this.employee.idEmpleado = this.employeeForm.value.idEmpleado!;
+  this.employee.nombre = this.employeeForm.value.nombre!;
+  this.employee.apellidoPaterno = this.employeeForm.value.aPaterno!;
+  this.employee.apellidoMaterno = this.employeeForm.value.aMaterno!;
+  this.employee.curp = this.employeeForm.value.curp!;
+  this.employee.rfc = this.employeeForm.value.rfc!;
+  this.employee.puesto = this.employeeForm.value.puesto!;
+  this.employee.observaciones = this.employeeForm.value.observaciones!;
+
+  // datos usuario
+  this.employee.usuario.username = this.employeeForm.value.username!;
+  this.employee.usuario.password = this.employeeForm.value.password!;
+  this.employee.usuario.rol[0] = this.employeeForm.value.role!;
   this.onNewEmployee.emit(this.employee);
+  console.log('emit', this.employee)
 }
 
 

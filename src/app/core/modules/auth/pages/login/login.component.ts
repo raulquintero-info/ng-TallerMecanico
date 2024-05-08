@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Credentials } from 'src/app/core/modules/auth/interfaces/credentials.interface';
@@ -12,7 +12,7 @@ import { LoginResponse } from '../../interfaces/loginResponse.interface';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit,OnDestroy{
   user: User = {} as User;
   role: string = "";
   message: string ='8080';
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit{
   })
 
   constructor(
+    private renderer: Renderer2,
     private formBuilder: FormBuilder,
     private router: Router,
     private loginService: LoginService
@@ -68,7 +69,9 @@ export class LoginComponent implements OnInit{
               let url ="";
               switch(userData.role){
                 // switch(userData.authorities[0].authority){
-                case "CLIENTE": url="/mi-garage"; break;
+                case "CLIENTE":
+                  url="/mi-garage";
+                  break;
                 case "ADMIN": url="/admin/dashboard"; break;
               }
 
@@ -98,7 +101,9 @@ export class LoginComponent implements OnInit{
     }
   }
 
-
+  ngOnDestroy(): void {
+    // this.renderer.removeClass(document.body, 'bg');
+  }
 
 
 

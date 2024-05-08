@@ -29,19 +29,19 @@
         </div>
         <div>
           <div class=" mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control" formControlName="email" [readOnly]="customer.idCliente>0"
-              [disabled]="customer.idCliente>0" id="email" name="email">
+            <label for="username" class="form-label">Email</label>
+            <input type="text" class="form-control" formControlName="username" [readOnly]="customer.idCliente>0"
+              [disabled]="customer.idCliente>0" id="username" name="username">
           </div>
 
           <!-- validacion  -->
           <div
-            *ngIf="customersForm.controls.email.invalid  && (customersForm.controls.email.dirty || customersForm.controls.email.touched)"
+            *ngIf="customersForm.controls.username.invalid  && (customersForm.controls.username.dirty || customersForm.controls.username.touched)"
             class="alert alert-danger">
-            <div *ngIf="customersForm.controls.email.errors?.['required']">
+            <div *ngIf="customersForm.controls.username.errors?.['required']">
               El email es requerido.
             </div>
-            <div *ngIf="customersForm.controls.email.errors?.['email']">
+            <div *ngIf="customersForm.controls.username.errors?.['email']">
               El Email debe tener un formato válido.
             </div>
           </div>
