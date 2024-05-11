@@ -48,6 +48,17 @@
             </div>
           </div>
 
+          <div class="mb-3">
+            <label for="marca" class="form-label">Departamento</label>
+            <select formControlName="departamento" class="form-select" id="departamento" name="departamento">
+              <!-- <option value="">Selecciona un Departamento</option> -->
+              <option *ngFor="let departamento of departamentos" [value]="departamento.idDepartamento">{{ departamento.departamento }}</option>
+            </select>
+            <div *ngIf="estatusServicioForm.controls.departamento.invalid && (estatusServicioForm.controls.departamento.dirty || estatusServicioForm.controls.departamento.touched)" class="alert alert-danger">
+              <div *ngIf="estatusServicioForm.controls.departamento.errors?.['required']">Debe seleccionar un departamento.</div>
+            </div>
+          </div>
+
           <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
               *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
         </div>

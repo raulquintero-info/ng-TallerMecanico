@@ -4,13 +4,15 @@
       <tr>
         <th>id</th>
         <th>Nombre</th>
+        <th>Departamento</th>
         <th width="300" class="d-print-none">Opciones</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
       <tr *ngFor="let estatusServicio of estatusServicios" class="table-striped">
         <td scope="row">{{estatusServicio.idEstatusServicio}}</td>
-        <td>{{estatusServicio.estatusServicio| titlecase}}</td>
+        <td>{{estatusServicio.estatusServicio| titlecase}}</td> 
+        <td>{{ estatusServicio?.departamento?.departamento| titlecase}}</td>
         <!-- <td> {{customer.vehiculos.length? customer.vehiculos.length: 0}}</td> -->
         <td class="d-print-none">
           <button class="btn btn-warning btn-sm" [routerLink]="['/admin/catalogos/estatus-servicio-form/' + estatusServicio.idEstatusServicio]">Editar</button>&nbsp;
