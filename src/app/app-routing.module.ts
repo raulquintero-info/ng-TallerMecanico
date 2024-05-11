@@ -40,6 +40,8 @@ import { EmployeesFormComponent } from './contexts/backoffice/pages/sistema/empl
 import { UsersListComponent } from './contexts/backoffice/pages/sistema/users/users-list/users-list.component';
 import { UsersFormComponent } from './contexts/backoffice/pages/sistema/users/users-form/users-form.component';
 import { FacturasViewComponent } from './contexts/backoffice/pages/recepcion/facturas/facturas-view/facturas-view.component';
+import { DepartamentosListComponent } from './contexts/backoffice/pages/catalogos/departamentos/departamentos-list/departamentos-list.component';
+import { DepartamentosFormComponent } from './contexts/backoffice/pages/catalogos/departamentos/departamentos-form/departamentos-form.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -91,6 +93,9 @@ const routes: Routes = [
 
   {path: 'admin/catalogos/estatus-servicio', component: EstatusServicioListComponent, canActivate: [adminGuard]},
   {path: 'admin/catalogos/estatus-servicio-form/:id', component: EstatusServicioFormComponent, canActivate: [adminGuard]},
+
+  {path:'admin/catalogos/departamento', component: DepartamentosListComponent, canActivate: [adminGuard]},
+  {path:'admin/catalogos/departamento-form/:id', component: DepartamentosFormComponent, canActivate: [adminGuard]},
 
   {path: 'admin/sistema/empleados', component: EmployeesListComponent, canActivate: [adminGuard]},
   {path: 'admin/sistema/empleados-form/:id', component: EmployeesFormComponent, canActivate: [adminGuard]},

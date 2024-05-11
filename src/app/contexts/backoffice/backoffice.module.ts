@@ -45,62 +45,68 @@ import { UsersListComponent } from './pages/sistema/users/users-list/users-list.
 import { UsersFormComponent } from './pages/sistema/users/users-form/users-form.component';
 import { UsersModule } from 'src/app/core/modules/users/users.module';
 import { FacturasViewComponent } from './pages/recepcion/facturas/facturas-view/facturas-view.component';
+import { DepartamentosFormComponent } from './pages/catalogos/departamentos/departamentos-form/departamentos-form.component';
+import { DepartamentosListComponent } from './pages/catalogos/departamentos/departamentos-list/departamentos-list.component';
+import { DepartamentosModule } from "../../core/modules/departamentos/departamentos.module";
 
 
 @NgModule({
-  declarations: [
-    NavbarBackComponent,
-    DashboardBackComponent,
-    CustomersListComponent,
-    CustomersFormComponent,
-    ServicesFormComponent,
-    ServicesListComponent,
-    VehiclesListComponent,
-    VehiclesFormComponent,
-    ServicesViewComponent,
-    VehiclesServicesListComponent,
-    TallerServiciosListComponent,
-    TallerVehicleListComponent,
-    RecepcionCustomersVehicleComponent,
-    RecepcionVehicleComponent,
-    PageTitleComponent,
-    MarcasListComponent,
-    MarcasFormComponent,
-    ModelosListComponent,
-    ModelosFormComponent,
-    RolesListComponent,
-    RolesFormComponent,
-    TipoMotorListComponent,
-    TipoMotorFormComponent,
-    CustomersViewComponent,
-    EstatusServicioListComponent,
-    EstatusServicioFormComponent,
-    EmployeesListComponent,
-    EmployeesFormComponent,
-    PaginationComponent,
-    UsersFormComponent,
-    UsersListComponent,
-    FacturasViewComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ToastModule,
-    VehiclesModule,
-    ServicesModule,
-    CustomersModule,
-    MarcasModule,
-    ModelosModule,
-    RolesModule,
-    TiposMotorModule,
-    EstatusServicioModule,
-    EmployeesModule,
-    UsersModule
-  ],
-  exports: [
-    NavbarBackComponent
-  ]
+    declarations: [
+        NavbarBackComponent,
+        DashboardBackComponent,
+        CustomersListComponent,
+        CustomersFormComponent,
+        ServicesFormComponent,
+        ServicesListComponent,
+        VehiclesListComponent,
+        VehiclesFormComponent,
+        ServicesViewComponent,
+        VehiclesServicesListComponent,
+        TallerServiciosListComponent,
+        TallerVehicleListComponent,
+        RecepcionCustomersVehicleComponent,
+        RecepcionVehicleComponent,
+        PageTitleComponent,
+        MarcasListComponent,
+        MarcasFormComponent,
+        ModelosListComponent,
+        ModelosFormComponent,
+        RolesListComponent,
+        RolesFormComponent,
+        TipoMotorListComponent,
+        TipoMotorFormComponent,
+        CustomersViewComponent,
+        EstatusServicioListComponent,
+        EstatusServicioFormComponent,
+        EmployeesListComponent,
+        EmployeesFormComponent,
+        PaginationComponent,
+        UsersFormComponent,
+        UsersListComponent,
+        FacturasViewComponent,
+        DepartamentosFormComponent,
+        DepartamentosListComponent
+    ],
+    exports: [
+        NavbarBackComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ToastModule,
+        VehiclesModule,
+        ServicesModule,
+        CustomersModule,
+        MarcasModule,
+        ModelosModule,
+        RolesModule,
+        TiposMotorModule,
+        EstatusServicioModule,
+        EmployeesModule,
+        UsersModule,
+        DepartamentosModule
+    ]
 })
 export class BackofficeModule { }
