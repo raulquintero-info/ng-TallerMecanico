@@ -14,7 +14,7 @@
       <tr *ngFor="let service of services" (click)="verServicio(service.idOrdenServicio)" style="cursor: pointer">
         <td class="text-row">{{service.idOrdenServicio}}</td>
         <td  class="text-row" scope="row">{{ service.fechaOrden | date: 'short'}}</td>
-        <td class="text-row"> {{ service.vehiculo.modelo.marca.marca +' '+ service.vehiculo.modelo.modelo  | titlecase}}</td>
+        <td class="text-row"> {{ service?.vehiculo?.modelo?.marca?.marca +' '+ service?.vehiculo?.modelo?.modelo  | titlecase}}</td>
         <td  class="text-row">{{ service.falla | titlecase}}</td>
         <td  class="text-row">{{ service.estatusServicio.estatusServicio | titlecase}}</td>
       </tr>
