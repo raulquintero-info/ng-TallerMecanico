@@ -34,6 +34,7 @@ export class DepartamentosFormComponent implements OnInit{
       this.departamento.idDepartamento = Number(params.get('id'));
     });
 
+    this.departamentoForm.get('idDepartamento')?.disable();
     if (this.departamento.idDepartamento > 0) {
       this.subTitle = 'Editar Departamento';
       this.departamentosService.getById(this.departamento.idDepartamento).subscribe({

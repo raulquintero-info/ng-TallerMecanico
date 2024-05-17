@@ -2,7 +2,7 @@
 
     <div class="row ">
       <div class="col-md-5 mt-4 bg-primary text-white">
-  
+
         <img class=" mt-3" src="/assets/images/portadas/marcas_portada.jpg" style="width:100%;
             box-shadow: rgba(0, 0, 0, .2) 0 5px 30px;" alt="">
         <div class="mt-3">
@@ -22,19 +22,19 @@
         <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"
           [buttons]="buttons"></app-page-title>
         <div class="bg-dark mb-3">&nbsp;</div>
-  
-  
+
+
         <form [formGroup]="departamentoForm">
           <div class=" mb-3">
             <label for="idCliente" class="form-label">Id</label>
-            <input formControlName="idDepartamento" type="text" class="form-control" id="idDepartamento" [disabled]="true" [readOnly]="true">
+            <input formControlName="idDepartamento" type="text" class="form-control" id="idDepartamento"  [readOnly]="true">
           </div>
           <div>
             <div class=" mb-3">
               <label for="departamento" class="form-label">Departamento</label>
               <input formControlName="departamento" type="text" class="form-control" id="departamento" name="departamento">
             </div>
-  
+
             <!-- validacion  -->
             <div
               *ngIf="departamentoForm.controls.departamento.invalid && (departamentoForm.controls.departamento.dirty || departamentoForm.controls.departamento.touched)"
@@ -46,7 +46,7 @@
                 Debe tener como mínimo 2 caracteres.
               </div>
             </div>
-  
+
             <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
                 *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
           </div>
@@ -54,6 +54,5 @@
       </div>
     </div>
   </div>
-  
+
   <app-toast [toasts]="messages"></app-toast>
-  

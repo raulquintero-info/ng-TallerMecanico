@@ -1,6 +1,7 @@
 import { animation } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Button } from 'src/app/core/interfaces/button.interface';
 import { Customer } from 'src/app/core/interfaces/customers.interface';
@@ -51,7 +52,8 @@ export class VehiclesFormComponent implements OnInit {
     private vehiclesService: VehiclesService,
     private modelsService: ModelossService,
     private toastService: ToastService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private sanitizer: DomSanitizer
   ) {}
 
   vehicleForm = this.formBuilder.group({
@@ -160,13 +162,22 @@ export class VehiclesFormComponent implements OnInit {
           type: 'success',
         });
       },
+      error: resp=> {
+        console.log('error', resp);
+      }
     });
   }
 
   captureFile(event: any) {
-    this.vehicle.imagen =
-      '/assets/images/cars/' + event.target.files[0].name;
+    // this.vehicle.imagen ='/assets/images/cars/' + event.target.files[0].name;
     console.log(event);
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      console.log(imagen)
+      this.vehicle.imagen = imagen.base;
+    })
+
+
   }
 
   compareMarca(item1: any, item2: any) {
@@ -177,5 +188,31 @@ export class VehiclesFormComponent implements OnInit {
   compareModelo(item1: any, item2: any) {
     return item1 && item2 ? item1.idModelo === item2.idModelo : item1 === item2;
   }
+
+
+
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
+    try{
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        })
+      }
+    } catch (e) {
+      return null;
+    }
+    return null;
+  })
+
 }
 
