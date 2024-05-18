@@ -7,6 +7,7 @@ import { Page } from 'src/app/core/interfaces/page.interface';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { EstatusServicio } from 'src/app/core/interfaces/estatusServicio.interface';
+import { DepartamentosService } from 'src/app/core/services/departamentos.service';
 
 @Component({
   selector: 'app-services-list',
@@ -14,6 +15,7 @@ import { EstatusServicio } from 'src/app/core/interfaces/estatusServicio.interfa
   styleUrls: ['./services-list.component.css']
 })
 export class ServicesListComponent implements OnInit{
+  estatus: any[] = [];
   pathService="/admin/recepcion/servicios-view";
   title: string = 'Recepcion';
   subTitle: string = 'Listado de Servicios'
@@ -34,18 +36,18 @@ export class ServicesListComponent implements OnInit{
 
 
   private servicesService = inject(ServicesService);
+  private departamentoService = inject(DepartamentosService);
   private route = inject(ActivatedRoute);
 
   ngOnInit(){
+    const RECEPCION = 1
+    this.departamentoService.getEstatusById(RECEPCION).subscribe({
+      next: resp=>{
+        this.estatus = resp;
+        console.log('status',resp);
 
-
-    // this.servicesService.getAll().subscribe({
-    //   next: resp=>{
-    //     this.services = resp;
-    //     console.log('services',resp);
-
-    //   }
-    // })
+      }
+    })
 
     this.loadServices(this.currentPage-1);
 

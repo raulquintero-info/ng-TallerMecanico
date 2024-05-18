@@ -59,7 +59,7 @@ export class ServicesFormComponent implements OnInit {
 
   }
   save(){
-    this.vehicle.cliente = this.currentCustomer;
+    // this.vehicle.cliente = this.currentCustomer;
     this.vehicle.ordenServicio = [];
     this.service.vehiculo =  {idVehiculo:this.vehicle.idVehiculo} as Vehiculo;
     this.service.estatusServicio = {idEstatusServicio:1} as EstatusServicio;

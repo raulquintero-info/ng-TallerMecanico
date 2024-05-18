@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Page } from 'src/app/core/interfaces/page.interface';
+import { DepartamentosService } from 'src/app/core/services/departamentos.service';
 import { ServicesService } from 'src/app/core/services/services.service';
 
 @Component({
@@ -8,14 +9,12 @@ import { ServicesService } from 'src/app/core/services/services.service';
   styleUrls: ['./taller-servicios-list.component.css']
 })
 export class TallerServiciosListComponent {
+  estatus: any[] = [];
+
   title: string = "Taller";
   subTitle: string = "Servicios";
-  buttons = [
-    {text: "Agregar", path: "/admin/recepcion/servicios-form/0'"},
-
-  ];
+  buttons = [{text: "Agregar", path: "/admin/recepcion/servicios-form/0'"},];
   pathService="/admin/recepcion/servicios-view";
-
   services: any;
 
   currentPage: number = 1;
@@ -25,9 +24,17 @@ export class TallerServiciosListComponent {
 
 
   private servicesService = inject(ServicesService);
+  private departamentoService = inject(DepartamentosService);
 
   ngOnInit() {
+    const TALLER = 2;
+    this.departamentoService.getEstatusById(TALLER).subscribe({
+      next: resp=>{
+        this.estatus = resp;
+        console.log('status',resp);
 
+      }
+    })
     this.loadServices(this.currentPage-1);
   }
 

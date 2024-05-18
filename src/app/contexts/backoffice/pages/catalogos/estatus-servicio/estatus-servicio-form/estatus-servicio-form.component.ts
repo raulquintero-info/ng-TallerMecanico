@@ -19,7 +19,7 @@ export class EstatusServicioFormComponent implements OnInit {
   params: any;
   estatusServicio: EstatusServicio = { departamento:{} as Departamento} as EstatusServicio;
   departamentos: Departamento[]=[];
-  
+
   title: string = "Catalogos";
   subTitle: string = "Orden de Servicio Nueva";
   buttons = [
@@ -42,21 +42,22 @@ export class EstatusServicioFormComponent implements OnInit {
       this.estatusServicio.idEstatusServicio = Number(params.get('id'))
     });
 
-
+    this.estatusServicioForm.get('idEstatusServicio')?.disable();
     if (this.estatusServicio.idEstatusServicio > 0) {
       this.subTitle = 'Editar Modelo';
       this.estatusService.getById(this.estatusServicio.idEstatusServicio).subscribe({
         next: resp => {
           console.log(resp);
           this.estatusServicio = resp;
-          // if(!this.modelo.marca)
-          //   this.modelo.marca = {idMarca:1, marca: ''};
+          if(this.estatusServicio.departamento == null)
+            this.estatusServicio.departamento = {idDepartamento:0, departamento: ''};
           console.log('estatusServicio', this.estatusServicio);
 
           // Cargar los datos al formulario
           this.estatusServicioForm.patchValue({
+            idEstatusServicio: resp.idEstatusServicio,
             estatusServicio: resp.estatusServicio,
-            departamento: resp.departamento.idDepartamento 
+            departamento: resp.departamento.idDepartamento
           });
         }
       })

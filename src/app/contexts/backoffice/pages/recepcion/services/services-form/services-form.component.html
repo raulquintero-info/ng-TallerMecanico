@@ -22,7 +22,7 @@
   </div>
   <div>
     <div class="bg-dark text-light p-2">
-      <strong>{{ currentCustomer.nombre + ' ' + currentCustomer.apellidoPaterno | titlecase}}, Tel: {{currentCustomer.telefono}}</strong>
+      <strong>{{ vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno | titlecase}}, Tel: {{vehicle.cliente.telefono}}</strong>
     </div>
 
     <form class="mt-3 p-2 ">
@@ -41,7 +41,7 @@
           name="observaciones">
       </div>
       <div>
-        <button class="btn btn-primary btn-sm" (click)="save()">Grabar</button>
+        <button class="btn btn-primary btn-round btn-sm" (click)="save()">Grabar</button>
       </div>
     </form>
 
