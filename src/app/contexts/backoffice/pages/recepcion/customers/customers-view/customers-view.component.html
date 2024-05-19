@@ -35,14 +35,19 @@
           </div>
           <!-- <span class="title-field ">Nombre:</span> -->
           <div class="ps-2">
-            <div class="fw-bold" style="font-size:larger">
-              {{ customer.nombre | titlecase}} <br>
-              {{ customer.apellidoPaterno | titlecase}}<br>
-              {{ customer.apellidoMaterno |titlecase }}<br>
+            <div  *ngIf="!isLoading">
+
+              <div class="fw-bold" style="font-size:larger">
+                {{ customer.nombre | titlecase}} <br>
+                {{ customer.apellidoPaterno | titlecase}}<br>
+                {{ customer.apellidoMaterno |titlecase }}<br>
+              </div>
+              <div><span class="title-field">Tel:</span> {{ customer.telefono }}</div>
+              <div><span class="title-field">Direccion:</span> {{ customer.domicilio }}</div>
             </div>
-            <div><span class="title-field">Tel:</span> {{ customer.telefono }}</div>
-            <div><span class="title-field">Direccion:</span> {{ customer.domicilio }}</div>
+            <div *ngIf="isLoading" class="spinner-border text-light mt-2" role="status"></div>
           </div>
+
         </div>
         <div class="col-md-8 ">
 
@@ -51,7 +56,7 @@
               <div class="flex-fill p-2 bd-highlight" style="background-color: #16232c;">
                 Vehiculos
               </div>
-              <div class="p-21bd-highlight ">
+              <div class="p-21bd-highlight">
                 <button class="btn btn-outline-light btn-sm "
                   [routerLink]="'/admin/recepcion/clientes/'+ customer.idCliente +'/vehiculo-form/0' "><i class="bi bi-plus-square"></i> Agregar</button>
               </div>
@@ -59,6 +64,8 @@
           </div>
           <div>
             <app-m-vehicle-list [vehicles]="customer.vehiculos"  (onDeleteById)="deleteVehicleById($event)" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
+            <div *ngIf="isLoading" style="width: 100%; text-align: center"><div class="loader"></div>
+
           </div>
           <div class="float-end">
 

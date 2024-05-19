@@ -14,6 +14,7 @@ import { ToastService } from '../../../../../../core/modules/toast/services/toas
   styleUrls: ['./customers-view.component.css']
 })
 export class CustomersViewComponent {
+  isLoading: boolean = true;
   title: string = "Cliente";
   subTitle: string = "<cliente apellido>";
   params: any;
@@ -56,7 +57,9 @@ export class CustomersViewComponent {
     this.customersService.getById(id).subscribe({
       next: (customer: Customer)=>{
         this.customer = customer;
-        console.log(this.customer)
+        console.log(this.customer);
+        this.isLoading = false;
+
       }
     })
   }

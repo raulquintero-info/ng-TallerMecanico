@@ -5,7 +5,7 @@
   <div class="" style="background-color: #0078d4; width: 100%">
     <div class="d-flex bd-highlight">
       <div class="ps-2 pt-2 flex-grow-1 bd-highlight text-light" style="background-color: #16232c;">
-        <h4>&nbsp;Historial de Servicios </h4>
+        <h4>&nbsp;De {{ vehicle.cliente.nombre + ' ' +vehicle.cliente.apellidoPaterno | titlecase}}  </h4>
       </div>
       <div class="p-1 ps-2 bd-highlight bg-dark text-light d-print-none">
         <button class="btn btn-outline-light btn-sm" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;

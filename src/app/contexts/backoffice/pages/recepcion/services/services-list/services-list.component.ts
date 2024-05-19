@@ -14,12 +14,13 @@ import { DepartamentosService } from 'src/app/core/services/departamentos.servic
   templateUrl: './services-list.component.html',
   styleUrls: ['./services-list.component.css']
 })
-export class ServicesListComponent implements OnInit{
+export class ServicesListComponent implements OnInit {
   estatus: any[] = [];
-  pathService="/admin/recepcion/servicios-view";
+  isLoading: boolean = true;
+  pathService = "/admin/recepcion/servicios-view";
   title: string = 'Recepcion';
   subTitle: string = 'Listado de Servicios'
-  buttons =[
+  buttons = [
     // {text: 'Agregar', path: "/admin/recepcion/servicios-form/0"}
   ];
   services: OrdenServicio[] = [
@@ -39,17 +40,17 @@ export class ServicesListComponent implements OnInit{
   private departamentoService = inject(DepartamentosService);
   private route = inject(ActivatedRoute);
 
-  ngOnInit(){
+  ngOnInit() {
     const RECEPCION = 1
     this.departamentoService.getEstatusById(RECEPCION).subscribe({
-      next: resp=>{
+      next: resp => {
         this.estatus = resp;
-        console.log('status',resp);
+        console.log('status', resp);
 
       }
     })
 
-    this.loadServices(this.currentPage-1);
+    this.loadServices(this.currentPage - 1);
 
   }
 
@@ -61,17 +62,19 @@ export class ServicesListComponent implements OnInit{
         this.services = data.content;
         this.totalPages = data.totalPages;
         this.currentPage = data.number + 1;
+        this.isLoading = false;
+
       });
   }
 
   onPageChange(page: number) {
-    this.loadServices(page-1);
+    this.loadServices(page - 1);
 
   }
 
-  getByStatus(status: string){
+  getByStatus(status: string) {
     this.servicesService.getByStatus(status).subscribe({
-      next: resp=>{
+      next: resp => {
         this.services = resp;
       }
     });

@@ -9,6 +9,7 @@
     <ng-template [ngIf]="services.length>0">
       <app-m-services-list  [services]="services" [pathService]="pathService"></app-m-services-list>
     </ng-template>
+    <div class="mt-2" *ngIf="isLoading" style="width: 100%; text-align: center"><div class="loader"></div>
 
 
   </div>

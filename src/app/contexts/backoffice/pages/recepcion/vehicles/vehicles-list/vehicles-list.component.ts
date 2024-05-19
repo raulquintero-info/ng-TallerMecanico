@@ -13,6 +13,7 @@ import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 })
 export class VehiclesListComponent implements OnInit {
   displayStyle: string = 'none';
+  isLoading: boolean = true;
   title: string = 'Recepcion';
   subTitle: string = 'Lista de Vehiculos'
   customer: Customer = {} as Customer;
@@ -73,6 +74,8 @@ export class VehiclesListComponent implements OnInit {
       next: resp => {
         console.log(resp);
         this.vehicles = resp;
+        this.isLoading = false;
+
       }
     })
   }
