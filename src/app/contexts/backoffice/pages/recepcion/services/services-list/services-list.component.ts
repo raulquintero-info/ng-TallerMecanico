@@ -40,6 +40,9 @@ export class ServicesListComponent implements OnInit {
   private departamentoService = inject(DepartamentosService);
   private route = inject(ActivatedRoute);
 
+
+
+
   ngOnInit() {
     const RECEPCION = 1
     this.departamentoService.getEstatusById(RECEPCION).subscribe({
@@ -55,16 +58,23 @@ export class ServicesListComponent implements OnInit {
   }
 
   loadServices(page: number) {
-    this.servicesService
-      .getPaginatedData(page)
-      .subscribe((data: Page<any>) => {
-        console.log('servicios', data.content);
-        this.services = data.content;
-        this.totalPages = data.totalPages;
-        this.currentPage = data.number + 1;
+    // this.servicesService
+    //   .getPaginatedData(page)
+    //   .subscribe((data: Page<any>) => {
+    //     console.log('servicios', data.content);
+    //     this.services = data.content;
+    //     this.totalPages = data.totalPages;
+    //     this.currentPage = data.number + 1;
+    //     this.isLoading = false;
+
+    //   });
+    this.servicesService.getPaginatedRecepcionData(1).subscribe({
+      next: (resp:any)=>{
+        this.services = resp
         this.isLoading = false;
 
-      });
+      }
+    });
   }
 
   onPageChange(page: number) {

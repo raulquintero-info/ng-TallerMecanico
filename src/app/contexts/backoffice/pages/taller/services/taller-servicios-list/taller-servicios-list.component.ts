@@ -39,14 +39,19 @@ export class TallerServiciosListComponent {
   }
 
   loadServices(page: number) {
-    this.servicesService
-      .getPaginatedData(page)
-      .subscribe((data: Page<any>) => {
-        console.log('serviciosTaller',data.content);
-        this.services = data.content;
-        this.totalPages = data.totalPages;
-        this.currentPage = data.number + 1;
-      });
+    // this.servicesService
+    //   .getPaginatedData(page)
+    //   .subscribe((data: Page<any>) => {
+    //     console.log('serviciosTaller',data.content);
+    //     this.services = data.content;
+    //     this.totalPages = data.totalPages;
+    //     this.currentPage = data.number + 1;
+    //   });
+    this.servicesService.getPaginatedRecepcionData(2).subscribe({
+      next: resp=>{
+        this.services = resp
+      }
+    });
   }
 
   onPageChange(page: number) {

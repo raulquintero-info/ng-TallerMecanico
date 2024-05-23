@@ -64,9 +64,12 @@
           </div>
           <div>
             <app-m-vehicle-list [vehicles]="customer.vehiculos"  (onDeleteById)="deleteVehicleById($event)" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
-            <div *ngIf="isLoading" style="width: 100%; text-align: center"><div class="loader"></div>
-
+            <div *ngIf="!customer.vehiculos.length" class="text-center" style="color:gray"> <strong>Aun no se ha registrado nungun vehiculo.</strong></div>
+            <div *ngIf="isLoading; else showMessage" style="width: 100%; text-align: center"><div class="loader"></div>
           </div>
+          <ng-template #showMessage>
+            <div *ngIf='errorMessage' class="alert alert-danger" role="alert"><strong>Error.- </strong> {{ errorMessage }}</div>
+          </ng-template>
           <div class="float-end">
 
               <!-- <nav aria-label="...">

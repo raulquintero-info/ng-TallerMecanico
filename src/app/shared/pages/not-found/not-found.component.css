@@ -1,0 +1,35 @@
+section {
+  padding: 40px 0 50px 0;
+  /* background: url(../img/bg-section-top.png) repeat-x center top, url(../img/bg-section-bottom.png) repeat-x center bottom; */
+  margin: 0;
+}
+#error .big {
+  font-size: 4em;
+  padding-top: .5em;
+  /* padding-left: 11.4%; */
+  letter-spacing: -0.03em;
+  font-weight: lighter;
+  color: #000;
+  padding-bottom: 0;
+}
+.ttlContenido {
+  padding: 0;
+  margin: 0px 0px 20px 0;
+  color: #235B4E;
+}
+#error h3 {
+  /* margin: 0 11% 0 11.5% !important; */
+  margin: 0 11% 0 0.5% !important;
+  padding-bottom: 25px;
+  font-size: 2.0em;
+  font-weight: 100;
+  border-bottom: 1px solid #235B4E;
+}
+ul{
+  font-size: small
+}
+.cajaContenidoGral a {
+  color: #9d254a;
+  font-weight: 600;
+  text-decoration: none;
+}

@@ -18,13 +18,13 @@ export class CustomersViewComponent {
   title: string = "Cliente";
   subTitle: string = "<cliente apellido>";
   params: any;
-  customer: Customer = {} as Customer;
+  customer: Customer = {vehiculos:[] as Vehiculo[]} as Customer;
   services: any;
   openServices: any;
   buttons = [{text: "Clientes", path: "/admin/recepcion/clientes"}];
   pathVehicle: string ="/admin/recepcion/vehiculos";
   pathService="/admin/recepcion/servicios-view";
-
+  errorMessage: string='';
   messages: Toast[] = [];
 
   private route = inject(ActivatedRoute);
@@ -60,6 +60,10 @@ export class CustomersViewComponent {
         console.log(this.customer);
         this.isLoading = false;
 
+      },
+      error: resp=>{
+        this.isLoading=false;
+        this.errorMessage = 'Hubo un problema al tratar de obtener la informacion';
       }
     })
   }

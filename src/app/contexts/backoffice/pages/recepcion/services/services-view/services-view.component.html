@@ -35,7 +35,10 @@
             <div class="col-md-6 ">
               <div class="service-title">Datos del Cliente</div>
               <div class="p-2">
-                <div>Cliente: {{ vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno}}</div>
+                <div>
+                  Cliente:<button class="btn btn-link" [routerLink]="'/admin/recepcion/vehiculos/'
+                    + vehicle.idVehiculo">{{ vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno | titlecase}}<i class="bi bi-link-45deg"></i></button>
+                </div>
                 <div>Tel: {{ vehicle.cliente.telefono }}</div>
               </div>
               <div class="service-title mt-2">Datos del Vehiculos</div>

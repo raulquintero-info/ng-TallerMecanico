@@ -45,7 +45,6 @@ export class ServicesViewComponent implements OnInit {
   newComment: string = '';
 
   private statusService = inject(EstatusService);
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -87,12 +86,15 @@ export class ServicesViewComponent implements OnInit {
         this.service = resp;
         this.vehicle = resp.vehiculo;
         this.isLoadingService = false;
+        // if (this.service.idOrdenServicio<1)
+
       },
       error: resp=>{
         console.log('error');
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo cargar la informacion", type:'danger' })
         this.isLoadingService = false;
 
+        this.router.navigateByUrl("not-found", {skipLocationChange: true});
       }
 
     });
