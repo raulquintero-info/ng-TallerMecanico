@@ -42,6 +42,7 @@ import { UsersFormComponent } from './contexts/backoffice/pages/sistema/users/us
 import { FacturasViewComponent } from './contexts/backoffice/pages/recepcion/facturas/facturas-view/facturas-view.component';
 import { DepartamentosListComponent } from './contexts/backoffice/pages/catalogos/departamentos/departamentos-list/departamentos-list.component';
 import { DepartamentosFormComponent } from './contexts/backoffice/pages/catalogos/departamentos/departamentos-form/departamentos-form.component';
+import { ErrorHttp503Component } from './shared/pages/error-http503/error-http503.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -101,6 +102,7 @@ const routes: Routes = [
   {path: 'admin/sistema/empleados-form/:id', component: EmployeesFormComponent, canActivate: [adminGuard]},
 
   {path: 'not-authorized', component: NotAuthorizedComponent},
+  {path: 'error-503', component: ErrorHttp503Component},
   {path: 'logout', component: LogoutComponent},
   {path: '**', component: NotFoundComponent}
 ];

@@ -12,13 +12,12 @@ import { CustomersService } from 'src/app/core/services/customers.service';
   styleUrls: ['./navbar-back.component.css']
 })
 export class NavbarBackComponent implements OnInit {
-  word: string ='';
   customers: Customer[] = [];
   titleBar: String = "Taller Mecánico"
   userLoginOn: boolean = false;
   userData: User = { "username":"", authorities:[{}] } as User;
   currentCustomer: Customer = {} as Customer;
-
+  isSearching: boolean= false;
 
   constructor(private loginService: LoginService, private router: Router, private customersService: CustomersService){}
   ngOnInit() {
@@ -41,18 +40,23 @@ export class NavbarBackComponent implements OnInit {
       }
     });
     console.log('hola');
-    this.searchCustomer();
+    // this.searchCustomer();
   }
 
 
-  searchCustomer(){
-      console.log(this.word);
-      if(this.word.length > 2){
-
-        this.customersService.search(this.word).subscribe({
+  searchCustomer(txtValue: string){
+      console.log(txtValue);
+      if(txtValue.length > 2){
+        this.customers = []
+        this.isSearching =true
+        this.customersService.search(txtValue).subscribe({
           next: (resp: any)=>{
             console.log(resp)
             this.customers = resp;
+            this.isSearching = false
+          },
+          error: resp=>{
+            this.isSearching = false
           }
         });
       } else{

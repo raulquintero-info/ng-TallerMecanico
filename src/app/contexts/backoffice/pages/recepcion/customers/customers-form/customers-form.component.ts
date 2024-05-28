@@ -23,7 +23,7 @@ export class CustomersFormComponent implements OnInit {
   subTitle: string = "Cliente Nuevo"
   buttons = [];
   customer: Customer = {
-    usuario: { idUsuario: 0, username: '', password: '', rol: [] } as Usuario
+    usuario: { idUsuario: 0, username: '', password: '', email:'', rol: [] } as Usuario
   } as Customer;
   roles: Rol[] = [{ idRol: 0, nombre: "test" }];
   // user: Usuario = {} as Usuario
@@ -80,7 +80,7 @@ export class CustomersFormComponent implements OnInit {
         }
       })
     } else {
-      this.customer = {usuario: { idUsuario: 0, username: '', password: '', rol: [] } as Usuario} as Customer;
+      this.customer = {usuario: { idUsuario: 0, username: '', password: '',email:'', rol: [] } as Usuario} as Customer;
     }
   });
     this.rolService.getAll().subscribe({

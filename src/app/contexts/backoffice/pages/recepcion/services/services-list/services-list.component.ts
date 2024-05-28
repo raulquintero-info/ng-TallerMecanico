@@ -50,6 +50,9 @@ export class ServicesListComponent implements OnInit {
         this.estatus = resp;
         console.log('status', resp);
 
+      },
+      error: resp=>{
+        console.log('error')
       }
     })
 
@@ -72,7 +75,9 @@ export class ServicesListComponent implements OnInit {
       next: (resp:any)=>{
         this.services = resp
         this.isLoading = false;
-
+      },
+      error: resp=>{
+        this.isLoading = false
       }
     });
   }

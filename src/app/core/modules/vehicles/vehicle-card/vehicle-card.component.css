@@ -45,20 +45,21 @@
 
 .card-car{
   width:600px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .sections{
   flex-direction: column;
   border: 1px solid black;
 }
 .card-header{
-  background-color: black;
+  background-color: #67192c;
   color: white;
   font-weight: bold;
 }
 .card{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  background-color: #ff393c;
-  color: white;
+  background-color: #e7dfd6;
+  color: #3f2323;
 
 }
 .card:hover{

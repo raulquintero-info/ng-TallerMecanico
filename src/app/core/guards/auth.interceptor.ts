@@ -1,11 +1,13 @@
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Observable, finalize, tap } from "rxjs";
 import { LoginService } from "../modules/auth/services/login.service";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  private router = inject(Router)
   constructor(private loginService: LoginService){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -32,7 +34,11 @@ export class AuthInterceptor implements HttpInterceptor {
         const msg = `${req.method} "${req.urlWithParams}"
            ${ok} in ${elapsed} ms.`;
         // this.messenger.add(msg);
-        console.log(msg);
+        console.log(msg, ok);
+        // if(ok.toUpperCase()==='failed'.toUpperCase()){
+        //     localStorage.clear()
+        //     this.router.navigateByUrl("/")//, {skipLocationChange: true})
+        // }
       })
     );
   }

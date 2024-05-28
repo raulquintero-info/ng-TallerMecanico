@@ -27,7 +27,13 @@
   max-height:400px
 }
 
-
+.title {
+  background-color: rgb(243, 243, 243);
+  border-bottom: 2px solid rgb(187, 187, 187);
+  height: 36px;
+  background: url(/assets/images/backgrounds/cintillaBeige.svg);
+    background-repeat: repeat;
+}
 
 
 

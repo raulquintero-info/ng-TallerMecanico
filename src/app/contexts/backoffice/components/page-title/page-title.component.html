@@ -1,8 +1,13 @@
-<div class="mt-4" style="background-color: #0078d4; width: 100%">
+<div class="mt-4" style="background-color: #e9e9e9; width: 100%">
+  <div class="ps-2 pt-3 layered-image-blue" style="height:100px;">
+    <h5 class="text-dark ps-2">{{ title | titlecase}} </h5>
+    <h3 class="text-dark ps-2">{{ subTitle | titlecase}}</h3>
+    <!-- {{title}} -->
+  </div>
   <div class="d-flex bd-highlight">
-    <div class="ps-2 pt-2 flex-grow-1 bd-highlight text-light" style="background-color: #16232c;">
+    <div class="ps-2 pt-2 flex-grow-1 bd-highlight page-title-menu-bar">
     </div>
-    <div class="p-1 ps-2 bd-highlight text-light bg-dark d-print-none">
+    <div class="p-1 ps-2 bd-highlight text-light d-print-none page-title-menu-bar">
       <button class="btn btn-outline-light btn-sm"
         *ngIf="printerEnabled"
         (click)="print()"><i class="bi bi-printer"></i> Imprimir
@@ -13,10 +18,5 @@
       </button>
     </div>
   </div>
-  <div class="ps-2 pt-1 layered-image-blue" style="height:80px;">
-    <h5 class="text-white ps-2">{{ title | titlecase}} </h5>
-    <h3 *ngIf="subTitle!='undefined undefined'" class="text-white ps-2">{{ subTitle | titlecase}}</h3>
 
-    <!-- {{title}} -->
-  </div>
 </div>

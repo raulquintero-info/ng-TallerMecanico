@@ -1,11 +1,16 @@
-
-<nav class="navbar navbar-expand-lg  navbar-dark " style="background-color:  #fd3a3a;" >
-
-  <a class="navbar-brand" routerLink="/productos/en-oferta"></a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark primary " style="
+  background-color:  #631930;
+  background: linear-gradient(172deg, rgba(102,25,45,1) 59%, rgba(143,57,80,1) 86%);
+  background-repeat: repeat;">
+  <div class="container-fluid ms-3">
+    <a class="navbar-brand" href="/admin/dashboard">
+      <h2>AUTOPRO</h2>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      <img class="brand-logo" src="/assets/images/logo2.png" alt="">
+    </button>
   <div class="collapse navbar-collapse navbar-right" id="navbarNavDropdown">
 
     <ul class="navbar-nav ms-auto">
@@ -34,4 +39,22 @@
     </ul>
 
   </div>
+  </div>
 </nav>
+<div class=" sticky-top sub-bar" style="top:72px; z-index: 1;background: url(/assets/images/backgrounds/cintillaVerde.svg);
+  background-repeat: repeat;">
+  <div class="container p-1" style="border-right: 1px solid #00000029;">
+
+
+
+
+    <span class="sub-menu ms-1" [routerLink]="'/admin/recepcion/clientes-form/0'">
+      <i class="bi bi-plus-circle"></i> Cliente Nuevo
+    </span>
+    <span class="sub-menu ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <i class="bi bi-search"></i> Buscar Cliente
+    </span>
+
+    <!-- <i *ngIf="currentCustomer.idCliente" class="bi bi-x-lg" (click)="clearCustomer()" style="cursor: pointer"></i> -->
+  </div>
+</div>

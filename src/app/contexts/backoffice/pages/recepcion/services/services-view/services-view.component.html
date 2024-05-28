@@ -12,12 +12,11 @@
   <div *ngIf="service.idOrdenServicio>0"  class="container pt-3">
     <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
 
-    <div class="service-title mb-3">
+    <div class="page-subtitle-bar mb-3">
       <div class="row">
-        <div class="col-md-6 ps-4">
-        </div>
-        <div class="col-md-6 pe-4" style="text-align: right;">
-          Orden de Servicio No: {{service.idOrdenServicio}} <span class="badge bg-secondary d-print-none">
+
+        <div class="col-md-12 pt-1 pb-1 pe-3" style="text-align: right;">
+          Orden de Servicio No: {{service.idOrdenServicio}} &nbsp;<span class="badge bg-secondary d-print-none">
             <select [(ngModel)]="service.estatusServicio" (change)="updateStatus()"  [compareWith]="compareStatus" name="estatusServicio">
               <option *ngFor="let item of statusList"
                 [selected]="item.idEstatusServicio==5" [ngValue]="item">
@@ -36,8 +35,8 @@
               <div class="service-title">Datos del Cliente</div>
               <div class="p-2">
                 <div>
-                  Cliente:<button class="btn btn-link" [routerLink]="'/admin/recepcion/vehiculos/'
-                    + vehicle.idVehiculo">{{ vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno | titlecase}}<i class="bi bi-link-45deg"></i></button>
+                  Cliente:<button class="btn btn-link" [routerLink]="'/admin/recepcion//clientes-view/'
+                    + vehicle.cliente.idCliente">{{ vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno | titlecase}}<i class="bi bi-link-45deg"></i></button>
                 </div>
                 <div>Tel: {{ vehicle.cliente.telefono }}</div>
               </div>
@@ -57,7 +56,7 @@
               </div>
 
               <div class="service-title">Descripcion de la Falla <span
-                  class="badge bg-secondary d-print-none">{{service.estatusServicio.estatusServicio}}</span></div>
+                  class="badge bg-secondary d-print-none">{{service.estatusServicio.estatusServicio | titlecase}}</span></div>
               <div class="p-2">
 
                 <div> <strong>{{service.falla | titlecase}}</strong></div>
@@ -202,9 +201,10 @@
 </pre> -->
 <ng-template #spinnerTemplate>
   <div class="container pt-3 ">
-    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+    <div class="loader"></div>
+    <!-- <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
       <span class="visually-hidden">Loading...</span>
-    </div>
+    </div> -->
 
 
 

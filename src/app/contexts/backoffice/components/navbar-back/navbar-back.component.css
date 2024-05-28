@@ -8,8 +8,24 @@
   cursor: pointer;
   padding:7px;
   border-left: 1px solid #00000029;
-  color:#777777
+  color:#fff
 }
 .sub-menu:hover{
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color:#d5c09f;
+  color:#523715
+}
+.brand-logo{
+  height: 80px;
+}
+.navbar{
+  padding: 0px;
+  height:80px;
+}
+.navbar-brand{
+  margin: 0px;
+}
+.nav-link:hover{
+  color:rgb(223, 221, 221);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

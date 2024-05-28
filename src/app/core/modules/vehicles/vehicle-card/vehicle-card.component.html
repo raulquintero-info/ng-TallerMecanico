@@ -6,10 +6,10 @@
   </div>
   <div class="card-body">
     <div *ngIf="vehicle.imagen" class="mr-auto pe-2" style="max-width:300px;"><img class="rounded"
-      [src]="vehicle.imagen" style="max-width:100%;height:80px">
+      [src]="vehicle.imagen" style="max-width:100%;height:80px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px">
   </div>
   <div *ngIf="!vehicle.imagen" class="mr-auto pe-2" style="max-width:300px;"><img class="rounded"
-      src="/assets/images/cars/no_image.jpg" style="max-width:100%;height:80px">
+      src="/assets/images/cars/no_image.jpg" style="max-width:100%;height:80px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
   </div>
     <!-- <h4 class="card-title">{{ vehicle.modelo.modelo}}</h4> -->
     <div class="vehicle-brand mt-2">

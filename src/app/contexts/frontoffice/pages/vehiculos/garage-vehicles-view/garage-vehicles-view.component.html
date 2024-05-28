@@ -1,6 +1,6 @@
-<!-- <div class="title ps-3 pt-3">
-  <h5>Ficha Tecnica</h5>
-</div> -->
+<div class="title ps-5">
+  <div style="background-color: #24554c; width:120px; color: white; padding:6px; text-align:center"><i class="bi bi-car-front-fill"></i> Mi Garage</div>
+</div>
 <div class="container  pt-5">
 
   <div class="row">
@@ -8,11 +8,11 @@
 
       <table style="width: 100%">
         <tr>
-          <td class=" pt-2  ps-2" style="background-color: black; color:white">
+          <td class=" pt-2  ps-2" style="background-color: #66192d; color:white">
             <h3><i class="bi bi-arrow-left-circle" (click)="regresar()"></i> {{ vehicle.modelo.marca.marca | titlecase}}
               {{ vehicle.modelo.modelo | titlecase}} {{ vehicle.anioModelo}}</h3>
           </td>
-          <td class="pt-1 pb-1 " style="text-align: right; background-color: black; color:white; margin: 8px">
+          <td class="pt-1 pb-1 " style="text-align: right; background-color: #66192d; color:white; margin: 8px">
             <button class="btn btn-warning btn-sm me-2" [routerLink]="'/mi-garage'"><i class="bi bi-car-front"
                 data-bs-placement="bottom" title="Cambiar Auto"></i> Cambiar Auto</button>
             <!-- <button class="btn btn-warning btn-sm me-2" (click)="navigate('/servicios')"><i class="bi bi-list-ul" data-bs-placement="top" title="Ver Servicios"></i></button> -->
@@ -34,7 +34,7 @@
   <div class="row">
     <div class="col-md-8">
 
-      <div class="bg-dark text-light p-2">
+      <div class="text-light p-2" style="background-color: #66192d;">
 
         <h4>Historial de servicios</h4>
       </div>
