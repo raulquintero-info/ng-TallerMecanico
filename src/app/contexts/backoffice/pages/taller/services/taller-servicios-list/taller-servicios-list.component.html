@@ -6,7 +6,21 @@
       <button class="btn btn-secondary btn-sm ms-2" *ngFor="let status of estatus" (click)="getByStatus(status.estatusServicio)">{{status.estatusServicio | titlecase}}</button>
     </div>
 
-    <app-m-services-list [services]="services" [pathService]="pathService"></app-m-services-list>
+    <div>
+
+      <app-m-services-list [services]="services" [pathService]="pathService"></app-m-services-list>
+      <div *ngIf="isLoading; else showMessages" style="width: 100%; text-align: center">
+        <div class="loader"></div>
+      </div>
+
+      <ng-template #showMessages>
+        <!-- <div *ngIf='errorMessage' class="alert alert-danger" role="alert"><strong>Error.- </strong> {{ errorMessage }}</div> -->
+        <div *ngIf="services.length<1" class="p-4 text-center">Aun no se ha registrado ningun servicio.</div>
+
+      </ng-template>
+
+    </div>
+
 
     <app-pagination
       [currentPage]="currentPage"

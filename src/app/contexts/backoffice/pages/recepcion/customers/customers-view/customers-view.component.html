@@ -7,21 +7,24 @@
     </app-page-title>
 
   </div>
+  <div *ngIf='errorMessage' class="alert alert-danger mt-2" role="alert"><strong>Error.- </strong> {{ errorMessage }}
+  </div>
   <div>
 
-    <div class="container mt-5">
-      <div class="row" >
+    <div class="container mt-3">
+      <div class="row">
         <div class="col-md-4 pt-2 mb-3 text-white pb-3" style="background-color: #1a4f46;">
 
           <div class="d-flex bd-highlight pb-2" style="border-bottom: 1px solid rgb(150, 148, 148);">
             <div class="pt-2 flex-fill bd-highlight fw-bold" style="background-color: #1a4f46;">Datos del Cliente </div>
             <div class=" bd-highlight"><button class="btn btn-outline-light btn-sm"
-              [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente"><i class="bi bi-pencil-square"></i> Editar</button>
+                [routerLink]="'/admin/recepcion/clientes-form/'  + customer.idCliente"><i
+                  class="bi bi-pencil-square"></i> Editar</button>
             </div>
           </div>
           <!-- <span class="title-field ">Nombre:</span> -->
           <div class="ps-2">
-            <div  *ngIf="!isLoading">
+            <div *ngIf="!isLoading">
 
               <div class="fw-bold" style="font-size:larger">
                 {{ customer.nombre | titlecase}} <br>
@@ -44,19 +47,24 @@
               </div>
               <div class="p-21bd-highlight">
                 <button class="btn btn-outline-light btn-sm "
-                  [routerLink]="'/admin/recepcion/clientes/'+ customer.idCliente +'/vehiculo-form/0' "><i class="bi bi-plus-square"></i> Agregar</button>
+                  [routerLink]="'/admin/recepcion/clientes/'+ customer.idCliente +'/vehiculo-form/0' "><i
+                    class="bi bi-plus-square"></i> Agregar</button>
               </div>
             </div>
           </div>
           <div>
-            <app-m-vehicle-list [vehicles]="customer.vehiculos"  (onDeleteById)="deleteVehicleById($event)" [pathVehicle]="pathVehicle"></app-m-vehicle-list>
-            <div *ngIf="!customer.vehiculos.length" class="text-center" style="color:gray"> <strong>Aun no se ha registrado nungun vehiculo.</strong></div>
-            <div *ngIf="isLoading; else showMessage" style="width: 100%; text-align: center"><div class="loader"></div>
-          </div>
-          <ng-template #showMessage>
-            <div *ngIf='errorMessage' class="alert alert-danger" role="alert"><strong>Error.- </strong> {{ errorMessage }}</div>
-          </ng-template>
-          <div class="float-end">
+            <app-m-vehicle-list [vehicles]="customer.vehiculos" (onDeleteById)="deleteVehicleById($event)"
+              [pathVehicle]="pathVehicle"></app-m-vehicle-list>
+            <div style="width:100%; text-align:center">
+              <div *ngIf="isLoading; else showMessage" style="width: 100%">
+                <div class="loader"></div>
+              </div>
+            </div>
+            <ng-template #showMessage>
+              <div *ngIf="!customer.vehiculos.length" class="text-center mt-3" style="color:gray"> <strong>Aun no se ha
+                  registrado nungun vehiculo.</strong></div>
+            </ng-template>
+            <div class="float-end">
 
               <!-- <nav aria-label="...">
                 <ul class="pagination">
@@ -75,28 +83,40 @@
               </nav> -->
             </div>
 
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+    <div class="text-white fw-bold mt-3 p-2" style="background-color: #1a4f46;">
+      <div class="d-flex bd-highlight">
+        <div class="flex-fill p-2 bd-highlight" style="background-color: #1a4f46;">
+          Servicios Abiertos
+        </div>
+        <div class="p-1 bd-highlight ">
+          <!-- <button class="btn btn-outline-light btn-sm " [routerLink]="'/admin/recepcion/vehiculos-form/0' "><i class="bi bi-plus-square"></i> Nuevo</button> -->
         </div>
       </div>
-
     </div>
-  </div>
-
-
-
-
-
-  <div class="text-white fw-bold mt-3 p-2" style="background-color: #1a4f46;">
-    <div class="d-flex bd-highlight">
-      <div class="flex-fill p-2 bd-highlight" style="background-color: #1a4f46;">
-        Servicios Abiertos
+    <div>
+      <app-m-services-list [services]="services" [customer]="customer"
+        [pathService]="pathService"></app-m-services-list>
+      <div class="mt-4">
+        <div style="width:100%; text-align:center">
+          <div *ngIf="isLoading; else showMessagesService" >
+            <div class="loader"></div>
+          </div>
+          <ng-template #showMessagesService>
+            <div *ngIf="customer.vehiculos.length<1" class="text-center text-danger"> <i
+              class="bi bi-exclamation-triangle"></i> Es necesario registrar un vehiculo para poder agregar un servicio
+            </div>
+          </ng-template>
+        </div>
       </div>
-      <div class="p-1 bd-highlight ">
-        <!-- <button class="btn btn-outline-light btn-sm " [routerLink]="'/admin/recepcion/vehiculos-form/0' "><i class="bi bi-plus-square"></i> Nuevo</button> -->
-      </div>
+      <!-- <pre>{{services|json}}</pre> -->
     </div>
-  </div>
-  <div>
-    <app-m-services-list [services]="services" [customer]="customer" [pathService]="pathService"></app-m-services-list>
-  </div>
-<pre>{{services|json}}</pre>
-</div>

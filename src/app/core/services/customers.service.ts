@@ -55,7 +55,7 @@ export class CustomersService {
   delete(id: number):Observable<any>{return this.http.delete(this.url + "/" + id)}
 
   //todo: cambiar la ruta para obtener los vehiculos del cliente actual, en esperea de spring security
-  getVehicles():Observable<any>{return this.http.get(this.url+'/16/vehiculos')};
+  getVehicles():Observable<any>{return this.http.get(this.url+'/1/vehiculos')};
   getVehiclesByCustomerId(id: number):Observable<any>{return this.http.get(this.url + `/${id}/vehiculos`)}
 
 }

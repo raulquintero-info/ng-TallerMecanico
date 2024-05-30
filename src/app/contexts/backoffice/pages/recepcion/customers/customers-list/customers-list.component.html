@@ -1,14 +1,17 @@
 <div class="container pt-3">
 
-  <div><app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title></div>
-
+  <div><app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"
+      [buttons]="buttons"></app-page-title></div>
   <div class="">
     <app-m-customers-list [customers]="customers" pathCustomer="/admin/recepcion/clientes"></app-m-customers-list>
-    <div *ngIf="isLoadingCustomers; else showMessage" style="width: 100%; text-align: center"><div class="loader"></div>
-  </div>
+    <div *ngIf="isLoadingCustomers; else showMessages" style="width: 100%; text-align: center">
+      <div class="loader"></div>
+    </div>
 
-    <ng-template #showMessage>
-      <div *ngIf='errorMessage' class="alert alert-danger" role="alert"><strong>Error.- </strong> {{ errorMessage }}</div>
+    <ng-template #showMessages>
+      <!-- <div *ngIf='errorMessage' class="alert alert-danger" role="alert"><strong>Error.- </strong> {{ errorMessage }}</div> -->
+      <div *ngIf="customers.length<1" class="p-4 text-center">Aun no se ha registrado ningun cliente.</div>
+
     </ng-template>
   </div>
 

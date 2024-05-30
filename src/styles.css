@@ -35,6 +35,10 @@
   background-color: #24554c;
   color:white;
 }
+.bg-gris{
+  background-color: #cbcbcb;
+  color: black
+}
 .layered-image {
   background:
     url("/assets/images/backgrounds/cintillaBeige.svg");
@@ -93,25 +97,29 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
 /* HTML: <div class="loader"></div> */
 .loader {
-  width: fit-content;
-  font-weight: bold;
-  font-family: monospace;
-  font-size: 30px;
-  background:linear-gradient(90deg,#000 50%,#0000 0) right/200% 100%;
-  animation: l21 2s infinite linear;
+  height: 40px;
+  aspect-ratio: .866;
+  display: inline-grid;
+  background: conic-gradient(from -121deg at right,#0000, #8f3950 1deg 60deg,#0000 61deg);
+  animation: l12 2s infinite linear;
+  transform-origin: 33% 50%;
 }
-.loader::before {
-  content :"Procesando...";
-  color: #0000;
-  padding: 0 5px;
-  background: inherit;
-  background-image: linear-gradient(90deg,#fff 50%,#000 0);
-  -webkit-background-clip:text;
-          background-clip:text;
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  background: conic-gradient(from -121deg at right,#0000, #cdb79e 1deg 60deg,#0000 61deg);
+  transform-origin: inherit;
+  animation: inherit;
 }
-
-@keyframes l21{
-  100%{background-position: left}
+.loader:after {
+  background: conic-gradient(from -121deg at right,#0000, #1a4f46 1deg 60deg,#0000 61deg);
+  animation-duration: 3s;
+}
+@keyframes l12{
+  100% {transform: rotate(1turn)}
 }

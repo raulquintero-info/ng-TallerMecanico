@@ -9,7 +9,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-      <img class="brand-logo" src="/assets/images/logo2.png" alt="">
+      <!-- <img class="brand-logo" src="/assets/images/logo2.png" alt=""> -->
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
@@ -74,6 +74,7 @@
             <!-- <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/roles">Roles</a></li> -->
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/tipos-motor'">Tipo Motor</a></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/estatus-servicio'">Estatus Servicio</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/departamentos'">Departamentos</a></li>
           </ul>
         </li>
 
@@ -151,9 +152,9 @@
       [routerLink]="'/admin/recepcion/clientes-view/' + currentCustomer.idCliente" style="right: 20px">
       <i class="bi bi-pin-angle-fill"></i>
       Cliente: <span style="font-weight: bold; color:#ffffff">{{ currentCustomer.nombre + ' ' +
-        currentCustomer.apellidoPaterno | titlecase}}</span>
-    </span>
+        currentCustomer.apellidoPaterno | titlecase}} </span>
     <i *ngIf="currentCustomer.idCliente" class="bi bi-x-lg" (click)="clearCustomer()" style="cursor: pointer"></i>
+    </span>
   </div>
 </div>
 
@@ -184,7 +185,7 @@
                 </tr>
               </thead>
               <tbody class="table-group-divider">
-                <tr *ngFor="let customer of customers" (click)="selCustomer(customer)" data-bs-dismiss="modal">
+                <tr *ngFor="let customer of customers" (click)="selCustomer(customer)" class="clickable" data-bs-dismiss="modal">
                   <td>{{customer.nombre}} {{customer.apellidoPaterno}}</td>
                   <td>{{ customer.telefono }} </td>
                   <td>{{ customer.vehiculos.length}}</td>

@@ -12,6 +12,7 @@ import { DepartamentosService } from 'src/app/core/services/departamentos.servic
 })
 export class DepartamentosFormComponent implements OnInit{
   showSpinner: boolean = false;
+  isSaved :boolean = false
   respuesta: string = '';
   messages: Toast[] = [];
   params: any;
@@ -79,6 +80,7 @@ export class DepartamentosFormComponent implements OnInit{
           this.respuesta = resp.mensaje;
           console.log('Departamento Recibido', resp);
           this.showSpinner = false;
+          this.isSaved = true
         },
         error: (resp) => {
           this.messages.push({
@@ -89,6 +91,8 @@ export class DepartamentosFormComponent implements OnInit{
           });
           console.log('update error:', resp);
           this.showSpinner = false;
+          this.isSaved = false
+
         },
       });
     } else {

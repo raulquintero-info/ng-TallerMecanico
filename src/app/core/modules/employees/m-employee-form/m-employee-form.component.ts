@@ -22,7 +22,7 @@ onNewEmployee:EventEmitter<any> = new EventEmitter();
 private formBuild = inject(FormBuilder);
 
   employeeForm = this.formBuild.group({
-    idEmpleado: [0],
+    idEmpleado: [{value:0, disabled: true}],
     username: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4)]],
     nombre: ['', [Validators.required, Validators.minLength(3)]],

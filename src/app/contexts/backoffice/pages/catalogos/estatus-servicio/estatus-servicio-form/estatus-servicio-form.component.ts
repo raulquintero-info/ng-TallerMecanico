@@ -21,7 +21,7 @@ export class EstatusServicioFormComponent implements OnInit {
   departamentos: Departamento[]=[];
 
   title: string = "Catalogos";
-  subTitle: string = "Orden de Servicio Nueva";
+  subTitle: string = "Agregar Estatus";
   buttons = [
     { text: "Ver Estatus", path: "/admin/catalogos/estatus-servicio" },
   ];
@@ -44,7 +44,7 @@ export class EstatusServicioFormComponent implements OnInit {
 
     this.estatusServicioForm.get('idEstatusServicio')?.disable();
     if (this.estatusServicio.idEstatusServicio > 0) {
-      this.subTitle = 'Editar Modelo';
+      this.subTitle = 'Editar Estatus';
       this.estatusService.getById(this.estatusServicio.idEstatusServicio).subscribe({
         next: resp => {
           console.log(resp);

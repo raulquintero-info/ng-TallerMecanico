@@ -3,7 +3,7 @@
 
   <div class=" mb-3">
     <label for="idEmpleado" class="form-label">Id</label>
-    <input type="idEmpleado" class="form-control" [disabled]="true" [readOnly]="true"
+    <input type="idEmpleado" class="form-control"  [readOnly]="true"
       formControlName="idEmpleado" id="idEmpleado" name="idEmpleado">
 
   </div>
@@ -11,7 +11,7 @@
   <div class=" mb-3">
     <label for="username" class="form-label">Email</label>
     <input type="text" class="form-control" formControlName="username" [readOnly]="employee.idEmpleado>0"
-      [disabled]="employee.idEmpleado>0" id="username" name="username">
+       id="username" name="username">
   </div>
 
   <!-- validacion  -->

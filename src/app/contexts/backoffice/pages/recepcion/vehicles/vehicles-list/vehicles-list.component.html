@@ -9,36 +9,48 @@
   </script>
 
 
-  <app-page-title *ngIf="!customer.idCliente" [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
-  <app-page-title *ngIf="customer.idCliente" [title]="'Cliente:'" [subTitle]=" customer.nombre + '' + customer.apellidoPaterno" [buttons]="buttons"></app-page-title>
+  <app-page-title *ngIf="!customer.idCliente" [title]="title" [subTitle]="subTitle" [printerEnabled]="true"
+    [buttons]="buttons"></app-page-title>
+  <app-page-title *ngIf="customer.idCliente" [title]="'Cliente:'"
+    [subTitle]=" customer.nombre + '' + customer.apellidoPaterno" [buttons]="buttons"></app-page-title>
   <div>
 
-    <app-m-vehicle-list [vehicles]="vehicles" [pathVehicle]="pathVehicle " (onDeleteById)="deleteById($event)" (onSeleccById)="seleccById($event)"></app-m-vehicle-list>
-    <div class="mt-2" *ngIf="isLoading" style="width: 100%; text-align: center"><div class="loader"></div></div>
+    <app-m-vehicle-list [vehicles]="vehicles" [pathVehicle]="pathVehicle " (onDeleteById)="deleteById($event)"
+      (onSeleccById)="seleccById($event)"></app-m-vehicle-list>
+    <div class="mt-2" *ngIf="isLoading; else showMessages" style="width: 100%; text-align: center">
 
-
+      <div class="loader"></div>
+    </div>
   </div>
 
-  <!-- modal -->
-  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">{{ vehicle.modelo.modelo + ' ' + vehicle.modelo.marca.marca}} </h4>
-        </div>
-        <div class="modal-body">
-          <p>Este Vehiculo pertenece a: </p>
+  <ng-template #showMessages>
+    <div *ngIf='false' class="alert alert-danger" role="alert"><strong>Error.- </strong> {{ 'errorMessage' }}</div>
+    <div *ngIf="vehicles.length<1" class="text-center"> Aun no se ha registrado ningun vehiculo en la BD.</div>
+  </ng-template>
 
-          <p>Desea Continuar?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" (click)="closePopup()">
-            No
-          </button>
-          <button type="button" class="btn btn-primary" (click)="closePopup()">
-            Si
-          </button>
-        </div>
+
+</div>
+
+<!-- modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{ vehicle.modelo.modelo + ' ' + vehicle.modelo.marca.marca}} </h4>
+      </div>
+      <div class="modal-body">
+        <p>Este Vehiculo pertenece a: </p>
+
+        <p>Desea Continuar?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closePopup()">
+          No
+        </button>
+        <button type="button" class="btn btn-primary" (click)="closePopup()">
+          Si
+        </button>
       </div>
     </div>
   </div>
+</div>

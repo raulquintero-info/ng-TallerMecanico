@@ -101,7 +101,7 @@
             <pre class="comentarios mt-3 p-3 d-print-none">{{ service.comentarios}}</pre>
           </ng-template>
           <hr>
-          <div class="text-end"><button class="btn btn-sm btn-danger"  (click)="openModalDelete()">Eliminar Servicio</button></div>
+          <div class="text-end"><button class="btn btn-sm btn-danger d-print-none"  (click)="openModalDelete()">Eliminar Servicio</button></div>
         </div>
 
       </div>
@@ -184,13 +184,7 @@
         vestibulum sed. Proin et dictum mauris, quis placerat mauris. Suspendisse maximus felis eget felis iaculis
         dictum. Integer pellentesque velit aliquet nisl congue, in dapibus augue porttitor.
         <br><Br>
-        Aenean dictum eros quis erat maximus, non ultricies lectus luctus. Etiam condimentum sapien massa, et tincidunt
-        arcu posuere ut. Aenean accumsan quis libero consequat varius. Cras id risus a quam gravida viverra et quis
-        nisl. Proin semper ullamcorper ornare. Sed eleifend sit amet quam eu sodales. Fusce commodo, purus venenatis
-        tempor ultrices, velit lacus aliquam orci, at molestie lectus sem nec nulla. Vestibulum congue metus sit amet
-        turpis faucibus interdum. Donec laoreet dapibus magna, non tristique mauris pellentesque eget. Sed ut ante vel
-        est porta pharetra. Quisque urna velit, scelerisque ac sagittis at, blandit gravida turpis. Mauris quam diam,
-        euismod ut efficitur vel, aliquet auctor sapien. Quisque ac est eget eros tristique fringilla.
+          <div class="text-center">__________________________________________<br>de conformidad</div>
       </div>
     </div>
   </div>
@@ -200,8 +194,8 @@
   {{ vehicle | json }}
 </pre> -->
 <ng-template #spinnerTemplate>
-  <div class="container pt-3 ">
-    <div class="loader"></div>
+  <div class="container " style="width: 100%; text-align: center;">
+    <br><Br><div class="loader"></div>
     <!-- <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
       <span class="visually-hidden">Loading...</span>
     </div> -->
@@ -258,7 +252,7 @@
   [ngStyle]="{'display':displayStyleDelete}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-guinda">
         <h4 class="modal-title">AutoPro </h4>
       </div>
       <div class="modal-body">
@@ -267,7 +261,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary"
-                (click)="onDelete()">
+                (click)="onDelete(service.idOrdenServicio)">
           Si
         </button>
         <button type="button" class="btn btn-danger"

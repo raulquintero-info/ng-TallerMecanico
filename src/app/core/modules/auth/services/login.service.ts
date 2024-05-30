@@ -94,7 +94,7 @@ export class LoginService {
       console.error('Se ha producido un error: ', error.error);
       message = "El servidor no esta disponible, intentelo mas tarde.";
     } else {
-      console.error('Backend retorno el codigo de estado: ', error.status, error.error);
+      console.error('Backend retorno el codigo de estado: ', error.status, error);
       message = error.status + ".- Error en Servidor";
     }
     console.log(error);

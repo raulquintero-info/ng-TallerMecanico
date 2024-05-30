@@ -18,7 +18,7 @@ export class CustomersViewComponent {
   title: string = "Cliente";
   subTitle: string = "<cliente apellido>";
   params: any;
-  customer: Customer = {vehiculos:[] as Vehiculo[]} as Customer;
+  customer: Customer = {nombre:'', apellidoPaterno:'', vehiculos:[] as Vehiculo[]} as Customer;
   services: any;
   openServices: any;
   buttons = [{text: "Clientes", path: "/admin/recepcion/clientes"}];

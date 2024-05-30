@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { CustomersService } from 'src/app/core/services/customers.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { CustomersService } from 'src/app/core/services/customers.service';
 export class CustomersListComponent implements OnInit {
   isLoadingCustomers: boolean = true;
   errorMessage: string = '';
-  customers: any;
+  customers: Customer[] = []
   params: any;
   title: string = "Recepcion";
   subTitle: string = "Lista de clientes";

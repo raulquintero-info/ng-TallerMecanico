@@ -1,6 +1,6 @@
 <div class="table-responsive">
   <table class="table table-striped  table-borderless  align-middle">
-    <thead class="table-dark">
+    <thead class="table-secondary">
       <tr>
         <th>id</th>
         <th>Nombre</th>
@@ -11,7 +11,7 @@
     <tbody class="table-group-divider">
       <tr *ngFor="let estatusServicio of estatusServicios" class="table-striped">
         <td scope="row">{{estatusServicio.idEstatusServicio}}</td>
-        <td>{{estatusServicio.estatusServicio| titlecase}}</td> 
+        <td>{{estatusServicio.estatusServicio| titlecase}}</td>
         <td>{{ estatusServicio?.departamento?.departamento| titlecase}}</td>
         <!-- <td> {{customer.vehiculos.length? customer.vehiculos.length: 0}}</td> -->
         <td class="d-print-none">

@@ -14,6 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ModelosFormComponent implements OnInit {
   showSpinner: boolean = false;
+  isSaved: boolean = false;
   respuesta: string = '';
   messages: Toast[] = [];
   params: any;
@@ -99,6 +100,7 @@ export class ModelosFormComponent implements OnInit {
           this.respuesta = resp.mensaje;
           console.log('respModelo', resp);
           this.showSpinner = false;
+          this.isSaved = true;
         },
         error: (resp) => {
           this.messages.push({
@@ -109,6 +111,7 @@ export class ModelosFormComponent implements OnInit {
           });
           console.log('update error:', resp);
           this.showSpinner = false;
+          this.isSaved = true;
         },
       });
     } else {

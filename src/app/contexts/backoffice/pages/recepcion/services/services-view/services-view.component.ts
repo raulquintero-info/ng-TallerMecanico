@@ -197,7 +197,16 @@ export class ServicesViewComponent implements OnInit {
   closeModalDelete(){
     this.displayStyleDelete = "none";
   }
-  onDelete(){
+  onDelete(id: number){
+    this.servicesService.deleteById(id).subscribe({
+      next: resp=>{
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Se ha eliminado el servicio: ' + this.service.idOrdenServicio , type:'warning' })
+        this.router.navigateByUrl('/admin/recepcion/vehiculos/'+ this.vehicle.idVehiculo);
+      },
+      error: resp=>{
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' No se ha podido eliminar este servicio', type:'danger' })
 
+      }
+    })
   }
 }

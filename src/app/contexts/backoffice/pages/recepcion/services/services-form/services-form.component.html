@@ -3,10 +3,10 @@
 
   <div class="" style="background-color: #0078d4; width: 100%">
     <div class="d-flex bd-highlight">
-      <div class="ps-2 pt-2 flex-grow-1 bd-highlight text-light" style="background-color: #16232c;">
+      <div class="ps-2 pt-2 flex-grow-1 bd-highlight text-light" style="background-color: #174f46;">
         <h4>&nbsp;Servicio Nuevo </h4>
       </div>
-      <div class="p-1 ps-2 bd-highlight bg-dark text-light d-print-none">
+      <div class="p-1 ps-2 bd-highlight bg-verde text-light d-print-none">
         <!-- todo: revisar opciones  -->
         <!-- <button class="btn btn-outline-light btn-sm" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;
         <button class="btn btn-outline-light btn-sm" [routerLink]="'/admin/recepcion/vehiculos-form/'+ vehicle.idVehiculo">
@@ -21,7 +21,7 @@
     </div>
   </div>
   <div>
-    <div class="bg-dark text-light p-2">
+    <div class="bg-verde text-light p-2">
       <strong>{{ vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno | titlecase}}, Tel: {{vehicle.cliente.telefono}}</strong>
     </div>
 
@@ -41,7 +41,9 @@
           name="observaciones">
       </div>
       <div>
-        <button class="btn btn-primary btn-round btn-sm" (click)="save()">Grabar</button>
+        <button *ngIf="!isSaved" class="btn btn-primary btn-sm" (click)="save()">Grabar</button>
+        <button *ngIf="isSaved" class="btn btn-success btn-sm" 
+          [routerLink]="'/admin/recepcion/servicios-view/' + service.idOrdenServicio">Continuar</button>
       </div>
     </form>
 
@@ -50,6 +52,6 @@
 
 
 </div>
-<pre>
+<!-- <pre>
   {{service | json}}
-</pre>
+</pre> -->

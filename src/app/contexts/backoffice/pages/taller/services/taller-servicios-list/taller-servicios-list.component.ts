@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 import { Page } from 'src/app/core/interfaces/page.interface';
 import { DepartamentosService } from 'src/app/core/services/departamentos.service';
 import { ServicesService } from 'src/app/core/services/services.service';
@@ -10,12 +11,13 @@ import { ServicesService } from 'src/app/core/services/services.service';
 })
 export class TallerServiciosListComponent {
   estatus: any[] = [];
+  isLoading: boolean = true;
 
   title: string = "Taller";
   subTitle: string = "Servicios";
   buttons = [{text: "Agregar", path: "/admin/recepcion/servicios-form/0'"},];
   pathService="/admin/recepcion/servicios-view";
-  services: any;
+  services: any = [];
 
   currentPage: number = 1;
   totalPages: number = 1;
@@ -49,7 +51,11 @@ export class TallerServiciosListComponent {
     //   });
     this.servicesService.getPaginatedRecepcionData(2).subscribe({
       next: resp=>{
-        this.services = resp
+        this.services = resp;
+        this.isLoading = false;
+      },
+      error: resp=>{
+        this.isLoading = false;
       }
     });
   }

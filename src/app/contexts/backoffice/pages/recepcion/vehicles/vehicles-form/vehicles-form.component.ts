@@ -24,6 +24,8 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 })
 export class VehiclesFormComponent implements OnInit {
   showSpinner: boolean = false;
+  isSaved: boolean = false;
+  isProcessing: boolean = false;
   params: any;
   vehicle: Vehiculo = {
     vin: '',
@@ -32,6 +34,7 @@ export class VehiclesFormComponent implements OnInit {
     color: '',
     imagen: '/assets/images/cars/no_image.jpg',
     modelo: { marca: {} as Marca, } as Modelo,
+    tipoMotor:{} as TipoMotor,
     cliente: {nombre: '', apellidoPaterno: '' } as Customer
   } as Vehiculo;
   imagen: string = '/assets/images/cars/no_image.jpg';
@@ -145,25 +148,38 @@ export class VehiclesFormComponent implements OnInit {
   }
 
   save() {
+    this.showSpinner = true;
     console.log('vehicle', this.vehicle);
     this.vehicle.vin = this.vehicleForm.value.vin!;
     this.vehicle.matricula = this.vehicleForm.value.matricula!;
     this.vehicle.anioModelo = this.vehicleForm.value.anio!;
     this.vehicle.color = this.vehicleForm.value.color!;
-
+    this.vehicle.tipoMotor.idTipoMotor =this.vehicleForm.value.tipoMotor!;
     this.vehicle.modelo.idModelo = this.vehicleForm.value.modelo!;
 
     this.vehiclesService.saveOrUpdate(this.vehicle).subscribe({
       next: (resp) => {
+        console.log('resp',resp);
+        this.vehicle.idVehiculo = resp.Vehiculo.idVehiculo;
         this.toastService.addMessage({
           title: 'Sistema',
           timeAgo: '',
           body: ' Registro Grabado',
           type: 'success',
         });
+        this.isSaved = true;
+        this.showSpinner=false;
       },
       error: resp=> {
         console.log('error', resp);
+        this.toastService.addMessage({
+          title: 'Sistema',
+          timeAgo: '',
+          body: 'No se pudo grabar el registro',
+          type: 'danger',
+        });
+        this.isSaved=false;
+        this.showSpinner= false;
       }
     });
   }

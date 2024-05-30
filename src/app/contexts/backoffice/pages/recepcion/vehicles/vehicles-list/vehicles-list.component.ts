@@ -17,9 +17,11 @@ export class VehiclesListComponent implements OnInit {
   title: string = 'Recepcion';
   subTitle: string = 'Lista de Vehiculos'
   customer: Customer = {} as Customer;
-  buttons = [{ text: "Agregar", path: "/admin/recepcion/vehiculos-form/0" }];
+  buttons = [
+    // { text: "Agregar", path: "/admin/recepcion/vehiculos-form/0" }
+  ];
   vehicle: Vehiculo = { modelo:{modelo:'',marca:{marca:''}}} as Vehiculo;
-  vehicles: any;
+  vehicles: Vehiculo[] = [];
   pathVehicle: string = "/admin/recepcion/vehiculos";
   params: any;
 
@@ -76,6 +78,9 @@ export class VehiclesListComponent implements OnInit {
         this.vehicles = resp;
         this.isLoading = false;
 
+      },
+      error: resp=>{
+        this.isLoading = false;
       }
     })
   }

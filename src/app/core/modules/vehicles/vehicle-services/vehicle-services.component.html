@@ -11,7 +11,7 @@
         </thead>
         <tbody>
           <tr class="" *ngFor="let service of vehicle.ordenServicio">
-            <td scope="row">{{service.fechaOrden |date}}</td>
+            <td scope="row">{{service.fechaOrden  | date: 'short'}}</td>
             <td>{{service.falla}}</td>
             <td>{{service.estatusServicio.estatusServicio}}</td>
             <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">Ver</button></td>

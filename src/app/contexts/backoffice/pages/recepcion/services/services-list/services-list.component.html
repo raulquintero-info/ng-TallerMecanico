@@ -1,23 +1,30 @@
-
-
 <div class="container pt-3 ">
+
   <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
   <div>
     <div class="text-end  p-1 pe-2 d-print-none" style="background-color: #cbcbcb;">
-      <button class="btn btn-warning btn-sm ms-2" *ngFor="let status of estatus" (click)="getByStatus(status.estatusServicio)">{{status.estatusServicio | titlecase}}</button>
+      <button class="btn btn-warning btn-sm ms-2" *ngFor="let status of estatus"
+        (click)="getByStatus(status.estatusServicio)">{{status.estatusServicio | titlecase}}</button>
     </div>
-    <ng-template [ngIf]="services.length>0">
-      <app-m-services-list  [services]="services" [pathService]="pathService"></app-m-services-list>
+    <div>
+      <app-m-services-list [services]="services" [pathService]="pathService"></app-m-services-list>
+      <div *ngIf="isLoading; else showMessage" style="width: 100%; text-align: center">
+        <div class="loader"></div>
+      </div>
+    </div>
+
+    <ng-template #showMessage>
+      <div *ngIf='false' class="alert alert-danger" role="alert"><strong>Error.- </strong> {{ 'errorMessage' }}</div>
+      <div *ngIf="services.length<1" class="p-4 text-center">
+        Sin servicios para Mostrar.<br>
+        <!-- <div class="text-danger"><i class="bi bi-exclamation-triangle"></i> Es necesario dar de alta un cliente primero</div>
+        <button class="btn btn-primary btn-sm" routerLink="/admin/recepcion/clientes-form/0">Capturar Cliente</button> -->
+      </div>
     </ng-template>
-    <div class="mt-2" *ngIf="isLoading" style="width: 100%; text-align: center"><div class="loader"></div>
-
-
   </div>
 
-  <app-pagination
-      [currentPage]="currentPage"
-      [totalPages]="totalPages"
-      (pageChanged)="onPageChange($event)"
-    ></app-pagination>
+
+  <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+    (pageChanged)="onPageChange($event)"></app-pagination>
 
 </div>

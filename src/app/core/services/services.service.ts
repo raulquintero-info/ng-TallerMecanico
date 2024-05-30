@@ -31,6 +31,7 @@ export class ServicesService {
       ? this.http.put(this.url + '/' + service.idOrdenServicio, service)
       : this.http.post(this.url , service)
   };
+  deleteById(id: number):Observable<any>{return this.http.delete(this.url + `/${id}`)}
 
   deleteItem(id: number):Observable<any>{return this.http.delete(this.urlDetalle + '/' + id)};
   addItem(item: DetalleOrdenServicios): Observable<any>{return this.http.post(this.urlDetalle, item)};

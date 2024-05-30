@@ -95,7 +95,7 @@ const routes: Routes = [
   {path: 'admin/catalogos/estatus-servicio', component: EstatusServicioListComponent, canActivate: [adminGuard]},
   {path: 'admin/catalogos/estatus-servicio-form/:id', component: EstatusServicioFormComponent, canActivate: [adminGuard]},
 
-  {path:'admin/catalogos/departamento', component: DepartamentosListComponent, canActivate: [adminGuard]},
+  {path:'admin/catalogos/departamentos', component: DepartamentosListComponent, canActivate: [adminGuard]},
   {path:'admin/catalogos/departamento-form/:id', component: DepartamentosFormComponent, canActivate: [adminGuard]},
 
   {path: 'admin/sistema/empleados', component: EmployeesListComponent, canActivate: [adminGuard]},

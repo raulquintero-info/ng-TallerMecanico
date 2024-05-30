@@ -8,9 +8,11 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
   styleUrls: ['./taller-vehicle-list.component.css']
 })
 export class TallerVehicleListComponent implements OnInit {
+  isLoading: boolean = true;
+
   title: string = 'Taller';
   subTitle: string = 'Lista de todos los Vehiculos';
-  vehicles: any;
+  vehicles: any =[];
   pathVehicle: string ="/admin/recepcion/vehiculos";
   params: any;
 
@@ -28,6 +30,10 @@ getall(){
     next: resp=>{
       console.log(resp);
       this.vehicles = resp;
+      this.isLoading = false
+    },
+    error: resp=>{
+      this.isLoading = false
     }
   })
 }

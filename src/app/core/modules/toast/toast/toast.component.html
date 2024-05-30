@@ -1,4 +1,4 @@
-<div class="toast-container " x="position-absolute bottom-10 end-0" style="position: fixed; bottom: 60px; right: 10px;">
+<div class="toast-container d-print-none" x="position-absolute bottom-10 end-0" style="position: fixed; bottom: 60px; right: 10px;">
   <div *ngFor="let toast of toasts" class="toast fade show" data-bs-animation="true" data-bs-autohide="true" data-bs-delay="5000">
     <div *ngIf="toast.type == undefined " class="toast-header bg-primary text-light ">
       <strong class="me-auto"><i class="bi-globe"></i> {{toast.title}}</strong>

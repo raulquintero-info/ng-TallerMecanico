@@ -1,15 +1,16 @@
 
 
 
-<div class="row mb-3" style="min-width:570px;">
+<div class="row mb-3" style="min-width:380px;">
   <div class="p-2 col-md-9">
-    <div class="d-flex p-3 flex-md " style="min-width:380px; background-color:white; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;min-height: 155px;">
+    <div class="d-flex p-3 flex-md " style="min-width:360px; background-color:white; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;min-height: 155px;">
       <div class="mr-auto">
         <span class="vehicle-campo">Id:</span> <span class="vehicle-text"> {{vehicle.idVehiculo}}</span>
         <div class="vehicle-text"><strong>{{ vehicle.modelo.marca.marca | titlecase}} {{ vehicle.modelo.modelo | titlecase}}</strong></div>
         <div> <span class="vehicle-campo">Año: </span><span class="vehicle-text"> {{ vehicle.anioModelo}}</span>,</div>
         <!-- <div class="vehicle-text">{{ vehicle.tipoMotor.tipoMotor| titlecase}} </div> -->
         <div><span class="vehicle-campo">Odo: </span> <span class="vehicle-text"> 125465 km</span> </div>
+        <div><span class="vehicle-campo">Comb: </span> <span class="vehicle-text"> {{ vehicle.tipoMotor.tipoMotor }}</span> </div>
       </div>
       <div>&nbsp;</div>
       <div class="align-self-end ms-3">
