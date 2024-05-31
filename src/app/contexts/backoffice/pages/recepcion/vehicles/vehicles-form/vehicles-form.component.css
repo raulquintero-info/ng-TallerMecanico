@@ -1,13 +1,22 @@
-.banner-left{
+.banner-left {
   color: white;
-  & img{
+
+  & img {
     width: 100%
   }
-  & .texto-parrafo{
-    font-size:13px;
+
+  & .texto-parrafo {
+    font-size: 13px;
     color: white
   }
 }
-label{
+
+label {
   padding-left: 10px;
+}
+
+.btn-icon {
+  top: -50px;
+  right: 20px;
+  position: relative
 }

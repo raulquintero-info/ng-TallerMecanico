@@ -101,6 +101,14 @@ export class LoginComponent implements OnInit,OnDestroy{
     }
   }
 
+  loginAsAdmin( user: string, pass:string){
+    this.loginForm.patchValue({
+      username: user,
+      password: pass
+    });
+    this.login()
+  }
+
   ngOnDestroy(): void {
     // this.renderer.removeClass(document.body, 'bg');
   }

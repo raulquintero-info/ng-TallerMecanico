@@ -42,7 +42,18 @@
 
             </form>
 
-            <div class="m-3" style="font-size: 12px;" >Administrador<br>usuario1@gmail.com:12345</div>
+            <div class="m-5" style="font-size: 12px;" >
+              <table class="table table-hover">
+              <thead class="table-secondary">
+
+                <tr><td colspan="3">Demo</td></tr>
+              </thead>
+              <tbody>
+
+                <tr (click)="loginAsAdmin('usuario1@gmail.com', '12345')"><td>Administrador</td><td>usuario1@gmail.com</td><td><i class="bi bi-box-arrow-in-right"></i></td></tr>
+              </tbody>
+              </table>
+            </div>
 
           </div>
 

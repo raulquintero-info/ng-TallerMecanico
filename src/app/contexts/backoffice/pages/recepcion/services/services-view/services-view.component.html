@@ -115,20 +115,21 @@
           </table>
         </div>
 
-        <hr>
-        <div class="">
-          <table style="width:100%">
-            <tr *ngFor="let detalle of service.detalleOrdenServicios">
-              <td colspan="2">{{ detalle.descripcionServicio | titlecase }}</td>
-              <td class="text-end" style="width:80px">800.00</td>
-              <td class="text-end d-print-none" style="width:30px"><button class="btn btn-sm btn-link"
-                  (click)="deleteItem(detalle.idDetalleOrdenServicio)"><i class="bi bi-dash-circle" style="color:red"></i></button></td>
-            </tr>
 
-            <tr>
-              <td class="total-line"></td>
-              <td class="text-right total-line" style="font-weight: bold;">Total $</td>
-              <td class="total-line text-end">1100.00</td>
+        <div >
+          <div class=" " style="min-height: 100px;">
+            <table style="width:100%; min-height: 100px;">
+              <tr *ngFor="let detalle of service.detalleOrdenServicios">
+                <td colspan="2">{{ detalle.descripcionServicio | titlecase }}</td>
+                <td class="text-end" style="width:80px">800.00</td>
+                <td class="text-end d-print-none" style="width:30px"><button class="btn btn-sm btn-link"
+                  (click)="deleteItem(detalle.idDetalleOrdenServicio)"><i class="bi bi-dash-circle" style="color:red"></i></button></td>
+                </tr>
+
+                <tr>
+                  <td class="total-line"></td>
+                  <td class="text-right total-line" style="font-weight: bold;align-content: end">Total $</td>
+              <td class="total-line text-end" style="align-content: end">1100.00</td>
               <td class="total-line d-print-none"></td>
             </tr>
 
@@ -136,6 +137,7 @@
 
 
           </table>
+        </div>
 
           <ng-container *ngIf="!showBoxAddItem; then buttonsDetalle; else addItems"></ng-container>
 

@@ -7,23 +7,12 @@
         vehicle.modelo.modelo}} [ {{vehicle.idVehiculo}} ]</div>
       <img class="mb-2" [src]="vehicle.imagen" alt="">
       <div class="text-end">
-
-        <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#imagenModal"><i class="bi bi-camera"></i> Cambiar Imagen</button>
+        <button class="btn btn-success btn-sm btn-icon" data-bs-toggle="modal" data-bs-target="#imagenModal"
+          style="top:-50px; right: 20px; position:relative"><i class="bi bi-camera"></i> </button>
       </div>
-      <div class="mt-3">
-        Lorem ipsum
+      <div class="mt-3 text-start">
 
-        <p class="mt-2 texto-parrafo">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel lacinia sapien, in suscipit ipsum. Nam ut
-          ultrices magna. Integer placerat libero a dolor scelerisque porta. Morbi venenatis, nibh sed cursus ornare,
-          massa augue molestie justo, sed rutrum ex tortor sit amet augue. Sed a tempus libero. Sed at orci a ex
-          fermentum
-          auctor in et nunc. Sed venenatis risus odio, in hendrerit nibh laoreet sit amet. Nullam dapibus nulla in
-          dictum
-          tristique. Morbi at interdum eros. Quisque ultricies et lectus a dapibus. Nullam ac ipsum pulvinar, ultrices
-          sapien vel, tempus ipsum. Donec venenatis, magna vel vehicula ultrices, lectus nibh placerat ante, id ornare
-          libero quam eu erat. Donec facilisis ex et neque consequat.
-        </p>
+
       </div>
     </div>
     <div class="col-md-7">
@@ -61,7 +50,7 @@
 
         <div class=" mb-3">
           <label for="Año" class="form-label">Año</label>
-          <input type="number" class="form-control" id="matricula" formControlName="anio">
+          <input type="number" class="form-control" id="anio" formControlName="anio">
           <div
             *ngIf="vehicleForm.controls.anio.invalid && (vehicleForm.controls.anio.dirty || vehicleForm.controls.anio.touched)"
             class="alert alert-danger">
@@ -146,12 +135,15 @@
 
 
           <div class="col-md-6" style="text-align: center"><br>
-            <button type="submit" *ngIf="!isSaved" class="btn btn-primary" style="width: 100%;" [disabled]="showSpinner"
+            <button type="submit" *ngIf="!isSaved" class="btn btn-secondary me-2" [disabled]="showSpinner"
+              [routerLink]="'/admin/recepcion/clientes-view/' + vehicle.cliente.idCliente"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Regresar
+            </button>
+            <button type="submit" *ngIf="!isSaved" class="btn btn-primary" [disabled]="showSpinner"
               (click)="save()"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar Vehiculo
             </button>
             <div  *ngIf="isSaved" >
 
-              <button *ngIf="vehicle.idVehiculo>0" class="btn btn-secondary btn-sm" [routerLink]="'/admin/recepcion/vehiculos/'+vehicle.idVehiculo">Regresar</button>
+              <button *ngIf="vehicle.idVehiculo>0" class="btn btn-secondary btn-sm" [routerLink]="'/admin/recepcion/clientes-view/'+vehicle.cliente.idCliente">Regresar</button>
               <button  class="btn btn-success btn-sm ms-2" [routerLink]="'/admin/recepcion/servicios-form/0/'+vehicle.idVehiculo">Crear Servicio</button>
             </div>
 
