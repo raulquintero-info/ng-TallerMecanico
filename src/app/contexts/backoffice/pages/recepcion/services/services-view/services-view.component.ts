@@ -6,7 +6,6 @@ import { Marca } from 'src/app/core/interfaces/marca.interface';
 import { Modelo } from 'src/app/core/interfaces/modelo.interface';
 import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
-import { User } from 'src/app/core/modules/auth/interfaces/user.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { VehiclesService } from 'src/app/core/services/vehicles.service';
 import { EstatusServicio } from 'src/app/core/interfaces/estatusServicio.interface';
@@ -15,7 +14,6 @@ import { ToastService } from 'src/app/core/modules/toast/services/toast.service'
 import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { CustomersService } from '../../../../../../core/services/customers.service';
 import { DetalleOrdenServicios } from 'src/app/core/interfaces/detalleOrdenServicios.interface';
-import { Employee } from 'src/app/core/interfaces/employee.interface';
 
 @Component({
   selector: 'app-services-view',
@@ -33,7 +31,7 @@ export class ServicesViewComponent implements OnInit {
   title: string = 'Taller AutoPro';
   subTitle: string = 'Orden de Servicio'
   buttons = [
-    // {text: 'Servicios', path: "/admin/recepcion/vehiculos/1"}
+    {text: 'Servicios', path: "/admin/recepcion/vehiculos/1"}
   ];
 
   currentCustomer: Customer = {} as Customer;
@@ -69,12 +67,7 @@ export class ServicesViewComponent implements OnInit {
       }
     });
 
-    this.customersService.currentCustomer.subscribe({
-      next: (currentCustomer: Customer) =>{
-        console.log('currentCustomer', currentCustomer);
-        this.currentCustomer = currentCustomer;
-      }
-    });
+
 
   }
 
@@ -102,14 +95,15 @@ export class ServicesViewComponent implements OnInit {
   }
 
   addItem(){
-    console.log('agregando item')
+    console.log('agregando item', this.item)
     this.item.ordenServicio.idOrdenServicio = this.service.idOrdenServicio;
     this.servicesService.addItem(this.item).subscribe({
       next: resp =>{
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Sericio Agregado", type:'success' })
         this.showBoxAddItem =false;
         this.loadService();
-        this.item ={} as DetalleOrdenServicios;
+        this.item = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
+
 
       },
       error: resp=>{

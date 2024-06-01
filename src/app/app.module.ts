@@ -18,6 +18,7 @@ import { ToasterComponent } from './shared/components/toaster/toaster.component'
 import { ToastModule } from './core/modules/toast/toast.module';
 import { FormsModule } from '@angular/forms';
 import { ErrorHttp503Component } from './shared/pages/error-http503/error-http503.component';
+import { ExpiredSessionComponent } from './shared/pages/expired-session/expired-session.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { ErrorHttp503Component } from './shared/pages/error-http503/error-http50
     NotAuthorizedComponent,
     ToasterComponent,
     ErrorHttp503Component,
+    ExpiredSessionComponent,
   ],
   imports: [
     BrowserModule,

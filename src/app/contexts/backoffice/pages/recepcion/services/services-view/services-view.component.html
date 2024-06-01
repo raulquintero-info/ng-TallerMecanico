@@ -121,7 +121,7 @@
             <table style="width:100%; min-height: 100px;">
               <tr *ngFor="let detalle of service.detalleOrdenServicios">
                 <td colspan="2">{{ detalle.descripcionServicio | titlecase }}</td>
-                <td class="text-end" style="width:80px">800.00</td>
+                <td class="text-end" style="width:80px">{{detalle.costo}}</td>
                 <td class="text-end d-print-none" style="width:30px"><button class="btn btn-sm btn-link"
                   (click)="deleteItem(detalle.idDetalleOrdenServicio)"><i class="bi bi-dash-circle" style="color:red"></i></button></td>
                 </tr>
@@ -161,7 +161,7 @@
                 <br>
                 Precio:
                 <div>
-                  <input type="number" class="form-control"  name="precio">
+                  <input type="number" class="form-control"  name="precio" [(ngModel)]="item.costo">
                 </div>
               </div>
               <div class="mt-3 text-end">

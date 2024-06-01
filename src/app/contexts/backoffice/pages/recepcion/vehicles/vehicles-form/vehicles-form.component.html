@@ -78,9 +78,11 @@
 
         <div class="row">
           <div class="col-md-6">
-            <div class=" mb-3">
-              <label for="marca" class="form-label">Marca</label>
-              <select formControlName="marca" class="form-select" name="marca" #selectMarca id="marca"
+            <div class="d-flex  mb-3">
+              <div class="flex-grow-1" >
+
+                <label for="marca" class="form-label">Marca</label>
+                <select formControlName="marca" class="form-select" name="marca" #selectMarca id="marca"
                 [compareWith]="compareMarca" (change)="loadModels(selectMarca.value)" aria-label="marca">
                 <!-- [(ngModel)]="vehicle.modelo.marca" -->
                 <!-- <option value="-1" readonly>Seleccione una Marca</option> -->
@@ -92,17 +94,22 @@
                 <div *ngIf="vehicleForm.controls.marca.errors?.['required']">Debe seleccionar una marca.</div>
               </div>
             </div>
+            <div class="align-content-end">
+
+              <button class="btn btn-secondary"><i class="bi bi-plus-lg"></i></button>
+            </div>
+            </div>
           </div>
 
 
 
 
           <div class="col-md-6">
-            <div class=" mb-3">
+            <div class="d-flex  mb-3">
+              <div class="flex-grow-1" >
               <label for="modelo" class="form-label">Modelo</label>
-              <select formControlName="modelo" name="modelo" class="form-select" id="modelo"
-                aria-label="modelo" placeholder="Seleccione un modelo"
-                [compareWith]="compareModelo">
+              <select formControlName="modelo" name="modelo" class="form-select" id="modelo" aria-label="modelo"
+                placeholder="Seleccione un modelo" [compareWith]="compareModelo">
                 <!-- <option selected value="-1">Seleccione un Modelo</option> -->
                 <option *ngFor="let b of modelos" [value]="b.idModelo">{{ b.modelo }}</option>
               </select>
@@ -110,6 +117,10 @@
                 *ngIf="vehicleForm.controls.modelo.invalid && (vehicleForm.controls.modelo.dirty || vehicleForm.controls.modelo.touched)"
                 class="alert alert-danger">
                 <div *ngIf="vehicleForm.controls.modelo.errors?.['required']">Debe seleccionar un modelo.</div>
+              </div>
+              </div>
+              <div class="align-content-end">
+                <button class="btn btn-secondary"><i class="bi bi-plus-lg"></i></button>
               </div>
             </div>
           </div>
@@ -124,11 +135,15 @@
               <label for="tipoMotor" class="form-label">Tipo de Motor</label>
               <select formControlName="tipoMotor" class="form-select" name="tipoMotor" id="tipoMotor"
                 aria-label="tipoMotor" placeholder="Seleccione un Tipo de Motor">
-                <option *ngFor="let b of tiposMotor" [selected]="b.idTipoMotor==1"  [value]="b.idTipoMotor">{{ b.tipoMotor }}
+                <option *ngFor="let b of tiposMotor" [selected]="b.idTipoMotor==1" [value]="b.idTipoMotor">{{
+                  b.tipoMotor }}
                 </option>
               </select>
-              <div *ngIf="vehicleForm.controls.tipoMotor.invalid && (vehicleForm.controls.tipoMotor.dirty || vehicleForm.controls.tipoMotor.touched)" class="alert alert-danger">
-                <div *ngIf="vehicleForm.controls.tipoMotor.errors?.['required']">Debe seleccionar un Tipo de Motor.</div>
+              <div
+                *ngIf="vehicleForm.controls.tipoMotor.invalid && (vehicleForm.controls.tipoMotor.dirty || vehicleForm.controls.tipoMotor.touched)"
+                class="alert alert-danger">
+                <div *ngIf="vehicleForm.controls.tipoMotor.errors?.['required']">Debe seleccionar un Tipo de Motor.
+                </div>
               </div>
             </div>
           </div>
@@ -136,15 +151,19 @@
 
           <div class="col-md-6" style="text-align: center"><br>
             <button type="submit" *ngIf="!isSaved" class="btn btn-secondary me-2" [disabled]="showSpinner"
-              [routerLink]="'/admin/recepcion/clientes-view/' + vehicle.cliente.idCliente"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Regresar
+              [routerLink]="'/admin/recepcion/clientes-view/' + vehicle.cliente.idCliente"><span *ngIf="showSpinner"
+                class="spinner-border spinner-border-sm"> </span> Regresar
             </button>
             <button type="submit" *ngIf="!isSaved" class="btn btn-primary" [disabled]="showSpinner"
-              (click)="save()"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar Vehiculo
+              (click)="save()"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
+              Vehiculo
             </button>
-            <div  *ngIf="isSaved" >
+            <div *ngIf="isSaved">
 
-              <button *ngIf="vehicle.idVehiculo>0" class="btn btn-secondary btn-sm" [routerLink]="'/admin/recepcion/clientes-view/'+vehicle.cliente.idCliente">Regresar</button>
-              <button  class="btn btn-success btn-sm ms-2" [routerLink]="'/admin/recepcion/servicios-form/0/'+vehicle.idVehiculo">Crear Servicio</button>
+              <button *ngIf="vehicle.idVehiculo>0" class="btn btn-secondary btn-sm"
+                [routerLink]="'/admin/recepcion/clientes-view/'+vehicle.cliente.idCliente">Regresar</button>
+              <button class="btn btn-success btn-sm ms-2"
+                [routerLink]="'/admin/recepcion/servicios-form/0/'+vehicle.idVehiculo">Crear Servicio</button>
             </div>
 
           </div>
@@ -161,23 +180,23 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-guinda">
-        <h5 class="modal-title" id="imagenModalLabel">Seleccione Imagen de Vehiculo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <input type="file" class="form-control" formControlName="imagen"  id="imagen" (change)="captureFile($event)">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+  <!-- Modal -->
+  <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-guinda">
+          <h5 class="modal-title" id="imagenModalLabel">Seleccione Imagen de Vehiculo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="file" class="form-control" formControlName="imagen" id="imagen" (change)="captureFile($event)">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <pre>
     {{showSpinner}}

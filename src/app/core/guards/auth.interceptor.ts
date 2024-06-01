@@ -35,10 +35,10 @@ export class AuthInterceptor implements HttpInterceptor {
            ${ok} in ${elapsed} ms.`;
         // this.messenger.add(msg);
         console.log(msg, ok);
-        // if(ok.toUpperCase()==='failed'.toUpperCase()){
-        //     localStorage.clear()
-        //     this.router.navigateByUrl("/")//, {skipLocationChange: true})
-        // }
+        if(ok.toUpperCase()==='failed'.toUpperCase()){
+            localStorage.clear()
+            this.router.navigateByUrl("/expired-session", {skipLocationChange: true})
+        }
       })
     );
   }

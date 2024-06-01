@@ -5,4 +5,5 @@ import { OrdenServicio } from "./ordenServicio.interface";
     idDetalleOrdenServicio: number;
     descripcionServicio: string;
     ordenServicio: OrdenServicio;
+    costo: number;
   }
