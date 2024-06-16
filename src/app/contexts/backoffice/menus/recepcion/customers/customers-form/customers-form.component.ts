@@ -63,6 +63,10 @@ export class CustomersFormComponent implements OnInit {
           this.customer.vehiculos =[];
           this.subTitle = "Editar Cliente"
           console.log('cliente recibido', this.customer)
+          if (this.customer.idCliente>0){
+            console.log('deshabilitando username')
+            this.customersForm.get('username')?.disable();
+          }
 
           this.customersForm.patchValue({
             username: this.customer.usuario.username,

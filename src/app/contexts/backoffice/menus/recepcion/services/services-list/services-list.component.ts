@@ -52,7 +52,7 @@ export class ServicesListComponent implements OnInit {
 
       },
       error: resp=>{
-        console.log('error')
+        console.log('error', resp)
       }
     })
 

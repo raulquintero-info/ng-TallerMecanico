@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 export class AuthInterceptor implements HttpInterceptor {
 
   private router = inject(Router)
-  constructor(private loginService: LoginService){}
+  constructor(private loginService: LoginService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const started = Date.now();
@@ -16,8 +16,8 @@ export class AuthInterceptor implements HttpInterceptor {
     let ok: string;
     const token = this.loginService.getToken();
     console.log('token', this.loginService.getToken());
-    if(token!= null ){
-      authReq = authReq.clone({setHeaders : {Authorization: `Bearer ${token}`}});
+    if (token != null) {
+      authReq = authReq.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
     }
     console.log('cloned', authReq)
 
@@ -26,7 +26,15 @@ export class AuthInterceptor implements HttpInterceptor {
         // Succeeds when there is a response; ignore other events
         next: (event) => (ok = event instanceof HttpResponse ? 'succeeded' : ''),
         // Operation failed; error is an HttpErrorResponse
-        error: (_error) => (ok = 'failed')
+        error: (_error) => {
+          ok = 'failed'
+          console.log(this.router.url)
+          //cerrar sesion al expirar el token
+          if(this.router.url!='/login'){
+            localStorage.clear()
+            this.router.navigateByUrl("expired-session")//, {skipLocationChange: true})
+          }
+        }
       }),
       // Log when response observable either completes or errors
       finalize(() => {
@@ -35,10 +43,7 @@ export class AuthInterceptor implements HttpInterceptor {
            ${ok} in ${elapsed} ms.`;
         // this.messenger.add(msg);
         console.log(msg, ok);
-        if(ok.toUpperCase()==='failed'.toUpperCase()){
-            localStorage.clear()
-            this.router.navigateByUrl("/expired-session", {skipLocationChange: true})
-        }
+
       })
     );
   }
@@ -48,6 +53,6 @@ export class AuthInterceptor implements HttpInterceptor {
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
-    multi:true
+    multi: true
   }
 ]

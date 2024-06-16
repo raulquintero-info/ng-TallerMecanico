@@ -5,6 +5,7 @@
         <th>id</th>
         <th>Nombre</th>
         <th>Apellido</th>
+        <th>Apellido M</th>
         <th>Telefono</th>
         <th>E-mail</th>
         <th>Vehiculos</th>
@@ -16,7 +17,7 @@
         <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;" scope="row">{{customer.idCliente}}</td>
         <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.nombre | titlecase}}</td>
         <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.apellidoPaterno | titlecase}}
-        </td>
+        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.apellidoMaterno | titlecase}}</td>
         <!-- <td> {{customer.vehiculos.length? customer.vehiculos.length: 0}}</td> -->
         <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.telefono | phone}}</td>
         <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.usuario.username}}</td>
@@ -27,7 +28,7 @@
 
           <!-- <button *ngIf="!customer.vehiculos.length" class="badge bg-danger text-dark text-white"
             (click)="delete(customer.idCliente)">Eliminar</button> -->
-          <button class="btn btn-outline-danger cancelBtn btn-sm ms-2" *ngIf="!customer.vehiculos.length"
+          <button class="btn btn-outline-danger cancelBtn btn-sm ms-2" *ngIf="customer.vehiculos.length<1"
             (click)="delete(customer.idCliente)">Eliminar</button>&nbsp;
 
         </td>

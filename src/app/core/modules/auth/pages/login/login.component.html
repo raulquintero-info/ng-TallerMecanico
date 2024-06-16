@@ -16,7 +16,7 @@
             <!-- TODO: colocar mensajes de error del backend -->
 
             <form [formGroup]="loginForm" (ngSubmit)="login()">
-              <!-- <div *ngIf="message" class="badge bg-danger  mb-2" > {{ message }} </div> -->
+              <div *ngIf="message" class="badge bg-danger  mb-2" > {{ message }} </div>
 
               <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="email" formControlName="username"
@@ -37,7 +37,7 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary"><span *ngIf="showSpinner"
+              <button type="submit" class="btn btn-primary" [disabled]="showSpinner"><span *ngIf="showSpinner"
                 class="spinner-border spinner-border-sm"></span> Iniciar Sesion</button>
 
             </form>

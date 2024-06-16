@@ -24,14 +24,14 @@
 
         <div class=" mb-3" style="display: none;">
           <label for="idCliente" class="form-label">Id</label>
-          <input type="idCliente" class="form-control" id="idCliente" [disabled]="true" [readOnly]="true"
+          <input type="idCliente" class="form-control" id="idCliente" disable="true" [readOnly]="true"
             formControlName="idCliente" name="idCliente">
         </div>
         <div>
           <div class=" mb-3">
             <label for="username" class="form-label">Email</label>
             <input type="text" class="form-control" formControlName="username" [readOnly]="customer.idCliente>0"
-              [disabled]="customer.idCliente>0" id="username" name="username">
+              id="username" name="username">
           </div>
 
           <!-- validacion  -->

@@ -4,7 +4,7 @@ import { MEmployeesListComponent } from './m-employees-list/m-employees-list.com
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MEmployeeFormComponent } from './m-employee-form/m-employee-form.component';
-import { EmployeesFormComponent } from 'src/app/contexts/backoffice/pages/sistema/employees/employees-form/employees-form.component';
+import { EmployeesFormComponent } from 'src/app/contexts/backoffice/menus/sistema/employees/employees-form/employees-form.component';
 
 
 

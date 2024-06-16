@@ -22,6 +22,7 @@ import { DetalleOrdenServicios } from 'src/app/core/interfaces/detalleOrdenServi
 })
 export class ServicesViewComponent implements OnInit {
   displayStyle: string = 'none';
+  total: number = 0;
   displayStyleDelete: string = 'none';
   isLoadingService = false;
   showBoxComment: boolean = false;
@@ -79,6 +80,12 @@ export class ServicesViewComponent implements OnInit {
         this.service = resp;
         this.vehicle = resp.vehiculo;
         this.isLoadingService = false;
+
+        let tot=0;
+        this.service.detalleOrdenServicios.forEach(function(a){tot += a.costo;});
+        this.total= tot;
+
+        this.total = this.service.detalleOrdenServicios.reduce((a, b) => a + b.costo, 0)
         // if (this.service.idOrdenServicio<1)
 
       },
@@ -140,7 +147,7 @@ export class ServicesViewComponent implements OnInit {
   }
 
   addComment(){
-    this.service.comentarios = this.newComment;
+    this.newComment = this.service.comentarios ;
     this.save('Comentario Agregado')
     this.showBoxComment = false;
   }

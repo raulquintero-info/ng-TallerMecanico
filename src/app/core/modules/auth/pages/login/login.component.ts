@@ -15,7 +15,7 @@ import { LoginResponse } from '../../interfaces/loginResponse.interface';
 export class LoginComponent implements OnInit,OnDestroy{
   user: User = {} as User;
   role: string = "";
-  message: string ='8080';
+  message: string ='';
 
   showSpinner: boolean =false;
   loginForm = this.formBuilder.group({
@@ -85,8 +85,7 @@ export class LoginComponent implements OnInit,OnDestroy{
         error: (error: any)=>{
           console.log(error);
           this.showSpinner = false;
-          if (error.status == 401) alert('Credenciales invalidas')
-          else this.message = 'Ha habido un error en el servidor, intente mas tarde';
+          this.message = error;
 
         }
       });

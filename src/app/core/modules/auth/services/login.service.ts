@@ -32,7 +32,7 @@ export class LoginService {
     return this.currentRole.asObservable();
   }
 
-  checkStatus(){
+  checkStatus() {
     let currentUser: any;
     let userLogged: User;
 
@@ -43,7 +43,7 @@ export class LoginService {
     //   }
     // })
 
-    if(currentUser){
+    if (currentUser) {
       userLogged = JSON.parse(currentUser);
       this.currentUserData.next(userLogged);
       this.currentRole.next(userLogged.role!);
@@ -61,7 +61,7 @@ export class LoginService {
 
   login(credentials: Credentials): Observable<LoginResponse> {
     console.log(credentials)
-    return this.http.post<LoginResponse>(this.url + '/login',credentials).pipe(
+    return this.http.post<LoginResponse>(this.url + '/login', credentials).pipe(
       tap((loginResponse: LoginResponse) => {
         localStorage.setItem('token', loginResponse.accessToken ? loginResponse.accessToken : '');
         console.log('login response', loginResponse);
@@ -89,21 +89,22 @@ export class LoginService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    let message = "";
-    if (error.status == 0) {
-      console.error('Se ha producido un error: ', error.error);
-      message = "El servidor no esta disponible, intentelo mas tarde.";
-    } else {
-      console.error('Backend retorno el codigo de estado: ', error.status, error);
-      message = error.status + ".- Error en Servidor";
+    let mensaje = "";
+    switch (error.status) {
+      case 0:
+        mensaje = "El servidor no esta disponible, intentelo mas tarde.";
+        break;
+      case 401:
+        mensaje = "Credenciales Invalidas.";
+        break;
     }
-    console.log(error);
-    return throwError(() => new Error(message));
+    console.error('Se ha producido un error: ', error.status);
+    return throwError(() => new Error(mensaje));
   }
 
-  public getUser(){
+  public getUser() {
     let userStr = localStorage.getItem('user');
-    if(userStr != null)
+    if (userStr != null)
       return userStr;
     else
       // this.logout();
@@ -116,10 +117,10 @@ export class LoginService {
       return '';
     else
       return user.role;
-      // return user.authorities[0].authority;
+    // return user.authorities[0].authority;
   }
 
-  getToken(){
+  getToken() {
     return localStorage.getItem('token');
   }
 

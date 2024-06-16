@@ -1,0 +1,116 @@
+.service-title {
+  background-color: #174f46;
+  color: white;
+  font-size: 20px;
+  padding: 2px;
+}
+
+.service-subtitle {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.text-right {
+  text-align: right;
+  padding-right: 4px;
+}
+
+.total-line {
+  border-top: 1px solid black;
+}
+.total{
+  font-weight: bold;
+}
+pre{
+  padding: 2px;
+  border: 1px solid rgb(168, 168, 168)
+}
+
+
+
+
+.your-order {
+  padding: 5px 31px;
+}
+
+.price-detail ul {
+  background-color: #fff;
+  padding: 20px;
+}
+.mt-5 {
+  margin-top: 5px;
+}
+.mt-5 {
+  margin-top: 0px;
+}
+ul {
+  margin: 0px;
+  padding: 0px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+
+.odered-items {
+  /* position: relative; */
+  /* padding-bottom: 15px;
+  margin-bottom: 15px; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* min-height: 74px; */
+}
+.odered-items .details {
+  /* padding-left: 80px; */
+  /* position: relative; */
+  top: 10px;
+}
+.odered-items .details h4 {
+  font-size: 14px;
+  margin-bottom: 1px;
+}
+
+.inner-banner .blue, h1, h2, h2, h3, h4, h5, h6, h1 a, h2 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #14287b;
+}
+
+
+.price-detail ul li {
+  text-align: right;
+}
+
+ul.total-table li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-align: right;
+  font-weight: bold;
+}
+li {
+  list-style: none;
+}
+
+btn-blue, .btn-white-border:hover, .service-each-3:hover .btn-blue-border, .head-1-book-2, .head-1-book:hover, .btn-black, .btn-black:hover, .main-slider.owl-carousel .owl-nav button:hover, .btn-blue-border:hover {
+  background: #F04D24;
+  color: #111111;
+  text-shadow: none;
+}
+.btn-blue {
+  box-shadow: 0px 6px 10px -4px rgb(240 77 36 / 70%);
+}
+.btn-blue {
+  min-width: 185px;
+  text-align: center;
+  color: #fff;
+  padding: 13px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.fa, .fas {
+  font-weight: 900;
+}
+.fa, .far, .fas {
+  font-family: "Font Awesome 5 Free";
+}

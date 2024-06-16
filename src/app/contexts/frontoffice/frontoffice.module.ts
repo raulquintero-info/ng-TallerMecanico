@@ -8,6 +8,7 @@ import { GarageVehiclesFormComponent } from './pages/vehiculos/garage-vehicles-f
 import { GarageVehiclesListComponent } from './pages/vehiculos/garage-vehicles-list/garage-vehicles-list.component';
 import { ServiceComponent } from './pages/mi-garage/service/service.component';
 import { GarageVehiclesViewComponent } from './pages/vehiculos/garage-vehicles-view/garage-vehicles-view.component';
+import { FrontofficeRoutingModule } from './frontoffice-routing.module';
 
 
 
@@ -24,7 +25,8 @@ import { GarageVehiclesViewComponent } from './pages/vehiculos/garage-vehicles-v
     CommonModule,
     RouterModule,
     VehiclesModule,
-    ServicesModule
+    ServicesModule,
+    FrontofficeRoutingModule
 
   ],
   exports: [
