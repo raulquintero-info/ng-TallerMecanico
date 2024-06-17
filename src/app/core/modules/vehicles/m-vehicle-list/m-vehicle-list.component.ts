@@ -24,20 +24,5 @@ export class MVehicleListComponent {
     this.onSeleccById.emit(vehicle);
   }
 
-  // private vehiclesService = inject(VehiclesService);
-  // private toastService = inject(ToastService);
-  // delete(id: number){
 
-  //   this.vehiclesService.deleteById(id).subscribe({
-  //     next: (resp: any)=>{
-  //       this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Eliminado', type:'success' })
-  //       console.log('vehiculo eliminado');
-  //     },
-  //     error: (resp: any)=>{
-  //       this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' No se pudo Eliminar el Registro', type:'danger' })
-
-  //     }
-  //   });
-
-  // }
 }

@@ -1,7 +1,15 @@
 .container {
   min-height: 500px;
 }
-
+.v-not-found{
+  height:100px;
+  width:-webkit-fill-available;
+  background-color: white;
+  padding: 10px;
+  margin: 6px;
+  color: #c00303;
+  text-align: center;
+}
 .title {
   background-color: rgb(243, 243, 243);
   border-bottom: 2px solid rgb(187, 187, 187);

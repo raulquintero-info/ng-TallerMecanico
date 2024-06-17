@@ -1,9 +1,10 @@
 <div class="title ps-5">
-  <div style="background-color: #24554c; width:120px; color: white; padding:6px; text-align:center"><i class="bi bi-car-front-fill"></i> Mi Garage</div>
+  <div style="background-color: #24554c; width:120px; color: white; padding:6px; text-align:center"><span class="clickable"  routerLink="/mi-garage"><i
+      class="bi bi-car-front-fill"></i> Mi Garage</span></div>
 </div>
 <div class="container ps-5 pt-5">
 
-  <div class="service-title mb-3">Cambio de Aceite</div>
+  <div class="service-title mb-3">Detalle de la Orden de Servicio: {{ orden.idOrdenServicio  }}</div>
   <hr>
   <div class="row">
     <div class="col-md-7 ">
@@ -17,13 +18,12 @@
                 </tr>
               </table>
             </div>
-            <div class="service-subtitle">Descripcion del problema</div>
-            <div>Solo requiere cambio de aceite</div>
+            <div class="service-subtitle">Descripcion del problema </div>
+            <div>{{ orden.falla | titlecase}}</div>
 
-            <div class="service-subtitle mt-3">Atendió</div>
-            <div>Nombre del Elmpleado</div>
-            <div class="service-subtitle">Fecha y Hora</div>
-            <div>10-02-2024</div>
+
+            <div class="service-subtitle mt-3">Fecha y Hora</div>
+            <div>{{ orden.fechaOrden | date:'short'}}</div>
           </div>
 
           <div class="col-md-6 bg-light">
@@ -34,7 +34,12 @@
                 </tr>
               </table>
             </div>
-            <div class="service-title">Chevrolet Camaro</div>
+            <div class="service-title">
+              {{ orden.vehiculo?.modelo?.marca?.marca | titlecase }}
+              {{ orden.vehiculo?.modelo?.modelo | titlecase }}
+            </div>
+            <div>Vin: {{ orden.vehiculo?.vin | uppercase}}</div>
+            <div><img [src]="orden.vehiculo?.imagen" style="width:-webkit-fill-available"></div>
           </div>
         </div>
 
@@ -45,46 +50,45 @@
     </div>
     <div class="col-md-1 "></div>
 
-    <div class="col-md-4 bg-light" style="padding: 0px;">
+    <div class="col-md-4 bg-light pb-4" style="padding: 0px;">
       <div class="service-title bg-guinda ps-3 ">
         <table style="width: 100%">
           <tr>
             <td>Cuenta</td>
-            <td style="text-align: right"><button class="btn btn-danger" (click)="regresar()">Regresar</button></td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="p-3 bg-light">
-        <table style="width:100%">
-          <tr>
-            <td>aceite</td>
-            <td class="t-right">800.00</td>
-          </tr>
-          <tr>
-            <td class="last-line">mano de obra</td>
-            <td class="last-line t-right">300.00</td>
-          </tr>
-          <tr>
-            <td>total</td>
-            <td class=t-right>1100.00</td>
-          </tr>
-
-
-          <tr>
-            <td></td>
-            <td style="text-align:right">
-              <div class="btn-group mt-3" role="group">
-                <!-- <button type="button" class="btn btn-success">Autorizar</button>
-                <button type="button" class="btn btn-danger">Cancelar</button> -->
-                <!-- <button type="button" class="btn btn-secondary">Pagar</button> -->
-              </div>
+            <td style="text-align: right"><button class="btn btn-sm btn-danger" (click)="regresar()">Regresar</button>
             </td>
           </tr>
-
         </table>
-
       </div>
+
+
+      <div class="your-order bg-light d-print-none">
+        <!-- <h3 class="f-700 mb-20">Your Order</h3> -->
+        <div class="ordered">
+
+          <table style="width:100%; ">
+            <tr *ngFor="let detalle of orden.detalleOrdenServicios">
+              <td colspan="2">
+                <h6>{{ detalle.descripcionServicio | titlecase }}</h6>
+              </td>
+              <td class="text-end" style="width:80px">{{detalle.costo | number:'0.2-5'}}</td>
+            </tr>
+
+
+          </table>
+        </div>
+        <div #buttonsDetalle>
+          <div class="price-detail ">
+            <ul class="total-table mt-5">
+              <li><span class="me-2">Sub Total:</span>{{total | currency}}</li>
+              <li class="total"><span class="me-2">TOTAL:</span>{{total | currency}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
 
   </div>

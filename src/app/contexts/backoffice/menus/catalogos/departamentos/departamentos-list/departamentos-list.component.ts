@@ -33,7 +33,7 @@ export class DepartamentosListComponent implements OnInit{
   }
 
 
-  loadDepartamentos(page: number) { 
+  loadDepartamentos(page: number) {
     this.departamentoService
       .getPaginatedData(page)
       .subscribe((data: Page<any>) => {

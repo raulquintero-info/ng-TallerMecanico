@@ -19,8 +19,7 @@ import { ExpiredSessionComponent } from './shared/pages/expired-session/expired-
 const routes: Routes = [
 
   {path:'', component: HomeComponent},
-  {path:'login', component: LoginComponent},
-  {path:'register', component: RegisterComponent},
+
 
   {
     path: 'admin',
@@ -30,18 +29,18 @@ const routes: Routes = [
     path:'',
     loadChildren: ()=> import('./contexts/frontoffice/frontoffice.module').then(m=>m.FrontofficeModule)
   },
-
-
-  // {path: 'mi-garage', component: GarageVehiclesListComponent, canActivate: [normalGuard]},
-  // {path: 'mi-garage/mi-vehiculo/:id', component: GarageVehiclesViewComponent, canActivate: [normalGuard]},
-  // {path: 'mi-garage/servicio-view/:id', component: ServiceComponent, canActivate: [normalGuard]},
-
-
+  {
+    path:'',
+    loadChildren: ()=> import('./contexts/publicoffice/publicoffice.module').then(m=>m.PublicofficeModule)
+  },
+  {
+    path:'',
+    loadChildren: ()=> import('./core/modules/auth/auth.module').then(m=>m.AuthModule)
+  },
 
   {path: 'not-authorized', component: NotAuthorizedComponent},
   {path: 'error-503', component: ErrorHttp503Component},
   {path: 'expired-session', component: ExpiredSessionComponent},
-  {path: 'logout', component: LogoutComponent},
   {path: '**', component: NotFoundComponent}
 ];
 @NgModule({

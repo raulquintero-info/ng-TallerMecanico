@@ -10,7 +10,7 @@ import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 })
 export class VehicleHeaderComponent implements OnInit{
 
-  @Input() vehicle: Vehiculo ={} as Vehiculo;
+  @Input() vehicle: Vehiculo ={tipoMotor:{idTipoMotor: 0,tipoMotor: ''} as TipoMotor} as Vehiculo;
   @Input() path:any ="";
   @Input() pathEdit: String = ""
 
