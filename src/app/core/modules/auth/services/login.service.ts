@@ -97,8 +97,10 @@ export class LoginService {
       case 401:
         mensaje = "Credenciales Invalidas.";
         break;
+
     }
     console.error('Se ha producido un error: ', error.status);
+    // this.router.navigateByUrl("not-found", {skipLocationChange: true});
     return throwError(() => new Error(mensaje));
   }
 

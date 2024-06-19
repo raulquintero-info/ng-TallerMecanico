@@ -79,6 +79,8 @@ export class LoginComponent implements OnInit,OnDestroy{
             },
             error: resp=>{
               console.log('error', resp)
+              this.router.navigateByUrl("not-found", {skipLocationChange: true});
+
             }
           })
         },

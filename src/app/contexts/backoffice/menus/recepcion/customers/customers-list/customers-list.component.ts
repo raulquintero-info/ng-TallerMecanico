@@ -15,36 +15,47 @@ export class CustomersListComponent implements OnInit {
   params: any;
   title: string = "Recepcion";
   subTitle: string = "Lista de clientes";
-  buttons = [{text: "Agregar", path: "/admin/recepcion/clientes-form/0"}];
+  buttons = [{ text: "Agregar", path: "/admin/recepcion/clientes-form/0" }];
 
-  constructor(private route: ActivatedRoute, private router: Router, private customersService: CustomersService){}
+  currentPage: number = 1;
+  totalPages: number = 1;
+
+  paginador: any;
+
+  constructor(private route: ActivatedRoute, private router: Router, private customersService: CustomersService) { }
 
 
 
-ngOnInit(){
+  ngOnInit() {
 
-  this.getall()
-}
+    this.loadCustomers(this.currentPage - 1)
+  }
 
-getall(){
-  this.customersService.getAll().subscribe({
-    next: resp=>{
-      console.log(resp);
-      this.customers = resp;
-      this.isLoadingCustomers = false;
-    },
-    error: resp=>{
-      this.isLoadingCustomers = false;
-      this.errorMessage = 'Hubo un problema al tratar de obtener la informacion';
-    }
-  })
-}
+  loadCustomers(page :number) {
+    this.customersService.getPaginatedData(page).subscribe({
+      next: (resp: any) => {
+        console.log(resp);
+        this.customers = resp.content;
+        this.isLoadingCustomers = false;
+      },
+      error: resp => {
+        this.isLoadingCustomers = false;
+        this.errorMessage = 'Hubo un problema al tratar de obtener la informacion';
+      }
+    })
+  }
 
-print(){
-  window.print();
-}
-verVehiculos(){
-  this.router.navigate(['/admin/recepcion/vehiculos']);
-}
+  print() {
+    window.print();
+  }
+  verVehiculos() {
+    this.router.navigate(['/admin/recepcion/vehiculos']);
+  }
+
+
+  onPageChange(page: number) {
+    this.loadCustomers(page - 1);
+
+  }
 
 }

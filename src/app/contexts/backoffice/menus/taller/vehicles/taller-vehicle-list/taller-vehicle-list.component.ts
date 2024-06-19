@@ -13,7 +13,7 @@ export class TallerVehicleListComponent implements OnInit {
   title: string = 'Taller';
   subTitle: string = 'Lista de todos los Vehiculos';
   vehicles: any =[];
-  pathVehicle: string ="/admin/recepcion/vehiculos";
+  pathVehicle: string ="/admin/taller/vehiculos";
   params: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private vehiclesService: VehiclesService){}

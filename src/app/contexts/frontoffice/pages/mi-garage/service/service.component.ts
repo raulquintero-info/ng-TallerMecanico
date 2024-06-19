@@ -32,6 +32,11 @@ getOrdenServicio(id: number ){
     next: resp=>{
       this.orden = resp;
       this.total = this.orden.detalleOrdenServicios.reduce((a, b) => a + b.costo, 0)
+    },
+    error: resp=>{
+      console.log('error', resp)
+      this.router.navigateByUrl("not-found", {skipLocationChange: true});
+
     }
   })
 

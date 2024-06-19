@@ -25,6 +25,11 @@ export class VehiclesListComponent implements OnInit {
   pathVehicle: string = "/admin/recepcion/vehiculos";
   params: any;
 
+  currentPage: number = 1;
+  totalPages: number = 1;
+
+  paginador: any;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -37,7 +42,7 @@ export class VehiclesListComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => this.params = params);
-      this.getall()
+      this.loadVehicles(this.currentPage - 1)
     console.log('customerId', this.customer);
   }
 
@@ -45,7 +50,7 @@ export class VehiclesListComponent implements OnInit {
     console.log('id view', id);
     this.vehiclesService.deleteById(id).subscribe({
       next: (resp: any) => {
-        this.getall();
+        this.loadVehicles(this.currentPage - 1);
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Eliminado', type: 'warning' })
       },
       error: (resp: any) => {
@@ -71,11 +76,11 @@ export class VehiclesListComponent implements OnInit {
     }
   }
 
-  getall() {
-    this.vehiclesService.getAll().subscribe({
+  loadVehicles(page :number) {
+    this.vehiclesService.getPaginatedData(page).subscribe({
       next: resp => {
         console.log(resp);
-        this.vehicles = resp;
+        this.vehicles = resp.content;
         this.isLoading = false;
 
       },
@@ -85,6 +90,10 @@ export class VehiclesListComponent implements OnInit {
     })
   }
 
+  onPageChange(page: number) {
+    this.loadVehicles(page - 1);
+
+  }
   ver(id: number) {
     this.router.navigate(['admin/recepcion/vehiculos/' + id]);
   }

@@ -7,16 +7,16 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 
 @Component({
   selector: 'app-recepcion-vehicle',
-  templateUrl: './recepcion-vehicle.component.html',
-  styleUrls: ['./recepcion-vehicle.component.css']
+  templateUrl: './taller-vehicle.component.html',
+  styleUrls: ['./taller-vehicle.component.css']
 })
-export class RecepcionVehicleComponent  implements OnInit{
+export class TallerVehicleComponent  implements OnInit{
   ordenesDeServicio: OrdenServicio[] =[]
-  pathEdit: string = "/admin/recepcion/vehiculos/form";
+  pathEdit: string = "/admin/taller/vehiculos/form";
   vehicle: Vehiculo = {} as Vehiculo;
   params: any;
   // pathVehicle: string = "/mi-garage/servicio";
-  pathVehicle: string = "/admin/recepcion/servicios";
+  pathVehicle: string = "/admin/taller/servicios";
 
   constructor(
     private route: ActivatedRoute,
@@ -30,10 +30,6 @@ export class RecepcionVehicleComponent  implements OnInit{
       next: resp=>{
         console.log('vehiculos',resp)
         this.vehicle = resp;
-
-      },
-      error: resp => {
-        this.router.navigateByUrl("not-found", {skipLocationChange: true});
 
       }
     });

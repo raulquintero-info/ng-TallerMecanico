@@ -17,7 +17,14 @@
 
     <app-m-vehicle-list [vehicles]="vehicles" [pathVehicle]="pathVehicle " (onDeleteById)="deleteById($event)"
       (onSeleccById)="seleccById($event)"></app-m-vehicle-list>
+
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+      (pageChanged)="onPageChange($event)"></app-pagination>
+
     <div class="mt-2" *ngIf="isLoading; else showMessages" style="width: 100%; text-align: center">
+
+
+
 
       <div class="loader"></div>
     </div>
@@ -54,6 +61,6 @@
     </div>
   </div>
 </div>
-<pre>
+<!-- <pre>
   {{vehicles|json}}
-</pre>
+</pre> -->

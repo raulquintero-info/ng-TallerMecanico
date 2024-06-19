@@ -7,12 +7,14 @@ import { TallerVehicleListComponent } from './vehicles/taller-vehicle-list/talle
 import { VehiclesModule } from 'src/app/core/modules/vehicles/vehicles.module';
 import { ServicesModule } from 'src/app/core/modules/services/services.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TallerVehicleComponent } from './vehicles/taller-vehicle/taller-vehicle.component';
 
 
 @NgModule({
   declarations: [
     TallerServiciosListComponent,
     TallerVehicleListComponent,
+    TallerVehicleComponent
 
 
   ],

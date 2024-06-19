@@ -7,10 +7,12 @@ export interface User{
   password: string;
   username: string;
   authorities?: Authority[];
-  accountNonExpired: boolean;
-  accountNonLocked: boolean;
-  credentialsNonExpired: boolean;
-  enabled: boolean;
+  idCliente: number;
+  idEmpleado:number;
+  // accountNonExpired: boolean;
+  // accountNonLocked: boolean;
+  // credentialsNonExpired: boolean;
+  // enabled: boolean;
   rol: Rol[];
   role?: string;
 }

@@ -22,8 +22,5 @@ export class MarcasService {
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
   getModelosById(id: number):Observable<any>{return this.http.get(this.url + "/" + id + '/modelos')};
   delete(id: number):Observable<any>{return this.http.delete(this.url + "/" + id)}
-  createOrUpdate(marca: Marca):Observable<any>{
-    console.log('marca enviada',marca);
-    return marca.idMarca>0 ? this.http.put(this.url + '/' + marca.idMarca, marca) : this.http.post(this.url, marca);
-  };
+  createOrUpdate(marca: Marca):Observable<any>{return marca.idMarca>0 ? this.http.put(this.url + '/' + marca.idMarca, marca) : this.http.post(this.url, marca);};
 }

@@ -31,7 +31,7 @@
                 {{ customer.apellidoPaterno | titlecase}}<br>
                 {{ customer.apellidoMaterno |titlecase }}<br>
               </div>
-              <div><span class="title-field">Tel:</span> {{ customer.telefono }}</div>
+              <div class="mt-3"><span class="title-field">Tel:</span> {{ customer.telefono }}</div>
               <div><span class="title-field">Direccion:</span> {{ customer.domicilio }}</div>
             </div>
             <div *ngIf="isLoading" class="spinner-border text-light mt-2" role="status"></div>

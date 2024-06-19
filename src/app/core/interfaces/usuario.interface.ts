@@ -1,3 +1,4 @@
+import { Customer } from "./customers.interface";
 import { Rol } from "./rol.interface";
 
 export interface Usuario{
@@ -6,4 +7,5 @@ export interface Usuario{
   username:string,
   password: string,
   rol: Rol[],
+  customer?: Customer
 }

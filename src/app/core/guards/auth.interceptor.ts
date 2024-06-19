@@ -7,8 +7,8 @@ import { Router } from "@angular/router";
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  private router = inject(Router)
-  constructor(private loginService: LoginService) { }
+  private router = inject(Router);
+  private loginService = inject(LoginService);
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const started = Date.now();
@@ -28,12 +28,14 @@ export class AuthInterceptor implements HttpInterceptor {
         // Operation failed; error is an HttpErrorResponse
         error: (_error) => {
           ok = 'failed'
-          console.log(this.router.url)
+          console.log(_error)
+          console.log(">>",this.router.url, _error.status)
           //cerrar sesion al expirar el token
-          // if(this.router.url!='/login'){
-          //   localStorage.clear()
-          //   this.router.navigateByUrl("expired-session")//, {skipLocationChange: true})
-          // }
+          if(this.router.url!='/login' && _error.status == 0){
+            // localStorage.clear();
+            this.loginService.logout();
+            this.router.navigateByUrl("expired-session")//, {skipLocationChange: true})
+          }
         }
       }),
       // Log when response observable either completes or errors

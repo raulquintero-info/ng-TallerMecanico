@@ -1,5 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from 'src/app/core/interfaces/usuario.interface';
+import { User } from 'src/app/core/modules/auth/interfaces/user.interface';
 import { LoginService } from 'src/app/core/modules/auth/services/login.service';
 import { CustomersService } from 'src/app/core/services/customers.service';
 import { VehiclesService } from 'src/app/core/services/vehicles.service';
@@ -15,23 +17,33 @@ export class GarageVehiclesListComponent implements OnInit{
   constructor(
     private renderer: Renderer2,
     private router: Router,
-    private customersService:
-    CustomersService, private loginService: LoginService){}
+    private customersService: CustomersService,
+    private loginService: LoginService){}
 
 
   ngOnInit(): void {
     this.renderer.addClass(document.body, 'bg');
 
-    this.customersService.getVehicles().subscribe({
-      next: resp=>{
-        this.vehicles = resp;
-        console.log(resp)
-        console.log(this.vehicles)
-      }
-    })
+    this.loadVehicles()
    }
 
-
+   loadVehicles():number{
+    let customerId: number = 0;
+    this.loginService.currentUser().subscribe({
+      next: (resp: User)=>{
+        customerId = resp.idCliente;
+        this.customersService.getVehiclesByCustomerId(resp.idCliente).subscribe({
+          next: resp=>{
+            this.vehicles = resp;
+            console.log(resp)
+            console.log(this.vehicles)
+          }
+        })
+      }
+    })
+    console.log("customerId",customerId)
+    return customerId
+   }
 
   viewCar(id: number){
     this.router.navigateByUrl('/mi-vehiculo/' + id);

@@ -33,6 +33,11 @@ export class GarageVehiclesViewComponent implements OnInit{
       next: resp=>{
         console.log('vehiculo',resp)
         this.vehicle = resp;
+      },
+      error: resp =>{
+        console.log('error',resp);
+        this.router.navigateByUrl("not-found", {skipLocationChange: true});
+
       }
     })
     // this.servicesService.getAll().subscribe({

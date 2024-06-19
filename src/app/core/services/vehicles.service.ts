@@ -14,14 +14,10 @@ export class VehiclesService {
 
   constructor(private http: HttpClient) { }
 
-
-
   getAll():Observable<any>{return this.http.get(this.url)};
   getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
   get(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
   deleteById(id: number):Observable<any>{return this.http.delete(this.url + '/' +id)};
-  saveOrUpdate(vehicle: Vehiculo):Observable<any>{
-    console.log('idV',vehicle.idVehiculo)
-    return (vehicle.idVehiculo == 0) ? this.http.post(this.url, vehicle) : this.http.put(this.url + '/' + vehicle.idVehiculo, vehicle)
-  };
+  saveOrUpdate(vehicle: Vehiculo):Observable<any>{return (vehicle.idVehiculo == 0) ? this.http.post(this.url, vehicle) : this.http.put(this.url + '/' + vehicle.idVehiculo, vehicle)};
+
 }

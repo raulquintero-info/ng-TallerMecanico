@@ -91,7 +91,7 @@ export class ServicesViewComponent implements OnInit {
       },
       error: resp=>{
         console.log('error');
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo cargar la informacion", type:'danger' })
+        // this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo cargar la informacion", type:'danger' })
         this.isLoadingService = false;
 
         this.router.navigateByUrl("not-found", {skipLocationChange: true});

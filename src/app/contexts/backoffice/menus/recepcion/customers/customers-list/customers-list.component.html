@@ -15,4 +15,9 @@
     </ng-template>
   </div>
 
+
+  <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+  (pageChanged)="onPageChange($event)"></app-pagination>
+
 </div>
+

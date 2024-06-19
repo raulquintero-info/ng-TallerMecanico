@@ -1,0 +1,35 @@
+
+<div *ngIf="vehicle.idVehiculo" class="container ps-5 pt-5">
+
+
+  <div class="" style=" width: 100%">
+    <div class="d-flex bd-highlight">
+      <div class="ps-2 pt-2 flex-grow-1 bd-highlight page-title-menu-bar">
+        <h4>&nbsp;Vin: {{ vehicle.vin | uppercase}}  </h4>
+      </div>
+      <div class="p-1 ps-2 bd-highlight page-title-menu-bar d-print-none">
+        <button class="btn btn-outline-light btn-sm" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;
+        <button class="btn btn-outline-light btn-sm" [routerLink]="'/admin/recepcion/vehiculos-form/'+ vehicle.idVehiculo">
+          <i class="bi bi-pencil-square"></i> Editar V.</button>
+          <!-- <button class="btn ms-1 btn-outline-light btn-sm" [routerLink]="'/admin/recepcion/servicios-form/0/'+vehicle.idVehiculo">
+            <i class="bi bi-plus-circle"></i> Servicio Nuevo </button> -->
+      </div>
+    </div>
+
+    <div class="ps-3 layered-image-right" style="padding:8px">
+
+      <app-vehicle-header [vehicle]="vehicle" [pathEdit]="pathEdit"></app-vehicle-header>
+    </div>
+  </div>
+  <div>
+    <app-vehicle-services [vehicle]="vehicle" [pathVehicle]="pathVehicle">
+    </app-vehicle-services>
+  </div>
+
+
+</div>
+
+<div *ngIf="vehicle.idVehiculo>0" class="container ps-5 pt-5">
+
+
+</div>

@@ -10,9 +10,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CustomersService {
-  urlTemp: string = 'http://localhost:3000';
+  urlAuth: string = environment.api + '/api/auth';
   url: string = environment.api + '/api/clientes' ; //'http://localhost:8080/api/clientes';
-
   private http = inject(HttpClient);
 
   currentCustomerData: BehaviorSubject<Customer> = new BehaviorSubject<Customer>({} as Customer)
@@ -48,14 +47,10 @@ export class CustomersService {
   getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
   search(word: string):Observable<any>{return this.http.get(this.url + '/buscar?searchTerm=' + word)};
-  //todo: actualizar url , en espera de integracion de spring security
-  getCurrentUser():Observable<any>{return this.http.get(this.urlTemp+'/currentuser')};
   create(customer: any, roleName: string):Observable<any>{return this.http.post(this.url+ '?role=' + roleName, customer)};
   update(customer: Customer, rol: string):Observable<any>{return this.http.put(this.url + '/' + customer.idCliente + '?role=' + rol, customer)};
   delete(id: number):Observable<any>{return this.http.delete(this.url + "/" + id)}
 
-  //todo: cambiar la ruta para obtener los vehiculos del cliente actual, en esperea de spring security
-  getVehicles():Observable<any>{return this.http.get(this.url+'/1/vehiculos')};
   getVehiclesByCustomerId(id: number):Observable<any>{return this.http.get(this.url + `/${id}/vehiculos`)}
 
 }
