@@ -53,7 +53,7 @@
             </div>
           </div>
           <div>
-            <app-m-vehicle-list [vehicles]="customer.vehiculos" (onDeleteById)="deleteVehicleById($event)"
+            <app-m-vehicle-list [vehicles]="vehicles" (onDeleteById)="deleteVehicleById($event)"
               [pathVehicle]="pathVehicle"></app-m-vehicle-list>
             <div style="width:100%; text-align:center">
               <div *ngIf="isLoading; " style="width: 100%">

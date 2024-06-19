@@ -19,6 +19,7 @@ export class CustomersViewComponent {
   subTitle: string = "<cliente apellido>";
   params: any;
   customer: Customer = {nombre:'', apellidoPaterno:'', vehiculos:[] as Vehiculo[]} as Customer;
+  vehicles: Vehiculo[] =[];
   services: any;
   openServices: any;
   buttons = [{text: "Clientes", path: "/admin/recepcion/clientes"}];
@@ -40,6 +41,7 @@ export class CustomersViewComponent {
       this.params = params
       this.customer.idCliente = this.params.get('id');
       this.getCustomer(this.customer.idCliente);
+      this.getVehicles(this.customer.idCliente);
     });
 
     this.servicesService.getAll().subscribe({
@@ -64,6 +66,14 @@ export class CustomersViewComponent {
       error: resp=>{
         this.isLoading=false;
         this.errorMessage = 'Hubo un problema al tratar de obtener la informacion';
+      }
+    })
+  }
+
+  getVehicles(id: number){
+    this.customersService.getVehiclesByCustomerId(id).subscribe({
+      next: resp=>{
+        this.vehicles = resp;
       }
     })
   }

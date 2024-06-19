@@ -73,6 +73,7 @@ export class ServicesListComponent implements OnInit {
     //   });
     this.servicesService.getPaginatedRecepcionData(1).subscribe({
       next: (resp:any)=>{
+        console.log('servicios',resp)
         this.services = resp
         this.isLoading = false;
       },
