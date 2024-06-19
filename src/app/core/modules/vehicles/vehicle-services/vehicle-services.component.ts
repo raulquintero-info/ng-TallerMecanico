@@ -11,14 +11,14 @@ import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 })
 export class VehicleServicesComponent implements OnInit {
   @Input() pathVehicle: String ="";
-  @Input() vehicle: Vehiculo = {} as Vehiculo;
+  @Input() ordenesDeServicio: OrdenServicio[] = [];
 
   // @Input() platformBrowserDynamic
 
   constructor(private router: Router){}
 
   ngOnInit(){
-    console.log(this.vehicle);
+    console.log(this.ordenesDeServicio);
   }
 
 

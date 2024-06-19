@@ -20,6 +20,7 @@ export class ServicesService {
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
+  getAllByIdVehicle(id: number):Observable<any>{return this.http.get(this.url)};
   getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
   getPaginatedRecepcionData(departamentoId: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/departamento/${departamentoId}`)};
   getPaginatedTallerData(departamentoId: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/departamento/${departamentoId}`)};

@@ -12,31 +12,31 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
   templateUrl: './garage-vehicles-view.component.html',
   styleUrls: ['./garage-vehicles-view.component.css']
 })
-export class GarageVehiclesViewComponent implements OnInit{
+export class GarageVehiclesViewComponent implements OnInit {
   // services: OrdenServicio []= [];
-  vehicle: Vehiculo = {modelo: {marca: {} as Marca} as Modelo} as Vehiculo;
+  vehicle: Vehiculo = { modelo: { marca: {} as Marca } as Modelo } as Vehiculo;
   params: any;
   pathVehicle: string = "/mi-garage/servicio";
-
+  ordenesDeServicio: OrdenServicio[] = [];
   constructor(
     private renderer: Renderer2,
     private route: ActivatedRoute,
     private vehiclesService: VehiclesService,
     private router: Router,
-    private servicesService: ServicesService){}
+    private servicesService: ServicesService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.renderer.addClass(document.body, 'bg');
 
     this.route.paramMap.subscribe(params => this.params = params);
     this.vehiclesService.get(this.params.params.id).subscribe({
-      next: resp=>{
-        console.log('vehiculo',resp)
+      next: resp => {
+        console.log('vehiculo', resp)
         this.vehicle = resp;
       },
-      error: resp =>{
-        console.log('error',resp);
-        this.router.navigateByUrl("not-found", {skipLocationChange: true});
+      error: resp => {
+        console.log('error', resp);
+        this.router.navigateByUrl("not-found", { skipLocationChange: true });
 
       }
     })
@@ -48,12 +48,19 @@ export class GarageVehiclesViewComponent implements OnInit{
 
   }
 
-  navigate(path: string){
+  navigate(path: string) {
     this.router.navigate([path])
   }
-regresar(){
-  this.router.navigate(['dashboard'])
-}
+  regresar() {
+    this.router.navigate(['dashboard'])
+  }
 
-
+  getServicesOrder() {
+    this.servicesService.getAll().subscribe({
+      next: resp => {
+        this.ordenesDeServicio = resp;
+        console.log(this.ordenesDeServicio);
+      }
+    });
+  }
 }

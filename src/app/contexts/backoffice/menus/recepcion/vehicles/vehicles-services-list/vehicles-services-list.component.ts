@@ -30,7 +30,7 @@ export class VehiclesServicesListComponent implements OnInit{
     this.vehiclesService.get(this.params.params.id).subscribe({
       next: resp=>{
         console.log('vehiculos',resp)
-        this.vehicle = resp;
+        this.vehicle.ordenServicio = resp;
 
       }
     });

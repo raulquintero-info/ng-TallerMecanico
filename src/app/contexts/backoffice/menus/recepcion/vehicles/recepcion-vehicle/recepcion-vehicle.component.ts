@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { VehiclesService } from 'src/app/core/services/vehicles.service';
+import { Marca } from '../../../../../../core/interfaces/marca.interface';
+import { Modelo } from 'src/app/core/interfaces/modelo.interface';
+import { TipoMotor } from 'src/app/core/interfaces/tipoMotor.interface';
 
 @Component({
   selector: 'app-recepcion-vehicle',
@@ -13,7 +17,11 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 export class RecepcionVehicleComponent  implements OnInit{
   ordenesDeServicio: OrdenServicio[] =[]
   pathEdit: string = "/admin/recepcion/vehiculos/form";
-  vehicle: Vehiculo = {} as Vehiculo;
+  vehicle: Vehiculo = {
+    cliente:{nombre:'', apellidoMaterno: '', apellidoPaterno: ''} as Customer,
+    modelo: { marca: {}as Marca} as Modelo,
+    tipoMotor: {tipoMotor: ''} as TipoMotor
+  } as Vehiculo;
   params: any;
   // pathVehicle: string = "/mi-garage/servicio";
   pathVehicle: string = "/admin/recepcion/servicios";
@@ -25,8 +33,21 @@ export class RecepcionVehicleComponent  implements OnInit{
     private router: Router){}
 
   ngOnInit(){
-    this.route.paramMap.subscribe(params => this.params = params);
-    this.vehiclesService.get(this.params.params.id).subscribe({
+
+    this.route.paramMap.subscribe(params => {
+      this.params = params
+      this.vehicle.idVehiculo = this.params.get('id');
+      this.getServicesOrder(this.vehicle.idVehiculo);
+      this.getVehicle(this.vehicle.idVehiculo);
+    });
+
+
+
+
+  }
+
+  getVehicle(id: number){
+    this.vehiclesService.get(id).subscribe({
       next: resp=>{
         console.log('vehiculos',resp)
         this.vehicle = resp;
@@ -37,12 +58,10 @@ export class RecepcionVehicleComponent  implements OnInit{
 
       }
     });
-    this.getServicesOrder();
-
   }
 
-  getServicesOrder(){
-    this.servicesService.getAll().subscribe({
+  getServicesOrder(id: number){
+    this.servicesService.getAllByIdVehicle(id).subscribe({
       next: resp=>{
         this.ordenesDeServicio = resp;
         console.log(this.ordenesDeServicio);

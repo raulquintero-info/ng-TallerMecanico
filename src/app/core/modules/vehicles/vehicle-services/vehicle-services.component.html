@@ -10,7 +10,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="" *ngFor="let service of vehicle.ordenServicio">
+          <tr class="" *ngFor="let service of ordenesDeServicio">
             <td scope="row">{{service.fechaOrden  | date: 'short'}}</td>
             <td>{{service.falla}}</td>
             <td>{{service.estatusServicio.estatusServicio}}</td>
