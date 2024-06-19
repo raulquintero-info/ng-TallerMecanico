@@ -1,16 +1,30 @@
+
+
 <div class="container">
 
-  <div class="row mt-3">
-    <div class="title">401. Acceso Denegado</div>
-  </div>
-  <div class="row ps-4 mt-2">
-    <div>
+  <section class="textoContenidos dos">
+    <div class="contenedor" id="error">
+    <h2 class="big ligth"> <i class="bi bi-exclamation-triangle"></i> Error 401 </h2>
+    <div class="ttlContenido">
+      <h3>Acceso Denegado</h3>
+    </div>
+    <div class="contenidoGralDos">
+      <div class="columnaOne">
+        <div class="bannerCanal"></div>
+        <div class="cajaContenidoGral">
+          <p class="ttlContenido"><span class="medium">Usted no tiene los privilegios para accesar a este recurso.</span></p>
+          <!-- <p class="ttlContenido">Compruebe que la dirección en la barra de direcciones esté escrita correctamente.</p> -->
+          <ul>
+            <li>Por favor ingrese al sistema con sus credenciales.
+              <button class="btn btn-sm btn-primary" routerLink="/auth/login" >Cambiar Usuario <i class="bi bi-box-arrow-in-right"></i></button>
+            </li>
 
-      Este recurso es solo para usuarios autorizados, es necesario ingresar al sistema con las credenciales adecuadas.
-      <button class="btn btn-sm btn-primary" routerLink="/auth/login">Login<i class="bi bi-box-arrow-in-right"></i></button>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="text-center">
-      <img src="/assets/images/401Unauthorized.png" alt="">
-    </div>
+    <div class="clearfix"></div>
   </div>
-</div>
+</section>
+
+  </div>

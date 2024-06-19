@@ -36,6 +36,10 @@ export class AuthInterceptor implements HttpInterceptor {
             this.loginService.logout();
             this.router.navigateByUrl("expired-session")//, {skipLocationChange: true})
           }
+          if(_error.status==401){
+            this.router.navigateByUrl("not-authorized", {skipLocationChange: true})
+
+          }
         }
       }),
       // Log when response observable either completes or errors

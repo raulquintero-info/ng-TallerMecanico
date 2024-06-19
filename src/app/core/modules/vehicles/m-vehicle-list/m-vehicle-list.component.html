@@ -20,7 +20,7 @@
         <td class="text-row row-link" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">{{vehicle.anioModelo}}</td>
         <!-- <td class="text-row row-link" (click)="emitVehicle(vehicle)">{{vehicle.matricula}}</td> -->
         <td class="text-row row-link"  [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">{{vehicle.matricula}}</td>
-        <td class="text-row row-link text-center" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">{{vehicle.ordenServicio.length}}</td>
+        <td class="text-row row-link text-center" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]"><!-- {{vehicle.ordenServicio.length}} --></td>
         <td class="d-print-none">
           <!-- <button class="btn btn-success btn-sm" [routerLink]="[pathVehicle + '/'+ vehicle.idVehiculo]">Ver</button>&nbsp; -->
           <button class="btn btn-warning btn-sm" [routerLink]="'/admin/recepcion/vehiculos-form/' + vehicle.idVehiculo">Editar</button>

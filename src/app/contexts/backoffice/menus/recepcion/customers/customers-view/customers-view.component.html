@@ -56,7 +56,7 @@
             <app-m-vehicle-list [vehicles]="customer.vehiculos" (onDeleteById)="deleteVehicleById($event)"
               [pathVehicle]="pathVehicle"></app-m-vehicle-list>
             <div style="width:100%; text-align:center">
-              <div *ngIf="isLoading; else showMessage" style="width: 100%">
+              <div *ngIf="isLoading; " style="width: 100%">
                 <div class="loader"></div>
               </div>
             </div>
@@ -108,7 +108,8 @@
         [pathService]="pathService"></app-m-services-list>
       <div class="mt-4">
         <div style="width:100%; text-align:center">
-          <div *ngIf="isLoading; else showMessagesService" >
+          <!-- <div *ngIf="isLoading; else showMessagesService" > -->
+            <div *ngIf="isLoading; " >
             <div class="loader"></div>
           </div>
           <ng-template #showMessagesService>
