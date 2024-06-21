@@ -21,6 +21,7 @@ import { ErrorHttp503Component } from './shared/pages/error-http503/error-http50
 import { ExpiredSessionComponent } from './shared/pages/expired-session/expired-session.component';
 import { PageTitleComponent } from './shared/components/page-title/page-title.component';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
+import { PhonePipe } from './core/pipes/phone.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,8 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
     FrontofficeModule,
     BackofficeModule,
     ToastModule,
+  ],
+  exports:[
   ],
   providers: [
     authInterceptorProviders

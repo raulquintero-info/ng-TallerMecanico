@@ -46,6 +46,7 @@ export class EmployeesFormComponent implements OnInit {
             }
           ]
           this.employee = employee;
+          console.log('empleado', this.employee)
         }
       })
     } else {
@@ -126,9 +127,12 @@ export class EmployeesFormComponent implements OnInit {
   onNewEmployee(employee: Employee):void{
     this.employee = employee;
     this.save(employee);
-    console.log(employee)
+    console.log('empleado grabado',employee)
   }
 
+  prepareEmployeeToSave(){
+
+  }
 }
 
 

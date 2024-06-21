@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     PageTitleComponent,
-    PaginationComponent
+    PaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';
   ],
   exports:[
     PageTitleComponent,
-    PaginationComponent
+    PaginationComponent,
   ]
 })
 export class SharedModule { }

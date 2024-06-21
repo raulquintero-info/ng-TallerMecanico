@@ -7,7 +7,7 @@
         <h4>&nbsp;Servicio Nuevo </h4>
       </div>
       <div class="p-1 ps-2 bd-highlight bg-verde text-light d-print-none">
-        <!-- todo: revisar opciones  -->
+        <!-- TODO: revisar opciones  -->
         <!-- <button class="btn btn-outline-light btn-sm" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;
         <button class="btn btn-outline-light btn-sm" [routerLink]="'/admin/recepcion/vehiculos-form/'+ vehicle.idVehiculo">
           <i class="bi bi-pencil-square"></i> Editar </button>
@@ -42,7 +42,7 @@
       </div>
       <div>
         <button *ngIf="!isSaved" class="btn btn-primary btn-sm" (click)="save()">Grabar</button>
-        <button *ngIf="isSaved" class="btn btn-success btn-sm" 
+        <button *ngIf="isSaved" class="btn btn-success btn-sm"
           [routerLink]="'/admin/recepcion/servicios-view/' + service.idOrdenServicio">Continuar</button>
       </div>
     </form>

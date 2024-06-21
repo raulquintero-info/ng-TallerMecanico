@@ -20,7 +20,11 @@ export class ServicesService {
 
 
   getAll():Observable<any>{return this.http.get(this.url)};
+
+  //TODO: crear endpoint en backend de estas peticiones
   getAllByIdVehicle(id: number):Observable<any>{return this.http.get(this.url)};
+  getDetalleDeORden(){}
+
   getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
   getPaginatedRecepcionData(departamentoId: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/departamento/${departamentoId}`)};
   getPaginatedTallerData(departamentoId: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/departamento/${departamentoId}`)};

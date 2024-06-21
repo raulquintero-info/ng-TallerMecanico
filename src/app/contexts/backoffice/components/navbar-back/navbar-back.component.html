@@ -3,7 +3,7 @@
   background: linear-gradient(172deg, rgba(102,25,45,1) 59%, rgba(143,57,80,1) 86%);
   background-repeat: repeat;">
   <div class="container-fluid ms-3">
-    <a class="navbar-brand" href="/admin/dashboard">
+    <a class="navbar-brand" href="/">
       <h2>AUTOPRO</h2>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -13,8 +13,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li class="nav-item ms-3">
+          <a class="nav-link active" routerLink="/admin/dashboard" aria-current="page" href="#">Dashboard</a>
+        </li>
       </ul>
       <ul class="navbar-nav ms-auto me-5">
+
         <li class="nav-item dropdown">
           <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink"
             data-bs-toggle="dropdown">Recepcion</a>
@@ -71,8 +75,11 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/marcas'">Marcas</a></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/modelos/0'">Modelos</a></li>
-            <!-- <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/roles">Roles</a></li> -->
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/tipos-motor'">Tipo Motor</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/roles'">Roles</a></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/estatus-servicio'">Estatus Servicio</a></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/departamentos'">Departamentos</a></li>
           </ul>
@@ -116,17 +123,18 @@
           </ul>
 
         </li>
+
         <li class="nav-item dropdown  ms-4 me-3">
           <a class="btn btn-outline-light btn-sm mt-1 dropdown-toggle" href="#" id="navbarDropdownMenuLink"
             role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{ userData.username }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" [routerLink]="'/perfil'"><i class="bi bi-shield"></i> Cambiar Contraseña</a></li>
+            <!-- <li><a class="dropdown-item" [routerLink]="'/perfil'"><i class="bi bi-shield"></i> Cambiar Contraseña</a></li> -->
 
-            <li>
+            <!-- <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> -->
             <li><button class="dropdown-item" [routerLink]="['/auth/logout']" routerLinkActive="router-link-active"><i
                   class="bi bi-door-closed"></i> Cerrar Sesión</button></li>
           </ul>

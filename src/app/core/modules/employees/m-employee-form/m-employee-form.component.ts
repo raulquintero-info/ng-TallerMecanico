@@ -22,7 +22,7 @@ onNewEmployee:EventEmitter<any> = new EventEmitter();
 private formBuild = inject(FormBuilder);
 
   employeeForm = this.formBuild.group({
-    idEmpleado: [{value:0, disabled: true}],
+    idEmpleado: [{value:this.employee.idEmpleado, disabled: true}],
     username: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4)]],
     nombre: ['', [Validators.required, Validators.minLength(3)]],
@@ -33,7 +33,8 @@ private formBuild = inject(FormBuilder);
     //telefono: ['', [Validators.required, Validators.minLength(10)]],
     puesto: ['', [Validators.required, Validators.minLength(5)]],
     observaciones: ['', [Validators.required, Validators.minLength(10)]],
-    role: [{} as Rol]
+    role: [{} as Rol],
+    usuario: {} as Usuario
   })
 
 
@@ -45,6 +46,7 @@ private formBuild = inject(FormBuilder);
 
   cargaDatos(employee: Employee){
     this.employeeForm.patchValue({
+      idEmpleado:this.employee.idEmpleado,
       username: this.employee.usuario.username,
       password: this.employee.usuario.password,
       nombre: this.employee.nombre,
@@ -55,7 +57,9 @@ private formBuild = inject(FormBuilder);
       //telefono: this.employee.
       puesto: this.employee.puesto,
       observaciones: this.employee.observaciones,
-      role: this.employee.role    })
+      role: {idRol: 2, nombre: 'empleado'} as Rol,
+      usuario: this.employee.usuario
+    })
   }
 
 

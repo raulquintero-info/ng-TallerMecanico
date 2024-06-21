@@ -40,7 +40,7 @@ export class ServicesFormComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => this.params = params);
-    this.vehiclesService.get(this.params.params.idVehiculo).subscribe({
+    this.vehiclesService.getOrdenesByIdVehicle(this.params.params.idVehiculo).subscribe({
       next: resp => {
         console.log('vehiculos', resp)
         this.vehicle = resp;
@@ -84,7 +84,7 @@ export class ServicesFormComponent implements OnInit {
   }
 
   getServiceById(){
-    //todo: para obtener la orden de servicio a editar
+    //TODO: para obtener la orden de servicio a editar
   }
 
   getDate(): string{

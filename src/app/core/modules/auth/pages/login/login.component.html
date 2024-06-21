@@ -46,12 +46,15 @@
               <table class="table table-hover">
               <thead class="table-secondary">
 
-                <tr><td colspan="3">Demo</td></tr>
+                <tr><td colspan="3">Seleccione un usuario</td></tr>
               </thead>
               <tbody>
 
                 <tr (click)="loginAsAdmin('usuario1@gmail.com', '12345')" style="cursor: pointer">
                   <td>Administrador</td><td>usuario1@gmail.com</td><td><i class="bi bi-box-arrow-in-right"></i></td>
+                </tr>
+                <tr (click)="loginAsAdmin('customer@server.com', '1234')" style="cursor: pointer">
+                  <td>Cliente</td><td>customer@server.com</td><td><i class="bi bi-box-arrow-in-right"></i></td>
                 </tr>
               </tbody>
               </table>

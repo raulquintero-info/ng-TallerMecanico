@@ -73,6 +73,7 @@ export class CustomersViewComponent {
   getVehicles(id: number){
     this.customersService.getVehiclesByCustomerId(id).subscribe({
       next: resp=>{
+        console.log('vehiculos', resp, id);
         this.vehicles = resp;
       }
     })

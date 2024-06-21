@@ -47,7 +47,7 @@ export class RecepcionVehicleComponent  implements OnInit{
   }
 
   getVehicle(id: number){
-    this.vehiclesService.get(id).subscribe({
+    this.vehiclesService.getOrdenesByIdVehicle(id).subscribe({
       next: resp=>{
         console.log('vehiculos',resp)
         this.vehicle = resp;

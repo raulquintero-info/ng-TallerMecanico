@@ -79,7 +79,7 @@ export class VehiclesFormComponent implements OnInit {
 
 
     if (this.vehicle.idVehiculo > 0) {
-      this.vehiclesService.get(this.vehicle.idVehiculo).subscribe({
+      this.vehiclesService.getOrdenesByIdVehicle(this.vehicle.idVehiculo).subscribe({
         next: (vehicle: Vehiculo) => {
           console.log('vehicle', vehicle);
           this.vehicle = vehicle;
@@ -111,7 +111,7 @@ export class VehiclesFormComponent implements OnInit {
     let temp = localStorage.getItem('customer');
     this.customer = JSON.parse(<string>temp);
     console.log('customer', temp, this.customer);
-    // todo: activar cuando el login y security esten funcionand
+    // TODO: activar cuando el login y security esten funcionand
     this.customersService.currentCustomer.subscribe({
       next: resp=>{
         // this.console

@@ -27,7 +27,7 @@ export class VehiclesServicesListComponent implements OnInit{
 
   ngOnInit(){
     this.route.paramMap.subscribe(params => this.params = params);
-    this.vehiclesService.get(this.params.params.id).subscribe({
+    this.vehiclesService.getOrdenesByIdVehicle(this.params.params.id).subscribe({
       next: resp=>{
         console.log('vehiculos',resp)
         this.vehicle.ordenServicio = resp;
