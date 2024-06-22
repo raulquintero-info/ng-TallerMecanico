@@ -167,7 +167,7 @@
   <div class=" mb-3" style1="display:none;">
 
     <label for="rol" class="form-label">Rol</label>
-    <select class="form-select" id="rol" formControlName="role" [(ngModel)]="employee.usuario.rol" aria-label="rol">
+    <select class="form-select" id="rol" formControlName="role" aria-label="rol">
     <option *ngFor="let b of roles"  [ngValue]="b">{{ b.nombre }}</option>
       </select>
     </div>

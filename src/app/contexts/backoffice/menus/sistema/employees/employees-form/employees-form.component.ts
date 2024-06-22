@@ -8,6 +8,7 @@ import { Employee } from 'src/app/core/interfaces/employee.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/core/interfaces/usuario.interface';
 import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employees-form',
@@ -29,6 +30,8 @@ export class EmployeesFormComponent implements OnInit {
   private employeesService = inject(EmployeesService);
   private route = inject(ActivatedRoute);
   private toastService = inject(ToastService);
+  private  formBuild = inject(FormBuilder);
+
 
 
   ngOnInit(): void {
@@ -92,7 +95,7 @@ export class EmployeesFormComponent implements OnInit {
       //preparando informacion pra enviar al endpoint
       let data = {
         usuario: employee.usuario,
-        empleado: {} as  Employee,
+        empleado: employee,
       }
       data.empleado.usuario = {} as Usuario;
       console.log('empleado enviado', data);

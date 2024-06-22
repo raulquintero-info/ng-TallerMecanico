@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { RouterModule } from '@angular/router';
+import { PhonePipe } from './pipes/phone.pipe';
 
 
 
@@ -10,6 +11,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     PageTitleComponent,
     PaginationComponent,
+    PhonePipe
   ],
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { RouterModule } from '@angular/router';
   exports:[
     PageTitleComponent,
     PaginationComponent,
+    PhonePipe,
   ]
 })
 export class SharedModule { }

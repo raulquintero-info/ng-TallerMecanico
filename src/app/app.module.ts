@@ -19,9 +19,6 @@ import { ToastModule } from './core/modules/toast/toast.module';
 import { FormsModule } from '@angular/forms';
 import { ErrorHttp503Component } from './shared/pages/error-http503/error-http503.component';
 import { ExpiredSessionComponent } from './shared/pages/expired-session/expired-session.component';
-import { PageTitleComponent } from './shared/components/page-title/page-title.component';
-import { PaginationComponent } from './shared/components/pagination/pagination.component';
-import { PhonePipe } from './core/pipes/phone.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +29,6 @@ import { PhonePipe } from './core/pipes/phone.pipe';
     ToasterComponent,
     ErrorHttp503Component,
     ExpiredSessionComponent,
-    // PageTitleComponent,
-    // PaginationComponent,
   ],
   imports: [
     BrowserModule,
