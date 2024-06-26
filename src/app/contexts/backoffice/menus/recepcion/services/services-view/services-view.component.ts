@@ -138,7 +138,8 @@ export class ServicesViewComponent implements OnInit {
       next: resp =>{
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Sericio Agregado", type:'success' })
         this.showBoxAddItem =false;
-        this.loadService(this.idService);
+        this.loadService(this.service.idOrdenServicio);
+        console.log('loadService: ', this.service.idOrdenServicio);
         this.item = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
 
 
@@ -156,7 +157,7 @@ export class ServicesViewComponent implements OnInit {
       next: resp=>{
 
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Servicio Eliminado", type:'warning' })
-        this.loadService(this.idService);
+        this.loadService(this.service.idOrdenServicio);
       }
     });
   }
@@ -168,9 +169,6 @@ export class ServicesViewComponent implements OnInit {
     this.newComment = this.getDate() + '\n> \n\n'+ this.service.comentarios;
   }
 
-  regresar() {
-    this.router.navigate(['/vehiculo/' + this.idService]);
-  }
 
   getDate(): string{
     return formatDate(new Date(), 'yyyy-MM-dd HH:mm', 'en-US');
