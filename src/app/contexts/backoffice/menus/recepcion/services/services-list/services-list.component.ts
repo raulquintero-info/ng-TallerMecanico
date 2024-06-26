@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Marca } from 'src/app/core/interfaces/marca.interface';
 import { Modelo } from 'src/app/core/interfaces/modelo.interface';
 import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
@@ -9,6 +9,7 @@ import { ServicesService } from 'src/app/core/services/services.service';
 import { EstatusServicio } from 'src/app/core/interfaces/estatusServicio.interface';
 import { DepartamentosService } from 'src/app/core/services/departamentos.service';
 
+
 @Component({
   selector: 'app-services-list',
   templateUrl: './services-list.component.html',
@@ -16,13 +17,12 @@ import { DepartamentosService } from 'src/app/core/services/departamentos.servic
 })
 export class ServicesListComponent implements OnInit {
   estatus: EstatusServicio[] = [];
+  statusArray: String[] = [];
   isLoading: boolean = true;
   pathService = "/admin/recepcion/servicios-view";
   title: string = 'Recepcion';
   subTitle: string = 'Listado de Servicios'
-  buttons = [
-    // {text: 'Agregar', path: "/admin/recepcion/servicios-form/0"}
-  ];
+  buttons = [/* {text: 'Agregar', path: "/admin/recepcion/servicios-form/0"}*/];
   services: OrdenServicio[] = [
     // {
     //   estatusServicio: {} as EstatusServicio,
@@ -38,25 +38,21 @@ export class ServicesListComponent implements OnInit {
 
   private servicesService = inject(ServicesService);
   private departamentoService = inject(DepartamentosService);
-  private route = inject(ActivatedRoute);
-
+  private activatedRoute = inject(ActivatedRoute);
 
 
 
   ngOnInit() {
-    const RECEPCION = 1
-    this.departamentoService.getEstatusById(RECEPCION).subscribe({
-      next: resp => {
-        this.estatus = resp;
-        console.log('status', resp);
+    this.loadAllStatusByDpt()
 
-      },
-      error: resp=>{
-        console.log('error', resp)
-      }
-    })
-
-    this.loadServices(this.currentPage - 1);
+    this.activatedRoute.params.subscribe(({status}) => {
+        console.log('status',status);
+        if(status == 'todos'){
+          this.loadServices(this.currentPage )
+        }else{
+          this.getByStatus(status)
+        }
+    });
 
   }
 
@@ -71,7 +67,7 @@ export class ServicesListComponent implements OnInit {
     //     this.isLoading = false;
 
     //   });
-    this.servicesService.getPaginatedRecepcionData(1).subscribe({
+    this.servicesService.getPaginatedRecepcionData(page).subscribe({
       next: (resp:any)=>{
         console.log('servicios',resp)
         this.services = resp
@@ -88,12 +84,31 @@ export class ServicesListComponent implements OnInit {
   }
 
   getByStatus(status: string) {
+    this.isLoading = true;
     this.servicesService.getByStatus(status).subscribe({
       next: resp => {
         console.log('por status',status,resp)
         this.services = resp;
+        this.isLoading = false;
+
       }
     });
+  }
+
+  loadAllStatusByDpt(){
+    const RECEPCION = 1
+    this.departamentoService.getEstatusById(RECEPCION).subscribe({
+      next: resp => {
+        this.estatus = resp;
+        this.estatus.forEach(x=>{this.statusArray.push( x.estatusServicio)})
+        console.log('status', resp);
+        console.log(this.statusArray)
+      },
+      error: resp=>{
+        console.log('error', resp)
+      }
+    })
+
   }
 
 }

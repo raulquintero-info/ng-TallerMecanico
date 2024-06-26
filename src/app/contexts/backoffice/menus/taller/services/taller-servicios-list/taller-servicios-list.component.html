@@ -3,7 +3,12 @@
 <div class="container pt-3 ">
   <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
     <div class="text-end p-1 pe-2" style="background-color: #cbcbcb;">
-      <button class="btn btn-secondary btn-sm ms-2" *ngFor="let status of estatus" (click)="getByStatus(status.estatusServicio)">{{status.estatusServicio | titlecase}}</button>
+      <button class="btn btn-verde btn-sm ms-2"
+        routerLink="/admin/taller/servicios/todos">Todos
+      </button>
+      <button class="btn btn-secondary btn-sm ms-2" *ngFor="let status of estatus" [routerLink]="'/admin/taller/servicios/' + status.estatusServicio">
+        {{status.estatusServicio | titlecase}}
+      </button>
     </div>
 
     <div>

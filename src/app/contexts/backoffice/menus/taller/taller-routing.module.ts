@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '',
     children: [
 
-      { path: 'servicios', component: TallerServiciosListComponent, canActivate: [adminGuard] },
+      { path: 'servicios/:status', component: TallerServiciosListComponent, canActivate: [adminGuard] },
       { path: 'vehiculos', component: TallerVehicleListComponent, canActivate: [adminGuard] },
       { path: 'vehiculos/:id', component: TallerVehicleComponent, canActivate: [adminGuard] },
       { path: 'servicios-view/:id', component: ServicesViewComponent, canActivate: [adminGuard] },

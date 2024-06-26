@@ -20,6 +20,7 @@ import { VehiclesModule } from 'src/app/core/modules/vehicles/vehicles.module';
 
 import { ServicesModule } from 'src/app/core/modules/services/services.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     RecepcionRoutingModule,
     FormsModule,
     ReactiveFormsModule,

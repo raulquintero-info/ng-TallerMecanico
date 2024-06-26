@@ -3,8 +3,12 @@
   <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
   <div>
     <div class="text-end  p-1 pe-2 d-print-none" style="background-color: #cbcbcb;">
+      <button class="btn btn-verde btn-sm ms-2"
+        [routerLink]="'/admin/recepcion/servicios/todos'">Todos
+      </button>
       <button class="btn btn-warning btn-sm ms-2" *ngFor="let status of estatus"
-        (click)="getByStatus(status.estatusServicio)">{{status.estatusServicio | titlecase}}</button>
+        [routerLink]="'/admin/recepcion/servicios/' +status.estatusServicio">{{status.estatusServicio | titlecase}}
+      </button>
     </div>
     <div>
       <app-m-services-list [services]="services" [pathService]="pathService"></app-m-services-list>

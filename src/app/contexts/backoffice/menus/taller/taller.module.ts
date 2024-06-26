@@ -23,7 +23,8 @@ import { TallerVehicleComponent } from './vehicles/taller-vehicle/taller-vehicle
     TallerRoutingModule,
     VehiclesModule,
     ServicesModule,
-    SharedModule
+    SharedModule,
+
 
   ]
 })

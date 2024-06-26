@@ -3,6 +3,7 @@ import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 import { Page } from 'src/app/core/interfaces/page.interface';
 import { DepartamentosService } from 'src/app/core/services/departamentos.service';
 import { ServicesService } from 'src/app/core/services/services.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-taller-servicios-list',
@@ -27,17 +28,22 @@ export class TallerServiciosListComponent {
 
   private servicesService = inject(ServicesService);
   private departamentoService = inject(DepartamentosService);
+  private activatedRoute = inject(ActivatedRoute);
 
   ngOnInit() {
-    const TALLER = 2;
-    this.departamentoService.getEstatusById(TALLER).subscribe({
-      next: resp=>{
-        this.estatus = resp;
-        console.log('status',resp);
 
+    this.getAllStatusByDpt()
+
+    this.activatedRoute.params.subscribe(({status}) => {
+      console.log('status',status);
+      if(status == 'todos'){
+        this.loadServices(this.currentPage )
+      }else{
+        this.getByStatus(status)
       }
-    })
-    this.loadServices(this.currentPage-1);
+  });
+
+
   }
 
   loadServices(page: number) {
@@ -49,7 +55,7 @@ export class TallerServiciosListComponent {
     //     this.totalPages = data.totalPages;
     //     this.currentPage = data.number + 1;
     //   });
-    this.servicesService.getPaginatedRecepcionData(2).subscribe({
+    this.servicesService.getPaginatedRecepcionData(1).subscribe({
       next: resp=>{
         this.services = resp;
         this.isLoading = false;
@@ -74,4 +80,15 @@ export class TallerServiciosListComponent {
     });
   }
 
+  getAllStatusByDpt(){
+    const TALLER = 2;
+    this.departamentoService.getEstatusById(TALLER).subscribe({
+      next: resp=>{
+        this.estatus = resp;
+        console.log('status',resp);
+
+      }
+    })
+    this.loadServices(this.currentPage-1);
+  }
 }
