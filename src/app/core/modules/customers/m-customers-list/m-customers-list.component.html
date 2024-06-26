@@ -20,14 +20,14 @@
         <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.apellidoMaterno | titlecase}}</td>
         <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.telefono | phone}}</td>
         <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.usuario.username}}</td>
-        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;"><!-- {{ customer.vehiculos.length }} --></td>
+        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{ customer.vehiculos.length }}</td>
         <td class="d-print-none">
           <!-- <button class="btn btn-success" [routerLink]="['/admin/recepcion/vehiculos-form'+'/' + customer.idCliente]">Ver</button>&nbsp; -->
           <!-- <button class="btn btn-warning btn-sm" [routerLink]="['/admin/recepcion/clientes-view/' + customer.idCliente]">Editar</button>&nbsp; -->
 
 
-          <!-- <button class="btn btn-outline-danger cancelBtn btn-sm ms-2" *ngIf="customer.vehiculos.length<1"
-            (click)="delete(customer.idCliente)">Eliminar</button>&nbsp; -->
+          <button class="btn btn-outline-danger cancelBtn btn-sm ms-2" *ngIf="customer.vehiculos.length<1"
+            (click)="delete(customer.idCliente)">Eliminar</button>&nbsp;
 
         </td>
       </tr>
