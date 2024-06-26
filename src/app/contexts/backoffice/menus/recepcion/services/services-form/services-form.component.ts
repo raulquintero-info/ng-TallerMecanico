@@ -2,6 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/core/interfaces/customers.interface';
+import { Employee } from 'src/app/core/interfaces/employee.interface';
 import { EstatusServicio } from 'src/app/core/interfaces/estatusServicio.interface';
 import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
@@ -65,6 +66,8 @@ export class ServicesFormComponent implements OnInit {
     this.service.vehiculo =  {idVehiculo:this.vehicle.idVehiculo} as Vehiculo;
     this.service.estatusServicio = {idEstatusServicio:1} as EstatusServicio;
     this.service.fechaOrden = new Date().toUTCString();
+    //Al crearse automaticamente se asginan al empleado con id = 1
+    this.service.empleado= {idEmpleado: 1} as Employee;
     console.log('servicio enviado', this.service);
     this.servicesService.saveOrUpdate(this.service).subscribe({
       next: (resp:any)=>{
@@ -76,7 +79,7 @@ export class ServicesFormComponent implements OnInit {
       },
       error: resp=>{
         console.log('error', resp)
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Servicio Grabado', type: 'success' })
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: 'No se ha podido grabar el servicio', type: 'danger' })
         // this.router.navigate(['admin/recepcion/servicios-view/'+resp.OrdenDeServicio.idOrdenServicio +'/' + this.vehicle.idVehiculo]);
         this.isSaved = false
       }

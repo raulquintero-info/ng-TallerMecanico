@@ -15,7 +15,7 @@ import { DepartamentosService } from 'src/app/core/services/departamentos.servic
   styleUrls: ['./services-list.component.css']
 })
 export class ServicesListComponent implements OnInit {
-  estatus: any[] = [];
+  estatus: EstatusServicio[] = [];
   isLoading: boolean = true;
   pathService = "/admin/recepcion/servicios-view";
   title: string = 'Recepcion';
@@ -85,12 +85,12 @@ export class ServicesListComponent implements OnInit {
 
   onPageChange(page: number) {
     this.loadServices(page - 1);
-
   }
 
   getByStatus(status: string) {
     this.servicesService.getByStatus(status).subscribe({
       next: resp => {
+        console.log('por status',status,resp)
         this.services = resp;
       }
     });

@@ -13,8 +13,7 @@
           <tr class="" *ngFor="let service of ordenesDeServicio">
             <td scope="row">{{service.fechaOrden  | date: 'short'}}</td>
             <td>{{service.falla}}</td>
-            <!-- TODO:habilitar status cuando este completo el backend -->
-            <td><!-- {{service.estatusServicio.estatusServicio}} --></td>
+            <td>{{service.estatusServicio.estatusServicio}}</td>
             <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">Ver</button></td>
           </tr>
           <!-- <tr class="">
@@ -28,5 +27,9 @@
 
         </tbody>
       </table>
+
+
+
+
     </div>
 

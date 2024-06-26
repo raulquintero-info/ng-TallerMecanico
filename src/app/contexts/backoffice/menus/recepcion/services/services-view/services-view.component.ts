@@ -14,6 +14,7 @@ import { ToastService } from 'src/app/core/modules/toast/services/toast.service'
 import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { CustomersService } from '../../../../../../core/services/customers.service';
 import { DetalleOrdenServicios } from 'src/app/core/interfaces/detalleOrdenServicios.interface';
+import { switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-services-view',
@@ -22,9 +23,10 @@ import { DetalleOrdenServicios } from 'src/app/core/interfaces/detalleOrdenServi
 })
 export class ServicesViewComponent implements OnInit {
   displayStyle: string = 'none';
+  idService: number = 0;
   total: number = 0;
   displayStyleDelete: string = 'none';
-  isLoadingService = false;
+  isLoadingService = true;
   showBoxComment: boolean = false;
   showBoxAddItem: boolean = false;
   showBoxDelete: boolean = false;
@@ -45,7 +47,7 @@ export class ServicesViewComponent implements OnInit {
 
   private statusService = inject(EstatusService);
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private vehiclesService: VehiclesService,
     private servicesService: ServicesService,
@@ -54,11 +56,39 @@ export class ServicesViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.params = params
+    // this.isLoadingService = true
+    this.activatedRoute.params
+      .pipe(
+        switchMap( ({id}) =>  this.servicesService.getById(id))
+      )
+      .subscribe({
+        next: resp => {
+          console.log('servicio cargado', resp)
+          this.isLoadingService = false;
+          //TODO: revisar por que el back end regresa nulo con codigo 200 en vez de 404
+          if (resp!=null){
+            this.service = resp;
+            this.vehicle = resp.vehiculo;
+          }else {
+            this.router.navigateByUrl("not-found", {skipLocationChange: true});
+          }
 
-      this.loadService();
-    });
+          let tot=0;
+          // this.service.detalleOrdenServicios.forEach(function(a){tot += a.costo;});
+          this.total= tot;
+
+          // this.total = this.service.detalleOrdenServicios.reduce((a, b) => a + b.costo, 0)
+          // if (this.service.idOrdenServicio<1)
+
+        },
+        error: resp=>{
+          console.log('error');
+          // this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo cargar la informacion", type:'danger' })
+          this.isLoadingService = false;
+
+          this.router.navigateByUrl("not-found", {skipLocationChange: true});
+        }
+      } );
 
 
 
@@ -72,9 +102,9 @@ export class ServicesViewComponent implements OnInit {
 
   }
 
-  loadService() {
+  loadService(id:number) {
     this.isLoadingService = true
-    this.servicesService.getById(this.params.get('id')).subscribe({
+    this.servicesService.getById(id).subscribe({
       next: resp => {
         console.log('servicio cargado', resp)
         this.service = resp;
@@ -82,10 +112,10 @@ export class ServicesViewComponent implements OnInit {
         this.isLoadingService = false;
 
         let tot=0;
-        this.service.detalleOrdenServicios.forEach(function(a){tot += a.costo;});
+        // this.service.detalleOrdenServicios.forEach(function(a){tot += a.costo;});
         this.total= tot;
 
-        this.total = this.service.detalleOrdenServicios.reduce((a, b) => a + b.costo, 0)
+        // this.total = this.service.detalleOrdenServicios.reduce((a, b) => a + b.costo, 0)
         // if (this.service.idOrdenServicio<1)
 
       },
@@ -108,7 +138,7 @@ export class ServicesViewComponent implements OnInit {
       next: resp =>{
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Sericio Agregado", type:'success' })
         this.showBoxAddItem =false;
-        this.loadService();
+        this.loadService(this.idService);
         this.item = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
 
 
@@ -126,7 +156,7 @@ export class ServicesViewComponent implements OnInit {
       next: resp=>{
 
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Servicio Eliminado", type:'warning' })
-        this.loadService();
+        this.loadService(this.idService);
       }
     });
   }
@@ -139,7 +169,7 @@ export class ServicesViewComponent implements OnInit {
   }
 
   regresar() {
-    this.router.navigate(['/vehiculo/' + this.params.params.id]);
+    this.router.navigate(['/vehiculo/' + this.idService]);
   }
 
   getDate(): string{

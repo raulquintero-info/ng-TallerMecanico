@@ -7,6 +7,8 @@ import { Toast } from 'src/app/core/interfaces/toast.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { VehiclesService } from '../../../../../../core/services/vehicles.service';
 import { ToastService } from '../../../../../../core/modules/toast/services/toast.service';
+import { switchMap } from 'rxjs';
+import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 
 @Component({
   selector: 'app-customers-view',
@@ -19,7 +21,7 @@ export class CustomersViewComponent {
   subTitle: string = "<cliente apellido>";
   params: any;
   customer: Customer = {nombre:'', apellidoPaterno:'', vehiculos:[] as Vehiculo[]} as Customer;
-  vehicles: Vehiculo[] =[];
+  vehicles: Vehiculo[] = [];
   services: any;
   openServices: any;
   buttons = [{text: "Clientes", path: "/admin/recepcion/clientes"}];
@@ -28,7 +30,7 @@ export class CustomersViewComponent {
   errorMessage: string='';
   messages: Toast[] = [];
 
-  private route = inject(ActivatedRoute);
+  private activatedRoute = inject(ActivatedRoute);
   private customersService = inject(CustomersService);
   private servicesService = inject(ServicesService);
   private router = inject(Router);
@@ -37,20 +39,11 @@ export class CustomersViewComponent {
 
   ngOnInit(){
 
-    this.route.paramMap.subscribe(params => {
-      this.params = params
-      this.customer.idCliente = this.params.get('id');
-      this.getCustomer(this.customer.idCliente);
-      this.getVehicles(this.customer.idCliente);
+    this.activatedRoute.params.subscribe(({id}) => {
+      this.getCustomer(id);
+      this.getVehicles(id);
     });
 
-    this.servicesService.getAll().subscribe({
-      next: resp=>{
-        this.services = resp;
-        console.log('services',resp);
-
-      }
-    })
 
 
   }
@@ -75,17 +68,33 @@ export class CustomersViewComponent {
       next: resp=>{
         console.log('vehiculos', resp, id);
         this.vehicles = resp;
+        this.getServices();
       }
     })
+  }
+
+  getServices(){
+    this.servicesService.getAll().subscribe({
+      next: resp=>{
+        let idCliente = this.customer.idCliente;
+        resp = resp.filter(function(element:OrdenServicio){
+          return element.estatusServicio.idEstatusServicio != 6 && element.vehiculo?.cliente.idCliente == idCliente
+        })
+        this.services = resp;
+        console.log('services',resp);
+
+      }
+    })
+
   }
 
   deleteVehicleById(id: number){
     this.vehiclesService.deleteById(id).subscribe({
       next: resp=>{
-        console.log("registro eliminado");
-        this.toastsService.addMessage({ title: "Sistema", timeAgo: "", body: 'Registro Eliminado', type:'danger' });
+        console.log("registro eliminado", resp);
+        this.toastsService.addMessage({ title: "Sistema", timeAgo: "", body: 'Registro ' + id + ' Eliminado', type:'success' });
 
-        this.getCustomer(this.customer.idCliente);
+        this.getVehicles(this.customer.idCliente);
       },
       error: resp=>{
         this.toastsService.addMessage({ title: "Sistema", timeAgo: "", body: 'No se ha podido Borrar este registro', type:'danger' });

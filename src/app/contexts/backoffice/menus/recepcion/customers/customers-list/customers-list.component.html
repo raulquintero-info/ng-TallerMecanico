@@ -3,6 +3,8 @@
   <div><app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"
       [buttons]="buttons"></app-page-title></div>
   <div class="">
+
+    <!-- <shared-loading-spinner></shared-loading-spinner> -->
     <app-m-customers-list [customers]="customers" pathCustomer="/admin/recepcion/clientes"></app-m-customers-list>
     <div *ngIf="isLoadingCustomers; else showMessages" style="width: 100%; text-align: center">
       <div class="loader"></div>
@@ -10,11 +12,13 @@
 
     <ng-template #showMessages>
       <!-- <div *ngIf='errorMessage' class="alert alert-danger" role="alert"><strong>Error.- </strong> {{ errorMessage }}</div> -->
-      <div *ngIf="customers.length<1" class="p-4 text-center">Aun no se ha registrado ningun cliente.</div>
+      <div *ngIf="customers.length<1" class="p-4 text-center">
+        Aun no se ha registrado ningun cliente.
+        <button class="btn  btn-sm btn-guinda" routerLink="/admin/recepcion/clientes-form/0">Agregar Cliente</button>
+      </div>
 
     </ng-template>
   </div>
-
 
   <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
   (pageChanged)="onPageChange($event)"></app-pagination>

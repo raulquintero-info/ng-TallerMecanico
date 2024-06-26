@@ -17,8 +17,6 @@
       <div *ngIf='false' class="alert alert-danger" role="alert"><strong>Error.- </strong> {{ 'errorMessage' }}</div>
       <div *ngIf="services.length<1" class="p-4 text-center">
         Sin servicios para Mostrar.<br>
-        <!-- <div class="text-danger"><i class="bi bi-exclamation-triangle"></i> Es necesario dar de alta un cliente primero</div>
-        <button class="btn btn-primary btn-sm" routerLink="/admin/recepcion/clientes-form/0">Capturar Cliente</button> -->
       </div>
     </ng-template>
   </div>
@@ -28,6 +26,6 @@
     (pageChanged)="onPageChange($event)"></app-pagination>
 
 </div>
-<pre>
+<!-- <pre>
   {{services | json}}
-</pre>
+</pre> -->

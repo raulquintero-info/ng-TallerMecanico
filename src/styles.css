@@ -31,6 +31,16 @@
   background-color: #66192d;
   color:white;
 }
+.btn-guinda{
+  background-color: #66192d;
+  color:white;
+}
+.btn-guinda:hover{
+  background-color: #8f1a39;
+  color:white;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
 .bg-verde{
   background-color: #24554c;
   color:white;

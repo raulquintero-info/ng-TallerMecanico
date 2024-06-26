@@ -29,7 +29,10 @@
 
 </div>
 
-<div *ngIf="vehicle.idVehiculo>0" class="container ps-5 pt-5">
-
+<div *ngIf="ordenesDeServicio.length<=0" class="container ps-5">
+  <div class="text-center mt-5">
+    Aun no se ha registrado ningun servicio en este vehiculo.  <button class="btn btn-sm btn-secondary bg-guinda"  [routerLink]="'/admin/recepcion/servicios-form/0/'+ vehicle.idVehiculo">
+      <i class="bi bi-plus-circle"></i> Servicio Nuevo</button>
+  </div>
 
 </div>

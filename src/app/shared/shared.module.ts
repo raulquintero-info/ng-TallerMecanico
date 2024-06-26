@@ -4,6 +4,7 @@ import { PageTitleComponent } from './components/page-title/page-title.component
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { RouterModule } from '@angular/router';
 import { PhonePipe } from './pipes/phone.pipe';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 
 
@@ -11,7 +12,8 @@ import { PhonePipe } from './pipes/phone.pipe';
   declarations: [
     PageTitleComponent,
     PaginationComponent,
-    PhonePipe
+    PhonePipe,
+    LoadingSpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,8 @@ import { PhonePipe } from './pipes/phone.pipe';
     PageTitleComponent,
     PaginationComponent,
     PhonePipe,
+    LoadingSpinnerComponent,
+
   ]
 })
 export class SharedModule { }

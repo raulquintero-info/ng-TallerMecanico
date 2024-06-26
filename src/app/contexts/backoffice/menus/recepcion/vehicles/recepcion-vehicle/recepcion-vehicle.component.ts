@@ -15,12 +15,12 @@ import { TipoMotor } from 'src/app/core/interfaces/tipoMotor.interface';
   styleUrls: ['./recepcion-vehicle.component.css']
 })
 export class RecepcionVehicleComponent  implements OnInit{
-  ordenesDeServicio: OrdenServicio[] =[]
+  ordenesDeServicio: OrdenServicio[] =[{} as OrdenServicio]
   pathEdit: string = "/admin/recepcion/vehiculos/form";
   vehicle: Vehiculo = {
     cliente:{nombre:'', apellidoMaterno: '', apellidoPaterno: ''} as Customer,
     modelo: { marca: {}as Marca} as Modelo,
-    tipoMotor: {tipoMotor: ''} as TipoMotor
+    tipoMotor: {tipoMotor: ''} as TipoMotor,
   } as Vehiculo;
   params: any;
   // pathVehicle: string = "/mi-garage/servicio";
@@ -48,7 +48,7 @@ export class RecepcionVehicleComponent  implements OnInit{
 
   getVehicle(id: number){
     this.vehiclesService.getOrdenesByIdVehicle(id).subscribe({
-      next: resp=>{
+      next: (resp:Vehiculo)=>{
         console.log('vehiculos',resp)
         this.vehicle = resp;
 

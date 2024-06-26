@@ -94,7 +94,7 @@ export class LoginService {
       case 0:
         mensaje = "El servidor no esta disponible, intentelo mas tarde.";
         break;
-      case 401:
+      case 403:
         mensaje = "Credenciales Invalidas.";
         break;
 

@@ -5,6 +5,7 @@ import { LoginService } from 'src/app/core/modules/auth/services/login.service';
 import { Employee } from '../../../../core/interfaces/employee.interface';
 import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { CustomersService } from 'src/app/core/services/customers.service';
+import { Subject, debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-navbar-back',
@@ -19,7 +20,10 @@ export class NavbarBackComponent implements OnInit {
   currentCustomer: Customer = {} as Customer;
   isSearching: boolean= false;
 
+  private debouncer: Subject<string> = new Subject<string>();
+
   constructor(private loginService: LoginService, private router: Router, private customersService: CustomersService){}
+
   ngOnInit() {
 
     this.loginService.currentUserLoginOn.subscribe({
@@ -39,6 +43,27 @@ export class NavbarBackComponent implements OnInit {
         this.currentCustomer = currentCustomer;
       }
     });
+    this.debouncer
+    .pipe(
+      debounceTime(300)
+      )
+      .subscribe( value => {
+        console.log(value)
+        this.customers = []
+          this.isSearching =true
+          this.customersService.search(value).subscribe({
+            next: (resp: any)=>{
+              console.log(resp)
+              this.customers = resp;
+              this.isSearching = false
+              if(!value) this.customers=[];
+            },
+            error: resp=>{
+              this.isSearching = false
+
+            }
+          });
+      })
     console.log('hola');
     // this.searchCustomer();
   }
@@ -46,22 +71,23 @@ export class NavbarBackComponent implements OnInit {
 
   searchCustomer(txtValue: string){
       console.log(txtValue);
-      if(txtValue.length > 2){
-        this.customers = []
-        this.isSearching =true
-        this.customersService.search(txtValue).subscribe({
-          next: (resp: any)=>{
-            console.log(resp)
-            this.customers = resp;
-            this.isSearching = false
-          },
-          error: resp=>{
-            this.isSearching = false
-          }
-        });
-      } else{
-        this.customers=[];
-      }
+      this.debouncer.next(txtValue);
+      // if(txtValue.length > 2){
+      //   this.customers = []
+      //   this.isSearching =true
+      //   this.customersService.search(txtValue).subscribe({
+      //     next: (resp: any)=>{
+      //       console.log(resp)
+      //       this.customers = resp;
+      //       this.isSearching = false
+      //     },
+      //     error: resp=>{
+      //       this.isSearching = false
+      //     }
+      //   });
+      // } else{
+      //   this.customers=[];
+      // }
   }
 
   selCustomer(customer: Customer){

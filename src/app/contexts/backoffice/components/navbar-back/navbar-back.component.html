@@ -170,7 +170,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-guinda">
@@ -178,7 +178,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input class="form-control form-control-lg" type="text" (keyup.enter)="searchCustomer(txtInput.value)"  #txtInput
+        <input class="form-control form-control-lg" type="text" (keyup)="searchCustomer(txtInput.value)"  #txtInput
           placeholder="Num. de  Telefono" aria-label=".form-control-lg example">
         <div *ngIf="customers.length">
           <br>Resultados:
@@ -196,13 +196,14 @@
                 <tr *ngFor="let customer of customers" (click)="selCustomer(customer)" class="clickable" data-bs-dismiss="modal">
                   <td>{{customer.nombre}} {{customer.apellidoPaterno}}</td>
                   <td>{{ customer.telefono }} </td>
-                  <td>{{ customer.vehiculos.length}}</td>
+                  <!-- TODO:revisar back end si va a devolver esta informacion -->
+                  <td><!-- {{ customer.vehiculos.length}} --></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="mt-3" *ngIf="isSearching"><div class="loader"></div></div>
+        <div class="mt-3 text-center" *ngIf="isSearching"><div class="loader"></div></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary bg-guinda" data-bs-dismiss="modal">Cerrar</button>
