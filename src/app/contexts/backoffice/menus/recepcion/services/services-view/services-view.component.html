@@ -16,7 +16,7 @@
       <div class="row">
 
         <div class="col-md-12 pt-1 pb-1 pe-3" style="text-align: right;">
-          Orden de Servicio No: {{service.idOrdenServicio}} &nbsp;<span class="badge bg-secondary d-print-none">
+          Orden de Servicio No: {{service.idOrdenServicio }} &nbsp;<span class="badge bg-secondary d-print-none">
             <select [(ngModel)]="service.estatusServicio" (change)="updateStatus()" [compareWith]="compareStatus"
               name="estatusServicio">
               <option *ngFor="let item of statusList" [selected]="item.idEstatusServicio==5" [ngValue]="item">
@@ -133,7 +133,7 @@
                       style="color:red"></i></button></td>
               </tr>
 
-              <tr><td class="text-center pt-3">No se ha agregado ningun Servicio</td></tr>
+              <tr *ngIf="service.detalleOrdenServicios.length <= 0"><td class="text-center pt-3">No se ha agregado ningun Servicio</td></tr>
 
             </table>
           </div>
@@ -174,7 +174,7 @@
                 <br>
                 Precio:
                 <div>
-                  <input type="number" class="form-control" name="precio" [(ngModel)]="item.costo">
+                  <input type="number" class="form-control" name="precio" (keyup.Enter)="addItem()" [(ngModel)]="item.costo">
                 </div>
               </div>
               <div class="mt-3 text-end">

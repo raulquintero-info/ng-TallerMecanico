@@ -194,8 +194,8 @@
               </thead>
               <tbody class="table-group-divider">
                 <tr *ngFor="let customer of customers" (click)="selCustomer(customer)" class="clickable" data-bs-dismiss="modal">
-                  <td>{{customer.nombre}} {{customer.apellidoPaterno}}</td>
-                  <td>{{ customer.telefono }} </td>
+                  <td>{{customer.nombre | titlecase}} {{customer.apellidoPaterno | titlecase}}</td>
+                  <td>{{ customer.telefono | phone}} </td>
                   <!-- TODO:revisar back end si va a devolver esta informacion -->
                   <td><!-- {{ customer.vehiculos.length}} --></td>
                 </tr>

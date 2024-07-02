@@ -3,6 +3,7 @@
       <table class="table table-striped">
         <thead>
           <tr class="table-secondary">
+            <th scope="col">Id</th>
             <th scope="col">Fecha de Entrada</th>
             <th scope="col">Titulo</th>
             <th scope="col" >Status</th>
@@ -11,20 +12,12 @@
         </thead>
         <tbody>
           <tr class="" *ngFor="let service of ordenesDeServicio">
-            <td scope="row">{{service.fechaOrden  | date: 'short'}}</td>
+            <td scope="row">{{ service.idOrdenServicio }}</td>
+            <td>{{service.fechaOrden  | date: 'short'}}</td>
             <td>{{service.falla}}</td>
             <td>{{service.estatusServicio.estatusServicio}}</td>
             <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">Ver</button></td>
           </tr>
-          <!-- <tr class="">
-            <td scope="row">25-ene-2024</td>
-            <td>cambio de aceite</td>
-            <td><span class="vehicle-text text-center p-1"
-                style="font-weight: bold;  font-size: 10px; background-color: rgb(7, 211, 7);color: white;">entregado</span>
-            </td>
-            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">Ver</button></td>
-          </tr> -->
-
         </tbody>
       </table>
 

@@ -10,6 +10,7 @@ import { TallerModule } from './menus/taller/taller.module';
 import { SistemaModule } from './menus/sistema/sistema.module';
 import { CatalogosModule } from './menus/catalogos/catalogos.module';
 import { RecepcionModule } from './menus/recepcion/recepcion.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { RecepcionModule } from './menus/recepcion/recepcion.module';
         FormsModule,
         ReactiveFormsModule,
         BackofficeRoutingModule,
+        SharedModule,
 
         CatalogosModule,
         SistemaModule,

@@ -136,7 +136,7 @@ export class ServicesViewComponent implements OnInit {
     this.item.ordenServicio.idOrdenServicio = this.service.idOrdenServicio;
     this.servicesService.addItem(this.item).subscribe({
       next: resp =>{
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Sericio Agregado", type:'success' })
+        // this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Sericio Agregado", type:'success' })
         this.showBoxAddItem =false;
         this.loadService(this.service.idOrdenServicio);
         console.log('loadService: ', this.service.idOrdenServicio);
