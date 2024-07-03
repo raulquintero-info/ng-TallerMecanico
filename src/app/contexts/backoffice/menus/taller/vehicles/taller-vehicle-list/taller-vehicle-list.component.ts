@@ -28,8 +28,8 @@ ngOnInit(){
 }
 
 getall(){
-  this.vehiclesService.getAll().subscribe({
-    next: resp=>{
+  this.vehiclesService.getVehiculosTaller().subscribe({
+    next: (resp:any)=>{
       console.log(resp);
       this.vehicles = resp.filter(function(element:Vehiculo){
         return element.ordenServicio.length > 0
@@ -37,7 +37,7 @@ getall(){
       this.vehicles=resp
       this.isLoading = false
     },
-    error: resp=>{
+    error: (resp:any)=>{
       this.isLoading = false
     }
   })

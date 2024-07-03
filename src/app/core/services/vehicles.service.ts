@@ -23,4 +23,6 @@ export class VehiclesService {
   deleteById(id: number):Observable<any>{return this.http.delete(this.url + '/' +id)};
   saveOrUpdate(vehicle: Vehiculo):Observable<any>{return (vehicle.idVehiculo == 0) ? this.http.post(this.url, vehicle) : this.http.put(this.url + '/' + vehicle.idVehiculo, vehicle)};
 
+  getVehicleById(id: number):Observable<any>{return this.http.get(this.url+ '/' +id + '/cliente')}
+  getVehiculosTaller():Observable<any>{return this.http.get(this.url + '/noEntregados')}
 }

@@ -39,6 +39,14 @@ export class GarageVehiclesViewComponent implements OnInit {
         this.router.navigateByUrl("not-found", { skipLocationChange: true });
 
       }
+
+
+
+    })
+    this.vehiclesService.getVehicleById(this.params.params.id).subscribe({
+      next: (resp:any)=>{
+        console.log('kkk', resp);
+      }
     })
     // this.servicesService.getAll().subscribe({
     //   next: resp=>{
