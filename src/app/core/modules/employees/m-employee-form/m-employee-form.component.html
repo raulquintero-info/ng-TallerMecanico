@@ -1,4 +1,4 @@
-<form [formGroup]="employeeForm" (ngSubmit)="emitEmployee()">
+<form [formGroup]="employeeForm"  (ngSubmit)="emitEmployee()">
 
 
   <div class=" mb-3">
@@ -199,6 +199,9 @@
 
 
 </form>
+
+
+
 <pre>
 
   {{ employeeForm.value| json}}

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Toast } from './core/interfaces/toast.interface';
 import { ToastService } from './core/modules/toast/services/toast.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
   }
 
   ngOnInit(){
+
 
     this.toastService.messages.subscribe({
       next: toasts=>{

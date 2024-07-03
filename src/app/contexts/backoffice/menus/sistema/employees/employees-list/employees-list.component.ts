@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Employee } from 'src/app/core/interfaces/employee.interface';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
 import { EmployeesService } from 'src/app/core/services/employees.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employees-list',
@@ -32,6 +33,28 @@ export class EmployeesListComponent implements OnInit {
   }
 
   onDeleteById(id: number){
+     Swal.fire({
+      title: 'Eliminar Registro',
+      text: 'Desea Continuar?',
+      // icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+
+    }).then( (result:any)=> {
+      if (result.isConfirmed) {
+        console.log('eliminar registro');
+        this.deleteRow(id)
+      }
+
+
+    })
+
+  }
+
+
+  deleteRow(id:number){
     this.employeesService.delete(id).subscribe({
       next: resp=>{
         this.loadEmployees();

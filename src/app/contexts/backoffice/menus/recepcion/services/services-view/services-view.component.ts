@@ -223,6 +223,7 @@ export class ServicesViewComponent implements OnInit {
     this.displayStyleDelete = "none";
   }
   onDelete(id: number){
+
     this.servicesService.deleteById(id).subscribe({
       next: resp=>{
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Se ha eliminado el servicio: ' + this.service.idOrdenServicio , type:'warning' })

@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/core/interfaces/usuario.interface';
 import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employees-form',
@@ -73,6 +74,8 @@ export class EmployeesFormComponent implements OnInit {
 
   save(employee: Employee) {
 
+
+
     this.showSpinner = true;
     if (employee.idEmpleado > 0) {
       console.log('empleado enviado', employee);
@@ -119,6 +122,27 @@ export class EmployeesFormComponent implements OnInit {
   }
 
   delete(id: number){
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+
+    }).then(function () {
+
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+
+    })
+    // this.deleteConfirmed(id);
+  }
+  deleteConfirmed(id: number){
     this.employeesService.delete(id).subscribe({
       next: resp=>{
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: 'El Registro ha sido borrado', type: 'warning' })
