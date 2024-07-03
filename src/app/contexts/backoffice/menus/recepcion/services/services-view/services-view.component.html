@@ -1,9 +1,3 @@
-<div *ngIf="service.idOrdenServicio<1" class="container pt-3">
-
-  <div class="alert alert-danger" role="alert">
-    <strong>404.-</strong> Servicio no Encontrado
-  </div>
-</div>
 
 <div *ngIf="service.idOrdenServicio>0" class="container pt-3">
   <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
@@ -261,9 +255,7 @@
   <div class="container " style="width: 100%; text-align: center;">
     <br><Br>
     <div class="loader"></div>
-    <!-- <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div> -->
+
 
 
 

@@ -11,7 +11,8 @@
         <button class="btn btn-outline-light btn-sm" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;
         <button class="btn btn-outline-light btn-sm" [routerLink]="'/admin/recepcion/vehiculos-form/'+ vehicle.idVehiculo">
           <i class="bi bi-pencil-square"></i> Editar V.</button>
-          <button class="btn ms-1 btn-outline-light btn-sm" [routerLink]="'/admin/recepcion/servicios-form/0/'+vehicle.idVehiculo">
+          <button class="btn ms-1 btn-outline-light btn-sm "  [ngClass]="{'disabled':ordenesActivas.length>0}"
+           [routerLink]="'/admin/recepcion/servicios-form/0/'+vehicle.idVehiculo">
             <i class="bi bi-plus-circle"></i> Servicio Nuevo </button>
       </div>
     </div>
@@ -36,3 +37,4 @@
   </div>
 
 </div>
+<pre>{{ordenesActivas | json}}</pre>

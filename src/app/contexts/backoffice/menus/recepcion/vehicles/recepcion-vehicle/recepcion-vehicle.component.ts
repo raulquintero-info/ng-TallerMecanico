@@ -17,6 +17,8 @@ import { CustomersService } from '../../../../../../core/services/customers.serv
 })
 export class RecepcionVehicleComponent  implements OnInit{
   ordenesDeServicio: OrdenServicio[] =[{} as OrdenServicio]
+  ordenesActivas: OrdenServicio[] = [{} as OrdenServicio]
+  enableAddButton: string = '';
   pathEdit: string = "/admin/recepcion/vehiculos/form";
   vehicle: Vehiculo = {
     cliente:{nombre:'', apellidoMaterno: '', apellidoPaterno: ''} as Customer,
@@ -40,7 +42,7 @@ export class RecepcionVehicleComponent  implements OnInit{
     this.route.paramMap.subscribe(params => {
       this.params = params
       this.vehicle.idVehiculo = this.params.get('id');
-      this.getServicesOrder(this.vehicle.idVehiculo);
+      // this.getServicesOrder(this.vehicle.idVehiculo);
       this.getVehicle(this.vehicle.idVehiculo);
     });
 
@@ -55,6 +57,12 @@ export class RecepcionVehicleComponent  implements OnInit{
         console.log('vehiculos',resp)
         this.vehicle = resp;
 
+        this.ordenesActivas = this.vehicle.ordenServicio.filter((x,y)=>{
+          y
+        })
+        console.log('OA',this.ordenesActivas, this.enableAddButton)
+        if(this.ordenesActivas.length>0) this.enableAddButton = 'disabled'
+        else this.enableAddButton = '';
       },
       error: resp => {
         this.router.navigateByUrl("not-found", {skipLocationChange: true});
@@ -63,15 +71,15 @@ export class RecepcionVehicleComponent  implements OnInit{
     });
   }
 
-  getServicesOrder(id: number){
-    this.servicesService.getAllByIdVehicle(id).subscribe({
-      next: resp=>{
-        this.ordenesDeServicio = resp;
-        console.log(this.ordenesDeServicio);
-      }
-    });
-    document.querySelector('#newComment');
-  }
+  // getServicesOrder(id: number){
+  //   this.servicesService.getAllByIdVehicle(id).subscribe({
+  //     next: resp=>{
+  //       this.ordenesDeServicio = resp;
+  //       console.log(this.ordenesDeServicio);
+  //     }
+  //   });
+  //   document.querySelector('#newComment');
+  // }
 
   selCustomer(customer: Customer){
     this.customersService.setCurrentCustomer(customer);

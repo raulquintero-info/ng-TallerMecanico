@@ -12,6 +12,7 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
   styleUrls: ['./garage-vehicles-list.component.css'],
 })
 export class GarageVehiclesListComponent implements OnInit{
+  isLoading: boolean = false;
   vehicles: any;
   pathVehicle: string = "/mi-garage/mi-vehiculo"
   constructor(
@@ -28,18 +29,22 @@ export class GarageVehiclesListComponent implements OnInit{
    }
 
    loadVehicles():number{
+    this.isLoading = true;
     let customerId: number = 0;
     this.loginService.currentUser().subscribe({
       next: (resp: User)=>{
         customerId = resp.idCliente;
         this.customersService.getVehiclesByCustomerId(resp.idCliente).subscribe({
           next: resp=>{
+            this.isLoading=false
             this.vehicles = resp;
             console.log(resp)
             console.log(this.vehicles)
-          }
+          },
+          error: ()=> this.isLoading =false
         })
-      }
+      },
+      error: ()=> this.isLoading=false
     })
     console.log("customerId",customerId)
     return customerId
