@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { VehiclesService } from 'src/app/core/services/vehicles.service';
+import { OrdenServicio } from '../../../../../../core/interfaces/ordenServicio.interface';
 
 @Component({
   selector: 'app-taller-vehicle-list',
@@ -11,7 +13,7 @@ export class TallerVehicleListComponent implements OnInit {
   isLoading: boolean = true;
 
   title: string = 'Taller';
-  subTitle: string = 'Lista de todos los Vehiculos';
+  subTitle: string = 'Vehiculos en Taller';
   vehicles: any =[];
   pathVehicle: string ="/admin/taller/vehiculos";
   params: any;
@@ -29,7 +31,10 @@ getall(){
   this.vehiclesService.getAll().subscribe({
     next: resp=>{
       console.log(resp);
-      this.vehicles = resp;
+      this.vehicles = resp.filter(function(element:Vehiculo){
+        return element.ordenServicio.length > 0
+      })
+      this.vehicles=resp
       this.isLoading = false
     },
     error: resp=>{
@@ -38,9 +43,10 @@ getall(){
   })
 }
 
-ver(id: number){
-  this.router.navigate(['admin/recepcion/vehiculos/' + id]);
-}
+//TODO: eliminar funcion, si no se necesita
+// ver(id: number){
+//   this.router.navigate(['admin/recepcion/vehiculos/' + id]);
+// }
 
 
 }

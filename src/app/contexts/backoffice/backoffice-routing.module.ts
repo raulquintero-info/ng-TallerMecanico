@@ -33,6 +33,7 @@ import { UsersListComponent } from './menus/sistema/users/users-list/users-list.
 // import { TallerServiciosListComponent } from './menus/taller/services/taller-servicios-list/taller-servicios-list.component';
 // import { TallerVehicleListComponent } from './menus/taller/vehicles/taller-vehicle-list/taller-vehicle-list.component';
 import { NotFoundComponent } from 'src/app/shared/pages/not-found/not-found.component';
+import { ProfileComponent } from 'src/app/shared/pages/profile/profile.component';
 // import { NotFoundComponent } from 'src/app/shared/pages/not-found/not-found.component';
 
 
@@ -58,6 +59,7 @@ const routes: Routes = [
         loadChildren: ()=>import('./menus/taller/taller.module').then(m => m.TallerModule)
       },
       { path: 'dashboard', component: DashboardBackComponent, canActivate: [adminGuard] },
+      { path: 'perfil', component: ProfileComponent, canActivate: [adminGuard] },
 
 
 

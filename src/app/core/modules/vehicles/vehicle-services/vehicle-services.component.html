@@ -11,12 +11,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="" *ngFor="let service of ordenesDeServicio">
+          <tr class="clickable" *ngFor="let service of ordenesDeServicio" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">
             <td scope="row">{{ service.idOrdenServicio }}</td>
             <td>{{service.fechaOrden  | date: 'short'}}</td>
             <td>{{service.falla}}</td>
             <td>{{service.estatusServicio.estatusServicio}}</td>
-            <td><button class="btn btn-primary btn-sm" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">Ver</button></td>
+            <td><i class="bi bi-box-arrow-in-right"></i></td>
           </tr>
         </tbody>
       </table>

@@ -1,0 +1,73 @@
+<div class="container">
+
+  <div><app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"
+      [buttons]="buttons"></app-page-title>
+  </div>
+
+  <div class="row mt-4">
+
+    <div class="col-md-6">
+
+      <div class="settings-title">Datos Personales</div>
+
+      <div class="margin-bottom" *ngIf="customer.idCliente">
+        <div class="settings-content">
+          <div><strong>Nombre: </strong>{{  customer.nombre | titlecase}}</div>
+          <div><strong>Apellido P: </strong>{{ customer.apellidoPaterno | titlecase}}</div>
+          <div><strong>Apellido M: </strong>{{ customer.apellidoMaterno | titlecase}}</div>
+        </div>
+      </div>
+      <div class="margin-bottom" *ngIf="employee.idEmpleado>0">
+        <div class="settings-content">
+          <div><strong>Nombre: </strong>{{  employee.nombre | titlecase}}</div>
+          <div><strong>Apellido P: </strong>{{ employee.apellidoPaterno | titlecase}}</div>
+          <div><strong>Apellido M: </strong>{{ employee.apellidoMaterno | titlecase}}</div>
+        </div>
+      </div>
+      <!-- {{ user | json}}-->
+      <!-- {{ employee | json}} -->
+
+    </div>
+    <div class="col-md-6">
+      <div class="margin-bottom">
+
+        <div class="settings-title">Credenciales</div>
+
+        <div class="settings-content">
+          <div><strong>Usuario: </strong>{{ user.username| titlecase}}</div>
+          <div><strong>Contraseña: </strong> [ Protegida ] </div>
+          <div><strong>Tipo de Usuario: </strong>{{ user.role| titlecase}}</div>
+        </div>
+      </div>
+
+      <div class="margin-bottom" *ngIf="employee.idEmpleado">
+
+        <div class="settings-title">Datos del Empleado</div>
+
+        <div class="settings-content">
+          <div><strong>Id Empleado: </strong>{{ employee.idEmpleado}}</div>
+          <div><strong>NSS: </strong>{{ employee.nss}}</div>
+          <div><strong>Curp: </strong>{{ employee.curp | uppercase}}</div>
+          <div><strong>RFC: </strong>{{ employee.rfc | uppercase}}</div>
+          <div><strong>Puesto: </strong>{{ employee.puesto | uppercase}}</div>
+
+        </div>
+
+      </div>
+
+      <div class="margin-bottom" *ngIf="customer.idCliente">
+
+        <div class="settings-title">Datos del Cliente</div>
+
+        <div class="settings-content">
+          <div><strong>Id Cliente: </strong>{{ customer.idCliente}}</div>
+          <div><strong>NSS: </strong>{{ customer.telefono}}</div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

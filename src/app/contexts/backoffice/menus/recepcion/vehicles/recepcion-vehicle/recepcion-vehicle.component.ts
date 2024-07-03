@@ -8,6 +8,7 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 import { Marca } from '../../../../../../core/interfaces/marca.interface';
 import { Modelo } from 'src/app/core/interfaces/modelo.interface';
 import { TipoMotor } from 'src/app/core/interfaces/tipoMotor.interface';
+import { CustomersService } from '../../../../../../core/services/customers.service';
 
 @Component({
   selector: 'app-recepcion-vehicle',
@@ -28,9 +29,11 @@ export class RecepcionVehicleComponent  implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private vehiclesService: VehiclesService,
     private servicesService: ServicesService,
-    private router: Router){}
+    private customersService: CustomersService,
+    ){}
 
   ngOnInit(){
 
@@ -70,6 +73,10 @@ export class RecepcionVehicleComponent  implements OnInit{
     document.querySelector('#newComment');
   }
 
+  selCustomer(customer: Customer){
+    this.customersService.setCurrentCustomer(customer);
+    this.router.navigateByUrl('/admin/recepcion/clientes-view/' + customer.idCliente)
+  }
 
   navigate(path: string){
     this.router.navigate([path])

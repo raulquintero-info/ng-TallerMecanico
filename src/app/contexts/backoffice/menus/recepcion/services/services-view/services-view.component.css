@@ -9,6 +9,10 @@
   font-size: 14px;
   font-weight: bold;
 }
+.comments-title{
+  font-size: 20px;
+  padding: 6px;
+}
 
 .text-right {
   text-align: right;

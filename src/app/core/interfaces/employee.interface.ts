@@ -12,5 +12,5 @@ export interface Employee{
   observaciones: string;
   puesto: string;
   usuario: Usuario;
-  role:Rol
+  rol:Rol[]
 }

@@ -10,8 +10,8 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
   templateUrl: './taller-vehicle.component.html',
   styleUrls: ['./taller-vehicle.component.css']
 })
-export class TallerVehicleComponent  implements OnInit{
-  ordenesDeServicio: OrdenServicio[] =[]
+export class TallerVehicleComponent implements OnInit {
+  ordenesDeServicio: OrdenServicio[] = []
   pathEdit: string = "/admin/taller/vehiculos/form";
   vehicle: Vehiculo = {} as Vehiculo;
   params: any;
@@ -22,41 +22,53 @@ export class TallerVehicleComponent  implements OnInit{
     private route: ActivatedRoute,
     private vehiclesService: VehiclesService,
     private servicesService: ServicesService,
-    private router: Router){}
+    private router: Router) { }
 
-  ngOnInit(){
-    this.route.paramMap.subscribe(params => this.params = params);
-    this.vehiclesService.getOrdenesByIdVehicle(this.params.params.id).subscribe({
-      next: resp=>{
-        console.log('vehiculos',resp)
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+
+    // this.route.paramMap.subscribe(params =>{
+      // this.params = params
+      this.getServicesOrder(Number(params.get('id')));
+      this.getVehicleByIdWithOrders(Number(params.get('id')));
+
+    });
+
+
+  }
+
+  getVehicleByIdWithOrders(id: number){
+    this.vehiclesService.getOrdenesByIdVehicle(id).subscribe({
+      next: resp => {
+        console.log('ordenes por vehiculo', resp)
         this.vehicle = resp;
 
       }
     });
-    this.getServicesOrder();
-
   }
 
-  getServicesOrder(){
-    this.servicesService.getAll().subscribe({
-      next: resp=>{
+  getServicesOrder(id: number) {
+    this.servicesService.getAllByIdVehicle(id).subscribe({
+
+      // this.servicesService.getAll().subscribe({
+      next: resp => {
+        console.log('ordenesServico',resp);
         this.ordenesDeServicio = resp;
-        console.log(this.ordenesDeServicio);
       }
     });
     document.querySelector('#newComment');
   }
 
 
-  navigate(path: string){
+  navigate(path: string) {
     this.router.navigate([path])
   }
-regresar(){
-  this.router.navigate(['dashboard'])
-}
+  regresar() {
+    this.router.navigate(['dashboard'])
+  }
 
-print(){
-  window.print();
-}
+  print() {
+    window.print();
+  }
 
 }

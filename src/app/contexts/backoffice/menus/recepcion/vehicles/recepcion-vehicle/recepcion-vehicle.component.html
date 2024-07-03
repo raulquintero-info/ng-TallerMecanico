@@ -4,8 +4,8 @@
 
   <div class="" style=" width: 100%">
     <div class="d-flex bd-highlight">
-      <div class="ps-2 pt-2 flex-grow-1 bd-highlight page-title-menu-bar">
-        <h4>&nbsp;{{ vehicle.cliente.nombre + ' ' +vehicle.cliente.apellidoPaterno | titlecase}}  </h4>
+      <div class="ps-2 pt-2 flex-grow-1 bd-highlight page-title-menu-bar clickable" (click)="selCustomer(vehicle.cliente)">
+        <h4>&nbsp;{{ vehicle.cliente.nombre + ' ' +vehicle.cliente.apellidoPaterno | titlecase}}  <i class="bi bi-pin-angle"></i></h4>
       </div>
       <div class="p-1 ps-2 bd-highlight page-title-menu-bar d-print-none">
         <button class="btn btn-outline-light btn-sm" (click)="print()"><i class="bi bi-printer"></i> Imprimir</button>&nbsp;

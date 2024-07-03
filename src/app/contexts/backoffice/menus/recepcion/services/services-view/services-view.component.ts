@@ -74,7 +74,7 @@ export class ServicesViewComponent implements OnInit {
           }
 
           let tot=0;
-          // this.service.detalleOrdenServicios.forEach(function(a){tot += a.costo;});
+          this.service.detalleOrdenServicios.forEach(function(a){tot += a.costo;});
           this.total= tot;
 
           // this.total = this.service.detalleOrdenServicios.reduce((a, b) => a + b.costo, 0)
@@ -132,6 +132,8 @@ export class ServicesViewComponent implements OnInit {
   }
 
   addItem(){
+    if (!this.item.costo || !this.item.descripcionServicio) return;
+
     console.log('agregando item', this.item)
     this.item.ordenServicio.idOrdenServicio = this.service.idOrdenServicio;
     this.servicesService.addItem(this.item).subscribe({
@@ -141,8 +143,6 @@ export class ServicesViewComponent implements OnInit {
         this.loadService(this.service.idOrdenServicio);
         console.log('loadService: ', this.service.idOrdenServicio);
         this.item = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
-
-
       },
       error: resp=>{
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo agregar el item", type:'danger' })
@@ -186,14 +186,10 @@ export class ServicesViewComponent implements OnInit {
   }
 
   save(message: string){
-    this.service.vehiculo!.ordenServicio =[];
-
     this.servicesService.saveOrUpdate(this.service).subscribe({
       next: resp=>{
         // debugger
         console.log('response service',resp)
-        this.service=resp.ordenServicio;
-        this.service.vehiculo = this.vehicle
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: message, type:'success' })
       },
       error: (resp: any)=>{

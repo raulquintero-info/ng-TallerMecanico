@@ -1,7 +1,8 @@
 <div class="container pt-3">
 
   <div><app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true"
-      [buttons]="buttons"></app-page-title></div>
+      [buttons]="buttons"></app-page-title>
+  </div>
   <div class="">
 
     <!-- <shared-loading-spinner></shared-loading-spinner> -->
@@ -21,7 +22,6 @@
   </div>
 
   <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
-  (pageChanged)="onPageChange($event)"></app-pagination>
+    (pageChanged)="onPageChange($event)"></app-pagination>
 
 </div>
-

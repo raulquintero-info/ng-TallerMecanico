@@ -1,0 +1,12 @@
+.settings-box{
+  margin-bottom: 14px
+}
+.settings-content{
+  padding: 14px
+}
+.settings-title{
+  padding-left: 6px;
+  background-color: #1a4f46;
+  color: white;
+  font-weight: bold;
+}

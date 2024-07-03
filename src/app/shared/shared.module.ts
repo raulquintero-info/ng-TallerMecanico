@@ -5,6 +5,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { RouterModule } from '@angular/router';
 import { PhonePipe } from './pipes/phone.pipe';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 
@@ -14,6 +15,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     PaginationComponent,
     PhonePipe,
     LoadingSpinnerComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
