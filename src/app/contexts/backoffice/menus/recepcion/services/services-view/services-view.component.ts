@@ -1,10 +1,11 @@
+import { OrdenServicio } from './../../../../../../core/interfaces/ordenServicio.interface';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Button } from 'src/app/core/interfaces/button.interface';
 import { EstatusService } from 'src/app/core/services/estatusService.service';
 import { Marca } from 'src/app/core/interfaces/marca.interface';
 import { Modelo } from 'src/app/core/interfaces/modelo.interface';
-import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
+// import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { VehiclesService } from 'src/app/core/services/vehicles.service';
@@ -44,6 +45,7 @@ export class ServicesViewComponent implements OnInit {
   statusList: EstatusServicio[] = []
   params: any;
   newComment: string = '';
+  serviceAgo: number = 0;
 
   private statusService = inject(EstatusService);
   constructor(
@@ -54,7 +56,12 @@ export class ServicesViewComponent implements OnInit {
     private toastService: ToastService,
     private customersService: CustomersService,
   ) { }
+  calculateDiff(dateSent: Date){
+    let currentDate = new Date();
+    dateSent = new Date(dateSent);
 
+    return Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(dateSent.getFullYear(), dateSent.getMonth(), dateSent.getDate()) ) /(1000 * 60 * 60 * 24));
+}
   ngOnInit(): void {
     // this.isLoadingService = true
     this.activatedRoute.params
@@ -62,9 +69,10 @@ export class ServicesViewComponent implements OnInit {
         switchMap( ({id}) =>  this.servicesService.getById(id))
       )
       .subscribe({
-        next: resp => {
+        next: (resp) => {
           console.log('servicio cargado', resp)
           this.isLoadingService = false;
+          this.serviceAgo = this.calculateDiff(resp.fechaOrden)
           //TODO: revisar por que el back end regresa nulo con codigo 200 en vez de 404
           if (resp!=null){
             this.service = resp;

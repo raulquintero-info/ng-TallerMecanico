@@ -1,4 +1,3 @@
-
 <div *ngIf="service.idOrdenServicio>0" class="container pt-3">
   <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons"></app-page-title>
 
@@ -23,7 +22,7 @@
         <div class="row">
           <div class="col-md-6 ">
 
-            <div class="mb-5">
+            <div class="mb-3">
               <div class="service-title">Datos del Cliente</div>
               <div class="p-2">
                 <div>
@@ -36,8 +35,68 @@
             </div>
 
 
-            <div class="service-title mb-3">Descripcion de la Falla <span
-                class="badge bg-secondary d-print-none">{{service.estatusServicio.estatusServicio | titlecase}}</span>
+            <div class="service-title">Datos del Vehiculos</div>
+            <div class="p-2">
+              <div>
+                VIN:
+                <button class="btn btn-link btn-sm" [routerLink]="'/admin/recepcion/vehiculos/' + vehicle.idVehiculo">
+                  {{ vehicle.vin | uppercase }} <i class="bi bi-link-45deg"></i>
+                </button>
+              </div>
+              <div>Marca:
+                {{ vehicle.modelo.marca.marca | titlecase}}
+              </div>
+              <div>Modelo: {{ vehicle.modelo.modelo }}</div>
+              <div>Año: {{ vehicle.anioModelo }}</div>
+            </div>
+
+            <!-- <img [src]="vehicle.imagen" style="width: 100%" alt=""> -->
+
+
+
+
+
+
+          </div>
+          <div class="col-md-6 ">
+            <!-- <div class="service-title">{{service.falla | titlecase}}</div> -->
+            <!-- <app-vehicle-card [vehicle]="vehicle"></app-vehicle-card> -->
+
+
+            <div class="mb-3">
+
+              <div class="d-flex">
+                <div class="service-title ps-2 pe-2">Estatus</div>
+                <div class="flex-grow-1 service-status btn-guinda text-center">
+                  {{service.estatusServicio.estatusServicio | uppercase}}
+                </div>
+                <div class="bg-secondary">
+                  <button class="btn btn-secondary"><i class="bi bi-plus-lg"></i></button>
+                </div>
+              </div>
+              <div class="d-flex mt-2" style="border: 1px solid green ">
+                <div class="flex-grow-1">
+                  <img [src]="vehicle.imagen" style="width: 150px" alt="">
+
+                </div>
+                <!-- <div class="pe-3">
+                  <h1><i class="bi bi-arrow-down-square text-success"></i></h1>
+                </div> -->
+                <div class="text-center pt-3">
+                  Fecha de Entrada: {{serviceAgo}}
+                  <div><strong>{{service.fechaOrden | date:"short"}}</strong></div>
+                </div>
+                <div *ngIf="true" class="pt-2 ps-3 text-center flex-grow-1">
+                  <span style="font-size: 40px; font-weight: bold">6</span>
+                  <div style="top:-15px; position:relative; font-size: 12px">dias</div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="service-title mb-3">Descripcion de la Falla
+              <!-- <span class="badge bg-secondary d-print-none">{{service.estatusServicio.estatusServicio | titlecase}}</span> -->
             </div>
 
             <div class="p-2">
@@ -48,33 +107,11 @@
 
               <!-- To do: asociar con empleado  -->
               <!-- <div class="service-subtitle mt-3">Atendio</div>
-                  <div>Nombre del Empleado</div> -->
+                <div>Nombre del Empleado</div> -->
 
-              <div class="service-subtitle mt-2">Fecha y Hora</div>
-              <div> {{ service.fechaOrden | date:'short'}}</div>
+              <!-- <div class="service-subtitle mt-2">Fecha y Hora</div>
+              <div> {{ service.fechaOrden | date:'short'}}</div> -->
             </div>
-
-          </div>
-          <div class="col-md-6 ">
-            <!-- <div class="service-title">{{service.falla | titlecase}}</div> -->
-            <!-- <app-vehicle-card [vehicle]="vehicle"></app-vehicle-card> -->
-
-            <div class="service-title">Datos del Vehiculos</div>
-            <div class="p-2">
-              <div>Marca:
-                {{ vehicle.modelo.marca.marca | titlecase}}
-              </div>
-              <div>Modelo: {{ vehicle.modelo.modelo }}</div>
-              <div>Año: {{ vehicle.anioModelo }}</div>
-              <div>
-                VIN:
-                <button class="btn btn-link btn-sm" [routerLink]="'/admin/recepcion/vehiculos/' + vehicle.idVehiculo">
-                  {{ vehicle.vin | uppercase }} <i class="bi bi-link-45deg"></i>
-                </button>
-              </div>
-            </div>
-
-            <img [src]="vehicle.imagen" style="width: 100%" alt="">
 
           </div>
         </div>
@@ -107,6 +144,8 @@
 
     </div>
     <div class="col-md-4">
+
+
       <div class="service-title ">
         <table style="width: 100%">
           <tr>

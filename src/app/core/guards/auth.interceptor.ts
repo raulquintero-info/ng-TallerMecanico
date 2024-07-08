@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { Observable, finalize, tap } from "rxjs";
+import { Observable, finalize, switchMap, tap, throwError } from "rxjs";
 import { LoginService } from "../modules/auth/services/login.service";
 import { Router } from "@angular/router";
 
@@ -24,7 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq).pipe(
       tap({
         // Succeeds when there is a response; ignore other events
-        next: (event) => (ok = event instanceof HttpResponse ? 'succeeded' : ''),
+        next: (event:any) => (ok = event instanceof HttpResponse ? 'succeeded' : ''),
         // Operation failed; error is an HttpErrorResponse
         error: (_error) => {
           ok = 'failed'

@@ -8,7 +8,7 @@
 
     <div class="col-md-6">
 
-      <div class="settings-title">Datos Personales</div>
+      <div class="settings-title"><i class="bi bi-person-badge"></i> Datos Personales</div>
 
       <div class="margin-bottom" *ngIf="customer.idCliente">
         <div class="settings-content">
@@ -31,18 +31,18 @@
     <div class="col-md-6">
       <div class="margin-bottom">
 
-        <div class="settings-title">Credenciales</div>
+        <div class="settings-title"><i class="bi bi-fingerprint"></i> Credenciales</div>
 
         <div class="settings-content">
           <div><strong>Usuario: </strong>{{ user.username| titlecase}}</div>
-          <div><strong>Contraseña: </strong> [ Protegida ] </div>
+          <div><strong>Contraseña: </strong> <button class="btn btn-sm btn-link">cambiar</button> </div>
           <div><strong>Tipo de Usuario: </strong>{{ user.role| titlecase}}</div>
         </div>
       </div>
 
       <div class="margin-bottom" *ngIf="employee.idEmpleado">
 
-        <div class="settings-title">Datos del Empleado</div>
+        <div class="settings-title"><i class="bi bi-person-lines-fill"></i> Datos del Empleado</div>
 
         <div class="settings-content">
           <div><strong>Id Empleado: </strong>{{ employee.idEmpleado}}</div>
@@ -57,7 +57,7 @@
 
       <div class="margin-bottom" *ngIf="customer.idCliente">
 
-        <div class="settings-title">Datos del Cliente</div>
+        <div class="settings-title"><i class="bi bi-person-lines-fill"></i> Datos del Cliente</div>
 
         <div class="settings-content">
           <div><strong>Id Cliente: </strong>{{ customer.idCliente}}</div>

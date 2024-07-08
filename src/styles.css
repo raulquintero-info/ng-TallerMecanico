@@ -2,6 +2,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
+
+.body{
+  font-family: "Jost", "snas-serif";
+}
 .page-title {
   margin-top: 20px;
   background-color: rgb(243, 243, 243);

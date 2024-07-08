@@ -1,28 +1,33 @@
 
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr class="table-secondary">
-            <th scope="col">Id</th>
-            <th scope="col">Fecha de Entrada</th>
-            <th scope="col">Titulo</th>
-            <th scope="col" >Status</th>
-            <th class="d-print-none"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="clickable" *ngFor="let service of ordenesDeServicio" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">
-            <td scope="row">{{ service.idOrdenServicio }}</td>
-            <td>{{service.fechaOrden  | date: 'short'}}</td>
-            <td>{{service.falla}}</td>
-            <td>{{service.estatusServicio.estatusServicio}}</td>
-            <td><i class="bi bi-box-arrow-in-right"></i></td>
-          </tr>
-        </tbody>
-      </table>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr class="table-secondary">
+        <th scope="col">Id</th>
+        <th scope="col">Fecha de Entrada</th>
+        <th scope="col">Titulo</th>
+        <th scope="col" >Status</th>
+        <th class="d-print-none"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="clickable"  style="color:red" *ngFor="let service of ordenesDeServicio" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">
+        <td scope="row">{{ service.idOrdenServicio }}</td>
+        <td>{{service.fechaOrden  | date: 'short'}}</td>
+        <td>{{service.falla}}</td>
+        <td>
+          {{service.estatusServicio.estatusServicio | titlecase}}
+          <span *ngIf="service.estatusServicio.idEstatusServicio!=6" class="badge bg-verde">S A</span>
+        </td>
+        <td>
+          <i class="bi bi-box-arrow-in-right"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 
 
 
-    </div>
+</div>
 
