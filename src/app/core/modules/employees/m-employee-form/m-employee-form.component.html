@@ -1,17 +1,17 @@
-<form [formGroup]="employeeForm"  (ngSubmit)="emitEmployee()">
+<form [formGroup]="employeeForm" (ngSubmit)="emitEmployee()">
 
 
   <div class=" mb-3">
     <label for="idEmpleado" class="form-label">Id</label>
-    <input type="idEmpleado" class="form-control"  [readOnly]="true"
-      formControlName="idEmpleado" id="idEmpleado" name="idEmpleado">
+    <input type="idEmpleado" class="form-control" [readOnly]="true" formControlName="idEmpleado" id="idEmpleado"
+      name="idEmpleado">
 
   </div>
 
   <div class=" mb-3">
     <label for="username" class="form-label">Email</label>
-    <input type="text" class="form-control" formControlName="username" [readOnly]="employee.idEmpleado>0"
-       id="username" name="username">
+    <input type="text" class="form-control" formControlName="username" [readOnly]="employee.idEmpleado>0" id="username"
+      name="username">
   </div>
 
   <!-- validacion  -->
@@ -64,8 +64,7 @@
 
   <div class=" mb-3">
     <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
-    <input type="text" class="form-control" formControlName="aPaterno" id="apellidoPaterno"
-      name="apellidoPaterno">
+    <input type="text" class="form-control" formControlName="aPaterno" id="apellidoPaterno" name="apellidoPaterno">
 
   </div>
 
@@ -82,10 +81,9 @@
 
   <div class=" mb-3">
     <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
-    <input type="text" class="form-control" formControlName="aMaterno" id="apellidoMaterno"
-      name="apellidoMaterno">
+    <input type="text" class="form-control" formControlName="aMaterno" id="apellidoMaterno" name="apellidoMaterno">
 
-      <div
+    <div
       *ngIf="employeeForm.controls.aMaterno.invalid  && (employeeForm.controls.aMaterno.dirty || employeeForm.controls.aMaterno.touched)"
       class="alert alert-danger">
       <div *ngIf="employeeForm.controls.aMaterno.errors?.['required']">
@@ -148,8 +146,7 @@
 
   <div class=" mb-3">
     <label for="observaciones" class="form-label">Observaciones</label>
-    <input type="text" class="form-control" formControlName="observaciones" id="observaciones"
-      name="observaciones">
+    <input type="text" class="form-control" formControlName="observaciones" id="observaciones" name="observaciones">
 
   </div>
 
@@ -164,28 +161,18 @@
     </div>
   </div>
 
-  <div class=" mb-3" style1="display:none;">
+
+
+  <!-- TODO: revisar como va a quedar , si solo van a ser empleados los que se puedan dar de alta -->
+  <div class=" mb-3" style="display:none;">
 
     <label for="rol" class="form-label">Rol</label>
     <select class="form-select" id="rol" formControlName="role" aria-label="rol">
-    <option *ngFor="let b of roles"  [ngValue]="b">{{ b.nombre }}</option>
-      </select>
-    </div>
+      <option *ngFor="let b of roles" [ngValue]="b">{{ b.nombre }}</option>
+    </select>
+  </div>
 
-  <!-- <ul>
-      <li *ngFor="let item of employee.usuario.rol">
-        <pre>{{item | json}}</pre>
-      </li>
-    </ul> -->
 
-  <!-- <div class=" mb-3">
-      <input type="password" class="" id="password" formControlName="password"
-      placeholder="name@example.com">
-      <label for="floatingInput">Contraseña</label>
-      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger ps-2">
-        <div *ngIf="password.errors?.['required']">La contraseña obligatorio</div>
-      </div>
-    </div> -->
 
 
 

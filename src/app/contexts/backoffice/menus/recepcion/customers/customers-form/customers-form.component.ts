@@ -23,7 +23,7 @@ export class CustomersFormComponent implements OnInit {
   subTitle: string = "Cliente Nuevo"
   buttons = [];
   customer: Customer = {
-    usuario: { idUsuario: 0, username: '', password: '', email:'', rol: [] } as Usuario
+    usuario: { idUsuario: 0, username: '', password: '', email: '', rol: [] } as Usuario
   } as Customer;
   roles: Rol[] = [{ idRol: 0, nombre: "test" }];
   // user: Usuario = {} as Usuario
@@ -36,11 +36,11 @@ export class CustomersFormComponent implements OnInit {
   private customersService = inject(CustomersService);
   private rolService = inject(RolService);
   private toastService = inject(ToastService);
-  private  formBuild = inject(FormBuilder);
+  private formBuild = inject(FormBuilder);
 
   customersForm = this.formBuild.group({
     idCliente: [''],
-    username : ['', [Validators.required, Validators.email]],
+    username: ['', [Validators.required, Validators.email]],
     password: [''],
     // password: ['', [Validators.required, Validators.minLength(8)]],
     nombre: ['', [Validators.required, Validators.minLength(2)]],
@@ -55,38 +55,38 @@ export class CustomersFormComponent implements OnInit {
       this.params = params
       this.customer.idCliente = this.params.params.id;
 
-    console.log('customer inicio', this.customer);
-    if (this.customer.idCliente > 0) {
-      this.customersService.getById(this.customer.idCliente).subscribe({
-        next: resp => {
-          this.customer = resp;
-          this.customer.vehiculos =[];
-          this.subTitle = "Editar Cliente"
-          console.log('cliente recibido', this.customer)
-          if (this.customer.idCliente>0){
-            console.log('deshabilitando username')
-            this.customersForm.get('username')?.disable();
+      console.log('customer inicio', this.customer);
+      if (this.customer.idCliente > 0) {
+        this.customersService.getById(this.customer.idCliente).subscribe({
+          next: resp => {
+            this.customer = resp;
+            this.customer.vehiculos = [];
+            this.subTitle = "Editar Cliente"
+            console.log('cliente recibido', this.customer)
+            if (this.customer.idCliente > 0) {
+              console.log('deshabilitando username')
+              this.customersForm.get('username')?.disable();
+            }
+
+            this.customersForm.patchValue({
+              username: this.customer.usuario.username,
+              nombre: this.customer.nombre,
+              apellidoPat: this.customer.apellidoPaterno,
+              apellidoMat: this.customer.apellidoMaterno,
+              domicilio: this.customer.domicilio,
+              telefono: this.customer.telefono
+            });
+            this.customersForm.get('password')?.disable();
+
+          },
+          error: resp => {
+            this.subTitle = 'hubo un problema con la informacion de este registro'
           }
-
-          this.customersForm.patchValue({
-            username: this.customer.usuario.username,
-            nombre: this.customer.nombre,
-            apellidoPat: this.customer.apellidoPaterno,
-            apellidoMat: this.customer.apellidoMaterno,
-            domicilio: this.customer.domicilio,
-            telefono: this.customer.telefono
-          });
-          this.customersForm.get('password')?.disable();
-
-        },
-        error: resp => {
-          this.subTitle = 'hubo un problema con la informacion de este registro'
-        }
-      })
-    } else {
-      this.customer = {usuario: { idUsuario: 0, username: '', password: '',email:'', rol: [] } as Usuario} as Customer;
-    }
-  });
+        })
+      } else {
+        this.customer = { usuario: { idUsuario: 0, username: '', password: '', email: '', rol: [] } as Usuario } as Customer;
+      }
+    });
     this.rolService.getAll().subscribe({
       next: resp => {
         this.roles = resp;
@@ -175,7 +175,7 @@ export class CustomersFormComponent implements OnInit {
   }
 
 
-  cambiarPassword(){
+  cambiarPassword() {
 
   }
 

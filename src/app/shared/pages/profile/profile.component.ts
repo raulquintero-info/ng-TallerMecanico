@@ -7,6 +7,7 @@ import { LoginService } from 'src/app/core/modules/auth/services/login.service';
 import { CustomersService } from 'src/app/core/services/customers.service';
 import { EmployeesService } from 'src/app/core/services/employees.service';
 import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'shared-profile',
@@ -80,8 +81,19 @@ export class ProfileComponent implements OnInit {
         next: resp=>{
           console.log(resp)
           this.showSpinner = false
-          this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: resp.mensaje, type: 'success' })
+          this.newPasswordForm.patchValue({
+            currentPassword: "",
+            newPassword: "",
+          });
+          this.newPasswordForm.reset();
           this.showPasswordForm = false;
+
+          Swal.fire({
+            title: 'Seguridad del Sistema',
+            text: 'Se ha cambiado la contraseña.',
+            confirmButtonColor: '#1a4f46',
+            confirmButtonText: 'Cerrar'
+          });
 
         },
         error: resp=>{
@@ -93,19 +105,13 @@ export class ProfileComponent implements OnInit {
 
       })
 
-
-
-
-
-
-
-
   }
 
 
 
   onCancelBtn() {
     console.log('show', this.showPasswordForm);
+    this.newPasswordForm.reset();
     this.showPasswordForm = false;
   }
 

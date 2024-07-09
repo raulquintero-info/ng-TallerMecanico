@@ -33,7 +33,7 @@ private formBuild = inject(FormBuilder);
     //telefono: ['', [Validators.required, Validators.minLength(10)]],
     puesto: ['', [Validators.required, Validators.minLength(5)]],
     observaciones: ['', [Validators.required, Validators.minLength(10)]],
-    role: [{} as Rol],
+    role: this.employee.rol,
     usuario: {} as Usuario
   })
 
@@ -64,7 +64,7 @@ private formBuild = inject(FormBuilder);
 
 
 emitEmployee():void {
-  this.employee.idEmpleado = this.employeeForm.value.idEmpleado!;
+  this.employee.idEmpleado = this.employee.idEmpleado;
   this.employee.nombre = this.employeeForm.value.nombre!;
   this.employee.apellidoPaterno = this.employeeForm.value.aPaterno!;
   this.employee.apellidoMaterno = this.employeeForm.value.aMaterno!;

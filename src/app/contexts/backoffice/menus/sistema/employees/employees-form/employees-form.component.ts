@@ -10,6 +10,7 @@ import { Usuario } from 'src/app/core/interfaces/usuario.interface';
 import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { EmployeeToSave } from 'src/app/core/interfaces/employeeTotSave.interface';
 
 @Component({
   selector: 'app-employees-form',
@@ -21,17 +22,17 @@ export class EmployeesFormComponent implements OnInit {
   isSaved: boolean = false;
   respuesta: string = '';
   title: string = "Sistema";
-  subTitle: string = "Editar Empleado";
+  subTitle: string = "editar/crear empleado";
   buttons = [{ text: "Empleados", path: "/admin/sistema/empleados" }];
   roles: Rol[] = [];
-  employee: Employee = {usuario: {idUsuario: 0,email:''} as Usuario} as Employee;
+  employee: Employee = { usuario: { idUsuario: 0 } as Usuario } as Employee;
   params: any;
 
   private rolesService = inject(RolService);
   private employeesService = inject(EmployeesService);
   private route = inject(ActivatedRoute);
   private toastService = inject(ToastService);
-  private  formBuild = inject(FormBuilder);
+  private formBuild = inject(FormBuilder);
 
 
 
@@ -49,6 +50,7 @@ export class EmployeesFormComponent implements OnInit {
               "nombre": "EMPLEADO"
             }
           ]
+
           this.employee = employee;
           console.log('empleado', this.employee)
         }
@@ -74,10 +76,14 @@ export class EmployeesFormComponent implements OnInit {
 
   save(employee: Employee) {
 
-
-
+    let employeeToSave = this.prepareEmployeeToSave(employee)
+    console.log('employeeToSave', employeeToSave, employee)
     this.showSpinner = true;
+
     if (employee.idEmpleado > 0) {
+      //actualizar empleado
+      this.subTitle = "Editar Empleado";
+
       console.log('empleado enviado', employee);
       this.employeesService.update(employee, 'ADMIN').subscribe({
         next: resp => {
@@ -95,14 +101,9 @@ export class EmployeesFormComponent implements OnInit {
       })
     } else {
 
-      //preparando informacion pra enviar al endpoint
-      let data = {
-        usuario: employee.usuario,
-        empleado: employee,
-      }
-      data.empleado.usuario = {} as Usuario;
-      console.log('empleado enviado', data);
-      this.employeesService.create(data, 'EMPLEADO').subscribe({
+      this.subTitle = "Crear Empleado";
+      console.log('empleado enviado', employeeToSave);
+      this.employeesService.create(employeeToSave, 'EMPLEADO').subscribe({
         next: resp => {
           console.log('empleado resp', resp)
           this.employee = resp.Empleado
@@ -121,7 +122,9 @@ export class EmployeesFormComponent implements OnInit {
 
   }
 
-  delete(id: number){
+
+
+  delete(id: number) {
     Swal.fire({
       title: 'Error!',
       text: 'Do you want to continue',
@@ -142,22 +145,43 @@ export class EmployeesFormComponent implements OnInit {
     })
     // this.deleteConfirmed(id);
   }
-  deleteConfirmed(id: number){
+  deleteConfirmed(id: number) {
     this.employeesService.delete(id).subscribe({
-      next: resp=>{
+      next: resp => {
         this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: 'El Registro ha sido borrado', type: 'warning' })
 
       }
     });
   }
 
-  onNewEmployee(employee: Employee):void{
+  onNewEmployee(employee: Employee): void {
     this.employee = employee;
     this.save(employee);
-    console.log('empleado grabado',employee)
+    console.log('empleado grabado', employee)
   }
 
-  prepareEmployeeToSave(){
+  prepareEmployeeToSave(employee: Employee) {
+
+    return {
+      "usuario": {
+        "idUsuario": employee.usuario.idUsuario,
+        "username": employee.usuario.username,
+        "password": employee.usuario.password,
+        "rol": employee.usuario.rol
+      },
+      "empleado": {
+        "idEmpleado": employee.idEmpleado,
+        "nombre": employee.nombre,
+        "apellidoPaterno": employee.apellidoPaterno,
+        "apellidoMaterno": employee.apellidoMaterno,
+        "nss": employee.nss,
+        "curp": employee.curp,
+        "rfc": employee.rfc,
+        "puesto": employee.puesto,
+        "observaciones": employee.observaciones,
+        // "usuario": {}
+      }
+    }
 
   }
 }
