@@ -83,12 +83,13 @@
                   <h1><i class="bi bi-arrow-down-square text-success"></i></h1>
                 </div> -->
                 <div class="text-center pt-3">
-                  Fecha de Entrada: {{serviceAgo}}
+                  Fecha de Entrada:
                   <div><strong>{{service.fechaOrden | date:"short"}}</strong></div>
                 </div>
                 <div *ngIf="true" class="pt-2 ps-3 text-center flex-grow-1">
-                  <span style="font-size: 40px; font-weight: bold">6</span>
+                  <span style="font-size: 40px; font-weight: bold">{{service.fechaOrden | daysago}}</span>
                   <div style="top:-15px; position:relative; font-size: 12px">dias</div>
+
                 </div>
               </div>
 
@@ -344,6 +345,8 @@
     </div>
   </div>
 </div>
+
+<!-- modal para eliminra servicio -->
 
 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleDelete}">
   <div class="modal-dialog" role="document">

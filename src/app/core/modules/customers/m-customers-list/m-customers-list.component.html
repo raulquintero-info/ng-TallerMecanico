@@ -8,19 +8,19 @@
         <th>Apellido M</th>
         <th>Telefono</th>
         <th>E-mail</th>
-        <th>Vehiculos</th>
+        <th class="text-center">Vehiculos</th>
         <th width="150 px" class="d-print-none">Opciones</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let customer of customers" class="table-striped">
-        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;" scope="row">{{customer.idCliente}}</td>
-        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.nombre | titlecase}}</td>
-        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.apellidoPaterno | titlecase}}
-        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.apellidoMaterno | titlecase}}</td>
-        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.telefono | phone}}</td>
-        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{customer.usuario.username}}</td>
-        <td (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{ customer.vehiculos.length }}</td>
+      <tr *ngFor="let customer of customers" class="table-striped clickable">
+        <td (click)="setCurrentCustomer(customer)" scope="row">{{customer.idCliente}}</td>
+        <td (click)="setCurrentCustomer(customer)" >{{customer.nombre | titlecase}}</td>
+        <td (click)="setCurrentCustomer(customer)">{{customer.apellidoPaterno | titlecase}}
+        <td (click)="setCurrentCustomer(customer)">{{customer.apellidoMaterno | titlecase}}</td>
+        <td (click)="setCurrentCustomer(customer)">{{customer.telefono | phone}}</td>
+        <td (click)="setCurrentCustomer(customer)">{{customer.usuario.username}}</td>
+        <td class="text-center" (click)="setCurrentCustomer(customer)" style="cursor: pointer;">{{ customer.vehiculos.length }}</td>
         <td class="d-print-none">
           <!-- <button class="btn btn-success" [routerLink]="['/admin/recepcion/vehiculos-form'+'/' + customer.idCliente]">Ver</button>&nbsp; -->
           <i class="bi bi-pin-angle" [routerLink]="['/admin/recepcion/clientes-view/' + customer.idCliente]"></i>&nbsp;

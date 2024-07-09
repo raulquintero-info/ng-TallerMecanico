@@ -7,6 +7,7 @@
         <th scope="col">Fecha</th>
         <th>Vehiculo</th>
         <th scope="col">Falla</th>
+        <th class="text-center">Dias</th>
         <th scope="col">Status</th>
       </tr>
     </thead>
@@ -16,6 +17,7 @@
         <td  class="text-row" scope="row">{{ service.fechaOrden | date: 'short'}}</td>
         <td class="text-row"> {{ service?.vehiculo?.modelo?.marca?.marca +' '+ service?.vehiculo?.modelo?.modelo  | titlecase}}</td>
         <td  class="text-row">{{ service.falla | titlecase}}</td>
+        <td class="text-row text-center">{{service.fechaOrden | daysago}}</td>
         <td  class="text-row">{{ service.estatusServicio.estatusServicio | titlecase}}</td>
       </tr>
 

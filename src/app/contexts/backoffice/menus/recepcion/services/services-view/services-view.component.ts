@@ -45,7 +45,6 @@ export class ServicesViewComponent implements OnInit {
   statusList: EstatusServicio[] = []
   params: any;
   newComment: string = '';
-  serviceAgo: number = 0;
 
   private statusService = inject(EstatusService);
   constructor(
@@ -56,12 +55,7 @@ export class ServicesViewComponent implements OnInit {
     private toastService: ToastService,
     private customersService: CustomersService,
   ) { }
-  calculateDiff(dateSent: Date){
-    let currentDate = new Date();
-    dateSent = new Date(dateSent);
 
-    return Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(dateSent.getFullYear(), dateSent.getMonth(), dateSent.getDate()) ) /(1000 * 60 * 60 * 24));
-}
   ngOnInit(): void {
     // this.isLoadingService = true
     this.activatedRoute.params
@@ -72,7 +66,6 @@ export class ServicesViewComponent implements OnInit {
         next: (resp) => {
           console.log('servicio cargado', resp)
           this.isLoadingService = false;
-          this.serviceAgo = this.calculateDiff(resp.fechaOrden)
           //TODO: revisar por que el back end regresa nulo con codigo 200 en vez de 404
           if (resp!=null){
             this.service = resp;

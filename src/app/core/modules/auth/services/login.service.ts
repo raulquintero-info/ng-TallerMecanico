@@ -122,6 +122,8 @@ export class LoginService {
     // return user.authorities[0].authority;
   }
 
+  setNewPassword(newPassword: any):Observable<any> {return this.http.post(this.url + '/new-credentials', newPassword)}
+
   getToken() {
     return localStorage.getItem('token');
   }
