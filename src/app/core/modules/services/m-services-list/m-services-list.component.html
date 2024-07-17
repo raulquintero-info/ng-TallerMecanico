@@ -17,7 +17,11 @@
         <td  class="text-row" scope="row">{{ service.fechaOrden | date: 'short'}}</td>
         <td class="text-row"> {{ service?.vehiculo?.modelo?.marca?.marca +' '+ service?.vehiculo?.modelo?.modelo  | titlecase}}</td>
         <td  class="text-row">{{ service.falla | titlecase}}</td>
-        <td class="text-row text-center">{{service.fechaOrden | daysago}}</td>
+        <td class="text-row text-center">
+          <!-- TODO:Agregar informcion de la factura para mostrar , si ya esta cobrado el servicio -->
+          <span *ngIf="service.estatusServicio.idEstatusServicio == 6" class="cobrado badge bg-success">Cobrado</span>
+          <div *ngIf="service.estatusServicio.idEstatusServicio != 6" >{{service.fechaOrden | daysago}}</div>
+        </td>
         <td  class="text-row">{{ service.estatusServicio.estatusServicio | titlecase}}</td>
       </tr>
 

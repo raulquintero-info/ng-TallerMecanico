@@ -12,6 +12,8 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 })
 export class TallerVehicleComponent implements OnInit {
   ordenesDeServicio: OrdenServicio[] = []
+  ordenesActivas: OrdenServicio[] = [{} as OrdenServicio]
+  fechaEntrada: string ='';
   pathEdit: string = "/admin/taller/vehiculos/form";
   vehicle: Vehiculo = {} as Vehiculo;
   params: any;
@@ -42,7 +44,12 @@ export class TallerVehicleComponent implements OnInit {
       next: resp => {
         console.log('ordenes por vehiculo', resp)
         this.vehicle = resp;
-
+        this.ordenesActivas = this.vehicle.ordenServicio;
+        this.ordenesActivas = this.ordenesActivas.filter((x)=> x.estatusServicio.idEstatusServicio != 6);
+        console.log('OA',this.ordenesActivas)
+        if(this.ordenesActivas.length>0) {
+          this.fechaEntrada = this.ordenesActivas[0].fechaOrden;
+        }
       }
     });
   }

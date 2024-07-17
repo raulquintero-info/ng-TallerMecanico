@@ -16,6 +16,9 @@ export class TipoMotorListComponent implements OnInit{
     {text: "Agregar", path: "/admin/catalogos/tipos-motor-form/0"},
   ];
 
+  currentPage: number = 1;
+  totalPages: number = 1;
+
   private tipoMotorService =  inject(TipoMotorService);
 
 
@@ -26,6 +29,11 @@ export class TipoMotorListComponent implements OnInit{
         this.tiposMotores = resp;
       }
     })
+  }
+
+  onPageChange(page: number) {
+    // this.loadVehicles(page - 1);
+
   }
 
 }

@@ -8,6 +8,7 @@
     <app-m-tipos-motor-list [tiposMotores]="tiposMotores" pathCustomer="/admin/catalogos/roles">
     </app-m-tipos-motor-list>
   </div>
-
+  <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+  (pageChanged)="onPageChange($event)"></app-pagination>
 
 </div>

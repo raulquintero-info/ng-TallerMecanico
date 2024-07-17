@@ -16,15 +16,18 @@ export class EmployeesListComponent implements OnInit {
   employees: Employee[] = [];
   messages: Toast[] = [];
 
+  currentPage: number = 1;
+  totalPages: number = 1;
+
   private employeesService = inject(EmployeesService);
 
   ngOnInit(){
 
-    this.loadEmployees();
+    this.loadEmployees(this.currentPage-1);
 
   }
 
-  loadEmployees(){
+  loadEmployees(page: number){
     this.employeesService.getAll().subscribe({
       next: resp=>{
         this.employees = resp;
@@ -58,7 +61,7 @@ export class EmployeesListComponent implements OnInit {
   deleteRow(id:number){
     this.employeesService.delete(id).subscribe({
       next: resp=>{
-        this.loadEmployees();
+        this.loadEmployees(this.currentPage-1);
         this.messages.push({ title: "Sistema", timeAgo: "", body: ' Registro Eliminado', type: 'warning' })
       },
       error: resp=>{
@@ -71,5 +74,8 @@ export class EmployeesListComponent implements OnInit {
   // onDeleteById(id: number){
   //   this.deleteById(id);
   // }
+  onPageChange(page: number) {
+    this.loadEmployees(page-1);
+  }
 
 }

@@ -18,6 +18,9 @@ export class TallerVehicleListComponent implements OnInit {
   pathVehicle: string ="/admin/taller/vehiculos";
   params: any;
 
+  currentPage: number = 1;
+  totalPages: number = 1;
+
   constructor(private route: ActivatedRoute, private router: Router, private vehiclesService: VehiclesService){}
 
 
@@ -43,10 +46,19 @@ getall(){
   })
 }
 
+
+onPageChange(page: number) {
+  // this.loadVehicles(page - 1);
+
+}
+
+
 //TODO: eliminar funcion, si no se necesita
 // ver(id: number){
 //   this.router.navigate(['admin/recepcion/vehiculos/' + id]);
 // }
+
+
 
 
 }

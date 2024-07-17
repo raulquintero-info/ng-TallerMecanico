@@ -48,7 +48,7 @@ export class ServicesListComponent implements OnInit {
     this.activatedRoute.params.subscribe(({status}) => {
         console.log('status',status);
         if(status == 'todos'){
-          this.loadServices(this.currentPage )
+          this.loadServices(1, this.currentPage )
         }else{
           this.getByStatus(status)
         }
@@ -56,7 +56,7 @@ export class ServicesListComponent implements OnInit {
 
   }
 
-  loadServices(page: number) {
+  loadServices(department: number,page: number) {
     // this.servicesService
     //   .getPaginatedData(page)
     //   .subscribe((data: Page<any>) => {
@@ -67,7 +67,8 @@ export class ServicesListComponent implements OnInit {
     //     this.isLoading = false;
 
     //   });
-    this.servicesService.getPaginatedRecepcionData(page).subscribe({
+
+    this.servicesService.getPaginatedRecepcionData(department, page).subscribe({
       next: (resp:any)=>{
         console.log('servicios',resp)
         this.services = resp
@@ -80,7 +81,7 @@ export class ServicesListComponent implements OnInit {
   }
 
   onPageChange(page: number) {
-    this.loadServices(page - 1);
+    this.loadServices(1, page - 1);
   }
 
   getByStatus(status: string) {

@@ -34,7 +34,7 @@ const routes: Routes = [
       { path: 'vehiculos-form/:idVehicle', component: VehiclesFormComponent, canActivate: [adminGuard] },
       { path: 'clientes/:idCustomer/vehiculo-form/:idVehicle', component: VehiclesFormComponent, canActivate: [adminGuard] },
 
-      { path: 'facturas-view/:idFactura', component: FacturasViewComponent, canActivate: [adminGuard] },
+      { path: 'facturas-view/:id', component: FacturasViewComponent, canActivate: [adminGuard] },
 
     ]
   }

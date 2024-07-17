@@ -13,7 +13,7 @@ export class ServicesService {
 
   url: string =  environment.api + '/api/ordenesServicio'
   urlDetalle: string =  environment.api + '/api/detalleOrdenServicio'
-
+  urlFacturas: string = environment.api + '/api/facturas'
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +26,7 @@ export class ServicesService {
   getDetalleDeORden(){}
 
   getPaginatedData(page: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/page/${page}`)};
-  getPaginatedRecepcionData(departamentoId: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/departamento/${departamentoId}`)};
+  getPaginatedRecepcionData(departamentoId: number, page: number= 1): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/departamento/${departamentoId}`)};
   getPaginatedTallerData(departamentoId: number): Observable<Page<any>> {return this.http.get<Page<any>>(this.url +`/departamento/${departamentoId}`)};
   getById(id: number):Observable<any>{return this.http.get(this.url + "/" + id)};
   getByStatus(status: string):Observable<any>{return this.http.get(this.url + "/estatus/" + status)};
@@ -40,5 +40,8 @@ export class ServicesService {
 
   deleteItem(id: number):Observable<any>{return this.http.delete(this.urlDetalle + '/' + id)};
   addItem(item: DetalleOrdenServicios): Observable<any>{return this.http.post(this.urlDetalle, item)};
+
+  generarFactura(idOrdenServicio: number): Observable<any>{return this.http.post(this.urlFacturas + '/' + idOrdenServicio, idOrdenServicio)}
+  getFacturaById(idFactura: number): Observable<any>{return this.http.get(this.urlFacturas + '/' + idFactura)}
 
 }

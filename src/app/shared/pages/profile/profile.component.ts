@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent implements OnInit {
   showSpinner: boolean = false;
+  showPassword: boolean = false;
   showPasswordForm: boolean = false;
   title: string = "";
   subTitle: string = "Mi Perfil";
@@ -108,6 +109,9 @@ export class ProfileComponent implements OnInit {
   }
 
 
+  setShowPassword(show: boolean){
+    this.showPassword = show;
+  }
 
   onCancelBtn() {
     console.log('show', this.showPasswordForm);

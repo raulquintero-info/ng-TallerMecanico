@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 import { TipoMotor } from 'src/app/core/interfaces/tipoMotor.interface';
 import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 
@@ -9,16 +10,16 @@ import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
   styleUrls: ['./vehicle-header.component.css']
 })
 export class VehicleHeaderComponent implements OnInit{
-
   @Input() vehicle: Vehiculo ={tipoMotor:{idTipoMotor: 0,tipoMotor: ''} as TipoMotor} as Vehiculo;
+  @Input() fechaEntrada: string = '';
   @Input() path:any ="";
   @Input() pathEdit: String = ""
 
   constructor(private route: Router){}
 
   ngOnInit(){
-
   }
+
   verHistorial(id: number){
     this.route.navigate([this.path + `/${id}`])
   }

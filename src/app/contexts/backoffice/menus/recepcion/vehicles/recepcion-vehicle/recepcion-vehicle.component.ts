@@ -18,6 +18,7 @@ import { CustomersService } from '../../../../../../core/services/customers.serv
 export class RecepcionVehicleComponent  implements OnInit{
   ordenesDeServicio: OrdenServicio[] =[{} as OrdenServicio]
   ordenesActivas: OrdenServicio[] = [{} as OrdenServicio]
+  fechaEntrada: string = '';
   enableAddButton: string = '';
   pathEdit: string = "/admin/recepcion/vehiculos/form";
   vehicle: Vehiculo = {
@@ -57,11 +58,13 @@ export class RecepcionVehicleComponent  implements OnInit{
         console.log('vehiculos',resp)
         this.vehicle = resp;
 
-        this.ordenesActivas = this.vehicle.ordenServicio.filter((x,y)=>{
-          y
-        })
+        this.ordenesActivas = this.vehicle.ordenServicio;
+        this.ordenesActivas = this.ordenesActivas.filter((x)=> x.estatusServicio.idEstatusServicio != 6);
         console.log('OA',this.ordenesActivas, this.enableAddButton)
-        if(this.ordenesActivas.length>0) this.enableAddButton = 'disabled'
+        if(this.ordenesActivas.length>0) {
+          this.enableAddButton = 'disabled';
+          this.fechaEntrada = this.ordenesActivas[0].fechaOrden;
+        }
         else this.enableAddButton = '';
       },
       error: resp => {

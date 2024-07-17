@@ -17,3 +17,7 @@
   font-size: .7rem;
   padding-left: 10px
 }
+.show-password-btn{
+  position: relative;
+  top: -32px;
+  left: 295px;}

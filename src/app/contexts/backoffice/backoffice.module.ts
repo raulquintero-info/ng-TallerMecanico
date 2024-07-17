@@ -11,6 +11,7 @@ import { SistemaModule } from './menus/sistema/sistema.module';
 import { CatalogosModule } from './menus/catalogos/catalogos.module';
 import { RecepcionModule } from './menus/recepcion/recepcion.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ReportesModule } from './menus/reportes/reportes.module';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
         TallerModule,
         RecepcionModule,
+        ReportesModule
     ]
 })
 export class BackofficeModule { }

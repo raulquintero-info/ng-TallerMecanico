@@ -9,3 +9,26 @@
   font-size:x-large;
   font-weight: bold;
 }
+.num-days{
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+.super-title{
+  position: relative;
+  top: -14px;
+  font-size: smaller;
+  text-transform: uppercase;
+  text-align:center;
+}
+.sub-days{
+  position:relative;
+  top: -10px;
+  font-size: smaller;
+  text-transform: uppercase;
+  text-align:center;
+
+}
+.box-shadow{
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+}

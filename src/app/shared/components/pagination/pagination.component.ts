@@ -27,6 +27,7 @@ export class PaginationComponent {
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
+      console.log('nextPAge')
       this.pageChanged.emit(this.currentPage + 1);
     }
   }

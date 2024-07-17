@@ -7,6 +7,7 @@
         <th scope="col">Fecha de Entrada</th>
         <th scope="col">Titulo</th>
         <th scope="col" >Status</th>
+        <th scope="col">En local</th>
         <th class="d-print-none"></th>
       </tr>
     </thead>
@@ -14,11 +15,12 @@
       <tr class="clickable"  style="color:red" *ngFor="let service of ordenesDeServicio" [routerLink]="[pathVehicle +'-view/' + service.idOrdenServicio]">
         <td scope="row">{{ service.idOrdenServicio }}</td>
         <td>{{service.fechaOrden  | date: 'short'}}</td>
-        <td>{{service.falla}}</td>
+        <td>{{service.falla | titlecase}}</td>
         <td>
           {{service.estatusServicio.estatusServicio | titlecase}}
           <span *ngIf="service.estatusServicio.idEstatusServicio!=6" class="badge bg-verde">S A</span>
         </td>
+        <td><span *ngIf="service.estatusServicio.idEstatusServicio!=6">{{service.fechaOrden | daysago }} dias</span></td>
         <td>
           <i class="bi bi-box-arrow-in-right"></i>
         </td>

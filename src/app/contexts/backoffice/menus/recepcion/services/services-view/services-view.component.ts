@@ -16,6 +16,8 @@ import { Customer } from 'src/app/core/interfaces/customers.interface';
 import { CustomersService } from '../../../../../../core/services/customers.service';
 import { DetalleOrdenServicios } from 'src/app/core/interfaces/detalleOrdenServicios.interface';
 import { switchMap, tap } from 'rxjs';
+import { Factura } from 'src/app/core/interfaces/factura.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-services-view',
@@ -25,6 +27,7 @@ import { switchMap, tap } from 'rxjs';
 export class ServicesViewComponent implements OnInit {
   displayStyle: string = 'none';
   idService: number = 0;
+  factura: Factura = {} as Factura;
   total: number = 0;
   displayStyleDelete: string = 'none';
   isLoadingService = true;
@@ -152,8 +155,31 @@ export class ServicesViewComponent implements OnInit {
     });
   }
 
-  deleteItem(id: number){
+  onDeleteItem(id: number){
     console.log('eliminar item')
+    Swal.fire({
+      title: 'Eliminar Producto/Servicio',
+      text: 'Desea Continuar?',
+      // icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Borrarlo!'
+
+    }).then( (result:any)=> {
+      if (result.isConfirmed) {
+        console.log('eliminar registro');
+        this.deleteItem(id)
+      }
+
+
+    })
+
+  }
+
+
+
+  deleteItem(id: number){
     this.servicesService.deleteItem(id).subscribe({
       next: resp=>{
 
@@ -162,6 +188,7 @@ export class ServicesViewComponent implements OnInit {
       }
     });
   }
+
 
 
   displayBoxComment() {
@@ -176,7 +203,7 @@ export class ServicesViewComponent implements OnInit {
   }
 
   addComment(){
-    this.newComment = this.service.comentarios ;
+    this.service.comentarios = this.newComment;
     this.save('Comentario Agregado')
     this.showBoxComment = false;
   }
@@ -207,7 +234,24 @@ export class ServicesViewComponent implements OnInit {
   }
 
   facturar(){
-    this.router.navigateByUrl('/admin/recepcion/facturas-view/1');
+
+
+
+    this.servicesService.generarFactura(this.service.idOrdenServicio).subscribe({
+      next: (resp: any)=>{
+        console.log('respuesta factura', resp)
+        this.factura = resp
+        this.router.navigateByUrl('/admin/recepcion/facturas-view/' + this.factura.idFactura);
+      },
+      error: (resp: any)=>{
+        console.log('resp factura error', resp)
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' No se ha podido procesar este servicio', type:'danger' })
+
+      }
+    });
+
+
+
   }
 
   openPopup() {

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/core/interfaces/customers.interface';
+import { OrdenServicio } from 'src/app/core/interfaces/ordenServicio.interface';
 
 @Component({
   selector: 'app-m-services-list',
@@ -9,7 +10,7 @@ import { Customer } from 'src/app/core/interfaces/customers.interface';
 })
 export class MServicesListComponent {
   @Input() pathService: String ="";
-  @Input() services: any =[];
+  @Input() services: OrdenServicio[] =[];
   @Input() customer?: Customer;
 
   constructor(private router: Router){}

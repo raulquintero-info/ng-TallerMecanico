@@ -36,6 +36,8 @@ export class CustomersListComponent implements OnInit {
       next: (resp: any) => {
         console.log(resp);
         this.customers = resp.content;
+        this.totalPages = resp.totalPages;
+        this.currentPage = resp.number + 1;
         this.isLoadingCustomers = false;
       },
       error: resp => {

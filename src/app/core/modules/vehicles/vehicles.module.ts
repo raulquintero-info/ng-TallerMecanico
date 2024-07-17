@@ -5,6 +5,7 @@ import { VehicleServicesComponent } from './vehicle-services/vehicle-services.co
 import { MVehicleListComponent } from './m-vehicle-list/m-vehicle-list.component';
 import { RouterModule } from '@angular/router';
 import { VehicleHeaderComponent } from './vehicle-header/vehicle-header.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -18,6 +19,7 @@ import { VehicleHeaderComponent } from './vehicle-header/vehicle-header.componen
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
   ],
   exports:[
     VehicleCardComponent,

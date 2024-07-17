@@ -9,7 +9,7 @@
         <div class="col-md-6 ps-4">
         </div>
         <div class="col-md-6 pe-4 text-end">
-          Nota de Venta No: 2
+          Nota de Venta No: {{ factura?.idFactura}}
         </div>
       </div>
     </div>
@@ -27,8 +27,8 @@
         <td style="width:33%"></td>
 
         <td style="width:33%; text-align: right; vertical-align: top;">
-          Fecha: 24-01-24
-          <div>[ciudad]</div>
+          Fecha: {{factura?.fechaFactura |date: "short"}}
+          <div>Mexicali B.C</div>
         </td>
       </tr>
 
@@ -45,14 +45,14 @@
           <th scope="col" class="titulos">Total</th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="">
-          <td scope="row">Aceite Motor 5lts</td>
-          <td>800.00</td>
-          <td>0</td>
-          <td class="totales">800.00</td>
+      <tbody *ngIf="factura?.detalleFactura">
+        <tr *ngFor="let detalle of factura!.detalleFactura"  class="">
+          <td  scope="row">{{detalle.descripcionServicio}}</td>
+          <td>{{ detalle.costo | currency}}</td>
+          <td>1</td>
+          <td class="totales">{{detalle.costo | currency}}</td>
         </tr>
-        <tr class="">
+        <!-- <tr class="">
           <td scope="row">Mano de obra</td>
           <td>300.00</td>
           <td>0.00</td>
@@ -60,8 +60,8 @@
         </tr>
         <tr>
           <td colspan="3" class="subtotal">Subtotal:</td>
-          <td class="subtotal">$ 1100.00</td>
-        </tr>
+          <td class="subtotal">$ {{ factura?.monto | currency}}</td>
+        </tr> -->
       </tbody>
     </table>
 
@@ -75,7 +75,7 @@
         <tr>
           <td class="grandTotalTitle">TOTAL: </td>
           <td></td>
-          <td class="grandTotal">$1100.00</td>
+          <td class="grandTotal">{{ factura?.monto | currency }}</td>
         </tr>
       </table>
     </div>

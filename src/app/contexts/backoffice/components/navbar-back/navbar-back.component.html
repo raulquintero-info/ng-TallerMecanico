@@ -85,20 +85,18 @@
           </ul>
         </li>
 
-        <!-- <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link active dropdown-toggle" href="x" id="navbarDropdown" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
             Reportes
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/ordenes">Ver Todos</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/admin/ordenes-por-status/1">Ingresos</a></li>
-            <li><a class="dropdown-item" href="/admin/ordenes-por-status/2">Egresos</a></li>
-            <li><a class="dropdown-item" href="/admin/ordenes-por-status/3">Balance General</a></li>
-            <li><a class="dropdown-item" href="/admin/ordenes-por-status/4">Reporte x Mes</a></li>
+            <!-- <li><a class="dropdown-item" href="/admin/ordenes">Ver Todos</a></li>
+            <li><hr class="dropdown-divider"></li> -->
+            <li><a class="dropdown-item" href="/admin/reportes/reporte-anual">Anual</a></li>
+            <li><a class="dropdown-item" href="/admin/reportes/reporte-mensual">Reporte x Mes</a></li>
           </ul>
-        </li> -->
+        </li>
 
 
 
@@ -130,7 +128,7 @@
             {{ userData.username }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" [routerLink]="'/admin/perfil'"><i class="bi bi-shield"></i> Mi Perfil</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/perfil'"><i class="bi bi-person-circle"></i> Mi Perfil</a></li>
 
             <!-- <li>
               <hr class="dropdown-divider">
@@ -170,16 +168,16 @@
 
 
 <!-- Modal -->
-<div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal modal-lg fade" style="top: -160px" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-guinda">
         <h5 class="modal-title" id="exampleModalLabel">Buscar Cliente</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="min-height: 400px;">
         <input class="form-control form-control-lg" type="text" (keyup)="searchCustomer(txtInput.value)"  #txtInput
-          placeholder="Num. de  Telefono" aria-label=".form-control-lg example">
+          placeholder="Nombre o Num. de  Telefono" aria-label=".form-control-lg example">
         <div *ngIf="customers.length">
           <br>Resultados:
           <div class="table-responsive">
