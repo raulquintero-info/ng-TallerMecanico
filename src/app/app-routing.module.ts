@@ -15,6 +15,7 @@ import { NotAuthorizedComponent } from './shared/pages/not-authorized/not-author
 
 import { ErrorHttp503Component } from './shared/pages/error-http503/error-http503.component';
 import { ExpiredSessionComponent } from './shared/pages/expired-session/expired-session.component';
+import { ViewerPdfComponent } from './shared/pages/viewer-pdf/viewer-pdf.component';
 
 const routes: Routes = [
 
@@ -39,6 +40,7 @@ const routes: Routes = [
     loadChildren: ()=> import('./core/modules/auth/auth.module').then(m=>m.AuthModule)
   },
 
+  {path: 'pdf-viewer', component: ViewerPdfComponent},
   {path: 'not-authorized', component: NotAuthorizedComponent},
   {path: 'error-503', component: ErrorHttp503Component},
   {path: 'expired-session', component: ExpiredSessionComponent},

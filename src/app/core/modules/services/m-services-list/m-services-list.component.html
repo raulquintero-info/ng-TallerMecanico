@@ -19,8 +19,8 @@
         <td  class="text-row">{{ service.falla | titlecase}}</td>
         <td class="text-row text-center">
           <!-- TODO:Agregar informcion de la factura para mostrar , si ya esta cobrado el servicio -->
-          <span *ngIf="service.estatusServicio.idEstatusServicio == 6" class="cobrado badge bg-success">Cobrado</span>
-          <div *ngIf="service.estatusServicio.idEstatusServicio != 6" >{{service.fechaOrden | daysago}}</div>
+          <span *ngIf="service.idFactura" class="cobrado badge bg-success">Cobrado</span>
+          <div *ngIf="!service.idFactura" >{{service.fechaOrden | daysago}}</div>
         </td>
         <td  class="text-row">{{ service.estatusServicio.estatusServicio | titlecase}}</td>
       </tr>

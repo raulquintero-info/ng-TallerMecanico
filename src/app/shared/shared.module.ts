@@ -8,6 +8,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DaysagoPipe } from './pipes/daysago';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewerPdfComponent } from './pages/viewer-pdf/viewer-pdf.component';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PhonePipe,
     DaysagoPipe,
     LoadingSpinnerComponent,
-    ProfileComponent
+    ProfileComponent,
+    ViewerPdfComponent
   ],
   imports: [
     CommonModule,

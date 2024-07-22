@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Button } from 'src/app/core/interfaces/button.interface';
 
 @Component({
@@ -7,7 +8,6 @@ import { Button } from 'src/app/core/interfaces/button.interface';
   styleUrls: ['./page-title.component.css']
 })
 export class PageTitleComponent {
-
   @Input() path: string ='';
   @Input() title: string='&nbsp';
   @Input() subTitle: string=' ';
@@ -16,10 +16,14 @@ export class PageTitleComponent {
   @Input() pdfUrl: string = "";
   @Input() buttons: Button[] = []
 
+private router = inject(Router);
+
 onPrint(){
   window.print()
 }
 
-onPdf(){}
+onPdf(){
+  this.router.navigateByUrl('/pdf-viewer')
+}
 
 }

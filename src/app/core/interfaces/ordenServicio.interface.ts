@@ -7,6 +7,7 @@ import { Vehiculo } from "./vehiculo.interface";
 export interface OrdenServicio{
   idOrdenServicio: number;
   factura: Factura | null;
+  idFactura: number;
   fechaOrden: string;
   kilometraje: string;
   vehiculo?: Vehiculo
