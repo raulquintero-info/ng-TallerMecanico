@@ -2,6 +2,6 @@ import { Departamento } from "./departamento.interface";
 
 export interface EstatusServicio{
   idEstatusServicio: number;
-  estatusServicio: string;
+  estatusServicio: string ;
   departamento: Departamento;
 }

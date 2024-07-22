@@ -41,6 +41,7 @@ export class ServicesService {
   deleteItem(id: number):Observable<any>{return this.http.delete(this.urlDetalle + '/' + id)};
   addItem(item: DetalleOrdenServicios): Observable<any>{return this.http.post(this.urlDetalle, item)};
 
+  getPDF(idOrdenServicio: number):Observable<any>{return this.http.get(this.url + '/pdf')};
   generarFactura(idOrdenServicio: number): Observable<any>{return this.http.post(this.urlFacturas + '/' + idOrdenServicio, idOrdenServicio)}
   getFacturaById(idFactura: number): Observable<any>{return this.http.get(this.urlFacturas + '/' + idFactura)}
 

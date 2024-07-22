@@ -22,13 +22,10 @@ export class ServicesListComponent implements OnInit {
   pathService = "/admin/recepcion/servicios-view";
   title: string = 'Recepcion';
   subTitle: string = 'Listado de Servicios'
-  buttons = [/* {text: 'Agregar', path: "/admin/recepcion/servicios-form/0"}*/];
-  services: OrdenServicio[] = [
-    // {
-    //   estatusServicio: {} as EstatusServicio,
-    //   vehiculo:{modelo: {marca: {} as Marca } as Modelo} as Vehiculo
-    // } as OrdenServicio
+  buttons = [
+    //  {text: 'PDF', path: "/admin/recepcion/servicios-form/0"}
   ];
+  services: OrdenServicio[] = [];
 
   currentPage: number = 1;
   totalPages: number = 1;

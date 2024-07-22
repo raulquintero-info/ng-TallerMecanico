@@ -89,9 +89,7 @@ export class EstatusServicioFormComponent implements OnInit {
   save() {
     this.showSpinner = true;
     this.respuesta = '';
-    // let idD = this.estatusServicio.departamento;
-    // this.estatusServicio.departamento = {} as Departamento;
-    // this.estatusServicio.departamento.idDepartamento = Number(idD);
+    this.estatusServicio.estatusServicio = this.estatusServicioForm.value.estatusServicio!;
 
     // Obtener el valor del campo 'departamento' del formulario
     let idDepartamento = this.estatusServicioForm.get('departamento')!.value;

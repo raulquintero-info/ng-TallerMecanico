@@ -10,7 +10,11 @@
     <div class="p-1 ps-2 bd-highlight text-light d-print-none page-title-menu-bar">
       <button class="btn btn-outline-light btn-sm"
         *ngIf="printerEnabled"
-        (click)="print()"><i class="bi bi-printer"></i> Imprimir
+        (click)="onPrint()"><i class="bi bi-printer-fill"></i> Imprimir
+      </button>
+      <button class="btn btn-outline-light btn-sm ms-1"
+        *ngIf="pdfEnabled"
+        (click)="onPdf()"><i class="bi bi-file-earmark-pdf-fill"></i> PDF
       </button>
       <button *ngFor="let button of buttons" class="btn btn-outline-light btn-sm ms-1"
         [routerLink]="[button.path]">

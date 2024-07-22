@@ -23,7 +23,7 @@
             *ngIf="estatusServicioForm.controls.estatusServicio.invalid && (estatusServicioForm.controls.estatusServicio.dirty || estatusServicioForm.controls.estatusServicio.touched)"
             class="alert alert-danger">
             <div *ngIf="estatusServicioForm.controls.estatusServicio.errors?.['required']">
-              La descripción de la marca no puede quedar vacía.
+              El estatus de servico no puede quedar vacía.
             </div>
             <div *ngIf="estatusServicioForm.controls.estatusServicio.errors?.['minlength']">
               Debe tener como mínimo 5 caracteres.
@@ -45,6 +45,7 @@
               *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
         </div>
       </form>
+      <pre>{{estatusServicioForm.value.estatusServicio| json}}</pre>
     </div>
     <div class="col-md-5 mt-4 bg-verde text-white">
 

@@ -12,10 +12,14 @@ export class PageTitleComponent {
   @Input() title: string='&nbsp';
   @Input() subTitle: string=' ';
   @Input() printerEnabled: boolean = true;
+  @Input() pdfEnabled: boolean = true;
+  @Input() pdfUrl: string = "";
   @Input() buttons: Button[] = []
 
-print(){
+onPrint(){
   window.print()
 }
+
+onPdf(){}
 
 }
