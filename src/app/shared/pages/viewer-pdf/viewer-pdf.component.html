@@ -1,5 +1,19 @@
-<object class="pdf"
-        data="/assets/marquez.pdf"
-        width="800"
-        height="500">
-    </object>
+<div class="horizontal-bar-wrap">
+  <div class="bar1 bar" [class]="loaderStatus"></div>
+
+</div>
+
+<ngx-extended-pdf-viewer class="pdf"
+  [src]="'http://localhost:8080/api/'+pdfFile +'/pdf'"
+  [height]="'auto'"
+  [textLayer]="true"
+  [showHandToolButton]="true"
+  [zoom]="65"
+  backgroundColor = "#205b4f"
+  (pdfLoadingFailed)="showError()"
+  (pdfLoaded)="ocultarLoader()"
+
+></ngx-extended-pdf-viewer>
+
+
+

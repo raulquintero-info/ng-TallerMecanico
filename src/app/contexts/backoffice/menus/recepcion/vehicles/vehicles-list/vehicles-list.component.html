@@ -9,7 +9,7 @@
   </script>
 
 
-  <app-page-title *ngIf="!customer.idCliente" [title]="title" [subTitle]="subTitle" [printerEnabled]="true"
+  <app-page-title *ngIf="!customer.idCliente" [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [pdfFile]="pdfFile"
     [buttons]="buttons"></app-page-title>
   <app-page-title *ngIf="customer.idCliente" [title]="'Cliente:'"
     [subTitle]=" customer.nombre + '' + customer.apellidoPaterno" [buttons]="buttons"></app-page-title>

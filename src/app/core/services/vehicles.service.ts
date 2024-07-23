@@ -25,4 +25,7 @@ export class VehiclesService {
 
   getVehicleById(id: number):Observable<any>{return this.http.get(this.url+ '/' +id + '/cliente')}
   getVehiculosTaller():Observable<any>{return this.http.get(this.url + '/noEntregados')}
+
+  getPdf():Observable<any>{return this.http.get(this.url + '/pdf')}
+
 }

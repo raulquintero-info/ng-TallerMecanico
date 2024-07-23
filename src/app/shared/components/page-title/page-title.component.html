@@ -12,8 +12,8 @@
         *ngIf="printerEnabled"
         (click)="onPrint()"><i class="bi bi-printer-fill"></i> Imprimir
       </button>
-      <button class="btn btn-outline-light btn-sm ms-1"
-        *ngIf="pdfEnabled"
+      <button  class="btn btn-outline-light btn-sm ms-1"
+        *ngIf="pdfFile!=''"
         (click)="onPdf()"><i class="bi bi-file-earmark-pdf-fill"></i> PDF
       </button>
       <button *ngFor="let button of buttons" class="btn btn-outline-light btn-sm ms-1"

@@ -19,6 +19,7 @@ export class ServicesListComponent implements OnInit {
   estatus: EstatusServicio[] = [];
   statusArray: String[] = [];
   isLoading: boolean = true;
+  pdfFile: string = 'ordenesServicio'
   pathService = "/admin/recepcion/servicios-view";
   title: string = 'Recepcion';
   subTitle: string = 'Listado de Servicios'

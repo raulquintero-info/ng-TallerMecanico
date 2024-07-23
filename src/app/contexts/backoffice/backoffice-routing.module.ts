@@ -9,6 +9,7 @@ import { DashboardBackComponent } from './menus/dashboard-back/dashboard-back.co
 // import { TallerVehicleListComponent } from './menus/taller/vehicles/taller-vehicle-list/taller-vehicle-list.component';
 import { NotFoundComponent } from 'src/app/shared/pages/not-found/not-found.component';
 import { ProfileComponent } from 'src/app/shared/pages/profile/profile.component';
+import { ViewerPdfComponent } from 'src/app/shared/pages/viewer-pdf/viewer-pdf.component';
 // import { NotFoundComponent } from 'src/app/shared/pages/not-found/not-found.component';
 
 
@@ -41,6 +42,7 @@ const routes: Routes = [
       { path: 'perfil', component: ProfileComponent, canActivate: [adminGuard] },
 
 
+      {path: 'pdf-viewer/:pdfFile', component: ViewerPdfComponent, canActivate: [adminGuard]},
 
       {path: '**', component: NotFoundComponent}
     ]

@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./employees-list.component.css']
 })
 export class EmployeesListComponent implements OnInit {
+  pdfFile: string ='empleados';
   title: string = "Sistema";
   subTitle: string = "Lista de Empleado";
   buttons = [{text: "Agregar", path: "/admin/sistema/empleados-form/0"}];

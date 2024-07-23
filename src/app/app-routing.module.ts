@@ -40,7 +40,6 @@ const routes: Routes = [
     loadChildren: ()=> import('./core/modules/auth/auth.module').then(m=>m.AuthModule)
   },
 
-  {path: 'pdf-viewer', component: ViewerPdfComponent},
   {path: 'not-authorized', component: NotAuthorizedComponent},
   {path: 'error-503', component: ErrorHttp503Component},
   {path: 'expired-session', component: ExpiredSessionComponent},

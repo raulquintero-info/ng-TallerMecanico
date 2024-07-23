@@ -1,21 +1,71 @@
-.pdf {
+body{
+  background-color: #12322b;
+}
+.ocultar{
+  display: none
+}
+
+@keyframes barWidth {
+  0% {
+    width: 0%;
+  }
+
+  25% {
+    width: 50%;
+  }
+
+  50% {
     width: 100%;
-    aspect-ratio: 4 / 3;
+  }
+
+  75% {
+    width: 50%;
+  }
+
+  100% {
+    width: 0%;
+  }
 }
 
-.pdf,
-html,
-body {
+@keyframes barWidth2 {
+  0% {
+    width: 0%;
+  }
+
+  50% {
+    width: 50%;
+  }
+
+  90% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.horizontal-bar-wrap {
+  height: 4px;
+  width: 100%;
+
+  .bar {
+    position: relative;
+    width: 0%;
     height: 100%;
-    margin: 0;
-    padding: 0;
-}
+    margin: 0 0;
+    animation: barWidth;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 
-h1,
-h3 {
-    text-align: center;
-}
+    &.bar1 {
+      animation-delay: 0s;
+      background: repeating-linear-gradient(to right, #eee4d8 0%, white 70%, #66192d  100%);
+      /* background: #e2c586; */
+      top: 0;
+      z-index: 1;
+    }
 
-h1 {
-    color: green;
+
+  }
 }

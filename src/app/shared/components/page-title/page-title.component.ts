@@ -11,6 +11,7 @@ export class PageTitleComponent {
   @Input() path: string ='';
   @Input() title: string='&nbsp';
   @Input() subTitle: string=' ';
+  @Input() pdfFile: string = '';
   @Input() printerEnabled: boolean = true;
   @Input() pdfEnabled: boolean = true;
   @Input() pdfUrl: string = "";
@@ -23,7 +24,8 @@ onPrint(){
 }
 
 onPdf(){
-  this.router.navigateByUrl('/pdf-viewer')
+  console.log('pdfFile', this.pdfFile)
+  this.router.navigateByUrl('/admin/pdf-viewer/' + this.pdfFile)
 }
 
 }

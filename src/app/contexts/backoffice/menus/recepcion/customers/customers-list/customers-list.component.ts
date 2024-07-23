@@ -13,6 +13,7 @@ export class CustomersListComponent implements OnInit {
   errorMessage: string = '';
   customers: Customer[] = []
   params: any;
+  pdfFile: string ='clientes';
   title: string = "Recepcion";
   subTitle: string = "Lista de clientes";
   buttons = [{ text: "Agregar", path: "/admin/recepcion/clientes-form/0" }];

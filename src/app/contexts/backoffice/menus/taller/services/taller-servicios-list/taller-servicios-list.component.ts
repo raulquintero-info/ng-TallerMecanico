@@ -13,10 +13,12 @@ import { ActivatedRoute } from '@angular/router';
 export class TallerServiciosListComponent {
   estatus: any[] = [];
   isLoading: boolean = true;
-
+  pdfFile: string = 'ordenesServicios'
   title: string = "Taller";
   subTitle: string = "Servicios";
-  buttons = [{ text: "Agregar", path: "/admin/recepcion/servicios-form/0'" },];
+  buttons = [
+    // { text: "Agregar", path: "/admin/recepcion/servicios-form/0" },
+  ];
   pathService = "/admin/recepcion/servicios-view";
   services: any = [];
 
@@ -72,7 +74,7 @@ export class TallerServiciosListComponent {
   }
 
   getByStatus(status: string) {
-    
+
     this.servicesService.getByStatus(status).subscribe({
       next: resp => {
         console.log('tallerFilter', resp);

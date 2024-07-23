@@ -14,6 +14,7 @@ import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 export class VehiclesListComponent implements OnInit {
   displayStyle: string = 'none';
   isLoading: boolean = true;
+  pdfFile: string = 'vehiculos';
   title: string = 'Recepcion';
   subTitle: string = 'Lista de Vehiculos'
   customer: Customer = {} as Customer;

@@ -9,6 +9,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { DaysagoPipe } from './pipes/daysago';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewerPdfComponent } from './pages/viewer-pdf/viewer-pdf.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 
 
@@ -26,6 +27,7 @@ import { ViewerPdfComponent } from './pages/viewer-pdf/viewer-pdf.component';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    NgxExtendedPdfViewerModule
 
 
   ],
