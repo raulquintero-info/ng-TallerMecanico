@@ -41,13 +41,13 @@
         <tr>
           <th scope="col">Descrpcion</th>
           <th scope="col" class="titulos">Precio</th>
-          <th scope="col" class="titulos">IVA</th>
+          <th scope="col" class="titulos">Cant</th>
           <th scope="col" class="titulos">Total</th>
         </tr>
       </thead>
       <tbody *ngIf="factura?.detalleFactura">
-        <tr *ngFor="let detalle of factura!.detalleFactura"  class="">
-          <td  scope="row">{{detalle.descripcionServicio}}</td>
+        <tr *ngFor="let detalle of factura!.detalleFactura" class="">
+          <td scope="row">{{detalle.descripcionServicio}}</td>
           <td>{{ detalle.costo | currency}}</td>
           <td>1</td>
           <td class="totales">{{detalle.costo | currency}}</td>
@@ -68,9 +68,9 @@
     <div class="d-flex align-items-end text-end flex-column me-2 ">
       <table class="mt-3">
         <tr>
-          <td>IVA:</td>
+          <td></td>
           <td>&nbsp;&nbsp;&nbsp;</td>
-          <td>0.00</td>
+          <td></td>
         </tr>
         <tr>
           <td class="grandTotalTitle">TOTAL: </td>
@@ -81,15 +81,20 @@
     </div>
 
   </div>
-<br>
-<div class="mt-5">
+  <br>
+  <div class="mt-5">
 
-  <div class="text-center">G A R A N T I A</div>
-  <div class=" mt-3" style="font-size:10px; text-justify: distribute-all-lines;">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc dolor, sollicitudin in sollicitudin at, iaculis a lacus. Vestibulum eget lobortis orci. Sed condimentum aliquet arcu quis ornare. Praesent malesuada est non cursus sollicitudin. Quisque in pellentesque magna, non lobortis ante. Suspendisse consectetur mi enim, in tempor purus ultricies auctor. Proin et nisl sit amet enim scelerisque pretium. Integer tincidunt lacinia lorem, sed dapibus tellus rhoncus in. Morbi non justo id risus sollicitudin mattis at suscipit tortor. Pellentesque ornare luctus ultrices. Nam lobortis ut nisl id euismod.
+    <div class="text-center">G A R A N T I A</div>
+    <div class=" mt-3" style="font-size:10px; text-justify: distribute-all-lines;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc dolor, sollicitudin in sollicitudin at, iaculis
+      a lacus. Vestibulum eget lobortis orci. Sed condimentum aliquet arcu quis ornare. Praesent malesuada est non
+      cursus sollicitudin. Quisque in pellentesque magna, non lobortis ante. Suspendisse consectetur mi enim, in tempor
+      purus ultricies auctor. Proin et nisl sit amet enim scelerisque pretium. Integer tincidunt lacinia lorem, sed
+      dapibus tellus rhoncus in. Morbi non justo id risus sollicitudin mattis at suscipit tortor. Pellentesque ornare
+      luctus ultrices. Nam lobortis ut nisl id euismod.
+    </div>
   </div>
-</div>
-<br><br>
-<div class="text-center">________________________________________<br>[ nombre cliente ]</div>
+  <br><br>
+  <div class="text-center">________________________________________<br>[ nombre cliente ]</div>
 
 </div>

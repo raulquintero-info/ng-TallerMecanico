@@ -13,10 +13,13 @@ export class CustomersListComponent implements OnInit {
   errorMessage: string = '';
   customers: Customer[] = []
   params: any;
-  pdfFile: string ='clientes';
+  pdfFile: string =''; //'clientes';
   title: string = "Recepcion";
   subTitle: string = "Lista de clientes";
-  buttons = [{ text: "Agregar", path: "/admin/recepcion/clientes-form/0" }];
+  buttons = [
+    { text: "PDF *", path: "/admin/recepcion/clientes/pdf" },
+    { text: "Agregar", path: "/admin/recepcion/clientes-form/0" }
+  ];
 
   currentPage: number = 1;
   totalPages: number = 1;

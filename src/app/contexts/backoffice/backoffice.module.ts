@@ -29,6 +29,7 @@ import { ReportesModule } from './menus/reportes/reportes.module';
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+
         BackofficeRoutingModule,
         SharedModule,
 

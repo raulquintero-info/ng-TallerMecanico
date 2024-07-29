@@ -31,6 +31,19 @@
 .clickable{
   cursor: pointer;
 }
+
+.title{
+  font-size: 18px;
+  padding: 4px 4px 4px 14px;
+  font-weight: bold
+
+}
+
+.bg-beige{
+  background-color: #d2c2ae;
+  color: black
+}
+
 .bg-guinda{
   background-color: #66192d;
   color:white;

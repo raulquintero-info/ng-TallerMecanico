@@ -27,7 +27,6 @@
                   class="bi bi-bookmark-fill text-warning"></i> </a> </li>
             <li><a [routerLink]="'/admin/recepcion/clientes'" class="dropdown-item">Clientes &raquo;</a></li>
             <li><a [routerLink]="'/admin/recepcion/vehiculos'" class="dropdown-item">Vehiculos &raquo;</a></li>
-            <!-- <li><a href="/admin/recepcion/" class="dropdown-item">Productos &raquo;</a></li> -->
           </ul>
         </li>
 
@@ -42,30 +41,11 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <!-- <li><a class="dropdown-item" href="/admin/taller/servicios/1">Nuevas</a></li>
-            <li><a class="dropdown-item" href="/admin/taller/servicios/2">En Proceso</a></li>
-            <li><a class="dropdown-item" href="/admin/taller/servicios/3">Terminados</a></li>
-            <li><a class="dropdown-item" href="/admin/taller/servicios/4">Pendientes</a></li>
-            <li><hr class="dropdown-divider"></li> -->
             <li><a class="dropdown-item" [routerLink]="'admin/taller/vehiculos'">Vehiculos</a></li>
-
-
-            <!-- <li><a class="dropdown-item" href="/admin/ordenes-por-status/4">Refacciones</a></li> -->
           </ul>
         </li>
 
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link active dropdown-toggle" href="x" id="navbarDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Refacciones
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/reportes/por-mes">Altas</a></li>
-            <li><a class="dropdown-item" href="/admin/reportes/por-mes">Bajas</a></li>
-            <li><a class="dropdown-item" href="/admin/reportes/por-mes">Cambios</a></li>
 
-          </ul>
-        </li> -->
 
         <li class="nav-item dropdown">
           <a class="nav-link active dropdown-toggle" href="x" id="navbarDropdown" role="button"
@@ -91,10 +71,10 @@
             Reportes
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <!-- <li><a class="dropdown-item" href="/admin/ordenes">Ver Todos</a></li>
-            <li><hr class="dropdown-divider"></li> -->
-            <li><a class="dropdown-item" href="/admin/reportes/reporte-anual">Anual</a></li>
+            <li><a class="dropdown-item" href="/admin/reportes/reporte-anual">Ultimos 12 meses</a></li>
             <li><a class="dropdown-item" href="/admin/reportes/reporte-mensual">Reporte x Mes</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/admin/reportes/facturas">Facturas</a></li>
           </ul>
         </li>
 
@@ -103,23 +83,11 @@
         <li class="nav-item dropdown">
           <a href="" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown">Sistema</a>
           <ul class="dropdown-menu">
-
-
             <li><a [routerLink]="'/admin/sistema/empleados'" class="dropdown-item">Empleados <i
                   class="bi bi-bookmark-fill text-warning"></i></a></li>
             <li><a [routerLink]="'/admin/sistema/usuarios'" class="dropdown-item">Usuarios <i
                   class="bi bi-bookmark-fill text-warning"></i></a></li>
-            <!-- <li><a href="/admin/sistema/roles" class="dropdown-item">Roles &raquo;</a>
-              <ul class="dropdown-menu submenu submenu-left">
-                <li><a href="/admin/sistema/roles/altas" class="dropdown-item">Altas</a></li>
-                <li><a href="/admin/sistema/roles/buscar" class="dropdown-item">Buscar</a></li>
-                <li><a href="/admin/sistema/roles" class="dropdown-item">Ver Todos</a></li>
-              </ul>
-            </li> -->
-
-
           </ul>
-
         </li>
 
         <li class="nav-item dropdown  ms-4 me-3">
@@ -130,9 +98,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" [routerLink]="'/admin/perfil'"><i class="bi bi-person-circle"></i> Mi Perfil</a></li>
 
-            <!-- <li>
-              <hr class="dropdown-divider">
-            </li> -->
+          
             <li><button class="dropdown-item" [routerLink]="['/auth/logout']" routerLinkActive="router-link-active"><i
                   class="bi bi-door-closed"></i> Cerrar Sesión</button></li>
           </ul>

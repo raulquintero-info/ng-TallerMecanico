@@ -1,0 +1,29 @@
+.main {
+  background: #205b4f;
+  height: 100dvh;
+  color: white
+}
+
+.left-menu-content {
+  background-color: #d3cfc3;
+}
+
+.left-menu {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  background-color: #c1b1a0;
+}
+.btn-beige:hover{
+  padding-left: 4px;
+  background-color: #24554c;
+  color:white;
+  cursor: pointer;
+}
+
+.btn-green-selected{
+    padding-left: 4px;
+    background-color: #24554c;
+    color:white;
+
+}

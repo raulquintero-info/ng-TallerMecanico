@@ -42,7 +42,9 @@ export class ServicesService {
   addItem(item: DetalleOrdenServicios): Observable<any>{return this.http.post(this.urlDetalle, item)};
 
   getPDF(idOrdenServicio: number):Observable<any>{return this.http.get(this.url + '/pdf')};
+
+  // TODO: crear servicio propio para facturas
   generarFactura(idOrdenServicio: number): Observable<any>{return this.http.post(this.urlFacturas + '/' + idOrdenServicio, idOrdenServicio)}
   getFacturaById(idFactura: number): Observable<any>{return this.http.get(this.urlFacturas + '/' + idFactura)}
-
+  getFacturas():Observable<any>{return this.http.get(this.urlFacturas)}
 }

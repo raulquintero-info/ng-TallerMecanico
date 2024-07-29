@@ -6,11 +6,6 @@
 
       <div class="col-md-12 pt-1 pb-1 pe-3" style="text-align: right;">
         Orden de Servicio No: {{service.idOrdenServicio }} &nbsp;<span class="badge bg-secondary d-print-none">
-          <select [(ngModel)]="service.estatusServicio" (change)="updateStatus()" [compareWith]="compareStatus"
-            name="estatusServicio">
-            <option *ngFor="let item of statusList" [selected]="item.idEstatusServicio==5" [ngValue]="item">
-              {{item.estatusServicio | titlecase}}</option>
-          </select>
         </span>
       </div>
     </div>
@@ -67,11 +62,12 @@
 
               <div class="d-flex">
                 <div class="service-title ps-2 pe-2">Estatus</div>
-                <div class="flex-grow-1 service-status btn-guinda text-center">
+                <div class="flex-grow-1 service-status btn-guinda text-center clickable"
+                  (click)="openModalStatus()">
                   {{service.estatusServicio.estatusServicio | uppercase}}
                 </div>
                 <div class="bg-secondary">
-                  <button class="btn btn-secondary"><i class="bi bi-arrow-down-square"></i></button>
+                  <button class="btn btn-secondary" (click)="openModalStatus()"><i class="bi bi-arrow-down-square"></i></button>
                 </div>
               </div>
               <div class="d-flex mt-2" style="border: 1px solid green ">
@@ -175,7 +171,7 @@
                 <h6>{{ detalle.descripcionServicio | titlecase }}</h6>
               </td>
               <td class="text-end" style="width:80px">{{detalle.costo}}</td>
-              <td class="text-end d-print-none" style="width:30px"><button class="btn btn-sm btn-link"
+              <td class="text-end d-print-none"  *ngIf="!service.factura?.idFactura" style="width:30px"><button class="btn btn-sm btn-link"
                   (click)="onDeleteItem(detalle.idDetalleOrdenServicio)"><i class="bi bi-dash-circle"
                     style="color:red"></i></button></td>
             </tr>
@@ -389,6 +385,31 @@
           Cancelar
         </button>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal para cambiar estatus -->
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleStatus}"  >
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-guinda">
+        <h4 class="modal-title">Cambiar estatus del servicio </h4>
+        <button type="button" class="btn-close" (click)="closeModalStatus()" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body">
+        <ul class="status">
+          <li *ngFor="let item of statusList" (click)="updateStatus(item.idEstatusServicio, item.estatusServicio)"> {{ item.estatusServicio | titlecase }}</li>
+        </ul>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeModalStatus()">
+          Cancelar
+        </button>
+      </div> -->
     </div>
   </div>
 </div>

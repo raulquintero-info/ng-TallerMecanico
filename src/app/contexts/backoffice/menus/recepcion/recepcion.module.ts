@@ -21,6 +21,9 @@ import { VehiclesModule } from 'src/app/core/modules/vehicles/vehicles.module';
 import { ServicesModule } from 'src/app/core/modules/services/services.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { FacturasListComponent } from './facturas/facturas-list/facturas-list.component';
+import { CustomersPdfComponent } from './customers/customers-pdf/customers-pdf.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import { RouterModule } from '@angular/router';
     RecepcionVehicleComponent,
     VehiclesFormComponent,
     VehiclesListComponent,
-    VehiclesServicesListComponent
+    VehiclesServicesListComponent,
+    FacturasListComponent,
+    CustomersPdfComponent
 
 
   ],
@@ -49,6 +54,7 @@ import { RouterModule } from '@angular/router';
     RecepcionRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxExtendedPdfViewerModule,
     CustomersModule,
     VehiclesModule,
     ServicesModule,

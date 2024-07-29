@@ -30,19 +30,20 @@ export class ServicesViewComponent implements OnInit {
   factura: Factura = {} as Factura;
   total: number = 0;
   displayStyleDelete: string = 'none';
+  displayStyleStatus: string = 'none';
   isLoadingService = true;
   showBoxComment: boolean = false;
   showBoxAddItem: boolean = false;
   showBoxDelete: boolean = false;
-  item: DetalleOrdenServicios = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
+  item: DetalleOrdenServicios = { ordenServicio: { idOrdenServicio: 0 } as OrdenServicio } as DetalleOrdenServicios;
   title: string = 'Taller AutoPro';
   subTitle: string = 'Orden de Servicio'
   buttons = [
-    {text: 'Servicios', path: "/admin/recepcion/vehiculos/1"}
+    { text: 'Servicios', path: "/admin/recepcion/vehiculos/1" }
   ];
 
   currentCustomer: Customer = {} as Customer;
-  service: OrdenServicio = { idOrdenServicio: 0, estatusServicio: {idEstatusServicio:0} as EstatusServicio } as OrdenServicio;
+  service: OrdenServicio = { idOrdenServicio: 0, estatusServicio: { idEstatusServicio: 0 } as EstatusServicio } as OrdenServicio;
   vehicle: Vehiculo = { modelo: { marca: {} as Marca } as Modelo } as Vehiculo;
   servicio: OrdenServicio = {} as OrdenServicio;
   statusList: EstatusServicio[] = []
@@ -63,36 +64,36 @@ export class ServicesViewComponent implements OnInit {
     // this.isLoadingService = true
     this.activatedRoute.params
       .pipe(
-        switchMap( ({id}) =>  this.servicesService.getById(id))
+        switchMap(({ id }) => this.servicesService.getById(id))
       )
       .subscribe({
         next: (resp) => {
           console.log('servicio cargado', resp)
           this.isLoadingService = false;
           //TODO: revisar por que el back end regresa nulo con codigo 200 en vez de 404
-          if (resp!=null){
+          if (resp != null) {
             this.service = resp;
             this.vehicle = resp.vehiculo;
-          }else {
-            this.router.navigateByUrl("not-found", {skipLocationChange: true});
+          } else {
+            this.router.navigateByUrl("not-found", { skipLocationChange: true });
           }
 
-          let tot=0;
-          this.service.detalleOrdenServicios.forEach(function(a){tot += a.costo;});
-          this.total= tot;
+          let tot = 0;
+          this.service.detalleOrdenServicios.forEach(function (a) { tot += a.costo; });
+          this.total = tot;
 
           // this.total = this.service.detalleOrdenServicios.reduce((a, b) => a + b.costo, 0)
           // if (this.service.idOrdenServicio<1)
 
         },
-        error: resp=>{
+        error: resp => {
           console.log('error');
           // this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo cargar la informacion", type:'danger' })
           this.isLoadingService = false;
 
-          this.router.navigateByUrl("not-found", {skipLocationChange: true});
+          this.router.navigateByUrl("not-found", { skipLocationChange: true });
         }
-      } );
+      });
 
 
 
@@ -106,7 +107,7 @@ export class ServicesViewComponent implements OnInit {
 
   }
 
-  loadService(id:number) {
+  loadService(id: number) {
     this.isLoadingService = true
     this.servicesService.getById(id).subscribe({
       next: resp => {
@@ -115,47 +116,49 @@ export class ServicesViewComponent implements OnInit {
         this.vehicle = resp.vehiculo;
         this.isLoadingService = false;
 
-        let tot=0;
+        //funcion para sumar totales de productos
+        // let tot = 0;
         // this.service.detalleOrdenServicios.forEach(function(a){tot += a.costo;});
-        this.total= tot;
+        // this.total = tot;
 
-        // this.total = this.service.detalleOrdenServicios.reduce((a, b) => a + b.costo, 0)
+        //otra funcion para sumar totales de productos
+        this.total = this.service.detalleOrdenServicios.reduce((a, b) => a + b.costo, 0)
         // if (this.service.idOrdenServicio<1)
 
       },
-      error: resp=>{
+      error: resp => {
         console.log('error');
         // this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo cargar la informacion", type:'danger' })
         this.isLoadingService = false;
 
-        this.router.navigateByUrl("not-found", {skipLocationChange: true});
+        this.router.navigateByUrl("not-found", { skipLocationChange: true });
       }
 
     });
 
   }
 
-  addItem(){
+  addItem() {
     if (!this.item.costo || !this.item.descripcionServicio) return;
 
     console.log('agregando item', this.item)
     this.item.ordenServicio.idOrdenServicio = this.service.idOrdenServicio;
     this.servicesService.addItem(this.item).subscribe({
-      next: resp =>{
+      next: resp => {
         // this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Sericio Agregado", type:'success' })
-        this.showBoxAddItem =false;
+        this.showBoxAddItem = false;
         this.loadService(this.service.idOrdenServicio);
         console.log('loadService: ', this.service.idOrdenServicio);
-        this.item = {ordenServicio: {idOrdenServicio:0}as OrdenServicio } as DetalleOrdenServicios;
+        this.item = { ordenServicio: { idOrdenServicio: 0 } as OrdenServicio } as DetalleOrdenServicios;
       },
-      error: resp=>{
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo agregar el item", type:'danger' })
+      error: resp => {
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "No se pudo agregar el item", type: 'danger' })
 
       }
     });
   }
 
-  onDeleteItem(id: number){
+  onDeleteItem(id: number) {
     console.log('eliminar item')
     Swal.fire({
       title: 'Eliminar Producto/Servicio',
@@ -166,7 +169,7 @@ export class ServicesViewComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, Borrarlo!'
 
-    }).then( (result:any)=> {
+    }).then((result: any) => {
       if (result.isConfirmed) {
         console.log('eliminar registro');
         this.deleteItem(id)
@@ -179,11 +182,11 @@ export class ServicesViewComponent implements OnInit {
 
 
 
-  deleteItem(id: number){
+  deleteItem(id: number) {
     this.servicesService.deleteItem(id).subscribe({
-      next: resp=>{
+      next: resp => {
 
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Servicio Eliminado", type:'warning' })
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: "Producto/Servicio Eliminado", type: 'warning' })
         this.loadService(this.service.idOrdenServicio);
       }
     });
@@ -192,37 +195,45 @@ export class ServicesViewComponent implements OnInit {
 
 
   displayBoxComment() {
-    this.showBoxComment=true;
-    this.service.comentarios = (this.service.comentarios==null) ? '' : this.service.comentarios;
-    this.newComment = this.getDate() + '\n> \n\n'+ this.service.comentarios;
+    this.showBoxComment = true;
+    this.service.comentarios = (this.service.comentarios == null) ? '' : this.service.comentarios;
+    this.newComment = this.getDate() + '\n> \n\n' + this.service.comentarios;
   }
 
 
-  getDate(): string{
+  getDate(): string {
     return formatDate(new Date(), 'yyyy-MM-dd HH:mm', 'en-US');
   }
 
-  addComment(){
+  addComment() {
     this.service.comentarios = this.newComment;
     this.save('Comentario Agregado')
     this.showBoxComment = false;
   }
 
-  updateStatus(){
+  updateStatus(idStatus: number, estatusServicio: string) {
 
+    this.service.estatusServicio.idEstatusServicio = idStatus;
+    this.service.estatusServicio.estatusServicio = estatusServicio;
     this.save('Estatus Actualizado')
+
   }
 
-  save(message: string){
+  save(message: string) {
+
+
     this.servicesService.saveOrUpdate(this.service).subscribe({
-      next: resp=>{
+      next: resp => {
         // debugger
-        console.log('response service',resp)
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: message, type:'success' })
+        console.log('response service', resp)
+        this.toastService.addMessage({
+          title: "Sistema", timeAgo: "", body: message, type: 'success'
+        });
+        this.closeModalStatus();
       },
-      error: (resp: any)=>{
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Hubo un problema al tratar de Grabar', type:'danger' })
-        console.log('error',resp);
+      error: (resp: any) => {
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Hubo un problema al tratar de Grabar', type: 'danger' })
+        console.log('error', resp);
 
       }
     });
@@ -233,19 +244,19 @@ export class ServicesViewComponent implements OnInit {
     return item1 && item2 ? item1.idOrdenServicio === item2.idOrdenServicio : item1 === item2;
   }
 
-  facturar(){
+  facturar() {
 
 
 
     this.servicesService.generarFactura(this.service.idOrdenServicio).subscribe({
-      next: (resp: any)=>{
+      next: (resp: any) => {
         console.log('respuesta factura', resp)
         this.factura = resp
         this.router.navigateByUrl('/admin/recepcion/facturas-view/' + this.factura.idFactura);
       },
-      error: (resp: any)=>{
+      error: (resp: any) => {
         console.log('resp factura error', resp)
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' No se ha podido procesar este servicio', type:'danger' })
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' No se ha podido procesar este servicio', type: 'danger' })
 
       }
     });
@@ -264,20 +275,29 @@ export class ServicesViewComponent implements OnInit {
   openModalDelete() {
     this.displayStyleDelete = "block";
   }
-  closeModalDelete(){
+  closeModalDelete() {
     this.displayStyleDelete = "none";
   }
-  onDelete(id: number){
+  onDelete(id: number) {
 
     this.servicesService.deleteById(id).subscribe({
-      next: resp=>{
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Se ha eliminado el servicio: ' + this.service.idOrdenServicio , type:'warning' })
-        this.router.navigateByUrl('/admin/recepcion/vehiculos/'+ this.vehicle.idVehiculo);
+      next: resp => {
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Se ha eliminado el servicio: ' + this.service.idOrdenServicio, type: 'warning' })
+        this.router.navigateByUrl('/admin/recepcion/vehiculos/' + this.vehicle.idVehiculo);
       },
-      error: resp=>{
-        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' No se ha podido eliminar este servicio', type:'danger' })
+      error: resp => {
+        this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' No se ha podido eliminar este servicio', type: 'danger' })
 
       }
     })
   }
+
+
+  openModalStatus() {
+    this.displayStyleStatus = "block";
+  }
+  closeModalStatus() {
+    this.displayStyleStatus = "none";
+  }
+
 }

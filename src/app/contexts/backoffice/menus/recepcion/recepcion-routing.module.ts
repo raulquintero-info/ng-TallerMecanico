@@ -12,6 +12,8 @@ import { ServicesViewComponent } from './services/services-view/services-view.co
 import { RecepcionVehicleComponent } from './vehicles/recepcion-vehicle/recepcion-vehicle.component';
 import { VehiclesFormComponent } from './vehicles/vehicles-form/vehicles-form.component';
 import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.component';
+import { FacturasListComponent } from './facturas/facturas-list/facturas-list.component';
+import { CustomersPdfComponent } from './customers/customers-pdf/customers-pdf.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,7 @@ const routes: Routes = [
       { path: 'clientes', component: CustomersListComponent, canActivate: [adminGuard] },
       { path: 'clientes-form/:id', component: CustomersFormComponent, canActivate: [adminGuard] },
       { path: 'clientes-view/:id', component: CustomersViewComponent, canActivate: [adminGuard] },
+      { path: 'clientes/pdf', component: CustomersPdfComponent, canActivate: [adminGuard]},
 
       { path: 'vehiculos', component: VehiclesListComponent, canActivate: [adminGuard] },
       { path: 'vehiculos/por-cliente/:id', component: RecepcionCustomersVehicleComponent, canActivate: [adminGuard] },

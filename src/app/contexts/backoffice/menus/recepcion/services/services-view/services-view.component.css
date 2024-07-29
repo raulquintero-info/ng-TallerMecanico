@@ -125,3 +125,37 @@ btn-blue, .btn-white-border:hover, .service-each-3:hover .btn-blue-border, .head
 .fa, .far, .fas {
   font-family: "Font Awesome 5 Free";
 }
+
+.status{
+  padding: 1px;
+  /* width: 350px; */
+}
+.status > li{
+  padding:2px;
+  background-color: #ccb7a0;
+  color: black;
+  margin-top: 2px;
+  text-align: center;
+  border: 1px solid #a38f7a;
+  font-size: smaller;
+
+}
+
+.status > li:hover{
+  padding:2px;
+  background-color: #ebd1b6;
+  color: black;
+  margin-top: 2px;
+  text-align: center;
+  border: 1px solid #dac5b0;
+  font-size: medium;
+  cursor: pointer;
+
+}
+.modal{
+  margin-top: 20vh;
+  /* margin-left: 15vh; */
+}
+.btn-close{
+  color: white;
+}
