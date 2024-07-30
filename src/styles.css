@@ -31,6 +31,9 @@
 .clickable{
   cursor: pointer;
 }
+.ocultar{
+  display: none
+}
 
 .title{
   font-size: 18px;

@@ -3,15 +3,15 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-customers-pdf',
-  templateUrl: './customers-pdf.component.html',
-  styleUrls: ['./customers-pdf.component.css']
+  selector: 'app-services-pdf',
+  templateUrl: './services-pdf.component.html',
+  styleUrls: ['./services-pdf.component.css']
 })
-export class CustomersPdfComponent {
+export class ServicesPdfComponent {
 
   filterStr: string = '?field=id&type=asc';
   btnSelectedName: string = 'idasc';
-  urlPdf: string = environment.api + '/api/clientes/pdf'
+  urlPdf: string = environment.api + '/api/ordenesServicio/pdf'
   loaderStatus: string = '';
 
   onOrderBy(field: string, orderType: string){
@@ -31,7 +31,7 @@ export class CustomersPdfComponent {
 
   onGeneratePdf(){
 
-    console.log('urlPdf',  environment.api + '/api/clientes/pdf/' + this.filterStr);
+    console.log('urlPdf',  environment.api + '/api/vehiculos/pdf/' + this.filterStr);
   }
 
   showError(){

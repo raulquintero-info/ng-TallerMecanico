@@ -1,6 +1,3 @@
-body{
-  background-color: #12322b;
-}
 
 @keyframes barWidth {
   0% {
@@ -44,6 +41,7 @@ body{
 .horizontal-bar-wrap {
   height: 4px;
   width: 100%;
+      background: #e6d2bf;
 
   .bar {
     position: relative;
@@ -57,7 +55,7 @@ body{
 
     &.bar1 {
       animation-delay: 0s;
-      background: repeating-linear-gradient(to right, #eee4d8 0%, white 70%, #66192d  100%);
+      background: repeating-linear-gradient(to right, #e6d2bf 0%, #66192d 90%, #e6d2bf  100%);
       /* background: #e2c586; */
       top: 0;
       z-index: 1;

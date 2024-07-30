@@ -14,12 +14,12 @@ import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 export class VehiclesListComponent implements OnInit {
   displayStyle: string = 'none';
   isLoading: boolean = true;
-  pdfFile: string = 'vehiculos';
+  pdfFile: string = '';
   title: string = 'Recepcion';
   subTitle: string = 'Lista de Vehiculos'
   customer: Customer = {} as Customer;
   buttons = [
-    // { text: "Agregar", path: "/admin/recepcion/vehiculos-form/0" }
+    { text: "PDF *", path: "/admin/recepcion/vehiculos-pdf" },
   ];
   vehicle: Vehiculo = { modelo:{modelo:'',marca:{marca:''}}} as Vehiculo;
   vehicles: Vehiculo[] = [];

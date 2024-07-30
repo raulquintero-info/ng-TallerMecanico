@@ -11,9 +11,12 @@ import { OrdenServicio } from '../../../../../../core/interfaces/ordenServicio.i
 })
 export class TallerVehicleListComponent implements OnInit {
   isLoading: boolean = true;
-  pdfFile: string = 'vehiculos'
+  pdfFile: string = ''
   title: string = 'Taller';
   subTitle: string = 'Vehiculos en Taller';
+  buttons = [
+    { text: "PDF *", path: "/admin/recepcion/vehiculos-pdf" },
+  ];
   vehicles: any =[];
   pathVehicle: string ="/admin/taller/vehiculos";
   params: any;

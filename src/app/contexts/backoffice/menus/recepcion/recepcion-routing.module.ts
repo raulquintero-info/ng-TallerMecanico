@@ -14,6 +14,8 @@ import { VehiclesFormComponent } from './vehicles/vehicles-form/vehicles-form.co
 import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.component';
 import { FacturasListComponent } from './facturas/facturas-list/facturas-list.component';
 import { CustomersPdfComponent } from './customers/customers-pdf/customers-pdf.component';
+import { VehiclesPdfComponent } from './vehicles/vehicles-pdf/vehicles-pdf.component';
+import { ServicesPdfComponent } from './services/services-pdf/services-pdf.component';
 
 const routes: Routes = [
   {
@@ -24,18 +26,20 @@ const routes: Routes = [
       { path: 'servicios-form/:id/:idVehiculo', component: ServicesFormComponent, canActivate: [adminGuard] },
       { path: 'servicios-view/:id/:idVehiculo', component: ServicesViewComponent, canActivate: [adminGuard] },
       { path: 'servicios-view/:id', component: ServicesViewComponent, canActivate: [adminGuard] },
+      { path: 'servicios-pdf', component: ServicesPdfComponent, canActivate: [adminGuard] },
 
       { path: 'clientes', component: CustomersListComponent, canActivate: [adminGuard] },
       { path: 'clientes-form/:id', component: CustomersFormComponent, canActivate: [adminGuard] },
       { path: 'clientes-view/:id', component: CustomersViewComponent, canActivate: [adminGuard] },
       { path: 'clientes/pdf', component: CustomersPdfComponent, canActivate: [adminGuard]},
+      { path: 'clientes/:idCustomer/vehiculo-form/:idVehicle', component: VehiclesFormComponent, canActivate: [adminGuard] },
 
       { path: 'vehiculos', component: VehiclesListComponent, canActivate: [adminGuard] },
       { path: 'vehiculos/por-cliente/:id', component: RecepcionCustomersVehicleComponent, canActivate: [adminGuard] },
       { path: 'vehiculos/por-cliente-sel/:id', component: RecepcionCustomersVehicleComponent, canActivate: [adminGuard] },
       { path: 'vehiculos/:id', component: RecepcionVehicleComponent, canActivate: [adminGuard] },
       { path: 'vehiculos-form/:idVehicle', component: VehiclesFormComponent, canActivate: [adminGuard] },
-      { path: 'clientes/:idCustomer/vehiculo-form/:idVehicle', component: VehiclesFormComponent, canActivate: [adminGuard] },
+      { path: 'vehiculos-pdf', component: VehiclesPdfComponent, canActivate: [adminGuard]},
 
       { path: 'facturas-view/:id', component: FacturasViewComponent, canActivate: [adminGuard] },
 

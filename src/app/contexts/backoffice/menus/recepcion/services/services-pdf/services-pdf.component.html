@@ -4,7 +4,7 @@
 </div>
 
 <div class="main">
-  <div class="text-center title">reporte de Clientes</div>
+  <div class="text-center title">reporte de Ordenes de Servicio</div>
 
   <div class="row ps-2">
     <div class="col-md-2 ">
@@ -14,16 +14,14 @@
         <div class="left-menu-content mt-1 p-2">
           <div id="idasc" (click)="onOrderBy('id','asc')" class="btn-verde-selected disabled">Id ASC</div>
           <div id="iddesc" (click)="onOrderBy('id','desc')" class="btn-beige">Id DESC</div>
-          <div id="apellidopasc" (click)="onOrderBy('apellidop','asc')" class="btn-beige">Apellido P. ASC</div>
-          <div id="apellidopdesc" (click)="onOrderBy('apellidop','desc')" class="btn-beige">Apellido P. DESC</div>
+
         </div>
 
-          <!-- <div class="left-menu-content title mt-3">Campos </div>
+          <div class="left-menu-content title mt-3">Fecha </div>
           <div class="left-menu-content mt-1 p-2">
-            <div>Telefono</div>
-            <div>Email</div>
-            <div>Domicilio</div>
-          </div> -->
+            <div>desde: <input type="date" class="form-control" name="fechaInicio" id=""></div>
+            <div>hasta: <input type="date" class="form-control" name="fechaFinal" id=""></div>
+          </div>
 
           <div class="text-center">
 

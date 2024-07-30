@@ -24,6 +24,8 @@ import { RouterModule } from '@angular/router';
 import { FacturasListComponent } from './facturas/facturas-list/facturas-list.component';
 import { CustomersPdfComponent } from './customers/customers-pdf/customers-pdf.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { VehiclesPdfComponent } from './vehicles/vehicles-pdf/vehicles-pdf.component';
+import { ServicesPdfComponent } from './services/services-pdf/services-pdf.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     VehiclesListComponent,
     VehiclesServicesListComponent,
     FacturasListComponent,
-    CustomersPdfComponent
+    CustomersPdfComponent,
+    VehiclesPdfComponent,
+    ServicesPdfComponent
 
 
   ],

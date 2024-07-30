@@ -19,12 +19,12 @@ export class ServicesListComponent implements OnInit {
   estatus: EstatusServicio[] = [];
   statusArray: String[] = [];
   isLoading: boolean = true;
-  pdfFile: string = 'ordenesServicio'
+  pdfFile: string = ''
   pathService = "/admin/recepcion/servicios-view";
   title: string = 'Recepcion';
   subTitle: string = 'Listado de Servicios'
   buttons = [
-    //  {text: 'PDF', path: "/admin/recepcion/servicios-form/0"}
+     {text: 'PDF *', path: "/admin/recepcion/servicios-pdf"}
   ];
   services: OrdenServicio[] = [];
 
