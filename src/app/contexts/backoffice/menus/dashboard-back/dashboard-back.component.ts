@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
 
 @Component({
   selector: 'app-dashboard-back',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard-back.component.css']
 })
 export class DashboardBackComponent {
+
+  private mLoaderService = inject(MainLoaderService);
+
+  ngOnInit(): void {
+    this.mLoaderService.setStatus('ocultar');
+
+  }
 
 }

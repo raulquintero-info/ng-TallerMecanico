@@ -7,5 +7,9 @@ export interface Factura{
   monto: number;
   detalleFactura: DetalleOrdenServicios[]|null;
   ordenServicio: OrdenServicio;
-
+  nombre: string;
+  apellidoMaterno: string;
+  apellidoPaterno: string;
+  telefono: string;
+  domicilio: string;
 }

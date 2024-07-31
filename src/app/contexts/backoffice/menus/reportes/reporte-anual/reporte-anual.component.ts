@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Chart, ChartType } from 'chart.js/auto';
+import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
 
 @Component({
   selector: 'app-reporte-anual',
@@ -15,13 +16,15 @@ export class ReporteAnualComponent {
   subTitle: string = "Reporte Anual";
   buttons = [
     // {text: "Ver Modelos", path: "/admin/catalogos/modelos"},
-    // {text: "Agregar", path: "/admin/catalogos/tipos-motor-form/0"},
   ];
   meses: any[] = [
     'ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'
   ];
   // Atributo que almacena los datos del chart
   chart: Chart |null = null;
+
+  private mLoaderService = inject(MainLoaderService);
+
 
 ngOnInit(){
   this.dateRange = this.DoceMeses(this.fecha);
@@ -50,6 +53,9 @@ ngOnInit(){
   var Navidad = "2024-02-01T07:00:00.000+00:00";
   console.log(Navidad.substring(5,7)); // 11
 
+  setTimeout(() => {
+    this.mLoaderService.setStatus('ocultar');
+  }, 200);
 
 }
 

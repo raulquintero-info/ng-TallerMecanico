@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
@@ -7,13 +8,19 @@ import Swal from 'sweetalert2';
   templateUrl: './services-pdf.component.html',
   styleUrls: ['./services-pdf.component.css']
 })
-export class ServicesPdfComponent {
+export class ServicesPdfComponent implements OnInit{
 
   filterStr: string = '?field=id&type=asc';
   btnSelectedName: string = 'idasc';
   urlPdf: string = environment.api + '/api/ordenesServicio/pdf'
   loaderStatus: string = '';
 
+  private mLoaderService = inject(MainLoaderService);
+
+  ngOnInit(): void {
+    this.mLoaderService.setStatus('ocultar');
+
+  }
   onOrderBy(field: string, orderType: string){
     let btnToUnselect = document.querySelector('#' + this.btnSelectedName);
     btnToUnselect?.classList.remove('btn-verde-selected');

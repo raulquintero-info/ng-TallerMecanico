@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Chart, ChartType } from 'chart.js/auto';
+import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
 
 @Component({
   selector: 'app-reporte-mensual',
@@ -11,31 +12,29 @@ export class ReporteMensualComponent implements OnInit {
   subTitle: string = "Reporte Mensual";
   buttons = [
     // {text: "Ver Modelos", path: "/admin/catalogos/modelos"},
-    // {text: "Agregar", path: "/admin/catalogos/tipos-motor-form/0"},
   ];
   fecha: Date = new Date();
   dateRange: any;
   total: number = 0;
   average: number = 0;
-  meses: any[] = [
-    'ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'
-  ];
+  meses: any[] = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
   chart: Chart | null = null;
+
+  private mLoaderService = inject(MainLoaderService);
+
 
   ngOnInit(): void {
     // const numeroDeSemanaActual = this.numeroDeSemana(new Date());
     // console.log("El número de semana es: %d", numeroDeSemanaActual);
 
-
-
-    this.dateRange = this.DoceMeses(this.fecha);
+    this.dateRange = this.DiasPorMes(this.fecha);
     console.log(this.dateRange)
 
 
     const data = {
-      labels: this.dateRange. map((x: any) => x.month),
+      labels: this.dateRange.map((x: any) => x.dia),
       datasets: [{
-        label: 'Venta Por Mes',
+        label: 'Ventas Por Dia',
         data: this.dateRange.map((x: any) => x.total),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
@@ -51,17 +50,12 @@ export class ReporteMensualComponent implements OnInit {
       data: data, // datos
       options: {
         scales: {
-            y: {
-                beginAtZero: true
-            }
+          y: {
+            beginAtZero: true
+          }
         }
-    }
+      }
     });
-
-
-
-
-
 
     const canvas = document.getElementById('myChart') as HTMLCanvasElement;
     const myChart: any = canvas.getContext('2d');
@@ -89,14 +83,11 @@ export class ReporteMensualComponent implements OnInit {
     });
 
 
+    setTimeout(() => {
+      this.mLoaderService.setStatus('ocultar');
+    }, 200);
+
   }
-
-
-
-
-
-
-
 
 
   numeroDeSemana(fecha: any) {
@@ -116,22 +107,18 @@ export class ReporteMensualComponent implements OnInit {
 
 
 
-  DoceMeses(fecha: Date) {
+  DiasPorMes(fecha: Date) {
 
     let newarr = []
     let temp;
-    for (let i = 1; i < 30; i++) {
-      temp = (52353 + ((Math.floor((Math.random() * 6))*3200 ) ));
+    for (let i = 1; i <= 30; i++) {
+      temp = (52353 + ((Math.floor((Math.random() * 6)) * 3200)));
       newarr.push(
-        {  month: i , total: temp }
+        { dia: i, total: temp }
       )
       this.total = this.total + temp;
-      // if (mesInicio == 12) {
-      //   mesInicio = 0
-      //   anoInicio++
-      // }
     }
-    this.average = this.total / 12;
+    this.average = this.total / 30;
     return newarr
   }
 

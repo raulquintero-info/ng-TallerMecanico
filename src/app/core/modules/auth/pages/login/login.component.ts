@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Credentials } from 'src/app/core/modules/auth/interfaces/credentials.interface';
@@ -6,6 +6,7 @@ import { LoginService } from 'src/app/core/modules/auth/services/login.service';
 import { User } from 'src/app/core/modules/auth/interfaces/user.interface';
 import { catchError } from 'rxjs';
 import { LoginResponse } from '../../interfaces/loginResponse.interface';
+import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
 
 @Component({
   selector: 'app-login',
@@ -31,8 +32,11 @@ export class LoginComponent implements OnInit,OnDestroy{
     private loginService: LoginService
     ){}
 
-  ngOnInit(){
-    // window.location.reload();
+    private mLoaderService = inject(MainLoaderService);
+
+  ngOnInit(): void {
+    this.mLoaderService.setStatus('ocultar');
+
   }
 
   // public get email(){

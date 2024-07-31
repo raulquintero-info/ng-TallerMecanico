@@ -13,7 +13,7 @@ import { ServicesService } from 'src/app/core/services/services.service';
 })
 export class FacturasViewComponent implements OnInit {
   isLoadingService = true;
-  factura: Factura|null = null;
+  factura: Factura | null = null;
   title: string = "Autopro";
   subTitle: string = "Notas de Venta";
   buttons = [];
@@ -38,7 +38,7 @@ export class FacturasViewComponent implements OnInit {
           }
 
           setTimeout(() => {
-            window.print();
+            // window.print();
           }, 1000);
 
         },

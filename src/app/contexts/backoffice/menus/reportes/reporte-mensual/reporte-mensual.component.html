@@ -10,9 +10,11 @@
     <div class="settings-title">
       <i class="bi bi-graph-up-arrow"></i> Grafica de ventas diarias del Mes
       <select  class="ps-3 pe-3 ms-3">
-        <option >Julio</option>
+        <option *ngFor="let item of meses index as i" [selected]="i+1==7">{{item|titlecase}}<option>
       </select>
       <select  class="ps-3 pe-3 ms-3">
+        <option >2022</option>
+        <option >2023</option>
         <option >2024</option>
       </select>
       <button class="btn btn-warning ms-3">Generar</button>
@@ -34,7 +36,30 @@
       </div>
       <div class="col-lg-6">
         <div class="settings-title mt-5"><i class="bi bi-graph-up-arrow"></i> Ventas Por dia</div>
+        <div class="table-responsive ">
 
+          <table class="table table-striped">
+            <thead class="bg-verde">
+              <tr>
+                <th scope="col">Mes</th>
+                <th>Dia</th>
+                <th class="text-center">Ventas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="clickable" *ngFor="let fecha of dateRange " >
+                <td scope="row">{{ 'Julio' }}</td>
+                <td>{{ fecha.dia }}</td>
+                <td class="text-end">{{fecha.total | currency}}</td>
+              </tr>
+              <tr>
+                <td class="text-end endline" colspan="2"></td>
+                <td class="text-end endline">Total <strong class="ms-3">{{total | currency}}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
       </div>
     </div>
   </div>

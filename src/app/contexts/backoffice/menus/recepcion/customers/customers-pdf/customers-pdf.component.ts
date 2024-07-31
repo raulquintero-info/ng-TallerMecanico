@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
@@ -7,12 +8,19 @@ import Swal from 'sweetalert2';
   templateUrl: './customers-pdf.component.html',
   styleUrls: ['./customers-pdf.component.css']
 })
-export class CustomersPdfComponent {
+export class CustomersPdfComponent implements OnInit{
 
   filterStr: string = '?field=id&type=asc';
   btnSelectedName: string = 'idasc';
   urlPdf: string = environment.api + '/api/clientes/pdf'
   loaderStatus: string = '';
+
+  private mLoaderService = inject(MainLoaderService);
+
+  ngOnInit(): void {
+    this.mLoaderService.setStatus('ocultar');
+
+  }
 
   onOrderBy(field: string, orderType: string){
     let btnToUnselect = document.querySelector('#' + this.btnSelectedName);
@@ -20,7 +28,8 @@ export class CustomersPdfComponent {
     btnToUnselect?.classList.remove('disabled');
     btnToUnselect?.classList.add('btn-beige');
 
-    this.filterStr = '?field=' + field + '&type=' + orderType;
+    // http://localhost:8080/api/clientes/pdf?orderBy=id&orderDirection=asc
+    this.filterStr = '?orderBy=' + field + '&orderDirection=' + orderType;
     this.btnSelectedName = field + orderType;
     let btnSelected = document.querySelector('#' + this.btnSelectedName);
     btnSelected?.classList.remove('btn-beige');
@@ -31,7 +40,7 @@ export class CustomersPdfComponent {
 
   onGeneratePdf(){
 
-    console.log('urlPdf',  environment.api + '/api/clientes/pdf/' + this.filterStr);
+    console.log('urlPdf',  environment.api + '/api/clientes/pdf' + this.filterStr);
   }
 
   showError(){

@@ -3,14 +3,17 @@ import { Injectable, inject } from "@angular/core";
 import { Observable, finalize, switchMap, tap, throwError } from "rxjs";
 import { LoginService } from "../modules/auth/services/login.service";
 import { Router } from "@angular/router";
+import { MainLoaderService } from '../services/mainLoader.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   private router = inject(Router);
   private loginService = inject(LoginService);
+  private mLoaderService = inject(MainLoaderService);
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     const started = Date.now();
     let authReq = req;
     let ok: string;
@@ -49,6 +52,10 @@ export class AuthInterceptor implements HttpInterceptor {
            ${ok} in ${elapsed} ms.`;
         // this.messenger.add(msg);
         console.log(msg, ok);
+        setTimeout(() => {
+          console.log("1 Segundo esperado")
+          this.mLoaderService.setStatus('ocultar');
+        }, 200);
 
       })
     );

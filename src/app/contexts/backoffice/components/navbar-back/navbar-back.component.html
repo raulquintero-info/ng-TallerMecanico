@@ -71,10 +71,10 @@
             Reportes
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/admin/reportes/reporte-anual">Ultimos 12 meses</a></li>
-            <li><a class="dropdown-item" href="/admin/reportes/reporte-mensual">Reporte x Mes</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/reportes/reporte-anual'">Ultimos 12 meses</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/reportes/reporte-mensual'">Reporte x Mes</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/admin/reportes/facturas">Facturas</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/reportes/facturas'">Facturas</a></li>
           </ul>
         </li>
 
@@ -98,7 +98,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" [routerLink]="'/admin/perfil'"><i class="bi bi-person-circle"></i> Mi Perfil</a></li>
 
-          
+
             <li><button class="dropdown-item" [routerLink]="['/auth/logout']" routerLinkActive="router-link-active"><i
                   class="bi bi-door-closed"></i> Cerrar Sesión</button></li>
           </ul>
