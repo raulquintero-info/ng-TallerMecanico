@@ -53,7 +53,6 @@ export class AuthInterceptor implements HttpInterceptor {
         // this.messenger.add(msg);
         console.log(msg, ok);
         setTimeout(() => {
-          console.log("1 Segundo esperado")
           this.mLoaderService.setStatus('ocultar');
         }, 200);
 

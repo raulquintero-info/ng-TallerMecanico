@@ -47,4 +47,12 @@ export class ServicesService {
   generarFactura(idOrdenServicio: number): Observable<any>{return this.http.post(this.urlFacturas + '/' + idOrdenServicio, idOrdenServicio)}
   getFacturaById(idFactura: number): Observable<any>{return this.http.get(this.urlFacturas + '/' + idFactura)}
   getFacturas():Observable<any>{return this.http.get(this.urlFacturas)}
+  getFacturasDateRange(fechaInicio: String, fechaFin: String): Observable<any> {
+    return this.http.get(this.urlFacturas
+      + '/ventas-por-mes?fechaInicio=' + fechaInicio + '&fechaFin=' + fechaFin)
+  }
+  getFacturasByMonth(year: String, month: String): Observable<any> {
+    return this.http.get(this.urlFacturas
+      + '/ventas-por-dia?year=' + year + '&month=' + month)
+  }
 }

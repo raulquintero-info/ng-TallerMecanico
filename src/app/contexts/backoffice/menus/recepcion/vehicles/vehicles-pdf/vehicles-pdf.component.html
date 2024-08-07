@@ -10,14 +10,20 @@
     <div class="col-md-2 ">
       <div class="container bg-beige p-3 left-menu">
         <div class="title text-center">Filtros</div>
-        <div class="left-menu-content title">Ordenar por: </div>
+        <!-- <div class="left-menu-content title">Ordenar por: </div>
         <div class="left-menu-content mt-1 p-2">
           <div id="idasc" (click)="onOrderBy('id','asc')" class="btn-verde-selected disabled">Id ASC</div>
           <div id="iddesc" (click)="onOrderBy('id','desc')" class="btn-beige">Id DESC</div>
           <div id="marcaasc" (click)="onOrderBy('marca','asc')" class="btn-beige">Marca ASC</div>
           <div id="marcadesc" (click)="onOrderBy('marca','desc')" class="btn-beige">Marca DESC</div>
+        </div> -->
+        <div class="left-menu-content title">Filtrar por: </div>
+        <div class="left-menu-content mt-1 p-2">
+          Año:
+          <input style="width:100%" type="text" name="month" id="month" [(ngModel)]="yearSelected">
+          Marca:
+          <input style="width:100%" type="text" name="marca" id="marca" [(ngModel)]="marcaSelected">
         </div>
-
           <!-- <div class="left-menu-content title mt-3">Campos </div>
           <div class="left-menu-content mt-1 p-2">
             <div>Telefono</div>

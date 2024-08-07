@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Chart, ChartType } from 'chart.js/auto';
 import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
+import { ServicesService } from 'src/app/core/services/services.service';
 
 @Component({
   selector: 'app-reporte-mensual',
@@ -15,72 +17,32 @@ export class ReporteMensualComponent implements OnInit {
   ];
   fecha: Date = new Date();
   dateRange: any;
+  dataOfMonth: any;
+  monthSelected: string ="2024-08"
   total: number = 0;
   average: number = 0;
   meses: any[] = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
   chart: Chart | null = null;
 
   private mLoaderService = inject(MainLoaderService);
-
+  private servicesService = inject(ServicesService);
+  private activatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
     // const numeroDeSemanaActual = this.numeroDeSemana(new Date());
     // console.log("El número de semana es: %d", numeroDeSemanaActual);
 
-    this.dateRange = this.DiasPorMes(this.fecha);
-    console.log(this.dateRange)
-
-
-    const data = {
-      labels: this.dateRange.map((x: any) => x.dia),
-      datasets: [{
-        label: 'Ventas Por Dia',
-        data: this.dateRange.map((x: any) => x.total),
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-      }]
-    };
-
-
-
-    // Creamos la gráfica
-    this.chart = new Chart("chart", {
-      type: 'line' as ChartType, // tipo de la gráfica
-      data: data, // datos
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
+    this.activatedRoute.params.subscribe(({year,month}) => {
+      console.log('year', year, month)
+      if(year>1900 && month>0 && month<=12){
+        this.monthSelected = year + '-' + ("0" + (month)).slice(-2)
+      } else {
+        year=2024;
+        month=8;
       }
+      this.loadReport(year, month);
     });
-
-    const canvas = document.getElementById('myChart') as HTMLCanvasElement;
-    const myChart: any = canvas.getContext('2d');
-
-
-    const data1 = {
-      labels: ['January', 'February', 'March', 'April', 'May'],
-      datasets: [{
-        data: [50, 60, 70, 180, 190]
-      }]
-    }
-    const options = {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      },
-      responsive: true,
-      aspectRatio: 2
-    };
-    const chart = new Chart(myChart, {
-      type: 'pie',
-      data: data1,
-      options: options
-    });
+    this.dateRange = this.DiasPorMes(this.fecha);
 
 
     setTimeout(() => {
@@ -89,6 +51,47 @@ export class ReporteMensualComponent implements OnInit {
 
   }
 
+  updateData(){
+    console.log(this.monthSelected);
+    let temp = this.monthSelected.split("-");
+    this.loadReport(temp[0], temp[1]);
+  }
+
+  loadReport(year: string, month: string){
+    this.servicesService.getFacturasByMonth(year, month).subscribe({
+        next: data=>{
+          this.dataOfMonth = data;
+          const params = {
+            labels: data.map((x: any) => x.day),
+            datasets: [{
+              label: 'Ventas Por Dia',
+              data: data.map((x: any) => x.total),
+              fill: false,
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.1
+            }]
+          };
+          console.log('data retrieved',data, params)
+
+
+
+          // Creamos la gráfica
+          this.chart?.destroy();
+          this.chart = new Chart("chart", {
+            type: 'line' as ChartType, // tipo de la gráfica
+            data: params, // datos
+            options: {
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+      }
+    })
+  }
 
   numeroDeSemana(fecha: any) {
     const DIA_EN_MILISEGUNDOS = 1000 * 60 * 60 * 24,

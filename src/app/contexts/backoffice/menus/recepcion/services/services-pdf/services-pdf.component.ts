@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class ServicesPdfComponent implements OnInit{
 
-  filterStr: string = '?field=id&type=asc';
+  filterStr: string = '?orderBy=id&orderDirection=asc';
   btnSelectedName: string = 'idasc';
   urlPdf: string = environment.api + '/api/ordenesServicio/pdf'
   loaderStatus: string = '';
@@ -27,7 +27,7 @@ export class ServicesPdfComponent implements OnInit{
     btnToUnselect?.classList.remove('disabled');
     btnToUnselect?.classList.add('btn-beige');
 
-    this.filterStr = '?field=' + field + '&type=' + orderType;
+    this.filterStr = '?orderBy=' + field + '&orderDirection=' + orderType;
     this.btnSelectedName = field + orderType;
     let btnSelected = document.querySelector('#' + this.btnSelectedName);
     btnSelected?.classList.remove('btn-beige');
@@ -37,8 +37,8 @@ export class ServicesPdfComponent implements OnInit{
   }
 
   onGeneratePdf(){
-
-    console.log('urlPdf',  environment.api + '/api/vehiculos/pdf/' + this.filterStr);
+    this.urlPdf = environment.api + '/api/servicios/pdf' + this.filterStr;
+    console.log('urlPdf',  environment.api + '/api/servicios/pdf' + this.filterStr);
   }
 
   showError(){
@@ -54,6 +54,7 @@ export class ServicesPdfComponent implements OnInit{
     })
 
   }
+
 
   ocultarLoader(){
     this.loaderStatus = "ocultar"

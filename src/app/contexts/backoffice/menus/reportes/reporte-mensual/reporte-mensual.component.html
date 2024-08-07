@@ -9,22 +9,16 @@
   <div class="mt-3">
     <div class="settings-title">
       <i class="bi bi-graph-up-arrow"></i> Grafica de ventas diarias del Mes
-      <select  class="ps-3 pe-3 ms-3">
-        <option *ngFor="let item of meses index as i" [selected]="i+1==7">{{item|titlecase}}<option>
-      </select>
-      <select  class="ps-3 pe-3 ms-3">
-        <option >2022</option>
-        <option >2023</option>
-        <option >2024</option>
-      </select>
-      <button class="btn btn-warning ms-3">Generar</button>
+
+      <input class="ps-2 ms-3"  type="month" name="month" id="month" [(ngModel)]="monthSelected" (change)="updateData()">
+      <!-- <button class="btn btn-warning ms-3">Generar</button> -->
     </div>
 
     <div class=" container mt-3 chart">
       <div class="row">
         <div class="col-lg-12">
 
-          <canvas id="chart" class="" style="height:40vh; width:80vw">{{ chart }}</canvas>
+          <canvas id="chart" class="" style="height:30vh; width:80vw">{{ chart }}</canvas>
         </div>
       </div>
     </div>
@@ -47,9 +41,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="clickable" *ngFor="let fecha of dateRange " >
-                <td scope="row">{{ 'Julio' }}</td>
-                <td>{{ fecha.dia }}</td>
+              <tr class="clickable" *ngFor="let fecha of dataOfMonth " >
+                <td scope="row">{{ meses[fecha.month-1] | titlecase }}</td>
+                <td>{{ fecha.day }}</td>
                 <td class="text-end">{{fecha.total | currency}}</td>
               </tr>
               <tr>

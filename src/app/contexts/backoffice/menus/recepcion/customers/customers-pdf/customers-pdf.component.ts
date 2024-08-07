@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { CustomersService } from 'src/app/core/services/customers.service';
 import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
@@ -12,10 +13,11 @@ export class CustomersPdfComponent implements OnInit{
 
   filterStr: string = '?field=id&type=asc';
   btnSelectedName: string = 'idasc';
-  urlPdf: string = environment.api + '/api/clientes/pdf'
+  urlPdf: any = environment.api + '/api/clientes/pdf?orderBy=id&orderDirection=asc'
   loaderStatus: string = '';
 
   private mLoaderService = inject(MainLoaderService);
+  private customerService = inject(CustomersService);
 
   ngOnInit(): void {
     this.mLoaderService.setStatus('ocultar');
@@ -40,6 +42,10 @@ export class CustomersPdfComponent implements OnInit{
 
   onGeneratePdf(){
 
+
+    this.loaderStatus = ""
+
+    this.urlPdf = environment.api + '/api/clientes/pdf' + this.filterStr;
     console.log('urlPdf',  environment.api + '/api/clientes/pdf' + this.filterStr);
   }
 

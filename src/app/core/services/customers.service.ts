@@ -53,4 +53,5 @@ export class CustomersService {
 
   getVehiclesByCustomerId(id: number):Observable<any>{return this.http.get(this.url + `/${id}/vehiculos`)}
 
+  getcustomersPdf(params: string ){return this.http.get(this.url + '/pdf' + params)}
 }

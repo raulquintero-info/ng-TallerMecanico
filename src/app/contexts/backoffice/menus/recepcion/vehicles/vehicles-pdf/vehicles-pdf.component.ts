@@ -10,12 +10,12 @@ import Swal from 'sweetalert2';
 })
 export class VehiclesPdfComponent implements OnInit{
 
-  filterStr: string = '?field=id&type=asc';
+  filterStr: string = '';
   btnSelectedName: string = 'idasc';
   urlPdf: string = environment.api + '/api/vehiculos/pdf'
   loaderStatus: string = '';
-
-
+  yearSelected: number=2024;
+  marcaSelected: string="";
   private mLoaderService = inject(MainLoaderService);
 
   ngOnInit(): void {
@@ -40,6 +40,14 @@ export class VehiclesPdfComponent implements OnInit{
   }
 
   onGeneratePdf(){
+
+    if(this.yearSelected>1900  && this.marcaSelected!=''){
+      this.filterStr = '?anioModelo=' + this.yearSelected + '&marca=' + this.marcaSelected ;
+    }else if(this.yearSelected>1900  && this.marcaSelected==''){
+      this.filterStr = '?anioModelo' + this.yearSelected;
+    } else if(this.yearSelected<1900  && this.marcaSelected!=''){
+      this.filterStr = '?marca=' + this.marcaSelected;
+    }
 
     console.log('urlPdf',  environment.api + '/api/vehiculos/pdf/' + this.filterStr);
   }

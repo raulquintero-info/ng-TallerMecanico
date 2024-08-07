@@ -20,6 +20,7 @@
         sapien vel, tempus ipsum. Donec venenatis, magna vel vehicula ultrices, lectus nibh placerat ante, id ornare
         libero quam eu erat. Donec facilisis ex et neque consequat.
       </p>
+      <button class="btn btn-primary" (click)="dateRange12Months()">calcular Rango</button>
     </div>
     <div class="col-lg-8">
 
@@ -70,7 +71,7 @@
               <tbody>
                 <tr class="clickable" *ngFor="let fecha of dateRange " [routerLink]="'/admin/reportes/reporte-mensual/' + fecha.year + '/' + fecha.month">
                   <td scope="row">{{fecha.year}}</td>
-                  <td>{{meses[fecha.month ] |titlecase}}</td>
+                  <td>{{meses[fecha.month-1 ] |titlecase}}</td>
                   <td class="text-end">{{fecha.total | currency}}</td>
                 </tr>
                 <tr>
