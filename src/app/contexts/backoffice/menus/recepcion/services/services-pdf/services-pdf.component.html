@@ -6,8 +6,8 @@
 <div class="main">
   <div class="text-center title">reporte de Ordenes de Servicio</div>
 
-  <div class="row ps-2">
-    <div class="col-md-2 ">
+  <div class="row">
+    <!-- <div class="col-md-2 ">
       <div class="container bg-beige p-3 left-menu">
         <div class="title text-center">Filtros</div>
         <div class="left-menu-content title">Ordenar por: </div>
@@ -29,13 +29,14 @@
             <div>{{ filterStr }}</div>
           </div>
       </div>
-    </div>
-    <div class="col-md-8">
+    </div> -->
+    <div class="col-md-12">
 
       <ngx-extended-pdf-viewer class="pdf" [src]="urlPdf" width=100% [height]="'auto'"
         [textLayer]="true" [showHandToolButton]="true" [zoom]="65" backgroundColor="#205b4f"
         (pdfLoadingFailed)="showError()"
-        (pdfLoaded)="ocultarLoader()"></ngx-extended-pdf-viewer>
+        (pdfLoaded)="ocultarLoader()">
+      </ngx-extended-pdf-viewer>
 
     </div>
 

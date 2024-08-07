@@ -35,6 +35,8 @@ export class ReporteAnualComponent {
       .subscribe({
         next: (resp: []) => {
           this.dateRange = resp;
+          this.total = this.dateRange.reduce((a: any, b: any) => a + b.total, 0)
+          this.average = this.total / 12;
           console.log(resp)
           this.setGraphData(this.calculateData(resp));
         }
@@ -44,7 +46,7 @@ export class ReporteAnualComponent {
     console.log(this.dateRange)
   }
 
-  calculateData(data: []):[] {
+  calculateData(data: []): [] {
 
     return [];
   }
@@ -82,15 +84,13 @@ export class ReporteAnualComponent {
       + ("0" + (fecha.getMonth() + 2)).slice(-2)
       + "-01";
 
-    //+ ("0"+(fecha.getDate())).slice(-2);
-
-
     console.log(fechaInicio, fechaFin);
-    return [fechaInicio, fechaFin ]
+    return [fechaInicio, fechaFin]
   }
 
 
   // TODO: genera error al mandar fecha como parametro
+  // ya no se ocupa esta funcion, solo era para generar datos ficticios
   DoceMeses(fecha: Date) {
     let anoInicio = this.fecha.getFullYear() - 1;
     let mesInicio;

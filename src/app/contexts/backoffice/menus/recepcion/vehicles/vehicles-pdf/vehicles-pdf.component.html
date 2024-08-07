@@ -20,9 +20,9 @@
         <div class="left-menu-content title">Filtrar por: </div>
         <div class="left-menu-content mt-1 p-2">
           Año:
-          <input style="width:100%" type="text" name="month" id="month" [(ngModel)]="yearSelected">
+          <input style="width:100%" type="text" name="month" id="month" [(ngModel)]="yearSelected" (keyup.enter)="onGeneratePdf()">
           Marca:
-          <input style="width:100%" type="text" name="marca" id="marca" [(ngModel)]="marcaSelected">
+          <input style="width:100%" type="text" name="marca" id="marca" [(ngModel)]="marcaSelected"  (keyup.enter)="onGeneratePdf()">
         </div>
           <!-- <div class="left-menu-content title mt-3">Campos </div>
           <div class="left-menu-content mt-1 p-2">
@@ -34,7 +34,6 @@
           <div class="text-center">
 
             <button (click)="onGeneratePdf()" class="btn btn-guinda mt-3">Generar PDF</button>
-            <div>{{ filterStr }}</div>
           </div>
       </div>
     </div>

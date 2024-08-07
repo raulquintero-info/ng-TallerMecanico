@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
+import { VehiclesService } from 'src/app/core/services/vehicles.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
@@ -14,9 +15,11 @@ export class VehiclesPdfComponent implements OnInit{
   btnSelectedName: string = 'idasc';
   urlPdf: string = environment.api + '/api/vehiculos/pdf'
   loaderStatus: string = '';
-  yearSelected: number=2024;
+  yearSelected: string = '';
   marcaSelected: string="";
+
   private mLoaderService = inject(MainLoaderService);
+  private vehicleService = inject(VehiclesService);
 
   ngOnInit(): void {
     this.mLoaderService.setStatus('ocultar');
@@ -41,15 +44,17 @@ export class VehiclesPdfComponent implements OnInit{
 
   onGeneratePdf(){
 
-    if(this.yearSelected>1900  && this.marcaSelected!=''){
+    if(Number(this.yearSelected)>1900 && this.marcaSelected!=''){
       this.filterStr = '?anioModelo=' + this.yearSelected + '&marca=' + this.marcaSelected ;
-    }else if(this.yearSelected>1900  && this.marcaSelected==''){
-      this.filterStr = '?anioModelo' + this.yearSelected;
-    } else if(this.yearSelected<1900  && this.marcaSelected!=''){
+    }else if(Number(this.yearSelected)>1900 && this.marcaSelected==''){
+      this.filterStr = '?anioModelo=' + this.yearSelected;
+    } else if(Number(this.yearSelected)<1900 && this.marcaSelected!=''){
       this.filterStr = '?marca=' + this.marcaSelected;
+    }else if(Number(this.yearSelected)<1900 && this.marcaSelected==''){
+      this.filterStr = '';
     }
-
-    console.log('urlPdf',  environment.api + '/api/vehiculos/pdf/' + this.filterStr);
+    this.urlPdf= environment.api + '/api/vehiculos/pdf' + this.filterStr;
+    console.log('urlPdf',  environment.api + '/api/vehiculos/pdf' + this.filterStr);
   }
 
   showError(){

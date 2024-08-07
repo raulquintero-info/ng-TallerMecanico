@@ -23,12 +23,20 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6">
-        <div class="settings-title mt-5"><i class="bi bi-graph-up-arrow"></i> Grafica de ventas por Rubro</div>
-
-        <div><canvas  width="400" style="height:140vh; width:40vw" id="myChart"></canvas></div>
+      <div class="col-lg-5">
+        <!-- <div class="settings-title mt-5"><i class="bi bi-graph-up-arrow"></i> Grafica de ventas por Rubro</div> -->
+        <div class="col-lg-12 d-print-none mt-5">
+          <div class="widget bg-verde">
+            <div class="widget-title">Total</div>
+            <div class="text-end">
+              <div class="cantidad-total">{{total | currency}}</div>
+              <div>MX &nbsp;</div>
+            </div>
+          </div>
+        </div>
+        <!-- <div><canvas  width="400" style="height:140vh; width:40vw" id="myChart"></canvas></div> -->
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-7">
         <div class="settings-title mt-5"><i class="bi bi-graph-up-arrow"></i> Ventas Por dia</div>
         <div class="table-responsive ">
 

@@ -42,7 +42,7 @@ export class ReporteMensualComponent implements OnInit {
       }
       this.loadReport(year, month);
     });
-    this.dateRange = this.DiasPorMes(this.fecha);
+    // this.dateRange = this.DiasPorMes(this.fecha);
 
 
     setTimeout(() => {
@@ -61,6 +61,8 @@ export class ReporteMensualComponent implements OnInit {
     this.servicesService.getFacturasByMonth(year, month).subscribe({
         next: data=>{
           this.dataOfMonth = data;
+          this.total = this.dataOfMonth.reduce((a: any, b: any) => a + b.total, 0)
+
           const params = {
             labels: data.map((x: any) => x.day),
             datasets: [{
