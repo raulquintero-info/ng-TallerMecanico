@@ -27,21 +27,6 @@ export class VehiclesPdfComponent implements OnInit{
   }
 
 
-  onOrderBy(field: string, orderType: string){
-    let btnToUnselect = document.querySelector('#' + this.btnSelectedName);
-    btnToUnselect?.classList.remove('btn-verde-selected');
-    btnToUnselect?.classList.remove('disabled');
-    btnToUnselect?.classList.add('btn-beige');
-
-    this.filterStr = '?field=' + field + '&type=' + orderType;
-    this.btnSelectedName = field + orderType;
-    let btnSelected = document.querySelector('#' + this.btnSelectedName);
-    btnSelected?.classList.remove('btn-beige');
-    btnSelected?.classList.add('btn-verde-selected');
-    btnSelected?.classList.add('disabled');
-
-  }
-
   onGeneratePdf(){
 
     if(Number(this.yearSelected)>1900 && this.marcaSelected!=''){

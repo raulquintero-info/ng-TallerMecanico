@@ -4,6 +4,7 @@ import { adminGuard } from 'src/app/core/guards/admin.guard';
 import { ReporteMensualComponent } from './reporte-mensual/reporte-mensual.component';
 import { ReporteAnualComponent } from './reporte-anual/reporte-anual.component';
 import { FacturasListComponent } from '../recepcion/facturas/facturas-list/facturas-list.component';
+import { ReporteVehiculosComponent } from './reporte-vehiculos/reporte-vehiculos.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'reporte-mensual/:year/:month', component: ReporteMensualComponent, canActivate: [adminGuard] },
       { path: 'reporte-mensual', component: ReporteMensualComponent, canActivate: [adminGuard] },
       { path: 'facturas', component: FacturasListComponent, canActivate: [adminGuard] },
+      { path: 'vehiculos', component: ReporteVehiculosComponent, canActivate: [adminGuard] },
 
     ]
   }

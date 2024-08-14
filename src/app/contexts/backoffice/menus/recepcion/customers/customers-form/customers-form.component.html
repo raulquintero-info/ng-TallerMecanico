@@ -183,15 +183,15 @@
             </div>
           </div> -->
 
-          <button type="submit" class="btn btn-primary" *ngIf="!isSaved" [disabled]="showSpinner" (click)="save()"><span
-              *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
+          <button class="btn btn-secondary"
+            [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente">
+           <i class="bi bi-arrow-left-circle"></i> Regresar
+          </button>
+          <button type="submit" class="btn btn-verde ms-2" *ngIf="!isSaved" [disabled]="showSpinner" (click)="save()"><span
+              *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span><i class="bi bi-floppy"></i>  Grabar
           </button>
         </div>
       </form>
-      <button class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner"
-        [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente"><span *ngIf="showSpinner"
-          class="spinner-border spinner-border-sm"> </span> Continuar
-      </button>
       <!-- {{ respuesta.error.mensaje }} -->
     </div>
   </div>

@@ -5,14 +5,21 @@
     <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [buttons]="buttons">
     </app-page-title>
 
+    <!-- <div class="p-3 bg-gris">
+      Rango:
+      <input class="ms-3" type="date" name="" id="" value="2024-08-01"> -
+      <input type="date" name="" id="" value="2024-08-01">
+      <button class="btn btn-sm btn-guinda ms-3">Actualizar</button>
+    </div> -->
   </div>
 
   <div class="table-responsive">
     <table class="table table-striped table-hover">
       <thead class="table-secondary">
         <tr>
-          <th scope="col">Id Factura</th>
-          <th>Fecha</th>
+          <th scope="col" style="width: 100px">Id Factura</th>
+          <th style="width: 200px">Fecha</th>
+          <th>Cliente</th>
           <th>Monto</th>
         </tr>
       </thead>
@@ -20,6 +27,7 @@
         <tr *ngFor="let factura of facturas" (click)="verFactura(factura.idFactura)" style="cursor: pointer">
           <td class="text-row">{{factura.idFactura}}</td>
           <td  class="text-row" scope="row">{{ factura.fechaFactura| date: 'short'}}</td>
+          <td></td>
           <td class="text-row"> {{ factura.monto| currency}}</td>
           <!-- <td  class="text-row">{{ factura. | titlecase}}</td> -->
           <!-- <td  class="text-row">{{ factura.estatusServicio.estatusServicio | titlecase}}</td> -->

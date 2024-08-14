@@ -12,16 +12,16 @@
 
       <div class="margin-bottom" *ngIf="customer.idCliente">
         <div class="settings-content">
-          <div><strong>Nombre: </strong>{{ customer.nombre | titlecase}}</div>
-          <div><strong>Apellido P: </strong>{{ customer.apellidoPaterno | titlecase}}</div>
-          <div><strong>Apellido M: </strong>{{ customer.apellidoMaterno | titlecase}}</div>
+          <div class="row-data"><strong>Nombre: </strong>{{ customer.nombre | titlecase}}</div>
+          <div class="row-data"><strong>Apellido P: </strong>{{ customer.apellidoPaterno | titlecase}}</div>
+          <div class="row-data"><strong>Apellido M: </strong>{{ customer.apellidoMaterno | titlecase}}</div>
         </div>
       </div>
       <div class="margin-bottom" *ngIf="employee.idEmpleado>0">
         <div class="settings-content">
-          <div><strong>Nombre: </strong>{{ employee.nombre | titlecase}}</div>
-          <div><strong>Apellido P: </strong>{{ employee.apellidoPaterno | titlecase}}</div>
-          <div><strong>Apellido M: </strong>{{ employee.apellidoMaterno | titlecase}}</div>
+          <div class="row-data"><strong>Nombre: </strong>{{ employee.nombre | titlecase}}</div>
+          <div class="row-data"><strong>Apellido P: </strong>{{ employee.apellidoPaterno | titlecase}}</div>
+          <div class="row-data"><strong>Apellido M: </strong>{{ employee.apellidoMaterno | titlecase}}</div>
         </div>
       </div>
       <!-- {{ user | json}}-->
@@ -31,11 +31,11 @@
         <div class="settings-title"><i class="bi bi-person-lines-fill"></i> Datos del Empleado</div>
 
         <div class="settings-content">
-          <div><strong>Id Empleado: </strong>{{ employee.idEmpleado}}</div>
-          <div><strong>NSS: </strong>{{ employee.nss}}</div>
-          <div><strong>Curp: </strong>{{ employee.curp | uppercase}}</div>
-          <div><strong>RFC: </strong>{{ employee.rfc | uppercase}}</div>
-          <div><strong>Puesto: </strong>{{ employee.puesto | uppercase}}</div>
+          <div class="row-data"><strong>Id Empleado: </strong>{{ employee.idEmpleado}}</div>
+          <div class="row-data"><strong>NSS: </strong>{{ employee.nss}}</div>
+          <div class="row-data"><strong>Curp: </strong>{{ employee.curp | uppercase}}</div>
+          <div class="row-data"><strong>RFC: </strong>{{ employee.rfc | uppercase}}</div>
+          <div class="row-data"><strong>Puesto: </strong>{{ employee.puesto | uppercase}}</div>
 
         </div>
 
@@ -46,8 +46,8 @@
         <div class="settings-title"><i class="bi bi-person-lines-fill"></i> Datos del Cliente</div>
 
         <div class="settings-content">
-          <div><strong>Id Cliente: </strong>{{ customer.idCliente}}</div>
-          <div><strong>NSS: </strong>{{ customer.telefono}}</div>
+          <div class="row-data"><strong>Id Cliente: </strong>{{ customer.idCliente}}</div>
+          <div class="row-data"><strong>NSS: </strong>{{ customer.telefono}}</div>
 
         </div>
 
@@ -59,9 +59,9 @@
         <div class="settings-title"><i class="bi bi-fingerprint"></i> Credenciales</div>
 
         <div class="settings-content">
-          <div><strong>Usuario: </strong>{{ user.username| titlecase}}</div>
-          <div><strong>Tipo de Usuario: </strong>{{ user.role| titlecase}}</div>
-          <div><strong>Contraseña: </strong>
+          <div class="row-data"><strong>Usuario: </strong>{{ user.username| titlecase}}</div>
+          <div class="row-data"><strong>Tipo de Usuario: </strong>{{ user.role| titlecase}}</div>
+          <div class="row-data"><strong>Contraseña: </strong>
             <button class="btn btn-sm btn-link" style="font-style: italic; " (click)="onPasswordFormBtn()">[ cambiar
               ]</button>
           </div>

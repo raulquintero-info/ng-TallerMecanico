@@ -176,12 +176,12 @@
 
 
 
-  <button type="submit" class="btn btn-primary" *ngIf="!isSaved" [disabled]="showSpinner"><span *ngIf="showSpinner"
-      class="spinner-border spinner-border-sm"> </span> Grabar
+  <button type="button" class="btn btn-secondary" [routerLink]="'/admin/sistema/empleados/'"><span *ngIf="showSpinner"
+      class="spinner-border spinner-border-sm">
+    </span><i class="bi bi-arrow-left-circle"></i> Regresar
   </button>
-  <button type="button" class="btn btn-success" *ngIf="isSaved" [disabled]="showSpinner"
-    [routerLink]="'/admin/sistema/empleados/'"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm">
-    </span> Continuar
+  <button type="submit" class="btn btn-verde ms-2" *ngIf="!isSaved" [disabled]="showSpinner"><span *ngIf="showSpinner"
+      class="spinner-border spinner-border-sm"> </span><i class="bi bi-floppy"></i> Grabar
   </button>
 
 
@@ -191,5 +191,5 @@
 
 <pre>
 
-  {{ employeeForm.value| json}}
+  <!-- {{ employeeForm.value| json}} -->
 </pre>

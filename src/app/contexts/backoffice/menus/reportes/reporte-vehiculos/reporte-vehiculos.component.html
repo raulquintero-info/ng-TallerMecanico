@@ -1,0 +1,49 @@
+<div class="horizontal-bar-wrap" [class]="loaderStatus">
+  <div class="bar1 bar" ></div>
+
+</div>
+
+<div class="main">
+  <div class="text-center title">reporte de Vehiculos</div>
+
+  <div class="row ps-2">
+    <div class="col-md-2 ">
+      <div class="container bg-beige p-3 left-menu corner-rounded">
+        <div class="title text-center">Filtros</div>
+        <!-- <div class="left-menu-content title">Ordenar por: </div>
+        <div class="left-menu-content mt-1 p-2">
+          <div id="idasc" (click)="onOrderBy('id','asc')" class="btn-verde-selected disabled">Id ASC</div>
+          <div id="iddesc" (click)="onOrderBy('id','desc')" class="btn-beige">Id DESC</div>
+          <div id="marcaasc" (click)="onOrderBy('marca','asc')" class="btn-beige">Marca ASC</div>
+          <div id="marcadesc" (click)="onOrderBy('marca','desc')" class="btn-beige">Marca DESC</div>
+        </div> -->
+        <div class="left-menu-content title">Fechas: </div>
+        <div class="left-menu-content mt-1 p-2">
+          Fecha Inicio:
+          <input style="width:100%" type="date" name="month" id="month" [(ngModel)]="startDate" (keyup.enter)="onGeneratePdf()">
+          Fecha Fin:
+          <input style="width:100%" type="date" name="marca" id="marca" [(ngModel)]="endDate"  (keyup.enter)="onGeneratePdf()">
+        </div>
+          <!-- <div class="left-menu-content title mt-3">Campos </div>
+          <div class="left-menu-content mt-1 p-2">
+            <div>Telefono</div>
+            <div>Email</div>
+            <div>Domicilio</div>
+          </div> -->
+          <div class="text-center">
+
+            <button (click)="onGeneratePdf()" class="btn btn-guinda mt-3">Generar PDF</button>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+
+      <ngx-extended-pdf-viewer class="pdf" [src]="urlPdf" width=100% [height]="'auto'"
+        [textLayer]="true" [showHandToolButton]="true" [zoom]="65" backgroundColor="#205b4f"
+        (pdfLoadingFailed)="showError()"
+        (pdfLoaded)="ocultarLoader()"></ngx-extended-pdf-viewer>
+
+    </div>
+
+
+  </div>

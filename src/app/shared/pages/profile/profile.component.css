@@ -20,4 +20,9 @@
 .show-password-btn{
   position: relative;
   top: -32px;
-  left: 295px;}
+  left: 295px;
+}
+
+.row-data{
+  padding: 6px;
+}

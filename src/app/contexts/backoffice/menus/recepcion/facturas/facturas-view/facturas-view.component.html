@@ -15,19 +15,19 @@
     </div>
   </div>
   <div>
-
     <table class="mt-5 mb-5" style="width: 100%">
       <tr>
-        <td style="width:33%">
+        <td class="ps-3" style="width:33%">
           <strong>{{factura?.nombre + ' ' + factura?.apellidoMaterno + ' ' + factura?.apellidoPaterno| titlecase}}</strong>
           <div>{{ factura?.telefono }}</div>
           <div>{{ factura?.domicilio}}</div>
         </td>
         <td style="width:33%"></td>
 
-        <td style="width:33%; text-align: right; vertical-align: top;">
+        <td class="pe-3" style="width:33%; text-align: right; vertical-align: top;">
           Fecha: {{factura?.fechaFactura |date: "short"}}
           <div>Mexicali B.C</div>
+          [No. Servicio]
         </td>
       </tr>
 
@@ -51,16 +51,6 @@
           <td>1</td>
           <td class="totales">{{detalle.costo | currency}}</td>
         </tr>
-        <!-- <tr class="">
-          <td scope="row">Mano de obra</td>
-          <td>300.00</td>
-          <td>0.00</td>
-          <td class="totales">300.00</td>
-        </tr>
-        <tr>
-          <td colspan="3" class="subtotal">Subtotal:</td>
-          <td class="subtotal">$ {{ factura?.monto | currency}}</td>
-        </tr> -->
       </tbody>
     </table>
 
@@ -94,6 +84,8 @@
     </div>
   </div>
   <br><br>
-  <div class="text-center">________________________________________<br>[ nombre cliente ]</div>
+  <div class="text-center">________________________________________<br>
+    {{factura?.nombre + ' ' + factura?.apellidoMaterno + ' ' + factura?.apellidoPaterno| titlecase}}
+  </div>
 
 </div>

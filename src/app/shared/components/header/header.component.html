@@ -3,5 +3,5 @@
 
 <app-navbar-public *ngIf="role==''"></app-navbar-public>
 <app-navbar-front *ngIf="role=='CLIENTE'"></app-navbar-front>
-<app-navbar-back *ngIf="role=='ADMIN'"></app-navbar-back>
+<app-navbar-back *ngIf="role=='ADMIN' || role=='EMPLEADO'"></app-navbar-back>
 

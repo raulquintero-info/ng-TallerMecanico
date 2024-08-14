@@ -49,7 +49,7 @@ export class ServicesFormComponent implements OnInit {
       }
     });
     if (this.params.params.id > 0)
-      this.getServiceById();
+      this.getServiceById(this.params.params.idVehiculo);
     else {
       this.service.comentarios = this.getDate() + '\n>'
     }
@@ -86,8 +86,9 @@ export class ServicesFormComponent implements OnInit {
     });
   }
 
-  getServiceById(){
+  getServiceById(serviceId: number){
     //TODO: para obtener la orden de servicio a editar
+
   }
 
   getDate(): string{

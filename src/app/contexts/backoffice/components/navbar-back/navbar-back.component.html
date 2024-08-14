@@ -75,6 +75,7 @@
             <li><a class="dropdown-item" [routerLink]="'/admin/reportes/reporte-mensual'">Reporte x Mes</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/reportes/facturas'">Facturas</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/reportes/vehiculos'">Vehiculos</a></li>
           </ul>
         </li>
 
@@ -160,8 +161,6 @@
                 <tr *ngFor="let customer of customers" (click)="selCustomer(customer)" class="clickable" data-bs-dismiss="modal">
                   <td>{{customer.nombre | titlecase}} {{customer.apellidoPaterno | titlecase}}</td>
                   <td>{{ customer.telefono | phone}} </td>
-                  <!-- TODO:revisar back end si va a devolver esta informacion -->
-                  <td><!-- {{ customer.vehiculos.length}} --></td>
                 </tr>
               </tbody>
             </table>
@@ -175,3 +174,4 @@
     </div>
   </div>
 </div>
+

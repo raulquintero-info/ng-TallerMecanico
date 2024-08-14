@@ -70,7 +70,6 @@ export class ServicesViewComponent implements OnInit {
         next: (resp) => {
           console.log('servicio cargado', resp)
           this.isLoadingService = false;
-          //TODO: revisar por que el back end regresa nulo con codigo 200 en vez de 404
           if (resp != null) {
             this.service = resp;
             this.vehicle = resp.vehiculo;
