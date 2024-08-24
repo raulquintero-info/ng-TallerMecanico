@@ -7,9 +7,9 @@ body{
   font-family: "Jost", "snas-serif";
   font-size: 17px;
 }
-.row{
-  --bs-gutter-x: 0px;
-}
+/* .row{
+  --bs-gutter-x: 1.5px;
+} */
 .page-title {
   margin-top: 20px;
   background-color: rgb(243, 243, 243);

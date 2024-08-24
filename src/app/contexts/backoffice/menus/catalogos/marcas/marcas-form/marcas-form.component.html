@@ -7,11 +7,12 @@
         [buttons]="buttons"></app-page-title>
       <div class="bg-dark mb-3">&nbsp;</div>
 
+      <app-m-marcas-form [idMarca]="marca.idMarca" (cancelledMarca)="cancelledMarca()"></app-m-marcas-form>
 
-      <form [formGroup]="marcaForm">
+      <!-- <form [formGroup]="marcaForm">
         <div class=" mb-3">
-          <label for="idCliente" class="form-label">Id</label>
-          <input formControlName="idMarca" type="text" class="form-control" id="idMarca" [disabled]="true" [readOnly]="true">
+          <label for="idMarca" class="form-label">Id</label>
+          <input formControlName="idMarca" type="text" class="form-control" id="idMarca"  >
         </div>
         <div>
           <div class=" mb-3">
@@ -19,7 +20,6 @@
             <input formControlName="marca" type="text" class="form-control" id="marca" name="marca">
           </div>
 
-          <!-- validacion  -->
           <div
             *ngIf="marcaForm.controls.marca.invalid && (marcaForm.controls.marca.dirty || marcaForm.controls.marca.touched)"
             class="alert alert-danger">
@@ -34,7 +34,7 @@
           <button type="submit" class="btn btn-primary" [disabled]="showSpinner" (click)="save()"><span
               *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span>Grabar</button>
         </div>
-      </form>
+      </form> -->
     </div>
     <div class="col-md-5 mt-4 bg-verde text-white">
 
@@ -56,4 +56,4 @@
   </div>
 </div>
 
-<!-- <app-toast [toasts]="messages"></app-toast> -->
+

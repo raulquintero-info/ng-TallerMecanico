@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Departamento } from 'src/app/core/interfaces/departamento.interface';
 import { Toast } from 'src/app/core/interfaces/toast.interface';
 import { DepartamentosService } from 'src/app/core/services/departamentos.service';
+import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
 
 @Component({
   selector: 'app-departamentos-form',
@@ -24,6 +25,7 @@ export class DepartamentosFormComponent implements OnInit{
   private departamentosService = inject(DepartamentosService);
   private route = inject(ActivatedRoute);
   private formBuilder = inject(FormBuilder);
+  private toastService = inject(ToastService);
 
   departamentoForm = this.formBuilder.group({
     idDepartamento: [''],
@@ -69,12 +71,7 @@ export class DepartamentosFormComponent implements OnInit{
       console.log('Departamento Enviado', this.departamento);
       this.departamentosService.createOrUpdate(this.departamento).subscribe({
         next: (resp) => {
-          this.messages.push({
-            title: 'Sistema',
-            timeAgo: '',
-            body: 'Registro Grabado',
-            type: 'success',
-          });
+          this.toastService.addMessage(           {title: 'Sistema',timeAgo: '',body: 'Registro Grabado',type: 'success'});
 
           this.departamento = resp.departamento;
           this.respuesta = resp.mensaje;
@@ -83,12 +80,7 @@ export class DepartamentosFormComponent implements OnInit{
           this.isSaved = true
         },
         error: (resp) => {
-          this.messages.push({
-            title: 'Sistema',
-            timeAgo: '',
-            body: 'El registro no se ha grabado, debido a un problema con el servidor',
-            type: 'danger',
-          });
+          this.toastService.addMessage({title: 'Sistema',timeAgo: '',body: 'El registro no se ha grabado, debido a un problema con el servidor',type: 'danger'});
           console.log('update error:', resp);
           this.showSpinner = false;
           this.isSaved = false
@@ -100,22 +92,12 @@ export class DepartamentosFormComponent implements OnInit{
 
       this.departamentosService.createOrUpdate(this.departamento).subscribe({
         next: (resp) => {
-          this.messages.push({
-            title: 'Sistema',
-            timeAgo: '',
-            body: 'Registro Grabado',
-            type: 'success',
-          });
+          this.toastService.addMessage({title: 'Sistema',timeAgo: '',body: 'Registro Grabado',type: 'success'});
           console.log('respUsuario', resp);
           this.showSpinner = false;
         },
         error: (resp) => {
-          this.messages.push({
-            title: 'Sistema',
-            timeAgo: '',
-            body: 'El registro no se ha grabado, debido a un problema con el servidor',
-            type: 'danger',
-          });
+          this.toastService.addMessage({title: 'Sistema',timeAgo: '',body: 'El registro no se ha grabado, debido a un problema con el servidor',type: 'danger'});
           console.log('create error:', resp);
           this.respuesta = resp;
           this.showSpinner = false;

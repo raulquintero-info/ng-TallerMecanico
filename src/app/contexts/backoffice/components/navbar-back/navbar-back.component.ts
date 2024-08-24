@@ -43,6 +43,7 @@ export class NavbarBackComponent implements OnInit {
         this.currentCustomer = currentCustomer;
       }
     });
+    //para esperar unos segundos antes de empezar a buscar al cliente
     this.debouncer
     .pipe(
       debounceTime(300)
@@ -64,7 +65,6 @@ export class NavbarBackComponent implements OnInit {
             }
           });
       })
-    console.log('hola');
     // this.searchCustomer();
   }
 

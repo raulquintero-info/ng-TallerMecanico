@@ -1,37 +1,33 @@
-<div class="container ps-5 pt-3">
+<form [formGroup]="vehicleForm" class="mt-3">
+  <div class="container ps-5 pt-3">
 
-  <div class="row ">
-    <div class="col-md-5 mt-4 bg-verde banner-left">
+    <div class="row ">
+      <div class="col-md-5 mt-4 bg-verde banner-left">
 
-      <div class="mt-2 text-uppercase" style="font-weight: bold">{{ vehicle.modelo.marca.marca }} {{
-        vehicle.modelo.modelo}} [ {{vehicle.idVehiculo}} ]</div>
-      <img class="mb-2" [src]="vehicle.imagen" alt="">
-      <div class="text-end">
-        <button class="btn btn-success btn-sm btn-icon" data-bs-toggle="modal" data-bs-target="#imagenModal"
-          style="top:-50px; right: 20px; position:relative"><i class="bi bi-camera"></i> </button>
+        <div class="mt-2 text-uppercase" style="font-weight: bold">{{ vehicle.modelo.marca.marca }} {{
+          vehicle.modelo.modelo}} [ {{vehicle.idVehiculo}} ]</div>
+        <img class="mb-2" [src]="vehicle.imagen" alt="">
+        <div class="text-end">
+          <button class="btn btn-success btn-sm btn-icon" data-bs-toggle="modal" data-bs-target="#imagenModal"
+            style="top:-50px; right: 20px; position:relative"><i class="bi bi-camera"></i> </button>
+        </div>
+        <div class="mt-3 text-start">
+
+
+        </div>
       </div>
-      <div class="mt-3 text-start">
-
-
-      </div>
-    </div>
-    <div class="col-md-7">
+      <div class="col-md-7">
       <app-page-title [title]="vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno" [subTitle]="subTitle"
-        [printerEnabled]="true"></app-page-title>
-      <!-- <div class="bg-gris mb-3">&nbsp;</div> -->
+      [printerEnabled]="true"></app-page-title>
 
-      <form [formGroup]="vehicleForm" class="mt-3">
-        <!-- <div class=" mb-3">
-          <label for="imagen" class="form-label">Imagen</label>
-          <input type="file" class="form-control" formControlName="imagen"  id="imagen" (change)="captureFile($event)">
-        </div> -->
+        <div class="mt-3">
 
         <div class=" mb-3">
           <label for="vin" class="form-label">VIN</label>
           <input type="text" class="form-control" formControlName="vin" id="vin">
           <div
             *ngIf="vehicleForm.controls.vin.invalid && (vehicleForm.controls.vin.dirty || vehicleForm.controls.vin.touched)"
-            class="alert alert-danger">
+            class="text-danger">
             <div *ngIf="vehicleForm.controls.vin.errors?.['required']">El VIN no puede quedar vacío.</div>
             <div *ngIf="vehicleForm.controls.vin.errors?.['minlength']">Debe tener 17 caracteres.</div>
           </div>
@@ -42,7 +38,7 @@
           <input type="text" class="form-control" id="matricula" formControlName="matricula">
           <div
             *ngIf="vehicleForm.controls.matricula.invalid && (vehicleForm.controls.matricula.dirty || vehicleForm.controls.matricula.touched)"
-            class="alert alert-danger">
+            class="text-danger">
             <div *ngIf="vehicleForm.controls.matricula.errors?.['required']">La matrícula no puede quedar vacía.</div>
             <div *ngIf="vehicleForm.controls.matricula.errors?.['minlength']">Debe tener 6 caracteres.</div>
           </div>
@@ -53,7 +49,7 @@
           <input type="number" class="form-control" id="anio" formControlName="anio">
           <div
             *ngIf="vehicleForm.controls.anio.invalid && (vehicleForm.controls.anio.dirty || vehicleForm.controls.anio.touched)"
-            class="alert alert-danger">
+            class="text-danger">
             <div *ngIf="vehicleForm.controls.anio.errors?.['required']">El año no puede quedar vacío.</div>
             <div *ngIf="vehicleForm.controls.anio.errors?.['minlength']">Debe tener 4 caracteres.</div>
           </div>
@@ -64,40 +60,36 @@
           <input type="text" class="form-control" id="color" formControlName="color">
           <div
             *ngIf="vehicleForm.controls.color.invalid && (vehicleForm.controls.color.dirty || vehicleForm.controls.color.touched)"
-            class="alert alert-danger">
+            class="text-danger">
             <div *ngIf="vehicleForm.controls.color.errors?.['required']">El color no puede quedar vacío.</div>
             <div *ngIf="vehicleForm.controls.color.errors?.['minlength']">Debe tener 4 caracteres.</div>
           </div>
         </div>
-        <!-- <div class=" mb-3">
-        <label for="imagen" class="form-label">Imagen</label>
-        <input type="text" class="form-control" id="imagen" [(ngModel)]="vehicle.imagen">
-      </div> -->
-
 
 
         <div class="row">
           <div class="col-md-6">
             <div class="d-flex  mb-3">
-              <div class="flex-grow-1" >
+              <div class="flex-grow-1">
 
                 <label for="marca" class="form-label">Marca</label>
                 <select formControlName="marca" class="form-select" name="marca" #selectMarca id="marca"
-                [compareWith]="compareMarca" (change)="loadModels(selectMarca.value)" aria-label="marca">
-                <!-- [(ngModel)]="vehicle.modelo.marca" -->
-                <!-- <option value="-1" readonly>Seleccione una Marca</option> -->
-                <option *ngFor="let b of marcas" [value]="b.idMarca">{{ b.marca }}</option>
-              </select>
-              <div
-                *ngIf="vehicleForm.controls.marca.invalid && (vehicleForm.controls.marca.dirty || vehicleForm.controls.marca.touched)"
-                class="alert alert-danger">
-                <div *ngIf="vehicleForm.controls.marca.errors?.['required']">Debe seleccionar una marca.</div>
-              </div>
-            </div>
-            <div class="align-content-end">
+                  [compareWith]="compareMarca" (change)="loadModels(selectMarca.value)" aria-label="marca">
+                  <option value="0" [selected]="true">Seleccione una Marca</option>
+                  <option *ngFor="let b of marcas" [value]="b.idMarca">{{ b.marca }}</option>
+                </select>
+                <div
+                  *ngIf="vehicleForm.controls.marca.invalid && (vehicleForm.controls.marca.dirty || vehicleForm.controls.marca.touched)"
+                  class="text-danger">
+                  <div *ngIf="vehicleForm.controls.marca.errors?.['required']">Debe seleccionar una marca.</div>
+                </div>
 
-              <button class="btn btn-secondary"><i class="bi bi-plus-lg"></i></button>
-            </div>
+              </div>
+              <div class="align-content-end">
+
+                <button class="btn btn-secondary" (click)="showMarcasModal()"><i
+                    class="bi bi-plus-lg"></i></button>
+              </div>
             </div>
           </div>
 
@@ -106,42 +98,43 @@
 
           <div class="col-md-6">
             <div class="d-flex  mb-3">
-              <div class="flex-grow-1" >
-              <label for="modelo" class="form-label">Modelo</label>
-              <select formControlName="modelo" name="modelo" class="form-select" id="modelo" aria-label="modelo"
-                placeholder="Seleccione un modelo" [compareWith]="compareModelo">
-                <!-- <option selected value="-1">Seleccione un Modelo</option> -->
-                <option *ngFor="let b of modelos" [value]="b.idModelo">{{ b.modelo }}</option>
-              </select>
-              <div
-                *ngIf="vehicleForm.controls.modelo.invalid && (vehicleForm.controls.modelo.dirty || vehicleForm.controls.modelo.touched)"
-                class="alert alert-danger">
-                <div *ngIf="vehicleForm.controls.modelo.errors?.['required']">Debe seleccionar un modelo.</div>
-              </div>
+              <div class="flex-grow-1">
+                <label for="modelo" class="form-label">Modelo</label>
+                <select formControlName="modelo" name="modelo" class="form-select" id="modelo" aria-label="modelo"
+                  placeholder="Seleccione un modelo" [compareWith]="compareModelo">
+                  <option value="0" [selected]="true">Seleccione un Modelo</option>
+                  <option *ngFor="let b of modelos" [value]="b.idModelo">{{ b.modelo }}</option>
+                </select>
+                <div
+                  *ngIf="vehicleForm.controls.modelo.invalid && (vehicleForm.controls.modelo.dirty || vehicleForm.controls.modelo.touched)"
+                  class="text-danger">
+                  <div *ngIf="vehicleForm.controls.modelo.errors?.['required']">Debe seleccionar un modelo.</div>
+                </div>
               </div>
               <div class="align-content-end">
-                <button class="btn btn-secondary"><i class="bi bi-plus-lg"></i></button>
+                <button class="btn btn-secondary" (click)="showModeloModal()"><i class="bi bi-plus-lg"></i></button>
               </div>
             </div>
           </div>
         </div>
 
 
-        <!-- modelo - tipoMotor = cliente  -->
 
         <div class="row">
           <div class="col-md-6">
             <div class=" mb-3">
               <label for="tipoMotor" class="form-label">Tipo de Motor</label>
               <select formControlName="tipoMotor" class="form-select" name="tipoMotor" id="tipoMotor"
-                aria-label="tipoMotor" placeholder="Seleccione un Tipo de Motor">
+                aria-label="tipoMotor">
+                <option value="0" [selected]="true">Seleccione Tipo de Motor</option>
+
                 <option *ngFor="let b of tiposMotor" [selected]="b.idTipoMotor==1" [value]="b.idTipoMotor">{{
                   b.tipoMotor }}
                 </option>
               </select>
               <div
                 *ngIf="vehicleForm.controls.tipoMotor.invalid && (vehicleForm.controls.tipoMotor.dirty || vehicleForm.controls.tipoMotor.touched)"
-                class="alert alert-danger">
+                class="text-danger">
                 <div *ngIf="vehicleForm.controls.tipoMotor.errors?.['required']">Debe seleccionar un Tipo de Motor.
                 </div>
               </div>
@@ -170,33 +163,83 @@
 
 
         </div>
-      </form>
+      </div>
+
+      </div>
+
+
+
+
     </div>
 
 
 
+    <!-- Modal Imagen Vehiculo-->
+    <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-guinda">
+            <h5 class="modal-title" id="imagenModalLabel">Seleccione Imagen de Vehiculo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="file" class="form-control" formControlName="imagen" id="imagen"
+              accept="image/png, image/gif, image/jpeg" (change)="captureFile($event)">
 
-  </div>
-
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-guinda">
-          <h5 class="modal-title" id="imagenModalLabel">Seleccione Imagen de Vehiculo</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <input type="file" class="form-control" formControlName="imagen" id="imagen" accept="image/png, image/gif, image/jpeg" (change)="captureFile($event)">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
+
+
+  <!-- Modal Marcas-->
+  <div class="modal " #marcasModal id="marcasModal" arial-labelledby="marcasModalLabel" arial-hidden="true" tabindex="-1" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-guinda">
+          <h5 class="modal-title" id="marcasModalLabel">Crear Marca de Vehiculo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-m-marcas-form (cancelledMarca)="cancelledMarca()" (savedMarca)="savedMarca($event)"></app-m-marcas-form>
+
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-verde">Grabar</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Modelos-->
+  <div class="modal " #modelosModal id="modelosModal" arial-labelledby="modelosModalLabel" arial-hidden="true" tabindex="-1" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-guinda">
+          <h5 class="modal-title" id="modelosModalLabel">Crear Modelo de Vehiculo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-m-modelos-form [idMarca]="idMarca" (cancelledModelo)="cancelledModelo()" (savedModelo)="savedModelo($event)"></app-m-modelos-form>
+
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-verde">Grabar</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+
 
   <pre>
     {{showSpinner}}

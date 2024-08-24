@@ -1,0 +1,35 @@
+<form [formGroup]="modeloForm">
+  <div class="mb-3">
+    <label for="modelo" class="form-label">Modelo</label>
+    <input formControlName="modelo" type="text" class="form-control" id="modelo">
+    <div *ngIf="modeloForm.controls.modelo.invalid && (modeloForm.controls.modelo.dirty || modeloForm.controls.modelo.touched)" class="alert alert-danger">
+      <div *ngIf="modeloForm.controls.modelo.errors?.['required']">La descripción del modelo no puede quedar vacía.</div>
+      <div *ngIf="modeloForm.controls.modelo.errors?.['minlength']">Debe tener como mínimo 2 caracteres.</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="marca" class="form-label">Marca</label>
+    <select formControlName="marca" class="form-select" id="marca">
+      <option value="0">Selecciona una marca</option>
+      <option *ngFor="let marca of marcas" [value]="marca.idMarca">{{ marca.marca }}</option>
+    </select>
+    <div *ngIf="modeloForm.controls.marca.invalid && (modeloForm.controls.marca.dirty || modeloForm.controls.marca.touched)" class="alert alert-danger">
+      <div *ngIf="modeloForm.controls.marca.errors?.['required']">Debe seleccionar una marca.</div>
+    </div>
+  </div>
+  <div class="pt-3 text-end">
+    <pre>
+
+      <!-- {{idMarca}}
+      {{modeloForm.value|json}} -->
+    </pre>
+
+    <hr>
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+  <button type="submit" *ngIf="!isSaved" class="btn btn-primary ms-2" [disabled]="showSpinner" (click)="save()">
+    <span *ngIf="showSpinner" class="spinner-border spinner-border-sm"></span> Grabar
+  </button>
+  </div>
+  <button type="submit" *ngIf="isSaved" class="btn btn-success ms-2" [disabled]="showSpinner" routerLink="/admin/catalogos/modelos/0">Continuar</button>
+</form>

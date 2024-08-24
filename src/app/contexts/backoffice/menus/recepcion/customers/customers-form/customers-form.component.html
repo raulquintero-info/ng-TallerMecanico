@@ -143,7 +143,7 @@
 
           <div class=" mb-3">
             <label for="telefono" class="form-label">Telefono</label>
-            <input type="number" class="form-control" id="telefono" formControlName="telefono" name="telefono">
+            <input type="text" mask="(000) 000-0000" class="form-control" id="telefono" formControlName="telefono" name="telefono">
 
           </div>
 
@@ -158,7 +158,6 @@
               Debe tener como mínimo 10 digitos.
             </div>
           </div>
-
 
           <div class=" mb-3" style="display:none;">
             <label for="rol" class="form-label">Rol</label>
@@ -183,7 +182,7 @@
             </div>
           </div> -->
 
-          <button class="btn btn-secondary"
+          <button class="btn btn-secondary ms-2"
             [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente">
            <i class="bi bi-arrow-left-circle"></i> Regresar
           </button>

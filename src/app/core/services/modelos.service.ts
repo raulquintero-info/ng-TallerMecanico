@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Modelo } from '../interfaces/modelo.interface';
 import { Page } from '../interfaces/page.interface';
 import { environment } from 'src/environments/environment';
@@ -14,7 +14,20 @@ export class ModelossService {
   url: string =  environment.api + '/api/modelos'
   urlMarcas: string =  environment.api + '/api/marcas'
 
+  idMarca: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
   private http = inject(HttpClient);
+
+
+
+
+  setIdMarca(status:number){
+    this.idMarca.next(status);
+  }
+
+  currentIdMarca(): Observable<number> {
+    return this.idMarca
+  }
 
 
 

@@ -1,5 +1,5 @@
 import { animation } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,6 +24,9 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 })
 export class VehiclesFormComponent implements OnInit {
   showSpinner: boolean = false;
+  showModalMarca: string = 'display';
+  idMarca: number = 0;
+  marcaSelected: Marca= {} as Marca;
   isSaved: boolean = false;
   isProcessing: boolean = false;
   params: any;
@@ -46,6 +49,9 @@ export class VehiclesFormComponent implements OnInit {
   subTitle: string = 'Agregar Vehiculo';
   buttons = [];
 
+  @ViewChild('marcasModal', {static: false}) marcasModal?: ElementRef;
+  @ViewChild('modelosModal', {static: false}) modelosModal?: ElementRef;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -58,6 +64,7 @@ export class VehiclesFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private sanitizer: DomSanitizer
   ) {}
+
 
   vehicleForm = this.formBuilder.group({
     imagen:[''],
@@ -75,6 +82,7 @@ export class VehiclesFormComponent implements OnInit {
     // this.customer.idCliente = this.params.get('idCustomer');
     this.vehicle.idVehiculo = this.params.get('idVehicle');
     console.log(this.params.params.id);
+
 
 
 
@@ -106,6 +114,9 @@ export class VehiclesFormComponent implements OnInit {
 
         },
       });
+    } else {
+      this.vehicleForm.get('modelo')?.disable();
+
     }
 
     let temp = localStorage.getItem('customer');
@@ -120,12 +131,7 @@ export class VehiclesFormComponent implements OnInit {
     })
 
 
-    this.marcasService.getAll().subscribe({
-      next: (marcas: Marca[]) => {
-        console.log('marcas', marcas)
-        this.marcas = marcas;
-      }
-    });
+    this.loadMarcas();
 
 
     this.tiposMotorService.getAll().subscribe({
@@ -134,21 +140,43 @@ export class VehiclesFormComponent implements OnInit {
       },
     });
   }
+  loadMarcas(){
+    this.marcasService.getAll().subscribe({
+      next: (marcas: Marca[]) => {
+        console.log('marcas', marcas)
+        this.marcas = marcas;
+        console.log('enable modelo')
 
-  loadModels(id: any) {
+      }
+    });
+  }
+  loadModels(id: any, idModelo: number = 0) {
     //id = id.split(': ')[1];
+    this.idMarca = id;
     console.log('modelos', id);
-    if (id >= 0)
+    if (id > 0)
       this.modelsService.getByIdMarca(id).subscribe({
         next: (modelos: Modelo[]) => {
           console.log('modelos', modelos, id);
           this.modelos = modelos;
+          this.modelsService.setIdMarca(id);
+          console.log('loadIdMarca', this.idMarca);
+          this.vehicleForm.get('modelo')?.enable();
+          this.vehicleForm.patchValue({
+            modelo: idModelo,
+        });
         },
       });
   }
 
   save() {
     this.showSpinner = true;
+    if (this.vehicleForm.invalid) {
+      // Marcar los controles del formulario como tocados para mostrar los mensajes de error
+      this.vehicleForm.markAllAsTouched();
+      this.showSpinner = false; // Detener el spinner
+      return; // Detener el proceso de guardado
+    }
     console.log('vehicle', this.vehicle);
     this.vehicle.vin = this.vehicleForm.value.vin!;
     this.vehicle.matricula = this.vehicleForm.value.matricula!;
@@ -205,6 +233,43 @@ export class VehiclesFormComponent implements OnInit {
     return item1 && item2 ? item1.idModelo === item2.idModelo : item1 === item2;
   }
 
+
+
+  savedMarca(idMarca:  number = 0){
+    this.loadMarcas();
+    this.loadModels(idMarca);
+    this.vehicleForm.patchValue({
+      marca: idMarca,
+  });
+  (this.marcasModal?.nativeElement as HTMLElement).style.display = 'none'
+
+    console.log('Marca grabada', idMarca)
+  }
+
+  showMarcasModal(){
+    (this.marcasModal?.nativeElement as HTMLElement).style.display = 'block'
+  }
+  cancelledMarca(){
+
+    (this.marcasModal?.nativeElement as HTMLElement).style.display = 'none'
+  }
+
+  showModeloModal(){
+    (this.modelosModal?.nativeElement as HTMLElement).style.display = 'block'
+  }
+  savedModelo(idModelo:  number = 0){
+    console.log('savedModelo',idModelo , this.idMarca)
+    this.loadModels(this.idMarca, idModelo);
+
+  (this.modelosModal?.nativeElement as HTMLElement).style.display = 'none'
+
+    console.log('Marca grabada', idModelo)
+  }
+
+  cancelledModelo(){
+
+    (this.modelosModal?.nativeElement as HTMLElement).style.display = 'none'
+  }
 
 
 

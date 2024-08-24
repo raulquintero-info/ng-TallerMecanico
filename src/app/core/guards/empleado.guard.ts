@@ -1,11 +1,10 @@
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { LoginService } from '../modules/auth/services/login.service';
 import { inject } from '@angular/core';
-import { tap } from 'rxjs';
 
 import { MainLoaderService } from '../services/mainLoader.service';
 
-export const adminGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+export const empleadoGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const router = inject(Router)
   const loginService = inject(LoginService);
   const mLoaderService = inject(MainLoaderService);
@@ -13,17 +12,15 @@ export const adminGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: 
 
   // mLoaderService.setStatus('');
 
-  loginService.checkStatus();
-  let role = loginService.getRole();
-  if (role == "ADMIN") {
-    return true;
+      loginService.checkStatus();
+      let role = loginService.getRole();
+      if(role == "EMPLEADO"){
+        return true;
+      }
+
+      router.navigateByUrl("not-authorized", {skipLocationChange: true});
+      return false;
+
+
+
   }
-  if (role == "EMPLEADO") {
-    return true;
-  }
-  router.navigateByUrl("not-authorized", { skipLocationChange: true });
-  return false;
-
-
-
-}

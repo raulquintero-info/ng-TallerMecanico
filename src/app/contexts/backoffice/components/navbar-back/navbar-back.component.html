@@ -56,12 +56,12 @@
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/marcas'">Marcas</a></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/modelos/0'">Modelos</a></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/tipos-motor'">Tipo Motor</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/roles'">Roles</a></li>
-            <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/estatus-servicio'">Estatus Servicio</a></li>
-            <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/departamentos'">Departamentos</a></li>
+            <div *ngIf="userData.role=='ADMIN'">
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/roles'">Roles</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/estatus-servicio'">Estatus Servicio</a></li>
+              <li><a class="dropdown-item" [routerLink]="'/admin/catalogos/departamentos'">Departamentos</a></li>
+            </div>
           </ul>
         </li>
 
@@ -73,7 +73,9 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" [routerLink]="'/admin/reportes/reporte-anual'">Ultimos 12 meses</a></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/reportes/reporte-mensual'">Reporte x Mes</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" [routerLink]="'/admin/reportes/facturas'">Facturas</a></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/reportes/vehiculos'">Vehiculos</a></li>
           </ul>
@@ -97,7 +99,8 @@
             {{ userData.username }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" [routerLink]="'/admin/perfil'"><i class="bi bi-person-circle"></i> Mi Perfil</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/perfil'"><i class="bi bi-person-circle"></i> Mi
+                Perfil</a></li>
 
 
             <li><button class="dropdown-item" [routerLink]="['/auth/logout']" routerLinkActive="router-link-active"><i
@@ -126,7 +129,7 @@
       <i class="bi bi-pin-angle-fill"></i>
       Cliente: <span style="font-weight: bold; color:#ffffff">{{ currentCustomer.nombre + ' ' +
         currentCustomer.apellidoPaterno | titlecase}} </span>
-    <i *ngIf="currentCustomer.idCliente" class="bi bi-x-lg" (click)="clearCustomer()" style="cursor: pointer"></i>
+      <i *ngIf="currentCustomer.idCliente" class="bi bi-x-lg" (click)="clearCustomer()" style="cursor: pointer"></i>
     </span>
   </div>
 </div>
@@ -135,7 +138,8 @@
 
 
 <!-- Modal -->
-<div class="modal modal-lg fade" style="top: -160px" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal modal-lg fade" style="top: -160px" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-guinda">
@@ -143,7 +147,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="min-height: 400px;">
-        <input class="form-control form-control-lg" type="text" (keyup)="searchCustomer(txtInput.value)"  #txtInput
+        <input class="form-control form-control-lg" type="text" (keyup)="searchCustomer(txtInput.value)" #txtInput
           placeholder="Nombre o Num. de  Telefono" aria-label=".form-control-lg example">
         <div *ngIf="customers.length">
           <br>Resultados:
@@ -158,7 +162,8 @@
                 </tr>
               </thead>
               <tbody class="table-group-divider">
-                <tr *ngFor="let customer of customers" (click)="selCustomer(customer)" class="clickable" data-bs-dismiss="modal">
+                <tr *ngFor="let customer of customers" (click)="selCustomer(customer)" class="clickable"
+                  data-bs-dismiss="modal">
                   <td>{{customer.nombre | titlecase}} {{customer.apellidoPaterno | titlecase}}</td>
                   <td>{{ customer.telefono | phone}} </td>
                 </tr>
@@ -166,7 +171,9 @@
             </table>
           </div>
         </div>
-        <div class="mt-3 text-center" *ngIf="isSearching"><div class="loader"></div></div>
+        <div class="mt-3 text-center" *ngIf="isSearching">
+          <div class="loader"></div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary bg-guinda" data-bs-dismiss="modal">Cerrar</button>
@@ -174,4 +181,3 @@
     </div>
   </div>
 </div>
-

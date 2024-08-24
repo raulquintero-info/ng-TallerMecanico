@@ -29,6 +29,8 @@ export class ServicesViewComponent implements OnInit {
   idService: number = 0;
   factura: Factura = {} as Factura;
   total: number = 0;
+  mesEntrada: string = '';
+  mesSalida : string = '';
   displayStyleDelete: string = 'none';
   displayStyleStatus: string = 'none';
   isLoadingService = true;
@@ -49,6 +51,7 @@ export class ServicesViewComponent implements OnInit {
   statusList: EstatusServicio[] = []
   params: any;
   newComment: string = '';
+  meses = ['Ene', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
   private statusService = inject(EstatusService);
   constructor(
@@ -271,6 +274,7 @@ export class ServicesViewComponent implements OnInit {
     this.displayStyle = "none";
   }
 
+  //hide modals
   openModalDelete() {
     this.displayStyleDelete = "block";
   }

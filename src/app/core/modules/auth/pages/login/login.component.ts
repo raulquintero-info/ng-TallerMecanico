@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit,OnDestroy{
                   url="/mi-garage";
                   break;
                 case "ADMIN": url="/admin/dashboard"; break;
+                case "EMPLEADO": url="/admin/dashboard"; break;
               }
 
               this.router.navigateByUrl(url);

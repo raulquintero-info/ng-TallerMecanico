@@ -1,0 +1,35 @@
+<form [formGroup]="marcaForm">
+
+  <!-- este campo no es necesario mostrarlo -->
+  <div class=" mb-3"  *ngIf="toNumber(idMarca)>0">
+    <label for="idCliente" class="form-label">Id</label>
+    <input formControlName="idMarca" type="text" class="form-control" id="idMarca">
+  </div>
+  <div>
+    <div class=" mb-3">
+      <label for="marca" class="form-label">Marca</label>
+      <input formControlName="marca" type="text" class="form-control" id="marca" name="marca" placeholder="ej. Ford, Chevrolet">
+      <input type="checkbox" name="bi-x-lg" id="x">
+
+    </div>
+
+    <!-- validacion  -->
+    <div
+      *ngIf="marcaForm.controls.marca.invalid && (marcaForm.controls.marca.dirty || marcaForm.controls.marca.touched)"
+      class="alert alert-danger">
+      <div *ngIf="marcaForm.controls.marca.errors?.['required']">
+        La descripción de la marca no puede quedar vacía.
+      </div>
+      <div *ngIf="marcaForm.controls.marca.errors?.['minlength']">
+        Debe tener como mínimo 2 caracteres.
+      </div>
+    </div>
+    <div class="pt-3 text-end">
+
+      <hr>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+      <button type="submit" class="btn btn-verde ms-2" [disabled]="showSpinner" (click)="save()"><span *ngIf="showSpinner"
+          class="spinner-border spinner-border-sm"> </span>Grabar</button>
+    </div>
+  </div>
+</form>

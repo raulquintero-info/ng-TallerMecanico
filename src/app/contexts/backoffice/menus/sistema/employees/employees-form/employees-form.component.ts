@@ -106,10 +106,11 @@ export class EmployeesFormComponent implements OnInit {
       this.employeesService.create(employeeToSave, 'EMPLEADO').subscribe({
         next: resp => {
           console.log('empleado resp', resp)
-          this.employee = resp.Empleado
+          this.employee.idEmpleado = resp.Empleado.idEmpleado;
           this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
           this.showSpinner = false;
           this.isSaved = true;
+
         },
         error: resp => {
           console.log('create error:', resp);

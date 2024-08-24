@@ -16,8 +16,7 @@ export class MEmployeeFormComponent implements OnChanges {
 @Input() isSaved: boolean = false;
 
 
-@Output()
-onNewEmployee:EventEmitter<any> = new EventEmitter();
+@Output() onNewEmployee:EventEmitter<any> = new EventEmitter();
 
 private formBuild = inject(FormBuilder);
 
@@ -64,6 +63,13 @@ private formBuild = inject(FormBuilder);
 
 
 emitEmployee():void {
+    // Verificar si el formulario es válido
+    if (this.employeeForm.invalid) {
+      // Marcar los controles del formulario como tocados para mostrar los mensajes de error
+      this.employeeForm.markAllAsTouched();
+      this.showSpinner = false; // Detener el spinner
+      return; // Detener el proceso de guardado
+    }
   this.employee.idEmpleado = this.employee.idEmpleado;
   this.employee.nombre = this.employeeForm.value.nombre!;
   this.employee.apellidoPaterno = this.employeeForm.value.aPaterno!;

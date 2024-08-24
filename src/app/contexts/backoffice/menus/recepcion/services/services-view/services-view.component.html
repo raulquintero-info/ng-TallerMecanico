@@ -12,11 +12,10 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-8 ">
+    <div class="col-sm-8 ">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 ">
-
+          <div class="col-sm-6 ">
             <div class="mb-3">
               <div class="service-title">Datos del Cliente</div>
               <div class="p-2">
@@ -25,7 +24,7 @@
                     + vehicle.cliente.idCliente">{{ vehicle.cliente.nombre + ' ' + vehicle.cliente.apellidoPaterno |
                     titlecase}}<i class="bi bi-link-45deg"></i></button>
                 </div>
-                <div>Tel: {{ vehicle.cliente.telefono }}</div>
+                <div>Tel: {{ vehicle.cliente.telefono | mask: "(000) 000 0000"}}</div>
               </div>
             </div>
 
@@ -53,22 +52,35 @@
 
 
           </div>
-          <div class="col-md-6 ">
-            <!-- <div class="service-title">{{service.falla | titlecase}}</div> -->
-            <!-- <app-vehicle-card [vehicle]="vehicle"></app-vehicle-card> -->
+          <div class="col-sm-6 ps-2 ">
 
 
-            <div class="mb-3">
+            <div class="mb-3 d-print-none">
 
               <div class="d-flex">
                 <div class="service-title ps-2 pe-2">Estatus</div>
-                <div class="flex-grow-1 service-status btn-guinda text-center clickable"
-                  (click)="openModalStatus()">
+                <div class="flex-grow-1 btn-guinda " >
+                  <details>
+                    <summary class="text-center pt-1"> {{service.estatusServicio.estatusServicio | uppercase}}</summary>
+                    <ul>
+
+                      <li class="option  service-status btn-guinda text-center clickable"
+                        *ngFor="let item of statusList"
+                        (click)="updateStatus(item.idEstatusServicio, item.estatusServicio)">
+                        <span
+                        *ngIf="service.estatusServicio.idEstatusServicio != item.idEstatusServicio"
+                        >{{item.estatusServicio | titlecase}}</span>
+                    </li>
+                    </ul>
+                  </details>
+                </div>
+                <!-- <div class="flex-grow-1 service-status btn-guinda text-center clickable" (click)="openModalStatus()">
                   {{service.estatusServicio.estatusServicio | uppercase}}
-                </div>
-                <div class="bg-secondary">
-                  <button class="btn btn-secondary" (click)="openModalStatus()"><i class="bi bi-caret-down-square-fill"></i></button>
-                </div>
+                </div> -->
+                <!-- <div class="bg-secondary">
+                  <button class="btn btn-secondary" (click)="openModalStatus()"><i
+                      class="bi bi-caret-down-square-fill"></i></button>
+                </div> -->
               </div>
               <div class="d-flex mt-2" style="border: 1px solid green ">
                 <div>
@@ -78,17 +90,23 @@
                 <!-- <div class="pe-3">
                   <h1><i class="bi bi-arrow-down-square text-success"></i></h1>
                 </div> -->
-                <div style *ngIf="!service.factura?.idFactura" class="flex-grow-1 text-center pt-3 ">
+                <div *ngIf="!service.factura?.idFactura" class="flex-grow-1 text-center pt-1 ">
                   Fecha de Entrada:
-                  <div><strong>{{service.fechaOrden | date:"short"}}</strong></div>
+                  <div><strong>
+                    {{service.fechaOrden | date:'dd'}}/
+                    {{service.fechaOrden | date:'MM'}} /
+                    {{service.fechaOrden | date:'yyyy'}} <br>
+                    {{service.fechaOrden | date:'h:mm:ss a'}}
+
+                  </strong></div>
                 </div>
-                <div *ngIf="service.factura?.idFactura" class="flex-grow-1 text-center pt-3"
-                  style="background-color: rgb(6, 165, 6); color: white">
+                <div *ngIf="service.factura?.idFactura" class="flex-grow-1 text-center pt-2"
+                  style="background-color: #4bcf59;">
                   <div>Fecha de Salida:</div>
                   <div><strong>{{service.factura?.fechaFactura| date:"short"}}</strong></div>
                 </div>
 
-                <div *ngIf="!service.factura?.idFactura" class="pt-2 ps-3 text-center flex-grow-1">
+                <div style="background-color: #ffe676;" *ngIf="!service.factura?.idFactura" class="pt-2 ps-2 pe-2 text-center flex-grow-1">
                   <span style="font-size: 40px; font-weight: bold">{{service.fechaOrden | daysago}}</span>
                   <div style="top:-15px; position:relative; font-size: 12px">dias</div>
                 </div>
@@ -141,7 +159,8 @@
           </ng-template>
 
         </div>
-        <div *ngIf="!service.factura" class="text-end"><button class="btn btn-sm btn-danger d-print-none" (click)="openModalDelete()">Eliminar
+        <div *ngIf="!service.factura" class="text-end"><button class="btn btn-sm btn-danger d-print-none"
+            (click)="openModalDelete()">Eliminar
             Servicio</button></div>
       </div>
 
@@ -161,7 +180,7 @@
       </div>
 
 
-      <div class="your-order bg-light d-print-none">
+      <div class="your-order bg-light ">
         <!-- <h3 class="f-700 mb-20">Your Order</h3> -->
         <div class="ordered">
 
@@ -170,10 +189,10 @@
               <td colspan="2">
                 <h6>{{ detalle.descripcionServicio | titlecase }}</h6>
               </td>
-              <td class="text-end" style="width:80px">{{detalle.costo}}</td>
-              <td class="text-end d-print-none"  *ngIf="!service.factura?.idFactura" style="width:30px"><button class="btn btn-sm btn-link"
-                  (click)="onDeleteItem(detalle.idDetalleOrdenServicio)"><i class="bi bi-dash-circle"
-                    style="color:red"></i></button></td>
+              <td class="text-end" style="width:80px">{{detalle.costo | currency}}</td>
+              <td class="text-end d-print-none" *ngIf="!service.factura?.idFactura" style="width:30px"><button
+                  class="btn btn-sm btn-link" (click)="onDeleteItem(detalle.idDetalleOrdenServicio)"><i
+                    class="bi bi-dash-circle" style="color:red"></i></button></td>
             </tr>
 
             <tr *ngIf="service.detalleOrdenServicios.length <= 0">
@@ -186,33 +205,33 @@
 
         </div>
 
-          <!-- datos de la factura -->
+        <!-- datos de la factura -->
         <ng-container *ngIf="service.factura?.idFactura">
 
-          <div class="price-detail mb-15">
-            <ul class="total-table mt-5">
-              <li><span>Sub Total:</span>${{total}}</li>
-              <li class="total"><span>TOTAL:</span>${{total}}</li>
+          <div class="price-detail ">
+            <ul class="total-table mt-3">
+              <!-- <li style="border-bottom: 1px solid #9d5a5a;"><span>Sub Total:</span>{{total| currency}}</li> -->
+              <li class="total"><span>TOTAL:</span>{{total | currency}}</li>
             </ul>
           </div>
           <div class="pt-3 d-print-none" colspan="3" style="text-align:right; margin-top: 6px;">
             <button type="button" class="btn btn-success btn-sm"
               [routerLink]="'/admin/recepcion/facturas-view/' + service.factura?.idFactura">Ver Nota de Venta
-               [ {{service.factura?.idFactura}} ]</button>
+              [ {{service.factura?.idFactura}} ]</button>
 
           </div>
         </ng-container>
 
 
-          <!-- datos del total de la orden -->
+        <!-- datos del total de la orden -->
         <div *ngIf="!service.factura?.idFactura">
           <ng-container *ngIf="!showBoxAddItem; then buttonsDetalle; else addItems"></ng-container>
 
           <ng-template #buttonsDetalle>
-            <div class="price-detail mb-15">
-              <ul class="total-table mt-5">
-                <li><span>Sub Total:</span>${{total}}</li>
-                <li class="total"><span>TOTAL:</span>${{total}}</li>
+            <div class="price-detail ">
+              <ul class="total-table mt-30">
+                <!-- <li style="border-bottom: 1px solid #9d5a5a;"><span>Sub Total:</span>{{total | currency}}</li> -->
+                <li class="total"><span style="font-size: 1.4rem">MX {{total | currency}}</span></li>
               </ul>
             </div>
             <div class="pt-3 d-print-none" colspan="3" style="text-align:right; margin-top: 6px;">
@@ -331,7 +350,7 @@
 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-guinda" >
+      <div class="modal-header bg-guinda">
         <h4 class="modal-title">Generar Nota de Venta </h4>
       </div>
       <div class="modal-body">
@@ -392,16 +411,18 @@
 
 <!-- modal para cambiar estatus -->
 
-<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleStatus}"  >
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleStatus}">
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content">
       <div class="modal-header bg-guinda">
         <h4 class="modal-title">Cambiar estatus del servicio </h4>
-        <button type="button" class="btn-close" (click)="closeModalStatus()" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+        <button type="button" class="btn-close" (click)="closeModalStatus()" aria-label="Close"><i
+            class="bi bi-x-lg"></i></button>
       </div>
       <div class="modal-body">
         <ul class="status">
-          <li *ngFor="let item of statusList" (click)="updateStatus(item.idEstatusServicio, item.estatusServicio)"> {{ item.estatusServicio | titlecase }}</li>
+          <li *ngFor="let item of statusList" (click)="updateStatus(item.idEstatusServicio, item.estatusServicio)"> {{
+            item.estatusServicio | titlecase }}</li>
         </ul>
 
       </div>

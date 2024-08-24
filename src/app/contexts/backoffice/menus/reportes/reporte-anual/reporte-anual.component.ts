@@ -73,7 +73,8 @@ export class ReporteAnualComponent {
 
   dateRange12Months() {
     let fecha = new Date();
-    let fechaFin = fecha.getFullYear() + '-' + ("0" + (fecha.getMonth() + 1)).slice(-2) + '-' + 1;
+    let utlimoDia = 32 - new Date(fecha.getFullYear(),fecha.getMonth(), 32).getDate();
+    let fechaFin = fecha.getFullYear() + '-' + ("0" + (fecha.getMonth() + 1)).slice(-2) + '-' + utlimoDia;
     let pastYear = fecha.getFullYear() - 1;
     fecha = new Date(fecha.getFullYear(), Number(("0" + (fecha.getMonth() + 1)).slice(-2)), 0);
 

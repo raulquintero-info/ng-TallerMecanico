@@ -1,14 +1,14 @@
 <form [formGroup]="employeeForm" (ngSubmit)="emitEmployee()">
 
 
-  <div class=" mb-3">
+  <div class=" mt-3">
     <label for="idEmpleado" class="form-label">Id</label>
     <input type="idEmpleado" class="form-control" [readOnly]="true" formControlName="idEmpleado" id="idEmpleado"
       name="idEmpleado">
 
   </div>
 
-  <div class=" mb-3">
+  <div class=" mt-3">
     <label for="username" class="form-label">Email</label>
     <input type="text" class="form-control" formControlName="username" [readOnly]="employee.idEmpleado>0" id="username"
       name="username">
@@ -17,7 +17,7 @@
   <!-- validacion  -->
   <div
     *ngIf="employeeForm.controls.username.invalid  && (employeeForm.controls.username.dirty || employeeForm.controls.username.touched)"
-    class="alert alert-danger">
+    class="text-danger text-error">
     <div *ngIf="employeeForm.controls.username.errors?.['required']">
       El email es requerido.
     </div>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class=" mb-3" [hidden]="employee.idEmpleado>0">
+  <div class=" mt-3" [hidden]="employee.idEmpleado>0">
     <label for="password" class="form-label">Contraseña</label>
     <input type="password" class="form-control" [hidden]="employee.idEmpleado>0" id="password" name="password"
       formControlName="password" type="password" id="password">
@@ -34,7 +34,7 @@
 
   <div
     *ngIf="employeeForm.controls.password.invalid  && (employeeForm.controls.password.dirty || employeeForm.controls.password.touched)"
-    class="alert alert-danger">
+    class="text-danger text-error">
     <div *ngIf="employeeForm.controls.password.errors?.['required']">
       El password no puede quedar vacío.
     </div>
@@ -42,17 +42,17 @@
       Debe tener como mínimo 8 caracteres.
     </div>
   </div>
-  <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mb-3" [hidden]="employee.idCliente<1">Cambiar
+  <!-- <div ><button class="btn btn-outline-primary btn-sm ms-3 mt-3" [hidden]="employee.idCliente<1">Cambiar
     Contraseña</button></div> -->
 
-  <div class=" mb-3">
+  <div class=" mt-3">
     <label for="nombre" class="form-label">Nombre</label>
     <input type="text" class="form-control" formControlName="nombre" id="nombre" name="nombre">
 
   </div>
   <div
     *ngIf="employeeForm.controls.nombre.invalid  && (employeeForm.controls.nombre.dirty || employeeForm.controls.nombre.touched)"
-    class="alert alert-danger">
+    class="text-danger text-error">
     <div *ngIf="employeeForm.controls.nombre.errors?.['required']">
       El nombre no puede quedar vacío.
     </div>
@@ -62,7 +62,7 @@
   </div>
 
 
-  <div class=" mb-3">
+  <div class=" mt-3">
     <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
     <input type="text" class="form-control" formControlName="aPaterno" id="apellidoPaterno" name="apellidoPaterno">
 
@@ -70,7 +70,7 @@
 
   <div
     *ngIf="employeeForm.controls.aPaterno.invalid  && (employeeForm.controls.aPaterno.dirty || employeeForm.controls.aPaterno.touched)"
-    class="alert alert-danger">
+    class="text-danger text-error">
     <div *ngIf="employeeForm.controls.aPaterno.errors?.['required']">
       El apellido Paterno no puede quedar vacío.
     </div>
@@ -79,13 +79,13 @@
     </div>
   </div>
 
-  <div class=" mb-3">
+  <div class=" mt-3">
     <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
     <input type="text" class="form-control" formControlName="aMaterno" id="apellidoMaterno" name="apellidoMaterno">
 
     <div
       *ngIf="employeeForm.controls.aMaterno.invalid  && (employeeForm.controls.aMaterno.dirty || employeeForm.controls.aMaterno.touched)"
-      class="alert alert-danger">
+      class="text-danger text-error">
       <div *ngIf="employeeForm.controls.aMaterno.errors?.['required']">
         El apellido Materno no puede quedar vacío.
       </div>
@@ -95,14 +95,14 @@
     </div>
 
   </div>
-  <div class=" mb-3">
+  <div class=" mt-3">
     <label for="rfc" class="form-label">RFC</label>
     <input type="text" class="form-control" formControlName="rfc" id="rfc" name="rfc">
   </div>
 
   <div
     *ngIf="employeeForm.controls.rfc.invalid  && (employeeForm.controls.rfc.dirty || employeeForm.controls.rfc.touched)"
-    class="alert alert-danger">
+    class="text-danger text-error">
     <div *ngIf="employeeForm.controls.rfc.errors?.['required']">
       El RFC no puede quedar vacío.
     </div>
@@ -111,14 +111,14 @@
     </div>
   </div>
 
-  <div class=" mb-3">
+  <div class=" mt-3">
     <label for="curp" class="form-label">CURP</label>
     <input type="text" class="form-control" formControlName="curp" id="curp" name="curp">
   </div>
 
   <div
     *ngIf="employeeForm.controls.curp.invalid  && (employeeForm.controls.curp.dirty || employeeForm.controls.curp.touched)"
-    class="alert alert-danger">
+    class="text-danger text-error">
     <div *ngIf="employeeForm.controls.curp.errors?.['required']">
       El CURP no puede quedar vacío.
     </div>
@@ -127,7 +127,7 @@
     </div>
   </div>
 
-  <div class=" mb-3">
+  <div class=" mt-3">
     <label for="puesto" class="form-label">Puesto</label>
     <input type="text" class="form-control" formControlName="puesto" id="puesto" name="puesto">
 
@@ -135,7 +135,7 @@
 
   <div
     *ngIf="employeeForm.controls.puesto.invalid  && (employeeForm.controls.puesto.dirty || employeeForm.controls.puesto.touched)"
-    class="alert alert-danger">
+    class="text-danger text-error">
     <div *ngIf="employeeForm.controls.puesto.errors?.['required']">
       El Puesto no puede quedar vacío.
     </div>
@@ -144,7 +144,7 @@
     </div>
   </div>
 
-  <div class=" mb-3">
+  <div class=" mt-3">
     <label for="observaciones" class="form-label">Observaciones</label>
     <input type="text" class="form-control" formControlName="observaciones" id="observaciones" name="observaciones">
 
@@ -152,7 +152,7 @@
 
   <div
     *ngIf="employeeForm.controls.observaciones.invalid  && (employeeForm.controls.observaciones.dirty || employeeForm.controls.observaciones.touched)"
-    class="alert alert-danger">
+    class="text-danger text-error">
     <div *ngIf="employeeForm.controls.observaciones.errors?.['required']">
       Las observaciones no pueden quedar vacías.
     </div>
@@ -164,7 +164,7 @@
 
 
   <!-- TODO: revisar como va a quedar , si solo van a ser empleados los que se puedan dar de alta -->
-  <div class=" mb-3" style="display:none;">
+  <div class=" mt-3" style="display:none;">
 
     <label for="rol" class="form-label">Rol</label>
     <select class="form-select" id="rol" formControlName="role" aria-label="rol">
@@ -174,16 +174,18 @@
 
 
 
+<div class="mt-3">
 
 
   <button type="button" class="btn btn-secondary" [routerLink]="'/admin/sistema/empleados/'"><span *ngIf="showSpinner"
-      class="spinner-border spinner-border-sm">
-    </span><i class="bi bi-arrow-left-circle"></i> Regresar
-  </button>
-  <button type="submit" class="btn btn-verde ms-2" *ngIf="!isSaved" [disabled]="showSpinner"><span *ngIf="showSpinner"
-      class="spinner-border spinner-border-sm"> </span><i class="bi bi-floppy"></i> Grabar
-  </button>
+    class="spinner-border spinner-border-sm">
+  </span><i class="bi bi-arrow-left-circle"></i> Regresar
+</button>
+<button type="submit" class="btn btn-verde ms-2" *ngIf="!isSaved" [disabled]="showSpinner"><span *ngIf="showSpinner"
+  class="spinner-border spinner-border-sm"> </span><i class="bi bi-floppy"></i> Grabar
+</button>
 
+</div>
 
 </form>
 

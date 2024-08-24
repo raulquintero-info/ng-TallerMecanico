@@ -26,6 +26,9 @@ import { CustomersPdfComponent } from './customers/customers-pdf/customers-pdf.c
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { VehiclesPdfComponent } from './vehicles/vehicles-pdf/vehicles-pdf.component';
 import { ServicesPdfComponent } from './services/services-pdf/services-pdf.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { MarcasModule } from 'src/app/core/modules/marcas/marcas.module';
+import { ModelosModule } from 'src/app/core/modules/modelos/modelos.module';
 
 
 @NgModule({
@@ -59,10 +62,16 @@ import { ServicesPdfComponent } from './services/services-pdf/services-pdf.compo
     FormsModule,
     ReactiveFormsModule,
     NgxExtendedPdfViewerModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+
     CustomersModule,
-    VehiclesModule,
     ServicesModule,
     SharedModule,
-  ]
+    VehiclesModule,
+    MarcasModule,
+    ModelosModule,
+  ],
+  providers: [provideNgxMask()]
 })
 export class RecepcionModule { }
