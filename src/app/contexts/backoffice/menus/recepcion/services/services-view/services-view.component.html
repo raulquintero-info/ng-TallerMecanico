@@ -60,7 +60,20 @@
               <div class="d-flex">
                 <div class="service-title ps-2 pe-2">Estatus</div>
                 <div class="flex-grow-1 btn-guinda " >
-                  <details>
+                  <div class="dropdown">
+                    <button class="btn btn-guinda dropdown-toggle" style="width:100%"
+                     type="button" id="dropdownMenuButton1"
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                     {{service.estatusServicio.estatusServicio | uppercase}}
+                    </button>
+                    <ul class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton1">
+                      <li ><span class="dropdown-item" *ngFor="let item of statusList"
+                        (click)="updateStatus(item.idEstatusServicio, item.estatusServicio)">{{item.estatusServicio | titlecase}}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- <details>
                     <summary class="text-center pt-1"> {{service.estatusServicio.estatusServicio | uppercase}}</summary>
                     <ul>
 
@@ -69,10 +82,10 @@
                         (click)="updateStatus(item.idEstatusServicio, item.estatusServicio)">
                         <span
                         *ngIf="service.estatusServicio.idEstatusServicio != item.idEstatusServicio"
-                        >{{item.estatusServicio | titlecase}}</span>
+                        ></span>
                     </li>
                     </ul>
-                  </details>
+                  </details> -->
                 </div>
                 <!-- <div class="flex-grow-1 service-status btn-guinda text-center clickable" (click)="openModalStatus()">
                   {{service.estatusServicio.estatusServicio | uppercase}}
