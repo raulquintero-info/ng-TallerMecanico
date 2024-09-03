@@ -7,6 +7,10 @@ body{
   font-family: "Jost", "snas-serif";
   font-size: 17px;
 }
+.navbar-collapse {
+  padding: 10px;
+  /* background-color: #681a2d; */
+}
 /* .row{
   --bs-gutter-x: 1.5px;
 } */

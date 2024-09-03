@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class FacturasListComponent implements OnInit {
   isLoadingService = true;
   title: string = "Reportes";
-  subTitle: string = "Listado de Facturas";
+  subTitle: string = "Listado de Notas de Venta";
   buttons = [];
 
   facturas: Factura[] = [];

@@ -27,7 +27,7 @@
         <tr *ngFor="let factura of facturas" (click)="verFactura(factura.idFactura)" style="cursor: pointer">
           <td class="text-row">{{factura.idFactura}}</td>
           <td  class="text-row" scope="row">{{ factura.fechaFactura| date: 'short'}}</td>
-          <td></td>
+          <td class="text-row">{{ factura.nombre + ' ' +factura.apellidoPaterno + ' ' + factura.apellidoMaterno | titlecase }}</td>
           <td class="text-row"> {{ factura.monto| currency}}</td>
           <!-- <td  class="text-row">{{ factura. | titlecase}}</td> -->
           <!-- <td  class="text-row">{{ factura.estatusServicio.estatusServicio | titlecase}}</td> -->

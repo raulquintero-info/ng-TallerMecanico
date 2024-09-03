@@ -167,11 +167,7 @@
             </select>
           </div>
 
-          <!-- <ul>
-          <li *ngFor="let item of customer.usuario.rol">
-            <pre>{{item | json}}</pre>
-          </li>
-        </ul> -->
+
 
           <!-- <div class=" mb-3">
             <input type="password" class="" id="password" formControlName="password"
@@ -183,11 +179,15 @@
           </div> -->
 
           <button class="btn btn-secondary ms-2"
-            [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente">
+            [routerLink]="'/admin/recepcion/clientes' ">
            <i class="bi bi-arrow-left-circle"></i> Regresar
           </button>
           <button type="submit" class="btn btn-verde ms-2" *ngIf="!isSaved" [disabled]="showSpinner" (click)="save()"><span
               *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span><i class="bi bi-floppy"></i>  Grabar
+          </button>
+          <button class="btn btn-success ms-2" *ngIf="isSaved"
+            [routerLink]="'/admin/recepcion/clientes-view/' + customer.idCliente">
+           <i class="bi bi-arrow-left-circle"></i> Continuar
           </button>
         </div>
       </form>

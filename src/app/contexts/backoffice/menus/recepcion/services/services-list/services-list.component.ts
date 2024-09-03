@@ -8,6 +8,7 @@ import { Vehiculo } from 'src/app/core/interfaces/vehiculo.interface';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { EstatusServicio } from 'src/app/core/interfaces/estatusServicio.interface';
 import { DepartamentosService } from 'src/app/core/services/departamentos.service';
+import { Departamento } from 'src/app/core/interfaces/departamento.interface';
 
 
 @Component({
@@ -17,7 +18,8 @@ import { DepartamentosService } from 'src/app/core/services/departamentos.servic
 })
 export class ServicesListComponent implements OnInit {
   estatus: EstatusServicio[] = [];
-  statusArray: String[] = [];
+  statusArray: EstatusServicio[] = [];
+  countServices: any[10] =  [];
   isLoading: boolean = true;
   pdfFile: string = ''
   pathService = "/admin/recepcion/servicios-view";
@@ -55,17 +57,6 @@ export class ServicesListComponent implements OnInit {
   }
 
   loadServices(department: number,page: number) {
-    // this.servicesService
-    //   .getPaginatedData(page)
-    //   .subscribe((data: Page<any>) => {
-    //     console.log('servicios', data.content);
-    //     this.services = data.content;
-    //     this.totalPages = data.totalPages;
-    //     this.currentPage = data.number + 1;
-    //     this.isLoading = false;
-
-    //   });
-
     this.servicesService.getPaginatedRecepcionData(department, page).subscribe({
       next: (resp:any)=>{
         console.log('servicios',resp)
@@ -98,10 +89,16 @@ export class ServicesListComponent implements OnInit {
     const RECEPCION = 1
     this.departamentoService.getEstatusById(RECEPCION).subscribe({
       next: resp => {
-        this.estatus = resp;
-        this.estatus.forEach(x=>{this.statusArray.push( x.estatusServicio)})
+        resp.forEach( (x: any) =>{this.statusArray.push( {
+           'estatusServicio': x.estatusServicio,
+           'idEstatusServicio': x.idEstatusServicio,
+           'departamento': {} as Departamento
+          })
+          this.getByStatusAux(x.estatusServicio, x.idEstatusServicio)
+        })
         console.log('status', resp);
-        console.log(this.statusArray)
+        console.log('eestatus', this.estatus);
+        console.log('statusArray',this.statusArray);
       },
       error: resp=>{
         console.log('error', resp)
@@ -109,5 +106,20 @@ export class ServicesListComponent implements OnInit {
     })
 
   }
+
+  //TODO: funcion temporal para obtener el total de servicio de cada estatus
+  // impletmentar funcinalidad en backend
+  getByStatusAux(status: string,statusId: number) {
+
+    this.servicesService.getByStatus(status).subscribe({
+      next: resp => {
+        console.log('por status',statusId,resp.length)
+        this.countServices[statusId] = ( resp.length);
+        return resp.length;
+
+      }
+    });
+  }
+
 
 }

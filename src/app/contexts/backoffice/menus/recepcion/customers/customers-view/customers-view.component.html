@@ -32,7 +32,7 @@
                 {{ customer.apellidoMaterno |titlecase }}<br>
               </div>
               <div class="mt-3"><span class="title-field">Tel:</span> {{ customer.telefono |phone  }}</div>
-              <div><span class="title-field">Direccion:</span> {{ customer.domicilio }}</div>
+              <div><span class="title-field">Direccion:</span> {{ customer.domicilio |titlecase }}</div>
             </div>
             <div *ngIf="isLoading" class="spinner-border text-light mt-2" role="status"></div>
           </div>

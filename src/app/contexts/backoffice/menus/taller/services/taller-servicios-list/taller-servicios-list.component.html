@@ -6,8 +6,10 @@
       <button class="btn btn-verde btn-sm ms-2"
         routerLink="/admin/taller/servicios/todos">Todos
       </button>
-      <button class="btn btn-secondary btn-sm ms-2" *ngFor="let status of estatus" [routerLink]="'/admin/taller/servicios/' + status.estatusServicio">
+      <button class="btn btn-secondary btn-sm ms-2 position-relative" *ngFor="let status of statusArray" [routerLink]="'/admin/taller/servicios/' + status.estatusServicio">
         {{status.estatusServicio | titlecase}}
+        <span *ngIf="countServices[status.idEstatusServicio]>0"
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{countServices[status.idEstatusServicio]}}</span>
       </button>
     </div>
 

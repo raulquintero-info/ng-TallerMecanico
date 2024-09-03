@@ -6,8 +6,13 @@
       <button class="btn btn-verde btn-sm ms-2"
         [routerLink]="'/admin/recepcion/servicios/todos'">Todos
       </button>
-      <button class="btn btn-warning btn-sm ms-2" *ngFor="let status of estatus"
+      <!-- <pre>{{estatus |json}}</pre>
+      <pre>{{countServices |json}}</pre> -->
+      <!-- <pre>{{statusArray |json}}</pre> -->
+      <button class="btn btn-warning btn-sm ms-2 position-relative" *ngFor="let status of statusArray"
         [routerLink]="'/admin/recepcion/servicios/' +status.estatusServicio">{{status.estatusServicio | titlecase}}
+        <span *ngIf="countServices[status.idEstatusServicio]>0"
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{countServices[status.idEstatusServicio]}}</span>
       </button>
     </div>
     <div>

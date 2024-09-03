@@ -15,7 +15,7 @@ export class FacturasViewComponent implements OnInit {
   isLoadingService = true;
   factura: Factura | null = null;
   title: string = "Autopro";
-  subTitle: string = "Notas de Venta";
+  subTitle: string = "Nota de Venta";
   buttons = [];
   constructor(
     private activatedRoute: ActivatedRoute,

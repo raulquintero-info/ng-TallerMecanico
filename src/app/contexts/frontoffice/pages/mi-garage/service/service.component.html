@@ -1,6 +1,10 @@
 <div class="title ps-5">
-  <div style="background-color: #24554c; width:120px; color: white; padding:6px; text-align:center"><span class="clickable"  routerLink="/mi-garage"><i
-      class="bi bi-car-front-fill"></i> Mi Garage</span></div>
+  <div
+    style="background-color: #24554c; width:180px; color: white; padding:6px; text-align:center">
+    <span class="clickable"  routerLink="/mi-garage"><i
+      class="bi bi-car-front-fill"></i> Mi Garage
+    </span>
+  </div>
 </div>
 <div class="container ps-5 pt-5">
 
@@ -22,8 +26,11 @@
             <div>{{ orden.falla | titlecase}}</div>
 
 
-            <div class="service-subtitle mt-3">Fecha y Hora</div>
+            <div class="service-subtitle mt-3">Fecha y Hora de Entrada</div>
             <div>{{ orden.fechaOrden | date:'short'}}</div>
+
+            <div class="service-subtitle mt-3">Fecha y Hora de Salida</div>
+            <div>{{ orden.factura?.fechaFactura | date:'short'}}</div>
           </div>
 
           <div class="col-md-6 bg-light pb-3">

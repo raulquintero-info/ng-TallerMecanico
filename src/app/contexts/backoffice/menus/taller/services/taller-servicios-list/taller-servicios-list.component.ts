@@ -4,6 +4,7 @@ import { Page } from 'src/app/core/interfaces/page.interface';
 import { DepartamentosService } from 'src/app/core/services/departamentos.service';
 import { ServicesService } from 'src/app/core/services/services.service';
 import { ActivatedRoute } from '@angular/router';
+import { Departamento } from 'src/app/core/interfaces/departamento.interface';
 
 @Component({
   selector: 'app-taller-servicios-list',
@@ -12,8 +13,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TallerServiciosListComponent {
   estatus: any[] = [];
+  statusArray: any[] = [];
+  countServices: any [10] = [];
   isLoading: boolean = true;
-  pdfFile: string = 'ordenesServicios'
+  pdfFile: string = 'ordenesServicio'
   title: string = "Taller";
   subTitle: string = "Servicios";
   buttons = [
@@ -34,7 +37,7 @@ export class TallerServiciosListComponent {
 
   ngOnInit() {
 
-    this.getAllStatusByDpt()
+    this.loadAllStatusByDpt()
 
     this.activatedRoute.params.subscribe(({ status }) => {
       console.log('status', status);
@@ -79,19 +82,57 @@ export class TallerServiciosListComponent {
       next: resp => {
         console.log('tallerFilter', resp);
         this.services = resp;
+        this.isLoading = false;
+
       }
     });
   }
 
-  getAllStatusByDpt() {
+  // getAllStatusByDpt() {
+  //   this.departamentoService.getEstatusById(TALLER).subscribe({
+  //     next: resp => {
+  //       this.estatus = resp;
+  //       console.log('status', resp);
+
+  //     }
+  //   })
+  //   this.loadServices(this.currentPage - 1);
+  // }
+
+  loadAllStatusByDpt(){
     const TALLER = 2;
     this.departamentoService.getEstatusById(TALLER).subscribe({
       next: resp => {
-        this.estatus = resp;
+        resp.forEach( (x: any) =>{this.statusArray.push( {
+           'estatusServicio': x.estatusServicio,
+           'idEstatusServicio': x.idEstatusServicio,
+           'departamento': {} as Departamento
+          })
+          this.getByStatusAux(x.estatusServicio, x.idEstatusServicio)
+        })
         console.log('status', resp);
-
+        console.log('eestatus', this.estatus);
+        console.log('statusArray',this.statusArray);
+      },
+      error: resp=>{
+        console.log('error', resp)
       }
     })
-    this.loadServices(this.currentPage - 1);
+
   }
+
+  //TODO: funcion temporal para obtener el total de servicio de cada estatus
+  // impletmentar funcinalidad en backend
+  getByStatusAux(status: string,statusId: number) {
+
+    this.servicesService.getByStatus(status).subscribe({
+      next: resp => {
+        console.log('por status',statusId,resp.length)
+        this.countServices[statusId] = ( resp.length);
+        return resp.length;
+
+      }
+    });
+  }
+
 }

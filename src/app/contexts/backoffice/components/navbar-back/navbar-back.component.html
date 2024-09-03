@@ -23,9 +23,9 @@
           <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink"
             data-bs-toggle="dropdown">Recepcion</a>
           <ul class="dropdown-menu">
+            <li><a [routerLink]="'/admin/recepcion/clientes'" class="dropdown-item">Clientes &raquo;</a></li>
             <li><a [routerLink]="'/admin/recepcion/servicios/todos'" class="dropdown-item">Servicios <i
                   class="bi bi-bookmark-fill text-warning"></i> </a> </li>
-            <li><a [routerLink]="'/admin/recepcion/clientes'" class="dropdown-item">Clientes &raquo;</a></li>
             <li><a [routerLink]="'/admin/recepcion/vehiculos'" class="dropdown-item">Vehiculos &raquo;</a></li>
           </ul>
         </li>
@@ -76,7 +76,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" [routerLink]="'/admin/reportes/facturas'">Facturas</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/admin/reportes/facturas'">Notas de Venta</a></li>
             <li><a class="dropdown-item" [routerLink]="'/admin/reportes/vehiculos'">Vehiculos</a></li>
           </ul>
         </li>
