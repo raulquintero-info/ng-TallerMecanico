@@ -82,6 +82,7 @@ export class VehiclesListComponent implements OnInit {
       next: resp => {
         console.log(resp);
         this.vehicles = resp.content;
+
         this.totalPages = resp.totalPages;
         this.currentPage = resp.number + 1;
         this.isLoading = false;

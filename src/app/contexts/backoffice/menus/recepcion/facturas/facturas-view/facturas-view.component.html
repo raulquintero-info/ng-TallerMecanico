@@ -15,19 +15,23 @@
     </div>
   </div>
   <div>
-    <table class="mt-5 mb-5" style="width: 100%">
+    <table class="mt-5 mb-3" style="width: 100%">
       <tr>
         <td class="ps-3" style="width:33%">
           <strong>{{factura?.nombre + ' ' + factura?.apellidoMaterno + ' ' + factura?.apellidoPaterno| titlecase}}</strong>
           <div>{{ factura?.telefono }}</div>
           <div>{{ factura?.domicilio}}</div>
+          <strong>{{ factura?.marca + ' ' + factura?.modelo  + ' ' + factura?.anioModelo | titlecase}}</strong>
+          <!-- <div>{{ factura?.vin }}</div> -->
+          <div>Matricula: {{ factura?.matricula }}</div>
         </td>
         <td style="width:33%"></td>
 
         <td class="pe-3" style="width:33%; text-align: right; vertical-align: top;">
           Fecha: {{factura?.fechaFactura |date: "short"}}
+          <div>Domicilio</div>
           <div>Mexicali B.C</div>
-          [No. Servicio]
+          <div>Orden de Servicio {{ factura?.ordenServicio?.idFactura }}</div>
         </td>
       </tr>
 
@@ -46,7 +50,7 @@
       </thead>
       <tbody *ngIf="factura?.detalleFactura">
         <tr *ngFor="let detalle of factura!.detalleFactura" class="">
-          <td scope="row">{{detalle.descripcionServicio}}</td>
+          <td scope="row">{{detalle.descripcionServicio | titlecase}}</td>
           <td>{{ detalle.costo | currency}}</td>
           <td>1</td>
           <td class="totales">{{detalle.costo | currency}}</td>

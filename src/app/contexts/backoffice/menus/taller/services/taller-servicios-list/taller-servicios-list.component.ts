@@ -27,7 +27,6 @@ export class TallerServiciosListComponent {
 
   currentPage: number = 1;
   totalPages: number = 1;
-
   paginador: any;
 
 
@@ -42,7 +41,8 @@ export class TallerServiciosListComponent {
     this.activatedRoute.params.subscribe(({ status }) => {
       console.log('status', status);
       if (status == 'todos') {
-        this.loadServices(this.currentPage)
+        this.loadServices(1, this.currentPage)
+
       } else {
         this.getByStatus(status)
       }
@@ -51,18 +51,10 @@ export class TallerServiciosListComponent {
 
   }
 
-  loadServices(page: number) {
-    // this.servicesService
-    //   .getPaginatedData(page)
-    //   .subscribe((data: Page<any>) => {
-    //     console.log('serviciosTaller',data.content);
-    //     this.services = data.content;
-    //     this.totalPages = data.totalPages;
-    //     this.currentPage = data.number + 1;
-    //   });
+  loadServices(department: number, page: number) {
     this.servicesService.getPaginatedRecepcionData(2).subscribe({
       next: resp => {
-        this.services = resp;
+        this.services = resp.content;
         this.isLoading = false;
       },
       error: resp => {
@@ -71,10 +63,7 @@ export class TallerServiciosListComponent {
     });
   }
 
-  onPageChange(page: number) {
-    this.loadServices(page - 1);
 
-  }
 
   getByStatus(status: string) {
 
@@ -135,4 +124,8 @@ export class TallerServiciosListComponent {
     });
   }
 
+    //paginator
+    onPageChange(page: number) {
+      this.loadServices(1, page - 1);
+    }
 }

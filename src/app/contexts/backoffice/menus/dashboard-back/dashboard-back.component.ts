@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { MainLoaderService } from 'src/app/core/services/mainLoader.service';
   templateUrl: './dashboard-back.component.html',
   styleUrls: ['./dashboard-back.component.css']
 })
-export class DashboardBackComponent {
+export class DashboardBackComponent implements OnInit{
 
   private mLoaderService = inject(MainLoaderService);
 

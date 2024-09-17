@@ -21,9 +21,9 @@ export class CustomersListComponent implements OnInit {
     { text: "Agregar", path: "/admin/recepcion/clientes-form/0" }
   ];
 
+  //paginator
   currentPage: number = 1;
   totalPages: number = 1;
-
   paginador: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private customersService: CustomersService) { }
@@ -40,9 +40,9 @@ export class CustomersListComponent implements OnInit {
       next: (resp: any) => {
         console.log(resp);
         this.customers = resp.content;
+        this.isLoadingCustomers = false;
         this.totalPages = resp.totalPages;
         this.currentPage = resp.number + 1;
-        this.isLoadingCustomers = false;
       },
       error: resp => {
         this.isLoadingCustomers = false;

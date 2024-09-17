@@ -14,6 +14,7 @@ export const adminGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: 
   // mLoaderService.setStatus('');
 
   loginService.checkStatus();
+  console.log('statusGuard', loginService.getUser());
   let role = loginService.getRole();
   if (role == "ADMIN") {
     return true;

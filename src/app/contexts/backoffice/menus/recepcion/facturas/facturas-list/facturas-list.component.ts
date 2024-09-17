@@ -16,24 +16,38 @@ export class FacturasListComponent implements OnInit {
 
   facturas: Factura[] = [];
 
+  //paginator
+  currentPage: number = 1;
+  totalPages: number = 1;
+  paginador: any;
+
 
   private facturaService = inject(ServicesService)
   private router = inject(Router)
 
   ngOnInit(): void {
+    this.loadFacturas(this.currentPage - 1);
 
-    this.facturaService.getFacturas().subscribe({
-      next: resp=>{
-        this.facturas = resp;
-        console.log('facturas', resp)
-      }
-    })
+
 
   }
 
+  loadFacturas(page :number){
+    this.facturaService.getFacturasByPage(page).subscribe({
+      next: resp=>{
+        this.facturas = resp.content;
+        console.log('facturas', resp)
+      }
+    })
+  }
 
 
   verFactura(idFactura: number) {
     this.router.navigateByUrl("/admin/recepcion/facturas-view/" + idFactura )
+  }
+
+  onPageChange(page: number) {
+    this.loadFacturas(page - 1);
+
   }
 }

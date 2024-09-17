@@ -19,21 +19,23 @@ import { Departamento } from 'src/app/core/interfaces/departamento.interface';
 export class ServicesListComponent implements OnInit {
   estatus: EstatusServicio[] = [];
   statusArray: EstatusServicio[] = [];
-  countServices: any[10] =  [];
+  countServices: any[10] = [];
   isLoading: boolean = true;
   pdfFile: string = ''
   pathService = "/admin/recepcion/servicios-view";
   title: string = 'Recepcion';
   subTitle: string = 'Listado de Servicios'
   buttons = [
-     {text: 'PDF *', path: "/admin/recepcion/servicios-pdf"}
+    { text: 'PDF *', path: "/admin/recepcion/servicios-pdf" }
   ];
   services: OrdenServicio[] = [];
 
+  //paginator
   currentPage: number = 1;
   totalPages: number = 1;
-
   paginador: any;
+
+
 
 
   private servicesService = inject(ServicesService);
@@ -45,39 +47,39 @@ export class ServicesListComponent implements OnInit {
   ngOnInit() {
     this.loadAllStatusByDpt()
 
-    this.activatedRoute.params.subscribe(({status}) => {
-        console.log('status',status);
-        if(status == 'todos'){
-          this.loadServices(1, this.currentPage )
-        }else{
-          this.getByStatus(status)
-        }
+    this.activatedRoute.params.subscribe(({ status }) => {
+      console.log('status', status);
+      if (status == 'todos') {
+        this.loadServices(1, this.currentPage-1)
+      } else {
+        this.getByStatus(status)
+      }
     });
 
   }
 
-  loadServices(department: number,page: number) {
+  loadServices(department: number, page: number) {
     this.servicesService.getPaginatedRecepcionData(department, page).subscribe({
-      next: (resp:any)=>{
-        console.log('servicios',resp)
-        this.services = resp
+      next: (resp: any) => {
+        console.log('servicios', resp)
+        this.services = resp.content;
         this.isLoading = false;
+        this.totalPages = resp.totalPages;
+        this.currentPage = resp.number + 1;
       },
-      error: resp=>{
+      error: resp => {
         this.isLoading = false
       }
     });
   }
 
-  onPageChange(page: number) {
-    this.loadServices(1, page - 1);
-  }
+
 
   getByStatus(status: string) {
     this.isLoading = true;
     this.servicesService.getByStatus(status).subscribe({
       next: resp => {
-        console.log('por status',status,resp)
+        console.log('por status', status, resp)
         this.services = resp;
         this.isLoading = false;
 
@@ -85,22 +87,21 @@ export class ServicesListComponent implements OnInit {
     });
   }
 
-  loadAllStatusByDpt(){
+  loadAllStatusByDpt() {
     const RECEPCION = 1
-    this.departamentoService.getEstatusById(RECEPCION).subscribe({
+    this.departamentoService.getEstatusById( RECEPCION).subscribe({
       next: resp => {
-        resp.forEach( (x: any) =>{this.statusArray.push( {
-           'estatusServicio': x.estatusServicio,
-           'idEstatusServicio': x.idEstatusServicio,
-           'departamento': {} as Departamento
+        resp.forEach((x: any) => {
+          this.statusArray.push({
+            'estatusServicio': x.estatusServicio,
+            'idEstatusServicio': x.idEstatusServicio,
+            'departamento': {} as Departamento
           })
           this.getByStatusAux(x.estatusServicio, x.idEstatusServicio)
         })
-        console.log('status', resp);
-        console.log('eestatus', this.estatus);
-        console.log('statusArray',this.statusArray);
+
       },
-      error: resp=>{
+      error: resp => {
         console.log('error', resp)
       }
     })
@@ -109,17 +110,22 @@ export class ServicesListComponent implements OnInit {
 
   //TODO: funcion temporal para obtener el total de servicio de cada estatus
   // impletmentar funcinalidad en backend
-  getByStatusAux(status: string,statusId: number) {
+  getByStatusAux(status: string, statusId: number) {
 
     this.servicesService.getByStatus(status).subscribe({
       next: resp => {
-        console.log('por status',statusId,resp.length)
-        this.countServices[statusId] = ( resp.length);
+        console.log('por status', statusId, resp.length)
+        this.countServices[statusId] = (resp.length);
         return resp.length;
 
       }
     });
   }
 
+
+  //paginator
+  onPageChange(page: number) {
+    this.loadServices(1, page - 1);
+  }
 
 }

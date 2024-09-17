@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Factura } from 'src/app/core/interfaces/factura.interface';
+import { FacturaView } from 'src/app/core/interfaces/facturaView.interface';
 import { ToastService } from 'src/app/core/modules/toast/services/toast.service';
 import { CustomersService } from 'src/app/core/services/customers.service';
 import { ServicesService } from 'src/app/core/services/services.service';
@@ -13,7 +14,7 @@ import { ServicesService } from 'src/app/core/services/services.service';
 })
 export class FacturasViewComponent implements OnInit {
   isLoadingService = true;
-  factura: Factura | null = null;
+  factura: FacturaView | null = null;
   title: string = "Autopro";
   subTitle: string = "Nota de Venta";
   buttons = [];

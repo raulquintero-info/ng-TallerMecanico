@@ -13,7 +13,9 @@
   </div>
     <!-- <h4 class="card-title">{{ vehicle.modelo.modelo}}</h4> -->
     <div class="vehicle-brand mt-2">
-      {{vehicle.modelo.marca.marca + ' ' + vehicle.modelo.modelo | titlecase}}
+      <div>{{vehicle.modelo.marca.marca | titlecase }}</div>
+      <div>{{ vehicle.modelo.modelo | titlecase}}</div>
+
       <!-- {{ vehicle.vin | slice: 0 :8}} -->
     </div>
   </div>

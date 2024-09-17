@@ -29,10 +29,9 @@ export class ReporteVehiculosComponent implements OnInit{
 
 
   onGeneratePdf(){
+    this.loaderStatus = ""
 
-    // if(this.startDat/e<this.endDate){
-      this.filterStr = '?fechaInicio='+ this.startDate +'&fechaFin=' + this.endDate ;
-    // }
+    this.filterStr = '?fechaInicio='+ this.startDate +'&fechaFin=' + this.endDate ;
     this.urlPdf= environment.api + '/api/vehiculos/atendidosPdf' + this.filterStr;
     console.log('urlPdf',  environment.api + '/api/vehiculos/atendidosPdf' + this.filterStr);
   }
