@@ -2,6 +2,7 @@
 
 <div class="container pt-3 ">
   <app-page-title [title]="title" [subTitle]="subTitle" [printerEnabled]="true" [pdfFile]="pdfFile" [buttons]="buttons"></app-page-title>
+
     <div class="text-end p-1 pe-2" style="background-color: #cbcbcb;">
       <button class="btn btn-verde btn-sm ms-2"
         routerLink="/admin/taller/servicios/todos">Todos
@@ -34,5 +35,6 @@
       [totalPages]="totalPages"
       (pageChanged)="onPageChange($event)"
     ></app-pagination>
+
 
 </div>

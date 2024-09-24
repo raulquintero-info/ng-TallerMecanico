@@ -25,6 +25,7 @@ import { VehiclesService } from 'src/app/core/services/vehicles.service';
 export class VehiclesFormComponent implements OnInit {
   showSpinner: boolean = false;
   showModalMarca: string = 'display';
+  editar: boolean = false;
   idMarca: number = 0;
   marcaSelected: Marca= {} as Marca;
   isSaved: boolean = false;
@@ -38,7 +39,7 @@ export class VehiclesFormComponent implements OnInit {
     imagen: '/assets/images/cars/no_image.jpg',
     modelo: { marca: {} as Marca, } as Modelo,
     tipoMotor:{} as TipoMotor,
-    cliente: {nombre: '', apellidoPaterno: '' } as Customer
+    cliente: {nombre: '', apellidoPaterno: '' , vehiculos:[{}]} as Customer
   } as Vehiculo;
   imagen: string = '/assets/images/cars/no_image.jpg';
   marcas: Marca[] = [];
@@ -81,6 +82,8 @@ export class VehiclesFormComponent implements OnInit {
     this.route.paramMap.subscribe((params) => (this.params = params));
     // this.customer.idCliente = this.params.get('idCustomer');
     this.vehicle.idVehiculo = this.params.get('idVehicle');
+    this.editar = (this.vehicle.idVehiculo ? true : false)
+    if(this.vehicle.idVehiculo>0) this.subTitle = "Editar Vehiculo"
     console.log(this.params.params.id);
 
 
@@ -184,6 +187,7 @@ export class VehiclesFormComponent implements OnInit {
     this.vehicle.color = this.vehicleForm.value.color!;
     this.vehicle.tipoMotor.idTipoMotor =this.vehicleForm.value.tipoMotor!;
     this.vehicle.modelo.idModelo = this.vehicleForm.value.modelo!;
+    // this.vehicle.cliente.vehiculos = [];
 
     this.vehiclesService.saveOrUpdate(this.vehicle).subscribe({
       next: (resp) => {

@@ -73,7 +73,7 @@ export class MMarcasFormComponent implements OnInit {
         next: (resp) => {
           console.log('respuesta',resp);
           this.toastService.addMessage({ title: "Sistema", timeAgo: "", body: ' Registro Grabado', type: 'success' })
-          this.savedMarca.emit(resp.Marca.idMarca);
+          this.savedMarca.emit(resp.marca.idMarca);
 
           this.marca = resp.marca;
           this.respuesta = resp.mensaje;
@@ -109,6 +109,7 @@ export class MMarcasFormComponent implements OnInit {
             type: 'danger',
           });
           console.log('create error:', resp);
+          console.log('create error:', resp.mensaje);
           this.respuesta = resp;
           this.showSpinner = false;
         },

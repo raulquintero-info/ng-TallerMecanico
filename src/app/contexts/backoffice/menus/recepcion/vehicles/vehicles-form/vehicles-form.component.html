@@ -144,19 +144,18 @@
 
           <div class="col-md-6" style="text-align: center"><br>
             <button type="submit" *ngIf="!isSaved" class="btn btn-secondary me-2" [disabled]="showSpinner"
-              [routerLink]="'/admin/recepcion/clientes-view/' + vehicle.cliente.idCliente"><span *ngIf="showSpinner"
-                class="spinner-border spinner-border-sm"> </span> Regresar
+              [routerLink]="'/admin/recepcion/clientes-view/' + vehicle.cliente.idCliente"><i class="bi bi-chevron-left"></i> Regresar
             </button>
-            <button type="submit" *ngIf="!isSaved" class="btn btn-primary" [disabled]="showSpinner"
-              (click)="save()"><span *ngIf="showSpinner" class="spinner-border spinner-border-sm"> </span> Grabar
+            <button type="submit" *ngIf="!isSaved" class="btn btn-guinda" [disabled]="showSpinner"
+              (click)="save()"><span *ngIf="showSpinner"
+              class="spinner-border spinner-border"> </span><i class="bi bi-floppy-fill"  *ngIf="!showSpinner"></i>  Grabar
               Vehiculo
             </button>
             <div *ngIf="isSaved">
-
-              <button *ngIf="vehicle.idVehiculo>0" class="btn btn-secondary btn-sm"
-                [routerLink]="'/admin/recepcion/clientes-view/'+vehicle.cliente.idCliente">Regresar</button>
-              <button class="btn btn-success btn-sm ms-2"
-                [routerLink]="'/admin/recepcion/servicios-form/0/'+vehicle.idVehiculo">Crear Servicio</button>
+              <button *ngIf="vehicle.idVehiculo>0" class="btn btn-secondary "
+                [routerLink]="'/admin/recepcion/clientes-view/'+vehicle.cliente.idCliente"><i class="bi bi-chevron-left"></i> Regresar</button>
+              <button class="btn btn-verde  ms-2" *ngIf="editar"
+                [routerLink]="'/admin/recepcion/servicios-form/0/'+vehicle.idVehiculo"><i class="bi bi-floppy-fill"></i> Agregar Servicio</button>
             </div>
 
           </div>
@@ -241,8 +240,8 @@
 
 
 
-  <pre>
+  <!-- <pre>
     {{showSpinner}}
     {{vehicle | json}}
     {{vehicleForm.value|json}}
-</pre>
+</pre> -->

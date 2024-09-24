@@ -52,9 +52,10 @@ export class TallerServiciosListComponent {
   }
 
   loadServices(department: number, page: number) {
-    this.servicesService.getPaginatedRecepcionData(2).subscribe({
+    this.servicesService.getPaginatedTallerData(2).subscribe({
       next: resp => {
-        this.services = resp.content;
+        console.log('servicios---', resp);
+        this.services = resp;
         this.isLoading = false;
       },
       error: resp => {
